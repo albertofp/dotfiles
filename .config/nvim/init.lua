@@ -1,5 +1,5 @@
 require 'options'
-require 'lazyconfig'
+require 'plugins'
 require('neodev').setup()
 require 'autocmd'
 require 'lsp'
