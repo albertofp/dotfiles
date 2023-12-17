@@ -4,10 +4,11 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
+export DOTNET_ROOT=/usr/local/share/dotnet
+export PATH=$PATH:/usr/local/share/dotnet
 
 # GOLANG SETUP###
 export GOPATH=$HOME/go
@@ -179,3 +180,5 @@ if [ -f '/Users/albertofp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alber
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/albertofp/google-cloud-sdk/completion.zsh.inc'; fi
 # export PATH=/opt/homebrew/opt/python@3.12/libexec/bin:$PATH
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

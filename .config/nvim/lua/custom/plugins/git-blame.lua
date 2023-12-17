@@ -1,9 +1,9 @@
 return {
 	'f-person/git-blame.nvim',
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
 		require('gitblame').setup {
-			--Note how the `gitblame_` prefix is omitted in `setup`
 			enabled = false,
 		}
-	end
+	end,
 }
