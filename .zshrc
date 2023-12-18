@@ -162,6 +162,7 @@ source $ZSH/oh-my-zsh.sh
  alias ..="cd .."
  alias ...="cd ../../"
  alias ....="cd ../../../"
+ alias kfui="kubectl port-forward svc/kf-ui -n kubeflow 8080:80"
 
  alias lt="eza --tree --level=2 --long --icons --git"
  alias ls="eza -l --icons --git"
