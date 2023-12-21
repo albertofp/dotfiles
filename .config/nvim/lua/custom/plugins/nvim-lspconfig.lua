@@ -1,19 +1,33 @@
 return {
-	-- LSP Configuration & Plugins
-	'neovim/nvim-lspconfig',
-	dependencies = {
-		-- Automatically install LSPs to stdpath for neovim
-		{ 'williamboman/mason.nvim', config = true },
-		'williamboman/mason-lspconfig.nvim',
+  {
+    'williamboman/mason.nvim',
+    config = function()
+      require('mason').setup()
+    end,
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    config = function()
+      require('mason-lspconfig').setup {
+        ensure_installed = { 'lua_ls' },
+      }
+    end,
+  },
+  {
+    -- LSP Configuration & Plugins
+    'neovim/nvim-lspconfig',
+    config = function()
+      local lspconfig = require 'lspconfig'
+      lspconfig.lua_ls.setup {}
+    end,
+    dependencies = {
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
-		-- Useful status updates for LSP
-		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		{ 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
-
-		-- Additional lua configuration, makes nvim stuff amazing!
-		'folke/neodev.nvim',
-	},
-	opts = { inlay_hints = { enabled = true } },
-	require 'lspconfig'.terraformls.setup {},
-	require 'lspconfig'.tflint.setup {}
+      'folke/neodev.nvim',
+    },
+    opts = { inlay_hints = { enabled = true } },
+    require('lspconfig').terraformls.setup {},
+    require('lspconfig').tflint.setup {},
+    require('lspconfig').lua_ls.setup {},
+  },
 }
