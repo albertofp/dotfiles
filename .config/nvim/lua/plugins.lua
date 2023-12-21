@@ -13,9 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-  { 'rose-pine/neovim',      name = 'rose-pine' },
-
-  'github/copilot.vim',
+  { 'rose-pine/neovim', name = 'rose-pine' },
 
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -24,7 +22,7 @@ require('lazy').setup({
     'ggandor/leap.nvim',
     config = function()
       require('leap').add_default_mappings()
-    end
+    end,
   },
 
   'mattn/vim-goaddtags',
@@ -37,7 +35,7 @@ require('lazy').setup({
 
   'wuelnerdotexe/vim-astro',
 
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
 
   { 'numToStr/Comment.nvim', opts = {} },
 
