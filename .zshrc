@@ -142,6 +142,8 @@ source $ZSH/oh-my-zsh.sh
  alias ohmyzsh="nvim ~/.oh-my-zsh"
  alias vim="nvim"
  alias n="nvim"
+
+ # Azure
  alias vmconnect="az ssh vm --resource-group cinference-rg --name alberto-01"
  alias vmssh="ssh -i ~/.ssh/alberto01.pub alberto@4.231.239.252  "
  alias vmstart="az vm start -g cinference-rg -n alberto-01"
@@ -149,7 +151,10 @@ source $ZSH/oh-my-zsh.sh
  alias ccstart="az vm start -g cinference-rg -n cinference-cc"
  alias ccstop="az vm deallocate -g cinference-rg -n cinference-cc"
  alias ccssh="ssh -i ~/.ssh/cinference-cc_key.pem azureuser@cinference-cc.northeurope.cloudapp.azure.com"
+
  # alias air='~/.air'
+  
+ # Git
  alias gp="git push"
  alias gs="git status"
  alias gd="git diff"
@@ -157,12 +162,22 @@ source $ZSH/oh-my-zsh.sh
  alias gco="git checkout"
  alias gcb="git checkout -b"
  alias dog="log --oneline --all --decoreate --graph"
+
+ # Linux only - maps caps lock to escape (shift+caps still works as caps lock)
  alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
+
+ # Docker
  alias dockerkill="docker stop \$(docker ps -a -q)"
+
  alias ..="cd .."
  alias ...="cd ../../"
  alias ....="cd ../../../"
+
+ # Kubernetes
  alias kfui="kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80"
+ alias k="kubectl"
+ alias kgp="kubectl get pods"
+ alias kgap="kubectl get pods --all-namespaces"
 
  alias lt="eza --tree --level=2 --long --icons --git"
  alias ls="eza -l --icons --git"
