@@ -161,7 +161,7 @@ source $ZSH/oh-my-zsh.sh
  alias gc="git commit -am"
  alias gco="git checkout"
  alias gcb="git checkout -b"
- alias dog="log --oneline --all --decoreate --graph"
+ alias dog="git log --oneline --all --decorate --graph"
 
  # Linux only - maps caps lock to escape (shift+caps still works as caps lock)
  alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
