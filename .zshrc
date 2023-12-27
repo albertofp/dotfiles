@@ -141,8 +141,8 @@ source $ZSH/oh-my-zsh.sh
  alias kgsp="kubectl get services --all-namespaces"
  alias kgn="kubectl get nodes"
 
- alias lt="eza --tree --level=2 --long --icons --git"
- alias ls="eza -l --icons --git"
+ alias lt="eza --tree --level=2 --long --icons"
+ alias ls="eza -l --icons"
  alias la="eza  -l --icons -a"
 
 export NVM_DIR="$HOME/.nvm"
