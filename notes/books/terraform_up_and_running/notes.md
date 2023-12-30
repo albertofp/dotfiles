@@ -309,3 +309,5 @@ Problems with local tfstate management:
   Simply run `terraform init` again to make the backend changes take effect.
 
   Note: the _backend_ block does not support the use of variables
+
+### How to Create Reusable Infrastructure with Terraform Modules

@@ -47,4 +47,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Hides default mode indicator
+vim.cmd 'set noshowmode'
+
 vim.opt.virtualedit = 'block'
