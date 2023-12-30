@@ -93,6 +93,8 @@ source $ZSH/oh-my-zsh.sh
  alias projects="cd ~/Desktop/Projects/"
  alias infnet="cd ~/INFNET/"
  alias zshconfig="nvim ~/dotfiles/.zshrc"
+ alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
+ alias dotfiles="cd ~/dotfiles/"
  alias reload="source ~/.zshrc"
  alias ohmyzsh="nvim ~/.oh-my-zsh"
  alias vim="nvim"
