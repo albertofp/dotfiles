@@ -108,7 +108,7 @@ local nmap = function(keys, func, desc)
     desc = 'LSP: ' .. desc
   end
 
-  vim.keymap.set('n', keys, func, { , desc = desc })
+  vim.keymap.set('n', keys, func, { desc = desc })
 end
 
 nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
