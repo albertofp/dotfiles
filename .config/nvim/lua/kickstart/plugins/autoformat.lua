@@ -1,8 +1,3 @@
--- autoformat.lua
---
--- Use your language server to automatically format your code on save.
--- Adds additional commands as well to manage the behavior
-
 return {
   'neovim/nvim-lspconfig',
   config = function()
@@ -71,4 +66,10 @@ return {
       end,
     })
   end,
+  dependencies = {
+    { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+
+    'folke/neodev.nvim',
+  },
+  opts = { inlay_hints = { enabled = true } },
 }
