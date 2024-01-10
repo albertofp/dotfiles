@@ -1,6 +1,17 @@
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
 
+# bar settings
+yabai -m config status_bar                   off
+yabai -m config status_bar_text_font         "Helvetica Neue:Bold:12.0"
+yabai -m config status_bar_icon_font         "FontAwesome:Regular:12.0"
+yabai -m config status_bar_background_color  0xff202020
+yabai -m config status_bar_foreground_color  0xffa8a8a8
+yabai -m config status_bar_space_icon_strip  I II III IV V VI VII VIII IX X
+yabai -m config status_bar_power_icon_strip   
+yabai -m config status_bar_space_icon        
+yabai -m config status_bar_clock_icon        
+
 # default layout (can be bsp, stack or float)
 yabai -m config layout bsp
 
@@ -33,5 +44,6 @@ yabai -m mouse_drop_action swap
 # disable specific apps
  yabai -m rule --add app="^System Settings$" manage=off
  yabai -m rule --add app="^Calculator$" manage=off
+ yabai -m rule --add app=1Password\ 7 manage=off
 # yabai -m rule --add app="^Karabiner-Elements$" manage=off
 # yabai -m rule --add app="^QuickTime Player$" manage=off

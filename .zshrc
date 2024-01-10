@@ -8,7 +8,8 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
 export DOTNET_ROOT=/usr/local/share/dotnet
-export PATH=$PATH:/usr/local/share/dotnet
+export PATH=$DOTNET_ROOT:$PATH
+export PATH=/opt/homebrew/anaconda3/bin:$PATH
 
 # GOLANG SETUP
 export GOPATH=$HOME/go
@@ -87,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
- alias cat="bat"
+ # alias cat="bat"
  alias nvimconfig="nvim ~/.config/nvim/init.lua"
  alias alacrittyconfig="nvim ~/.config/alacritty/alacritty.yml"
  alias projects="cd ~/Desktop/Projects/"
@@ -164,3 +165,6 @@ if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 # export PATH=/opt/homebrew/opt/python@3.12/libexec/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Kubectl autocomplete
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
