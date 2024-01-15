@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 
  # Azure
  alias vmconnect="az ssh vm --resource-group cinference-rg --name alberto-01"
- alias vmssh="ssh -i ~/.ssh/alberto01.pub alberto@4.231.239.252  "
+ alias vmssh="ssh -i ~/.ssh/alberto01.pem alberto@4.231.239.252  "
  alias vmstart="az vm start -g cinference-rg -n alberto-01"
  alias vmstop="az vm deallocate -g cinference-rg -n alberto-01"
  alias ccstart="az vm start -g cinference-rg -n cinference-cc"
