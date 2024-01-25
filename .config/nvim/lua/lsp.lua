@@ -48,6 +48,13 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
+  -- Force Snakefile to be recognized as Python file
+  vim.api.nvim_exec(
+    [[
+    autocmd BufRead,BufNewFile Snakefile set filetype=python
+]],
+    false
+  ),
 }
 
 mason_lspconfig.setup_handlers {
