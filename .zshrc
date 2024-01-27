@@ -54,6 +54,7 @@ HIST_STAMPS="dd.mm.yyyy"
 
 plugins=(
   git
+  kubectl
   archlinux
   colored-man-pages
   aliases
@@ -131,17 +132,6 @@ source $ZSH/oh-my-zsh.sh
  alias ....="cd ../../../"
 
  # Kubernetes
- alias k="kubectl"
- alias kgp="kubectl get pods"
- alias kgap="kubectl get pods --all-namespaces"
- alias kga="kubectl get all"
- alias kgaa="kubectl get all --all-namespaces"
- alias kgd="kubectl get deployments"
- alias kgda="kubectl get deployments --all-namespaces"
- alias kgs="kubectl get services"
- alias kgsa="kubectl get services --all-namespaces"
- alias kgn="kubectl get nodes"
- alias kgna="kubectl get nodes --all-namespaces"
  alias kfui="kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80"
 
  alias lt="eza --tree --level=2 --long --icons"
