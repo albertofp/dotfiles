@@ -9,7 +9,7 @@
 ## Considerations
 
 - Keep using Stow? Or just move completely to ansible
-- Ass support for both private and work githubs?
+- Add support for both private and work githubs?
 - What needs to be encrypted?
 - Linting/checks in github actions?
 - Does .kube/ belong in dotfiles

@@ -1,0 +1,65 @@
+---
+- name: Bootstrap Mac
+  hosts: localhost
+  collections:
+    - community.general
+
+  tasks:
+    - name: Install Homebrew
+      shell: "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+      args:
+        creates: /opt/homebrew/bin/brew
+
+    - name: Check if community.general collection is installed
+      command: ansible-galaxy collection list
+      register: collection_list_result
+      changed_when: false
+
+    - name: Verify community.general collection is installed
+      debug:
+        msg: collection_list_result.stdout_lines
+      when: "'community.general' in collection_list_result.stdout_lines | join(' ')"
+      changed_when: false
+
+    - name: Install community.general collection
+      shell: ansible-galaxy collection install community.general
+      when: "'community.general' not in collection_list_result.stdout_lines | join(' ')"
+
+    - name: Install brew packages
+      homebrew:
+        name:
+          - azure-cli
+          - fzf
+          - bat
+          - neovim
+          - eza
+          - fd
+          - glow
+          - go
+          - htop
+          - jq
+          - yq
+          - mpv
+          - node
+          - pyenv
+          - python@3.12
+          - ripgrep
+          - tmux
+          - stow
+          - tree
+          - walk
+          - wget
+          - zsh
+          - kitty
+          - spotify
+          - slack
+          - notion
+          - discord
+          - docker
+          - 1password
+          - raycast
+          - koekeishiya/formulae/skhd
+          - koekeishiya/formulae/yabai
+        state: present
+        update_homebrew: true
+        upgrade_all: true
