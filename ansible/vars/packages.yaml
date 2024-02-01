@@ -1,0 +1,35 @@
+base_packages:
+  - azure-cli
+  - fzf
+  - bat
+  - neovim
+  - eza
+  - fd
+  - glow
+  - go
+  - htop
+  - jq
+  - yq
+  - mpv
+  - node
+  - pyenv
+  - python@3.12
+  - ripgrep
+  - tmux
+  - stow
+  - tree
+  - walk
+  - wget
+  - zsh
+  - kitty
+  - spotify
+  - slack
+  - notion
+  - discord
+  - docker
+  - 1password
+
+mac_packages:
+  - koekeishiya/formulae/skhd
+  - koekeishiya/formulae/yabai
+  - raycast

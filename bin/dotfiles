@@ -12,12 +12,16 @@ DOTFILES_DIR=$HOME/dotfiles
 
 # Linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  echo "OS identified: Linux"
+  echo "Running Playbook at $DOTFILES_DIR/ansible/linux-playbook.yaml"
   sudo pacman -Syu --noconfirm
   if ! [ -x "$(command -v ansible-playbook)" ]; then
     sudo pacman -S --noconfirm ansible
   fi
 # MacOS
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "OS identified: MacOS"
+  echo "Running Playbook at $DOTFILES_DIR/ansible/mac-playbook.yaml"
   if ! [ -x "$(command -v brew)" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi

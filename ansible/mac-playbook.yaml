@@ -1,8 +1,13 @@
 ---
 - name: Bootstrap Mac
   hosts: localhost
+  gather_facts: false
   collections:
     - community.general
+  vars_files:
+    - vars/packages.yaml
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
   tasks:
     - name: Install Homebrew
@@ -15,51 +20,29 @@
       register: collection_list_result
       changed_when: false
 
-    - name: Verify community.general collection is installed
-      debug:
-        msg: collection_list_result.stdout_lines
-      when: "'community.general' in collection_list_result.stdout_lines | join(' ')"
-      changed_when: false
-
     - name: Install community.general collection
       shell: ansible-galaxy collection install community.general
       when: "'community.general' not in collection_list_result.stdout_lines | join(' ')"
 
     - name: Install brew packages
+      with_items:
+        - "{{ base_packages }}"
+        - "{{ mac_packages }}"
       homebrew:
-        name:
-          - azure-cli
-          - fzf
-          - bat
-          - neovim
-          - eza
-          - fd
-          - glow
-          - go
-          - htop
-          - jq
-          - yq
-          - mpv
-          - node
-          - pyenv
-          - python@3.12
-          - ripgrep
-          - tmux
-          - stow
-          - tree
-          - walk
-          - wget
-          - zsh
-          - kitty
-          - spotify
-          - slack
-          - notion
-          - discord
-          - docker
-          - 1password
-          - raycast
-          - koekeishiya/formulae/skhd
-          - koekeishiya/formulae/yabai
+        name: "{{ item }}"
         state: present
         update_homebrew: true
         upgrade_all: true
+
+    - name: Configure Yabai
+      shell: >
+        echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > \
+        /private/etc/sudoers.d/yabai
+      become: true
+      args:
+        creates: /private/etc/sudoers.d/yabai
+
+    - name: Start Yabai
+      command: yabai --start-service
+      register: yabai_start_result
+      changed_when: yabai_start_result.rc != 0
