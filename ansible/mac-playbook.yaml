@@ -46,3 +46,8 @@
       command: yabai --start-service
       register: yabai_start_result
       changed_when: yabai_start_result.rc != 0
+
+    - name: Start Skhd
+      command: skhd --start-service
+      register: skhd_start_result
+      changed_when: skhd_start_result.rc != 0
