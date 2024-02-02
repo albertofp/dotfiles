@@ -28,6 +28,7 @@ base_packages:
   - discord
   - docker
   - 1password
+  - kubectl
 
 mac_packages:
   - koekeishiya/formulae/skhd
