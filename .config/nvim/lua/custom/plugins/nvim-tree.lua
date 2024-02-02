@@ -7,7 +7,12 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      require('nvim-tree').setup {}
+      require('nvim-tree').setup {
+        view = {
+          side = 'right',
+          signcolumn = 'no',
+        },
+      }
     end,
   },
   {
