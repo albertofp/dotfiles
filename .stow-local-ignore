@@ -1,3 +1,5 @@
-Brewfile
+README.md
 .git/
+.gitmodules/
 .github/
+ansible/
