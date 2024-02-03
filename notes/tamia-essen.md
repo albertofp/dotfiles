@@ -1,0 +1,65 @@
+- Salat
+  - Tomate
+  - Salatsalat
+- Vegan Bolognese oder Pesto
+  - Glutenfree Noodles
+  - Vegan Hack
+  - Tomatensoße
+- Tuna / Salamipidser
+- Vegan Gyros + Tzatziki
+- Breakfast bowl
+  - Beeren
+  - Skyr Voghurt
+  - Gottlos viel (Schoko-)Müsli
+- Soba noodles
+  - Sesame paste
+  - Mushroom broth
+  - Frozen Vegetables (Brokkoli, Edamame etc)
+  - Sojasoße
+  - Zitronensaft
+- Japanese Curry
+  - Potato
+  - Carrot
+  - Curry block
+  - Onion
+- [Fufu + peanut soup](https://www.instagram.com/reel/C12IdJDKGS3/?igsh=ZTB4MnJyejVpeHBz)
+  - Canned tomatoes
+  - Scotch bonnet
+  - Onion
+  - Mushroom/vegan chicken
+  - Mushroom broth
+  - Okra
+  - Erdnussbutter
+- [Keema curry](https://www.justonecookbook.com/keema-curry/)
+  - Vegan hack
+  - Onion
+  - Japanese Curry block
+  - Soy sauce
+  - Tomatenmark
+  - (Japanese) Currypulver
+  - Mushroom broth
+- Chickpea/Cauliflower/Okra curry
+  - Okra/Chickpea/cauliflower
+  - Curry powder
+  - Canned Tomaten
+  - Zwiebeln
+  - Knoblauch
+  - Ingwer
+  - Chili
+- Chili oil noodles
+  - (Chili oil) oder
+  - Noodles(flachen, maybe rice noodles)
+  - Lauchzwiebel
+  - (Koriander)
+  - Knoblauch
+  - Chinese Vinegar
+  - Soy sauce
+  - Sichuan Peppercorns
+- Mapo Tofu
+  - Tofu
+  - Doubanjian
+  - Vack
+  - Knoblauch
+  - Sugar
+  - Soy sauce
+  - Mushroom broth
