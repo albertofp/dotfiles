@@ -1,0 +1,25 @@
+---
+name: Linting
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  linting:
+    name: Linting
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      #
+      # - name: 🚀 Run yamllint
+      #   run: |
+      #     yamllint ansible
+      #
+      # - name: 🚀 Run ansible-lint
+      #   uses: ansible/ansible-lint@main

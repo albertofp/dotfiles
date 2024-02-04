@@ -1,3 +1,4 @@
+---
 base_packages:
   - azure-cli
   - fzf

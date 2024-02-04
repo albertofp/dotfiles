@@ -11,7 +11,10 @@
 
   tasks:
     - name: Install Homebrew
-      shell: "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+      shell: |
+        "/bin/bash -c \
+        '$(curl -fsSL \
+        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
       args:
         creates: /opt/homebrew/bin/brew
 
@@ -22,7 +25,9 @@
 
     - name: Install community.general collection
       shell: ansible-galaxy collection install community.general
-      when: "'community.general' not in collection_list_result.stdout_lines | join(' ')"
+      when: |
+        "'community.general' not in \
+        collection_list_result.stdout_lines | join(' ')"
 
     - name: Install brew packages
       with_items:
@@ -36,7 +41,8 @@
 
     - name: Configure Yabai
       shell: >
-        echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > \
+        echo "$(whoami) ALL=(root) NOPASSWD: \
+        sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > \
         /private/etc/sudoers.d/yabai
       become: true
       args:
