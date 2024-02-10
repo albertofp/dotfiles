@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 
-  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'rose-pine/neovim',      name = 'rose-pine' },
 
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
@@ -27,15 +27,13 @@ require('lazy').setup({
 
   'mattn/vim-goaddtags',
 
-  'github/copilot.vim',
-
   'tpope/vim-sleuth',
 
   'hashivim/vim-terraform',
 
   'wuelnerdotexe/vim-astro',
 
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
 
   { 'numToStr/Comment.nvim', opts = {} },
 
