@@ -12,6 +12,13 @@ return {
           side = 'right',
           signcolumn = 'no',
         },
+        git = {
+          enable = true,
+          ignore = false,
+        },
+        filters = {
+          dotfiles = false,
+        },
       }
     end,
   },

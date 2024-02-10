@@ -30,8 +30,10 @@ base_packages:
   - docker
   - 1password
   - kubectl
+  - firefox
 
 mac_packages:
   - koekeishiya/formulae/skhd
   - koekeishiya/formulae/yabai
+  - karabiner-elements
   - raycast
