@@ -15,6 +15,9 @@ export PATH=/opt/homebrew/anaconda3/bin:$PATH
 export GOPATH=/usr/local/go/bin
 export PATH=$PATH:$GOPATH
 
+export PERSONAL_EMAIL="albertopluecker@gmail.com"
+export WORK_EMAIL="alberto@cinference.bio"
+
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
 fi
@@ -32,6 +35,15 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+function toggle_github_user {
+  if [[ "$(git config --global user.email)" == "$WORK_EMAIL" ]]; then
+    echo "Setting GitHub email to $PERSONAL_EMAIL"
+    git config --global user.email "$PERSONAL_EMAIL"
+  else
+    echo "Setting GitHub email to $WORK_EMAIL"
+    git config --global user.email "$WORK_EMAIL"
+  fi
+}
 # For Walk - https://github.com/antonmedv/walk
 function lk {
   cd "$(walk "$@")"
@@ -90,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
  # alias cat="bat"
+ alias tgu="toggle_github_user"
  alias nvimconfig="nvim ~/.config/nvim/init.lua"
  alias alacrittyconfig="nvim ~/.config/alacritty/alacritty.yml"
  alias projects="cd ~/Desktop/Projects/"
@@ -118,6 +131,7 @@ source $ZSH/oh-my-zsh.sh
  alias gd="git diff"
  alias ga="git add"
  alias gc="git commit -m"
+ alias gca="git commit --amend"
  alias gco="git checkout"
  alias gcb="git checkout -b"
  alias dog="git log --oneline --all --decorate --graph"
