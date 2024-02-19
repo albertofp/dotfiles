@@ -10,10 +10,6 @@ export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
 export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$DOTNET_ROOT:$PATH
 export PATH=/opt/homebrew/anaconda3/bin:$PATH
-# GOLANG SETUP
-# export GOPATH=$HOME/go
-export GOPATH=/usr/local/go/
-export PATH=$PATH:$GOPATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto@cinference.bio"
@@ -185,11 +181,14 @@ if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 # unset __conda_setup
 # <<< conda initialize <<<
 if [[ $(uname -s) == "Darwin" ]]; then
+  export GOPATH=/usr/local/go/
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
+  export GOPATH=$HOME/go
   source /home/albertofp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
  # maps caps lock to escape (shift+caps still works as caps lock)
   alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
 fi
+export PATH=$PATH:$GOPATH
