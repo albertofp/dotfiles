@@ -187,7 +187,10 @@ if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
-if [[ $(uname -s) != "Darwin" ]]; then
+if [[ $(uname -s) == "Darwin" ]]; then
+  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
   source /home/albertofp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
