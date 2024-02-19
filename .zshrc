@@ -72,8 +72,6 @@ plugins=(
   colored-man-pages
   aliases
   command-not-found
-  zsh-syntax-highlighting
-  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -189,4 +187,5 @@ if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 # fi
 # unset __conda_setup
 # <<< conda initialize <<<
-
+source /home/albertofp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
