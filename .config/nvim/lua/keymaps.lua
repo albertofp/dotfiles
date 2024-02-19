@@ -35,9 +35,6 @@ vim.keymap.set('i', '<C-j>', '<C-w>j', { desc = 'Window down' })
 -- Save file
 vim.keymap.set('n', '<C-s>', ':w <CR>', { desc = 'Save file', silent = true })
 
--- New file
-vim.keymap.set('n', '<A-n>', ':e %:p:h', { desc = 'New file' })
-
 -- Escape Terminal
 vim.keymap.set('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true),
   { desc = 'Escape terminal' })
@@ -115,17 +112,6 @@ nmap('<leader>wl', function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, '[W]orkspace [L]ist Folders')
 -- end
-
--- Telescope file browser
-vim.api.nvim_set_keymap('n', '<space>ob', ':Telescope file_browser files=false<CR>',
-  { noremap = true, desc = '[o]pen file [b]rowser' })
-
-vim.api.nvim_set_keymap(
-  'n',
-  '<space>fbc',
-  ':Telescope file_browser path=%:p:h select_buffer=true<CR>',
-  { noremap = true, desc = '[o]pen file [b]rowser with the path of the [c]urrent buffer' }
-)
 
 local telescope = require 'telescope.builtin'
 
