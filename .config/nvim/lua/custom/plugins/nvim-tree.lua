@@ -20,6 +20,7 @@ return {
           dotfiles = false,
         },
       }
+      vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>', { desc = 'Toggle File tree', silent = true })
     end,
   },
   {

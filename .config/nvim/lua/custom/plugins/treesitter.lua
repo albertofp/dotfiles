@@ -4,31 +4,33 @@ return {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   build = ':TSUpdate',
+  event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    -- [[ Configure Treesitter ]]
-    -- See `:help nvim-treesitter`
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
-      -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = {
-        'c',
         'typescript',
         'go',
         'lua',
         'python',
+        'requirements',
         'vimdoc',
         'vim',
         'markdown',
+        'markdown_inline',
         'dockerfile',
         'bash',
         'yaml',
         'astro',
         'git_rebase',
         'git_config',
+        'gitignore',
+        'gitcommit',
+        'diff',
         'html',
+        'bash',
       },
 
-      -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = true,
 
       highlight = { enable = true },

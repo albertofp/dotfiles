@@ -38,24 +38,6 @@ vim.keymap.set('n', '<C-s>', ':w <CR>', { desc = 'Save file', silent = true })
 -- New file
 vim.keymap.set('n', '<A-n>', ':e %:p:h', { desc = 'New file' })
 
--- Toggle NvimTree
-vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>', { desc = 'Toggle File tree', silent = true })
-
--- Toggle Terminal
-vim.keymap.set('n', '<C-h>', function()
-  require('nvterm.terminal').toggle 'horizontal'
-end)
-vim.keymap.set('t', '<C-h>', function()
-  require('nvterm.terminal').toggle 'horizontal'
-end)
-
-vim.keymap.set('n', '<C-v>', function()
-  require('nvterm.terminal').toggle 'vertical'
-end)
-vim.keymap.set('t', '<C-v>', function()
-  require('nvterm.terminal').toggle 'vertical'
-end)
-
 -- Escape Terminal
 vim.keymap.set('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true, true, true),
   { desc = 'Escape terminal' })

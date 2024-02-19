@@ -8,13 +8,11 @@ vim.g.loaded_netrwPlugin = 1
 -- Make cursor stay centered
 vim.o.scrolloff = 999
 
--- Set highlight on search
 vim.o.hlsearch = false
 
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Set auto indent and tab width
 vim.opt_global.tabstop = 2
 vim.opt_global.shiftwidth = 2
 vim.opt_global.expandtab = true
@@ -44,7 +42,6 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- Hides default mode indicator
