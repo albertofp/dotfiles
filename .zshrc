@@ -101,8 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
  # alias cat="bat"
  alias tgu="toggle_github_user"
- alias nvimconfig="nvim ~/.config/nvim/init.lua"
- alias alacrittyconfig="nvim ~/.config/alacritty/alacritty.yml"
+ alias nvimconfig="nvim ~/.config/nvim/"
  alias projects="cd ~/Desktop/Projects/"
  alias infnet="cd ~/INFNET/"
  alias zshconfig="nvim ~/dotfiles/.zshrc"
@@ -134,8 +133,6 @@ source $ZSH/oh-my-zsh.sh
  alias gcb="git checkout -b"
  alias dog="git log --oneline --all --decorate --graph"
 
- # Linux only - maps caps lock to escape (shift+caps still works as caps lock)
- alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
 
  # Docker
  alias dockerkill="docker stop \$(docker ps -a -q)"
@@ -193,4 +190,6 @@ if [[ $(uname -s) == "Darwin" ]]; then
 else
   source /home/albertofp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+ # maps caps lock to escape (shift+caps still works as caps lock)
+  alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
 fi
