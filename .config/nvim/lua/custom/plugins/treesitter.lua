@@ -1,5 +1,6 @@
 return {
   'nvim-treesitter/nvim-treesitter',
+  lazy = true,
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
@@ -41,7 +42,7 @@ return {
           init_selection = '<c-space>',
           node_incremental = '<c-space>',
           scope_incremental = '<c-s>',
-          node_decremental = '<M-space>',
+          node_decremental = '<backspace>',
         },
       },
       textobjects = {
@@ -56,6 +57,8 @@ return {
             ['if'] = '@function.inner',
             ['ac'] = '@class.outer',
             ['ic'] = '@class.inner',
+            ['al'] = '@loop.outer',
+            ['il'] = '@loop.inner',
           },
         },
         move = {
