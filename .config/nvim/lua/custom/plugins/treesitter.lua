@@ -10,7 +10,23 @@ return {
     ---@diagnostic disable-next-line: missing-fields
     require('nvim-treesitter.configs').setup {
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'vimdoc', 'vim', 'markdown', 'dockerfile', 'bash', 'yaml' },
+      ensure_installed = {
+        'c',
+        'typescript',
+        'go',
+        'lua',
+        'python',
+        'vimdoc',
+        'vim',
+        'markdown',
+        'dockerfile',
+        'bash',
+        'yaml',
+        'astro',
+        'git_rebase',
+        'git_config',
+        'html',
+      },
 
       -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
       auto_install = true,

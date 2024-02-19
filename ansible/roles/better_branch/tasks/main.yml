@@ -1,0 +1,16 @@
+- name: Download better-git-branch.sh script
+  get_url:
+    url: "https://gist.githubusercontent.com/schacon/e9e743dee2e92db9a464619b99e94eff/raw/2e3ae498c2177f5974679a6ab33849cbf33b209e/better-git-branch.sh"
+    dest: "/usr/local/bin/better-branch.sh"
+    mode: "0755"
+  become: yes
+  become_user: root
+
+- name: Set Git alias git bb to execute better-branch.sh script
+  git_config:
+    name: alias.gg
+    value: "!better-branch.sh"
+    scope: global
+    state: present
+  become: yes
+  become_user: root

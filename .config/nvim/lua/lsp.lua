@@ -23,8 +23,16 @@ end
 --  If you want to override the default filetypes that your language server will attach to you can
 --  define the property 'filetypes' to the map in question.
 local servers = {
-  -- gopls = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+
+  gopls = {},
+
+  pyright = {},
+
+  tsserver = {},
+
+  dockerls = {},
+
+  docker_compose_language_service = {},
 
   terraformls = {
     filetypes = { 'tf', 'hcl', 'terraform' },

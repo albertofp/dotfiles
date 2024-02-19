@@ -12,7 +12,7 @@ export PATH=$DOTNET_ROOT:$PATH
 export PATH=/opt/homebrew/anaconda3/bin:$PATH
 # GOLANG SETUP
 # export GOPATH=$HOME/go
-export GOPATH=/usr/local/go/bin
+export GOPATH=/usr/local/go/
 export PATH=$PATH:$GOPATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"

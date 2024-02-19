@@ -18,6 +18,7 @@
       args:
         creates: /opt/homebrew/bin/brew
 
+    # TODO group into single module call, optimize runtime
     - name: Install base packages
       package:
         use: homebrew
@@ -30,6 +31,7 @@
         name: "{{ mac_packages }}"
         state: latest
 
+    # TODO replace with lineinfile
     - name: Configure Yabai
       shell: >
         echo "$(whoami) ALL=(root) NOPASSWD: \
@@ -38,6 +40,12 @@
       become: true
       args:
         creates: /private/etc/sudoers.d/yabai
+
+    # - name: Configure Yabai
+    #   lineinfile:
+    #     path: /private/etc/sudoers.d/yabai
+    #     line: "$(whoami) ALL=(root) NOPASSWD: $(which yabai) --load-sa"
+    #   become: true
 
     - name: Start Yabai
       command: yabai --start-service
