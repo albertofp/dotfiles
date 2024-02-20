@@ -1,5 +1,8 @@
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
+vim.keymap.set('i', 'jk', '<Esc>', { silent = true })
+vim.keymap.set('i', 'kj', '<Esc>', { silent = true })
+
 -- Buffers
 vim.keymap.set('n', '<leader>x', ':bd <CR>', { desc = 'Close buffer', silent = true })
 vim.keymap.set('n', '<leader>b', ':enew <CR>', { desc = 'New buffer', silent = true })
