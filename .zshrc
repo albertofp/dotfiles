@@ -186,7 +186,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
   export GOPATH=$HOME/go
-  source /home/albertofp/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
  # maps caps lock to escape (shift+caps still works as caps lock)
   alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 

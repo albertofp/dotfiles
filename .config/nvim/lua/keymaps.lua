@@ -44,6 +44,14 @@ vim.keymap.set('t', '<C-x>', vim.api.nvim_replace_termcodes('<C-\\><C-N>', true,
 
 vim.keymap.set('n', '<A-ESC>', ':%bd|e#|bd# <CR>', { desc = 'Close all buffers except current' })
 
+vim.keymap.set('n', '<C-h>', function()
+  require('nvterm.terminal').toggle 'horizontal'
+end)
+vim.keymap.set('t', '<C-h>', function()
+  require('nvterm.terminal').toggle 'horizontal'
+end)
+
+
 -- Go keybinds
 vim.keymap.set('n', '<leader>gat', ':GoAddTag json <CR>', { desc = 'Add struct json tags' })
 vim.keymap.set('n', '<leader>gfs', ':GoFillStruct <CR>', { desc = 'Fill struct' })
