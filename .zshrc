@@ -7,8 +7,6 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
-export DOTNET_ROOT=/usr/local/share/dotnet
-export PATH=$DOTNET_ROOT:$PATH
 export PATH=/opt/homebrew/anaconda3/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
@@ -17,9 +15,6 @@ export WORK_EMAIL="alberto@cinference.bio"
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
 fi
-
-export PATH="$PATH:/Users/albertofp/.dotnet/tools"
-
 
 export EDITOR="nvim"
 # Path to your oh-my-zsh installation.
@@ -166,20 +161,19 @@ if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 # Conda CLI init
 # conda init --quiet zsh
 
-# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
+__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
 if [[ $(uname -s) == "Darwin" ]]; then
   export GOPATH=/usr/local/go/
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
