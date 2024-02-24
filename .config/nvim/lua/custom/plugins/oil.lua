@@ -7,6 +7,6 @@ return {
       default_file_explorer = false,
       experimental_watch_for_changes = true,
     }
-    vim.keymap.set('n', '_', ':Oil<CR>', { desc = 'Open parent directory' })
+    vim.keymap.set('n', '_', ':Oil<CR>', { desc = 'Open parent directory', silent = true })
   end,
 }

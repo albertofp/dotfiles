@@ -51,7 +51,6 @@ vim.keymap.set('t', '<C-h>', function()
   require('nvterm.terminal').toggle 'horizontal'
 end)
 
-
 -- Go keybinds
 vim.keymap.set('n', '<leader>gat', ':GoAddTag json <CR>', { desc = 'Add struct json tags' })
 vim.keymap.set('n', '<leader>gfs', ':GoFillStruct <CR>', { desc = 'Fill struct' })
@@ -150,3 +149,7 @@ vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = '[F]ind by [G]re
 vim.keymap.set('n', '<leader>fd', telescope.diagnostics, { desc = '[F]ind [D]iagnostics' })
 vim.keymap.set('n', '<leader>fo', telescope.oldfiles, { desc = '[F]ind [O]ld files' })
 vim.keymap.set('n', '<leader>ts', telescope.treesitter, { desc = 'Telescope [t]ree[s]itter view' })
+
+-- toggle dark/light mode
+vim.keymap.set('n', '<leader>td', ":let &bg=(&bg=='light'?'dark':'light')<cr>",
+  { desc = 'Toggle dark/light mode', silent = true })
