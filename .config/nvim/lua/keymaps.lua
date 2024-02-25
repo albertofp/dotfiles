@@ -25,15 +25,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- Window navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Window left' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Window right' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Window up' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Window down' })
+vim.keymap.set('n', '<leader>h', '<C-w>h', { desc = 'Window left' })
+vim.keymap.set('n', '<leader>l', '<C-w>l', { desc = 'Window right' })
+vim.keymap.set('n', '<leader>k', '<C-w>k', { desc = 'Window up' })
+vim.keymap.set('n', '<leader>j', '<C-w>j', { desc = 'Window down' })
 
-vim.keymap.set('i', '<C-h>', '<C-w>h', { desc = 'Window left' })
-vim.keymap.set('i', '<C-l>', '<C-w>l', { desc = 'Window right' })
-vim.keymap.set('i', '<C-k>', '<C-w>k', { desc = 'Window up' })
-vim.keymap.set('i', '<C-j>', '<C-w>j', { desc = 'Window down' })
+-- Split window
+vim.keymap.set('n', '<leader>vsp', ':vsplit <CR>', { desc = 'Split window vertically', silent = true })
+vim.keymap.set('n', '<leader>hsp', ':split <CR>', { desc = 'Split window horizontally', silent = true })
+
+-- Resize window vertically
+vim.keymap.set('n', '<C-+>', ':vertical resize +2 <CR>', { desc = 'Increase window height', silent = true })
+vim.keymap.set('n', '<C-->', ':vertical resize -2 <CR>', { desc = 'Decrease window height', silent = true })
 
 -- Save file
 vim.keymap.set('n', '<C-s>', ':w <CR>', { desc = 'Save file', silent = true })
