@@ -7,6 +7,7 @@
 - [ ] set up ansible-vault for storing SSH keys
 - [ ] set up ansible-vault for storing git credentials
 - [ ] set up .gitconfig
+- [ ] port dotfiles.sh and publish.sh to Go using lipgloss + [go-ansible](https://github.com/apenella/go-ansible) package
 
 ## Considerations
 
@@ -16,3 +17,4 @@
 - What needs to be encrypted?
 - Linting/checks in github actions?
 - Does .kube/ belong in dotfiles
+- Support for auto generation of tags for notes w/ OpenAI API?
