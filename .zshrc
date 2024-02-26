@@ -17,6 +17,8 @@ if [[ -d ${HOME}/bin ]]; then
 fi
 
 export EDITOR="nvim"
+export DOTFILES_DIR="$HOME/dotfiles"
+export PUBLISH_REPO="$HOME/website/src/content/blog"
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
