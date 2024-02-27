@@ -11,6 +11,8 @@ export PATH=/opt/homebrew/anaconda3/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto@cinference.bio"
+export PERSONAL_SSH_KEY="$HOME/.ssh/id_rsa"
+export WORK_SSH_KEY="$HOME/.ssh/id_ed25519"
 
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
@@ -32,9 +34,13 @@ function toggle_github_user {
   if [[ "$(git config --global user.email)" == "$WORK_EMAIL" ]]; then
     echo "Setting GitHub email to $PERSONAL_EMAIL"
     git config --global user.email "$PERSONAL_EMAIL"
+    ssh-add $PERSONAL_SSH_KEY
+    ssh-add -d $WORK_SSH_KEY
   else
     echo "Setting GitHub email to $WORK_EMAIL"
     git config --global user.email "$WORK_EMAIL"
+    ssh-add $WORK_SSH_KEY
+    ssh-add -d $PERSONAL_SSH_KEY
   fi
 }
 # For Walk - https://github.com/antonmedv/walk
@@ -116,15 +122,24 @@ source $ZSH/oh-my-zsh.sh
  # alias air='~/.air'
   
  # Git
+ 
+ get_branches() {
+   gum choose --cursor="=> " $(git branch --format='%(refname:short)')
+ }
+ 
  alias gp="git push"
  alias gs="git status"
  alias gd="git diff"
  alias ga="git add"
  alias gc="git commit -m"
  alias gca="git commit --amend"
+ alias gcan="git commit --amend --no-edit"
  alias gco="git checkout"
  alias gcb="git checkout -b"
  alias dog="git log --oneline --all --decorate --graph"
+ # alias gg="git branch | fzf | xargs -n 1 git checkout"
+ alias gg="get_branches | xargs -n 1 git checkout"
+ alias gpf="git push --force-with-lease"
 
 
  # Docker
