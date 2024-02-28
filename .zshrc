@@ -7,7 +7,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
-export PATH=/opt/homebrew/anaconda3/bin:$PATH
+export PATH=$CONDA_PREFIX/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto@cinference.bio"
@@ -178,15 +178,17 @@ if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users
 # Conda CLI init
 # conda init --quiet zsh
 
+CONDA_PATH="$(which conda)"
+
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$CONDA_PREFIX/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "$CONDA_PREFIX/etc/profile.d/conda.sh" ]; then
+        . "$CONDA_PREFIX/etc/profile.d/conda.sh"
     else
-        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+        export PATH="$CONDA_PREFIX/bin:$PATH"
     fi
 fi
 unset __conda_setup
