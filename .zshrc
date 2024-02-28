@@ -151,6 +151,7 @@ source $ZSH/oh-my-zsh.sh
 
  # Kubernetes
  alias kfui="kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80"
+ alias kfuir="ssh -L 8080:localhost:8080 -N -i ~/.ssh/alberto01.pem alberto@4.231.239.252"
 
  alias lt="eza --tree --level=2 --long --icons"
  alias ls="eza -l --icons"
