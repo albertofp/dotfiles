@@ -32,6 +32,8 @@ base_packages:
   - kubectl
   - firefox
   - silicon
+  - shellcheck
+  - gum
 
 mac_packages:
   - koekeishiya/formulae/skhd
@@ -39,3 +41,4 @@ mac_packages:
   - karabiner-elements
   - raycast
   - font-jetbrains-mono
+  - whatsapp

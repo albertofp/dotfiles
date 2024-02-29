@@ -6,10 +6,9 @@ if [ -z "$PUBLISH_REPO" ]; then
 	echo "PUBLISH_REPO not set"
 	exit 1
 fi
-
 # if publish repo directory not exists, pull
-if [ ! -d $PUBLISH_REPO ]; then
-	git clone https://github.com/albertofp/website $HOME/website
+if [ ! -d "$PUBLISH_REPO" ]; then
+	git clone https://github.com/albertofp/website "$HOME"/website
 fi
 
 if [ -z "$1" ]; then
@@ -17,19 +16,16 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-echo -e " \nPublishing blog posts to $PUBLISH_REPO: "
+gum style "Publishing blog posts to $PUBLISH_REPO: "
 
-echo -e "\nTitle:"
-read POST_TITLE
 
-echo -e "\nDescription:"
-read POST_DESCRIPTION
+POST_TITLE=$(gum input --prompt "Title: ")
+
+POST_DESCRIPTION=$(gum input --prompt "Description: ")
 
 PUB_DATE=$(date +%Y-%m-%d)
 UPDATE_DATE=$PUB_DATE
-
-echo -e "\nTags: (q to stop)"
-while read TAG; do
+while TAG=$(gum input --prompt "Tag (q to quit): "); do
 	if [ "$TAG" == "q" ]; then
 		break
 	fi
@@ -40,36 +36,24 @@ done
 formatted_tags=$(printf '"%s",' "${TAGS[@]}")
 formatted_tags="[${formatted_tags%,}]"
 
-echo -e "\nHero image link: "
-read HERO
+HERO=$(gum input --prompt "Hero image URL: ")
 
-FRONTMATTER="---
+FRONTMATTER="
 title: $POST_TITLE
 description: $POST_DESCRIPTION
 pubDate: $PUB_DATE
 updateDate: $UPDATE_DATE
 hero: $HERO
 tags: $formatted_tags
----
 "
-echo -e "Frontmatter:\n$FRONTMATTER"
 
+echo -e "$FRONTMATTER" | gum format
 
-echo "Publish? (y/N)"
-while read PUBLISH_YN; do
-	if [ "$PUBLISH_YN" != "y"  ] && [ "$PUBLISH_YN" != "Y" ]; then
-		echo "Aborting..."
-		exit 1
-	fi
-	echo "$FRONTMATTER" | cat - "$1" > "$PUBLISH_REPO/$1"
-
-	cd "$PUBLISH_REPO"
-	filename=$(basename "$1")
-	git pull
-	git add "$filename"
-	git commit -m "Publishing $filename"
-	git push
-
-	echo "Document $1 published to $PUBLISH_REPO"
-
-done
+gum confirm --default=false "Publish?" && echo "$FRONTMATTER" | cat - "$1" > "$PUBLISH_REPO/$1" \
+	&& cd "$PUBLISH_REPO" \
+	&& filename=$(basename "$1") \
+	&& git pull \
+	&& git add "$filename" \
+	&& git commit -m "Publishing $filename" \
+	&& git push \
+	&& echo "Document $1 published to $PUBLISH_REPO"
