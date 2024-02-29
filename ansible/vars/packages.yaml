@@ -40,5 +40,5 @@ mac_packages:
   - koekeishiya/formulae/yabai
   - karabiner-elements
   - raycast
-  - font-jetbrains-mono
+  - font-jetbrains-mono-nerd-font
   - whatsapp
