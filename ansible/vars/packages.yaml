@@ -31,9 +31,11 @@ base_packages:
   - 1password
   - kubectl
   - firefox
+  - silicon
 
 mac_packages:
   - koekeishiya/formulae/skhd
   - koekeishiya/formulae/yabai
   - karabiner-elements
   - raycast
+  - font-jetbrains-mono
