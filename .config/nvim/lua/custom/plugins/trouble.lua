@@ -1,7 +1,6 @@
 return {
   'folke/trouble.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
-  event = 'VeryLazy',
   opts = {},
   config = function()
     vim.keymap.set('n', '<leader>xx', function()
