@@ -49,7 +49,10 @@ gum confirm \
   --unselected.foreground="292" \
   --prompt.foreground="292" \
   --default=false "Proceed?" && \
-gum spin --spinner minidot --title "Pruning pods..." -- \
-  "$(kubectl delete pods --field-selector=status.phase==Succeeded && \
-  kubectl delete pods --field-selector=status.phase==Failed)"
-echo "Finished pruning $POD_NR pods"
+  if [[ $SUCCEEDED_NR -gt 0 ]]; then
+    kubectl delete pods --field-selector=status.phase==Succeeded
+  fi && \
+  if [[ $FAILED_NR -gt 0 ]]; then
+    kubectl delete pods --field-selector=status.phase==Failed
+  fi && \
+  echo "Finished pruning $POD_NR pods"
