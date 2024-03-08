@@ -245,3 +245,127 @@ A successful career is not just about promotions and career paths can twist and 
 - Don't let promotions define your self worth: promotions are not based on skill alone, and envy gets you nowhere. And the higher up you go, the more fuzzy the titles get.
 - Avoid shoving people out of the way: be professional and do not damage professional relationships to achieve your goals. People remember, and the tech world is a small place. Reputation matters
 - Some things take time to pay off: sometimes taking a title/pay cut to work on a new tech stack/company, for example, can pay off long term
+
+### Thriving in different environments
+
+In a company, teams generally fall into 1 of 2 categories: product and platform. There's differences to what makes a succesful engineer in each of them.
+
+**Product**
+
+Customer-facing product. Some key points to being a good product-minded engineer:
+
+- Proactive with product ideas and opinions: don't just simply implement specifications and move on; consider alternatives and tradeoffs, challenge existing specifications if you have a better idea
+- Interest in the product, business, data: question the "why" of things and and how you might make impactful, positive contributions
+- Strong communication with non-engineers: helps to have a more balanced and nuanced view of things and learn how others work
+- Get feedback early: do not waste too much time before validating an idea/implementation
+- Own the feature from implementing the specification to validation and shipping; to go a step beyond, gather data from post-rollout and iterate on your implementation
+
+**Platform**
+
+Develop and operate the building blocks that allow product teams to be productive. The "customers" are internal to the company and the work tends to be deeply technical. Example: CICD, SDK development, Cloud infrastructure management.
+
+Some benefits of working in a platform team:
+
+- Engineering complexity: some of the biggest technical challenges are tackled by platform teams
+- Wide impact: your work influences many different teams and products across the organization
+- More engineering freedom: you might not be not beholden to Product Managers, and thus have the freedom to work on things like paying off technical debt or implementing new engineering ideas
+- Less day to day pressure: less pressure to ship features and products because you are more removed from customers. Can lead to higher quality code and long term thinking
+
+Some downsides:
+
+- Harder to define the business impact
+- Frequently seen as a cost center
+- More distant from customers
+
+Tips on being succesful in this environment:
+
+- Talk to the engineers using your platform: be accesible to them
+- Work with your "customers" when you can: working side by side with them on integrating your platform can be fun and give you a better appreciation of how your software is used
+- Aim for _some_ urgency: try to define what the most important tasks are and make progress towards them. It's easy to let focus slip because of the lack of pressure.
+
+**Peacetime vs Wartime**
+
+- Peacetime: when the company has a large advantage over the competition and the market is growing. It can focus on reinforcing its strengths and expanding.
+
+- Wartime: dealing with imminent threats (competition, economic crisis).
+
+| Area                    | Wartime                                     | Peacetime                                                |
+| ----------------------- | ------------------------------------------- | -------------------------------------------------------- |
+| Business environment    | Existencial pressure                        | Little to no pressure                                    |
+| Focus on competition    | Obssessed with outcompeting rivals          | No need to focus on competition                          |
+| Prioty for dev teams    | Speed                                       | Shipping thoroughly validated features                   |
+| Meeting Deadlines       | High priority                               | A nice bonus                                             |
+| Conflict                | Acceptable if it gets things done           | Not ok and not helpful                                   |
+| Process                 | Break it if necessary                       | Follow the process                                       |
+| "Nice to have"          | No focus on "nice to have" work             | Lots of focus on "nice to have" work                     |
+| Workplace frustration   | Expressing stress/frustration is acceptable | Not ok if being unprofessional - potential repercussions |
+| Work-life balance (WLB) | Not a thing                                 | Is a considerable focus                                  |
+
+| Area                           | Wartime leadership                   | Peacetime leadership            |
+| ------------------------------ | ------------------------------------ | ------------------------------- |
+| Decision-making                | Decisive                             | Seeks consensus                 |
+| Prioritization                 | Ruthless focus on results            | Supports promising work streams |
+| Imposing pressure on employees | Common                               | Avoided                         |
+| Conflicts                      | Tackles head-on                      | Avoided                         |
+| Unpolular decisions            | Frequent if necessary                | Rare                            |
+| Visibility of leadership       | Visible and involved in fine details | Less visible and involved       |
+| Style                          | Raw, almost unprofessional           | Measured and professional       |
+
+Thriving in wartime
+
+- _Good enough_ mindset instead of trying to get things perfect: speed is very important
+- Handling conflicts: don't take things personally but be ready for disputes if it makes you move faster
+- Pace yourself: don't give 100% all the time, it's not sustainable.
+- Pay attention to burn out and try to avoid it
+
+Thriving in peacetime
+
+- Get things done with high quality, even if it means taking a bit longer
+- Conflicts: avoid disputes
+- Make allies across the teams
+- Work on longer-term initiatives that help the business
+- Try not to become "too slow" due to lack of pressure, switch up the pace sometimes to stay sharp
+- Avoid stagnation
+
+Companies alternate between the 2 all the time (between fundraising rounds, IPO, external economic crises etc). It's important to learn how to do well in both situations.
+
+**Types of Companies**
+
+Advice for thriving in different types of companies
+
+- Big tech: build a network, keep track of individual impact
+- Mid/late-stage scaleups: can make large positive impact by improving onboarding experience; try to be in a profit center
+- Early stage startups: focus on helping achieve a product-market-fit; make use of your autonomy ("ask for forgiveness, not permission"); make sure founders know about your work; execute quickly
+
+### Switching Jobs
+
+**Exploring New Opportunities**
+
+There are different reasons to explore new opportunities, they fall into categories:
+
+- Actively looking for a job
+- Passively looking: you're ok with your current job, but you're open to switching if something comes up
+- You are happy in a job: still good to explore new opportunities to "level up", establish market value or keep interviewing skills sharp
+
+**Waiting on a Promotion vs Switching Jobs**
+
+- Switching jobs can be a faster way of progressing than waiting for the slow process of getting promoted internally, especially if you make it into a higher "tier" company
+- But it's also riskier for more senior positions, where political standing at the company matters
+- Longer tenure at a company also gets more important with higher seniority
+- Consider what you'd give up if you quit: seeing several growth phases in one place can be a valuable experience later on
+- The higher the seniority, the harder it is to get promoted
+
+**Preparing for Tech Interviews**
+
+Mid+ sized companies tend to follow a simlar format for interviews:
+
+| Type of interview                      | Done by                                            |
+| -------------------------------------- | -------------------------------------------------- |
+| Resume screen                          | Recruiter, hiring manager                          |
+| Initial call                           |                                                    |
+| Technical phone screen                 | Software Engineer or hiring Manager                |
+| Take home exercise                     | Software Engineer                                  |
+| Coding interview                       |                                                    |
+| Systems Design/Architecture interview  |                                                    |
+| Hiring Manager (Behavioural) interview | Hiring Manager                                     |
+| Bar raiser interview                   | Dedicated bar raiser interviewer or hiring manager |
