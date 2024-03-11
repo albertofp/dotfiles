@@ -80,3 +80,70 @@ In some situations we might have to cut corners and balance reliability with dev
 A system being reliable is not enough. It should to be able to _scale_, that is, deal with increase in load.
 
 ### Describing Load
+
+Concept of _load parameters_: metrics by which to define load. Which is relevant depends on the software architecture.
+
+- Concurrent users
+- Requests per second
+- Ratio of reads to writes to a database
+- ...
+
+### Describing Performance
+
+- How is performance affected by increasing load and keeping system resources the same?
+- How much do you need to increase system resources to maintain the same performance under increased load?
+
+Some examples of performance metrics:
+
+- **Throughput**: number of records processed per second
+- **Response time**: time between client sending a request and receiving a response
+
+There is always a lot of variance that affects performance. Factors like temperature, airflow, mechanical vibrations, can be considered "random" to some degree. Therefore, it is more useful to think of performance as a _distribution of values_. We express this distribution in the form of _percentiles_, for example, _p99_ or _p90_ response time, meaning 99% or 90% of response times, respectively, are faster than that threshold.
+
+### Aproaches for Coping with Load
+
+There is a limit to how much with can cope with increased load without having to rethink our architecture. Within each magnitude of expected load, however, there are ways mitigate loss of performance:
+
+- **Vertical Scaling**: increasing the system resources of the machines running the application
+  - Simpler approach, but prohibitively expensive and very prone to diminishing returns
+- **Horizontal Scaling**: increasing the number of machines sharing the load
+  - Often more adabtible to changes in load, but introduces more complexity
+
+Solutions are highly individual and depend on the nature of the problem at hand, but are made up of a combination of familiar building blocks arranged in common patterns.
+
+### Maintainability
+
+The majority of the cost of software is not in its initial creation, but in its maintenance after the fact: fixing bugs, adapting to new platforms, adding new features etc. It is important that our applications be _maintainable_, that is, easy to be worked on even after the initial implementation is "finished". There are 3 design principles that contribute to software maintainability:
+
+- **Operability**: make it easy for operations to keep the system running smoothly
+- **Simplicity**: remove as much complexity from the system as possible and make it easy for new engineers to understand it
+- **Evolvability**: make it easy for engineers to make changes to the system in the future
+
+### Operability
+
+Good operability makes routine tasks easier for the operations team:
+
+- Good monitoring providing visibility into runtime behaviour of the system
+- Support for automation and integration with standard tools
+- Avoiding dependence on individual machines
+- Good documentation and easy to understand operational model
+- Sane default behaviours with the option to override them
+- Self-healing where possible/appropriate, with the possibility of manual control when needed
+- Predictable behaviour
+
+### Simplicity: Managing Complexity
+
+Symptoms of complexity include:
+
+- Tight coupling of modules
+- Tangled dependencies
+- Inconsistencies in naming and terminology
+- Special cases to work around issues
+
+Complex software is harder and more expensive to maintain, and makes bugs much more frequent.
+
+A tool to mitigate complexity (when used properly) is _abstraction_, allowing us to hide implementation details where appropriate.
+
+### Evolvability
+
+Requirements change, dependencies change, business priorities change etc. Our software must be able to be adapted when needed. Evolvability is tightly linked to the software's simplicity and the quality of its abstractions.
