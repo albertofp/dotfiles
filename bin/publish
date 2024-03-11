@@ -39,12 +39,14 @@ formatted_tags="[${formatted_tags%,}]"
 HERO=$(gum input --prompt "Hero image URL: ")
 
 FRONTMATTER="
-title: $POST_TITLE
-description: $POST_DESCRIPTION
+---
+title: "$POST_TITLE"
+description: "$POST_DESCRIPTION"
 pubDate: $PUB_DATE
-updateDate: $UPDATE_DATE
-hero: $HERO
+updatedDate: $UPDATE_DATE
+heroImage: "$HERO"
 tags: $formatted_tags
+---
 "
 
 echo -e "$FRONTMATTER" | gum format
