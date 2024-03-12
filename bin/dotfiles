@@ -15,10 +15,10 @@ PLAYBOOK_DIR=$DOTFILES_DIR/ansible
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "OS identified: Linux"
   echo "Running Playbook at $PLAYBOOK_DIR/linux-playbook.yaml"
-  sudo pacman -Syu --noconfirm
   if ! [ -x "$(command -v ansible-playbook)" ]; then
     sudo pacman -S --noconfirm ansible
   fi
+  ansible-playbook -i 'localhost,' -c local $DOTFILES_DIR/ansible/linux-playbook.yaml
 # MacOS
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo "OS identified: MacOS"

@@ -1,0 +1,25 @@
+---
+- name: Bootstrap Linux
+  hosts: localhost
+  gather_facts: false
+  vars_prompt:
+    - name: ansible_become_pass
+      prompt: "Enter root password"
+      private: yes
+  vars_files:
+    - vars/packages.yaml
+
+  tasks:
+    - name: Install common packages
+      become: true
+      package:
+        name: "{{ base_packages }}"
+        state: latest
+        update_cache: yes
+
+    - name: Install linux packages
+      become: true
+      package:
+        name: "{{ linux_packages }}"
+        state: latest
+        update_cache: yes

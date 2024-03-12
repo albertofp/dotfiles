@@ -12,19 +12,15 @@ base_packages:
   - jq
   - yq
   - mpv
-  - node
+  - nodejs
   - pyenv
-  - python@3.12
   - ripgrep
   - tmux
   - stow
   - tree
-  - walk
   - wget
   - zsh
   - kitty
-  - spotify
-  - slack
   - notion
   - discord
   - docker
@@ -35,6 +31,14 @@ base_packages:
   - shellcheck
   - gum
 
+linux_packages:
+  - yay
+
+aur_packages:
+  - slack-desktop
+  - walk
+  - spotify
+
 mac_packages:
   - koekeishiya/formulae/skhd
   - koekeishiya/formulae/yabai
@@ -42,3 +46,5 @@ mac_packages:
   - raycast
   - font-jetbrains-mono-nerd-font
   - whatsapp
+  - spotify
+  - slack
