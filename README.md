@@ -3,11 +3,10 @@
 ## TODO
 
 - [x] Add README
-- [ ] ansible playbooks
-- [ ] set up ansible-vault for storing SSH keys
-- [ ] set up ansible-vault for storing git credentials
+- [x] set up ansible-vault for storing SSH keys
+- [ ] add stow to playbooks
 - [ ] set up .gitconfig
-- [ ] port dotfiles.sh and publish.sh to Go using lipgloss + [go-ansible](https://github.com/apenella/go-ansible) package
+- [ ] port dotfiles.sh to Go using lipgloss + [go-ansible](https://github.com/apenella/go-ansible) package
 
 ## Considerations
 
