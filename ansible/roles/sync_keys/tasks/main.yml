@@ -1,0 +1,51 @@
+---
+- name: Inject Personal Github SSH key
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.ssh/id_home_github"
+    line: "{{ home_github_ssh }}"
+    create: true
+    mode: "0700"
+    state: present
+    backup: true
+    regexp: "^{{ home_github_ssh }}$"
+    backrefs: true
+
+- name: Inject Work Github SSH key
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.ssh/id_work_github"
+    line: "{{ work_github_ssh }}"
+    create: true
+    mode: "0700"
+    state: present
+    backup: true
+    regexp: "^{{ work_github_ssh }}$"
+    backrefs: true
+
+- name: Inject Azure VM SSH key
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.ssh/alberto01.pem"
+    line: "{{ azure_vm_ssh }}"
+    create: true
+    mode: "0700"
+    state: present
+    backup: true
+    regexp: "^{{ azure_vm_ssh }}$"
+    backrefs: true
+
+- name: Inject CinferenceCC VM SSH key
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.ssh/cinference-cc_key.pem"
+    line: "{{ cinference_cc_ssh }}"
+    create: true
+    mode: "0700"
+    state: present
+    backup: true
+    regexp: "^{{ cinference_cc_ssh }}$"
+    backrefs: true
+
+- name: Inject OpenAI API key
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshenv"
+    line: 'export OPENAI_API_KEY="{{ openai_api_key }}"'
+    create: true
+    state: present

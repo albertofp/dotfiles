@@ -1,9 +1,10 @@
 ---
 - name: Bootstrap Mac
   hosts: localhost
-  gather_facts: false
   vars_files:
     - vars/packages.yaml
+  roles:
+    - sync_keys
 
   tasks:
     - name: Install Homebrew
