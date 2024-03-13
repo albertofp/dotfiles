@@ -5,6 +5,7 @@
 - [x] Add README
 - [x] set up ansible-vault for storing SSH keys
 - [ ] add stow to playbooks
+- [ ] automate zsh config in playbooks
 - [ ] set up .gitconfig
 - [ ] port dotfiles.sh to Go using lipgloss + [go-ansible](https://github.com/apenella/go-ansible) package
 
