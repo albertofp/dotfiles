@@ -2,10 +2,6 @@
 - name: Bootstrap Mac
   hosts: localhost
   gather_facts: false
-  vars_prompt:
-    - name: ansible_become_pass
-      prompt: "Enter root password"
-      private: yes
   vars_files:
     - vars/packages.yaml
 

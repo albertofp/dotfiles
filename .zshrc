@@ -5,14 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/google-cloud-sdk/bin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
 export PATH=$CONDA_PREFIX/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto@cinference.bio"
-export PERSONAL_SSH_KEY="$HOME/.ssh/id_rsa"
-export WORK_SSH_KEY="$HOME/.ssh/id_ed25519"
+export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
+export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
 
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
@@ -163,13 +162,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/albertofp/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/albertofp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/albertofp/google-cloud-sdk/completion.zsh.inc'; fi
-# export PATH=/opt/homebrew/opt/python@3.12/libexec/bin:$PATH
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

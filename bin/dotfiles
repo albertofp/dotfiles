@@ -14,16 +14,18 @@ PLAYBOOK_DIR=$DOTFILES_DIR/ansible
 # Linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo "OS identified: Linux"
-  echo "Running Playbook at $PLAYBOOK_DIR/linux-playbook.yaml"
   if ! [ -x "$(command -v ansible-playbook)" ]; then
     sudo pacman -S --noconfirm ansible
   fi
-  ansible-playbook -i 'localhost,' -c local $DOTFILES_DIR/ansible/linux-playbook.yaml
+
+  echo "Running Playbook at $PLAYBOOK_DIR/linux-playbook.yaml"
+  ansible-playbook --ask-become-pass -i 'localhost,' -c local $DOTFILES_DIR/ansible/linux-playbook.yaml
+
 # MacOS
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo "OS identified: MacOS"
-  echo "Running Playbook at $PLAYBOOK_DIR/mac-playbook.yaml"
   if ! [ -x "$(command -v brew)" ]; then
+    echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
@@ -31,6 +33,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install ansible
   fi
 
-  ansible-playbook -i 'localhost,' -c local $DOTFILES_DIR/ansible/mac-playbook.yaml
+  echo "Running Playbook at $PLAYBOOK_DIR/mac-playbook.yaml"
+  ansible-playbook --ask-become-pass -i 'localhost,' -c local $DOTFILES_DIR/ansible/mac-playbook.yaml
 fi
-
