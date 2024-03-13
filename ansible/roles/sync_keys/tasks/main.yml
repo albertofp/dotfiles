@@ -1,43 +1,27 @@
 ---
-- name: Inject Personal Github SSH key
-  ansible.builtin.blockinfile:
-    path: "{{ ansible_env.HOME }}/.ssh/id_home_github"
-    block: |
-      {{ home_github_ssh }}
-    create: yes
-    mode: "0700"
-    state: present
-    backup: true
+- name: Copy Personal Github SSH key
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/ssh_keys/id_home_github"
+    dest: "{{ ansible_env.HOME }}/.ssh/id_home_github"
+    mode: "0600"
 
-- name: Inject Work Github SSH key
-  ansible.builtin.blockinfile:
-    path: "{{ ansible_env.HOME }}/.ssh/id_work_github"
-    block: |
-      {{ work_github_ssh }}
-    create: yes
-    mode: "0700"
-    state: present
-    backup: true
+- name: Copy Work Github SSH key
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/ssh_keys/id_work_github"
+    dest: "{{ ansible_env.HOME }}/.ssh/id_work_github"
+    mode: "0600"
 
-- name: Inject Azure VM SSH key
-  ansible.builtin.blockinfile:
-    path: "{{ ansible_env.HOME }}/.ssh/alberto01.pem"
-    block: |
-      {{ azure_vm_ssh }}
-    create: yes
-    mode: "0700"
-    state: present
-    backup: true
+- name: Copy Azure VM SSH key
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/ssh_keys/alberto01.pem"
+    dest: "{{ ansible_env.HOME }}/.ssh/alberto01.pem"
+    mode: "0600"
 
-- name: Inject CinferenceCC VM SSH key
-  ansible.builtin.blockinfile:
-    path: "{{ ansible_env.HOME }}/.ssh/cinference-cc_key.pem"
-    block: |
-      {{ cinference_cc_ssh }}
-    create: yes
-    mode: "0700"
-    state: present
-    backup: true
+- name: Copy CinferenceCC Github SSH key
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/ssh_keys/cinference-cc_key.pem"
+    dest: "{{ ansible_env.HOME }}/.ssh/cinference-cc_key.pem"
+    mode: "0600"
 
 - name: Inject OpenAI API key
   ansible.builtin.lineinfile:
