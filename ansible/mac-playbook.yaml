@@ -15,18 +15,11 @@
       args:
         creates: /opt/homebrew/bin/brew
 
-    # TODO group into single module call, optimize runtime
     - name: Install base packages
       package:
         use: homebrew
-        name: "{{ base_packages }}"
-        state: latest
-
-    - name: Install mac-specific packages
-      package:
-        use: homebrew
-        name: "{{ mac_packages }}"
-        state: latest
+        name: "{{ base_packages + mac_packages }}"
+        state: present
 
     # TODO replace with lineinfile
     - name: Configure Yabai
