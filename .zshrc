@@ -36,13 +36,13 @@ function toggle_github_user {
   if [[ "$(git config --global user.email)" == "$WORK_EMAIL" ]]; then
     echo "Setting GitHub email to $PERSONAL_EMAIL"
     git config --global user.email "$PERSONAL_EMAIL"
-    ssh-add $PERSONAL_SSH_KEY
-    ssh-add -d $WORK_SSH_KEY
+    ssh-add -q $PERSONAL_SSH_KEY
+    ssh-add -q -d $WORK_SSH_KEY
   else
     echo "Setting GitHub email to $WORK_EMAIL"
     git config --global user.email "$WORK_EMAIL"
-    ssh-add $WORK_SSH_KEY
-    ssh-add -d $PERSONAL_SSH_KEY
+    ssh-add -q $WORK_SSH_KEY
+    ssh-add -q -d $PERSONAL_SSH_KEY
   fi
 }
 # For Walk - https://github.com/antonmedv/walk
@@ -201,3 +201,4 @@ else
   alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
 fi
 export PATH=$PATH:$GOPATH
+eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
