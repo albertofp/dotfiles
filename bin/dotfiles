@@ -10,55 +10,68 @@ PLAYBOOK_DIR=$DOTFILES_DIR/ansible
 # 2. Brew/Pacman install:
 #   - Ansible
 #   - ...
+#
+case "$OSTYPE" in
+  linux-gnu*)
+    echo "OS identified: Linux"
+    if ! [ -x "$(command -v ansible-playbook)" ]; then
+      sudo pacman -S --noconfirm ansible
+    fi
 
-# Linux
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  echo "OS identified: Linux"
-  if ! [ -x "$(command -v ansible-playbook)" ]; then
-    sudo pacman -S --noconfirm ansible
-  fi
+    echo "Running Playbook at $PLAYBOOK_DIR/linux-playbook.yaml"
+    if [[ -f $HOME/.ansible_vault_pass.txt ]]; then
+      ansible-playbook \
+        --ask-become-pass \
+        -i 'localhost,' \
+        -c local $DOTFILES_DIR/ansible/linux-playbook.yaml \
+        --vault-password-file $HOME/.ansible_vault_pass.txt
+    else
+      echo "No .ansible_vault_pass.txt found in HOME:"
+      ansible-playbook \
+        --ask-become-pass \
+        -i 'localhost,' \
+        -c local $DOTFILES_DIR/ansible/linux-playbook.yaml \
+        --ask-vault-password
+    fi
+    ;;
+  darwin*)
+    echo "OS identified: MacOS"
+    if ! [ -x "$(command -v brew)" ]; then
+      echo "Installing Homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
 
-  echo "Running Playbook at $PLAYBOOK_DIR/linux-playbook.yaml"
-  if [[ -f $HOME/.ansible_vault_pass.txt ]]; then
-    ansible-playbook \
-      --ask-become-pass \
-      -i 'localhost,' \
-      -c local $DOTFILES_DIR/ansible/linux-playbook.yaml \
-      --vault-password-file $HOME/.ansible_vault_pass.txt
-  else
-    echo "No .ansible_vault_pass.txt found in HOME:"
-    ansible-playbook \
-      --ask-become-pass \
-      -i 'localhost,' \
-      -c local $DOTFILES_DIR/ansible/linux-playbook.yaml \
-      --ask-vault-password
-  fi
+    if ! [ -x "$(command -v ansible)" ]; then
+      brew install ansible
+    fi
+    echo "OS identified: MacOS"
+    if ! [ -x "$(command -v brew)" ]; then
+      echo "Installing Homebrew..."
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    fi
 
-# MacOS
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  echo "OS identified: MacOS"
-  if ! [ -x "$(command -v brew)" ]; then
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
+    if ! [ -x "$(command -v ansible)" ]; then
+      brew install ansible
+    fi
 
-  if ! [ -x "$(command -v ansible)" ]; then
-    brew install ansible
-  fi
-
-  echo "Running Playbook at $PLAYBOOK_DIR/mac-playbook.yaml"
-  if [[ -f $HOME/.ansible_vault_pass.txt ]]; then
-    ansible-playbook \
-      --ask-become-pass \
-      -i 'localhost,' \
-      -c local $DOTFILES_DIR/ansible/mac-playbook.yaml \
-      --vault-password-file $HOME/.ansible_vault_pass.txt
-  else
-    echo "No .ansible_vault_pass.txt found in HOME:"
-    ansible-playbook \
-      --ask-become-pass \
-      -i 'localhost,' \
-      -c local $DOTFILES_DIR/ansible/mac-playbook.yaml \
-      --ask-vault-password
-  fi
-fi
+    echo "Running Playbook at $PLAYBOOK_DIR/mac-playbook.yaml"
+    if [[ -f $HOME/.ansible_vault_pass.txt ]]; then
+      ansible-playbook \
+        --ask-become-pass \
+        -i 'localhost,' \
+        -c local $DOTFILES_DIR/ansible/mac-playbook.yaml \
+        --vault-password-file $HOME/.ansible_vault_pass.txt
+    else
+      echo "No .ansible_vault_pass.txt found in HOME:"
+      ansible-playbook \
+        --ask-become-pass \
+        -i 'localhost,' \
+        -c local $DOTFILES_DIR/ansible/mac-playbook.yaml \
+        --ask-vault-password
+    fi
+    ;;
+  *)
+    echo "OS not supported: $OSTYPE"
+    exit 1
+    ;;
+esac

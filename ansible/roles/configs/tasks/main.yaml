@@ -1,0 +1,11 @@
+---
+- name: Install stow
+  package:
+    name: stow
+    state: present
+
+- name: Stow dotfiles
+  ansible.builtin.shell:
+    cmd: "stow --dir=$HOME/dotfiles ."
+  register: stow
+  changed_when: stow.rc != 0

@@ -5,6 +5,7 @@
     - vars/packages.yaml
   roles:
     - sync_keys
+    - configs
 
   tasks:
     - name: Install packages
