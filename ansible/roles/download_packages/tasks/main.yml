@@ -1,0 +1,17 @@
+- name: Core
+  package:
+    name: "{{ base_packages }}"
+    state: present
+
+- name: MacOS
+  package:
+    use: homebrew
+    name: "{{ mac_packages }}"
+    state: present
+  when: ansible_distribution == "MacOSX"
+
+- name: Linux
+  package:
+    name: "{{ linux_packages }}"
+    state: present
+  when: ansible_distribution != "MacOSX"
