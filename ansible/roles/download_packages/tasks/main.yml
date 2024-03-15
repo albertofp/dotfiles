@@ -1,17 +1,19 @@
 - name: Core
   package:
-    name: "{{ base_packages }}"
+    name: '{{ base_packages }}'
     state: present
-
 - name: MacOS
   package:
-    use: homebrew
-    name: "{{ mac_packages }}"
+    name: '{{ mac_packages }}'
     state: present
+    use: homebrew
   when: ansible_distribution == "MacOSX"
-
 - name: Linux
   package:
-    name: "{{ linux_packages }}"
+    name: '{{ linux_packages }}'
     state: present
   when: ansible_distribution != "MacOSX"
+- args:
+    creates: '{{ ansible_env.HOME }}/.cargo/'
+  name: Install Cargo
+  shell: curl https://sh.rustup.rs -sSf | sh -s -- -y

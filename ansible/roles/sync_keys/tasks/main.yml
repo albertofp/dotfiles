@@ -1,31 +1,26 @@
----
-- name: Copy Personal Github SSH key
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/ssh_keys/id_home_github"
-    dest: "{{ ansible_env.HOME }}/.ssh/id_home_github"
-    mode: "0600"
-
-- name: Copy Work Github SSH key
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/ssh_keys/id_work_github"
-    dest: "{{ ansible_env.HOME }}/.ssh/id_work_github"
-    mode: "0600"
-
-- name: Copy Azure VM SSH key
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/ssh_keys/alberto01.pem"
-    dest: "{{ ansible_env.HOME }}/.ssh/alberto01.pem"
-    mode: "0600"
-
-- name: Copy CinferenceCC Github SSH key
-  ansible.builtin.copy:
-    src: "{{ playbook_dir }}/ssh_keys/cinference-cc_key.pem"
-    dest: "{{ ansible_env.HOME }}/.ssh/cinference-cc_key.pem"
-    mode: "0600"
-
-- name: Inject OpenAI API key
-  ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.zshenv"
-    line: 'export OPENAI_API_KEY="{{ openai_api_key }}"'
+- ansible.builtin.copy:
+    dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'
+    mode: '0600'
+    src: '{{ playbook_dir }}/ssh_keys/id_home_github'
+  name: Copy Personal Github SSH key
+- ansible.builtin.copy:
+    dest: '{{ ansible_env.HOME }}/.ssh/id_work_github'
+    mode: '0600'
+    src: '{{ playbook_dir }}/ssh_keys/id_work_github'
+  name: Copy Work Github SSH key
+- ansible.builtin.copy:
+    dest: '{{ ansible_env.HOME }}/.ssh/alberto01.pem'
+    mode: '0600'
+    src: '{{ playbook_dir }}/ssh_keys/alberto01.pem'
+  name: Copy Azure VM SSH key
+- ansible.builtin.copy:
+    dest: '{{ ansible_env.HOME }}/.ssh/cinference-cc_key.pem'
+    mode: '0600'
+    src: '{{ playbook_dir }}/ssh_keys/cinference-cc_key.pem'
+  name: Copy CinferenceCC Github SSH key
+- ansible.builtin.lineinfile:
     create: yes
+    line: export OPENAI_API_KEY="{{ openai_api_key }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
+  name: Inject OpenAI API key
