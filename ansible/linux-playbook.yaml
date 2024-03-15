@@ -1,7 +1,0 @@
----
-- name: Bootstrap Linux
-  hosts: localhost
-  roles:
-    - sync_keys
-    - configs
-    - download_packages

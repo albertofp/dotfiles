@@ -12,7 +12,6 @@
 
 - name: Linux
   package:
-    use: homebrew
     name: "{{ linux_packages }}"
     state: present
   when: ansible_distribution != "MacOSX"
