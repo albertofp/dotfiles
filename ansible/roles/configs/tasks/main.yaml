@@ -9,3 +9,14 @@
     cmd: "stow --dir=$HOME/dotfiles ."
   register: stow
   changed_when: stow.rc != 0
+# - name: Symlink config files
+#   ansible.builtin.file:
+#     src: "{{ ansible_env.HOME }}/dotfiles/{{ item.src }}"
+#     path: "{{ ansible_env.HOME }}/{{ item.path }}"
+#     state: link
+#   loop:
+#     - { src: .config/, path: "" }
+#     - { src: bin/, path: "" }
+#     - { src: .zshrc, path: "" }
+#     - { src: notes/, path: "" }
+#     - { src: .oh-my-zsh/, path: "" }

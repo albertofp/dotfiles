@@ -1,49 +1,9 @@
 ---
 - name: Bootstrap Mac
   hosts: localhost
-  vars_files:
-    - vars/packages.yaml
   roles:
     - sync_keys
     - configs
-
-  tasks:
-    - name: Install Homebrew
-      shell: |
-        "/bin/bash -c \
-        '$(curl -fsSL \
-        https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
-      args:
-        creates: /opt/homebrew/bin/brew
-
-    - name: Install base packages
-      package:
-        use: homebrew
-        name: "{{ base_packages + mac_packages }}"
-        state: present
-
-    # TODO replace with lineinfile
-    - name: Configure Yabai
-      shell: >
-        echo "$(whoami) ALL=(root) NOPASSWD: \
-        sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > \
-        /private/etc/sudoers.d/yabai
-      become: true
-      args:
-        creates: /private/etc/sudoers.d/yabai
-
-    # - name: Configure Yabai
-    #   lineinfile:
-    #     path: /private/etc/sudoers.d/yabai
-    #     line: "$(whoami) ALL=(root) NOPASSWD: $(which yabai) --load-sa"
-    #   become: true
-
-    - name: Start Yabai
-      command: yabai --start-service
-      register: yabai_start_result
-      changed_when: yabai_start_result.rc != 0
-
-    - name: Start Skhd
-      command: skhd --start-service
-      register: skhd_start_result
-      changed_when: skhd_start_result.rc != 0
+    - homebrew
+    - download_packages
+    - yabai
