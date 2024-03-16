@@ -14,11 +14,11 @@ import (
 
 func main() {
 	var (
-		HOME            string = os.Getenv("HOME")
-		OSTYPE          string = runtime.GOOS
-		DOTFILES_DIR    string = fmt.Sprintf("%s/dotfiles", HOME)
-		PLAYBOOK        string = fmt.Sprintf("%s/ansible/bootstrap.yaml", DOTFILES_DIR)
-		VAULT_PASS_FILE string = fmt.Sprintf("%s/.ansible_vault_pass.txt", HOME)
+		home          = os.Getenv("HOME")
+		osType        = runtime.GOOS
+		dotfilesDir   = home + "/dotfiles"
+		playbookFile  = dotfilesDir + "/ansible/bootstrap.yaml"
+		vaultPassFile = home + "/.ansible_vault_pass.txt"
 	)
 
 	opt := &playbook.AnsiblePlaybookOptions{
@@ -27,7 +27,7 @@ func main() {
 		AskBecomePass: true,
 	}
 
-	switch OSTYPE {
+	switch osType {
 	case "linux":
 		if _, err := exec.LookPath("ansible"); err != nil {
 			err := exec.Command("sudo", "pacman", "-S", "--noconfirm", "ansible").Run()
@@ -40,7 +40,9 @@ func main() {
 	case "darwin":
 		if _, err := exec.LookPath("brew"); err != nil {
 			fmt.Println("Installing Homebrew...")
-			err := exec.Command("/bin/bash", "-c", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)").Run()
+			err := exec.Command("/bin/bash", "-c", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)").
+				Run()
+
 			if err != nil {
 				fmt.Println(err.Error())
 				os.Exit(1)
@@ -50,6 +52,7 @@ func main() {
 		if _, err := exec.LookPath("ansible"); err != nil {
 			fmt.Println("Installing Ansible...")
 			err := exec.Command("brew", "install", "ansible").Run()
+
 			if err != nil {
 				fmt.Println(err.Error())
 				os.Exit(1)
@@ -60,15 +63,15 @@ func main() {
 		os.Exit(0)
 	}
 
-	if _, err := os.Stat(fmt.Sprintf("%s/.ansible_vault_pass.txt", HOME)); os.IsNotExist(err) {
+	if _, err := os.Stat(home + "/.ansible_vault_pass.txt"); os.IsNotExist(err) {
 		fmt.Println("No .ansible_vault_pass.txt found in $HOME:")
 		opt.AskVaultPassword = true
 	} else {
-		opt.VaultPasswordFile = VAULT_PASS_FILE
+		opt.VaultPasswordFile = vaultPassFile
 	}
 
 	playbookCmd := &playbook.AnsiblePlaybookCmd{
-		Playbooks:       []string{PLAYBOOK},
+		Playbooks:       []string{playbookFile},
 		PlaybookOptions: opt,
 	}
 
