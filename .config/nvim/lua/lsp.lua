@@ -24,17 +24,6 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
 
-  gopls = {
-    filetypes = { 'go', 'gomod' },
-    gopls = {
-      analyses = {
-        unusedparams = true,
-        unreachable = false,
-      },
-      staticcheck = true,
-    },
-  },
-
   pyright = {},
 
   tsserver = {},
@@ -65,13 +54,6 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
-  -- Force Snakefile to be recognized as Python file
-  vim.api.nvim_exec(
-    [[
-    autocmd BufRead,BufNewFile Snakefile set filetype=python
-]],
-    false
-  ),
 }
 
 mason_lspconfig.setup_handlers {
@@ -84,5 +66,14 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-local cfg = require 'go.lsp'.config()
-require('lspconfig').gopls.setup(cfg)
+
+require('lspconfig').gopls.setup({
+  lsp_cfg = false,
+  lsp_gofumpt = true,
+  lsp_codelens = false,
+  lsp_inlay_hints = {
+    enabled = false,
+  },
+  goimport = 'golines',
+  luasnip = true,
+})

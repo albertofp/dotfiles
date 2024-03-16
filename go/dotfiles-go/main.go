@@ -31,7 +31,6 @@ func main() {
 	case "linux":
 		if _, err := exec.LookPath("ansible"); err != nil {
 			err := exec.Command("sudo", "pacman", "-S", "--noconfirm", "ansible").Run()
-
 			if err != nil {
 				fmt.Println(err.Error())
 				os.Exit(1)
@@ -42,7 +41,6 @@ func main() {
 			fmt.Println("Installing Homebrew...")
 			err := exec.Command("/bin/bash", "-c", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)").
 				Run()
-
 			if err != nil {
 				fmt.Println(err.Error())
 				os.Exit(1)
@@ -52,7 +50,6 @@ func main() {
 		if _, err := exec.LookPath("ansible"); err != nil {
 			fmt.Println("Installing Ansible...")
 			err := exec.Command("brew", "install", "ansible").Run()
-
 			if err != nil {
 				fmt.Println(err.Error())
 				os.Exit(1)
