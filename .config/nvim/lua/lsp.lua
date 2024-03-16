@@ -24,7 +24,16 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
 
-  gopls = {},
+  gopls = {
+    filetypes = { 'go', 'gomod' },
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        unreachable = false,
+      },
+      staticcheck = true,
+    },
+  },
 
   pyright = {},
 
@@ -75,3 +84,5 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+local cfg = require 'go.lsp'.config()
+require('lspconfig').gopls.setup(cfg)
