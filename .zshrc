@@ -190,7 +190,7 @@ fi
 unset __conda_setup
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  export GOPATH=/usr/local/go/
+  export GOPATH=/usr/local/go
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
@@ -201,4 +201,5 @@ else
   alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
 fi
 export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
 eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1

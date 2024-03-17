@@ -24,6 +24,10 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
 
+  yamlls = {},
+
+  ansiblels = {},
+
   pyright = {},
 
   tsserver = {},
@@ -67,7 +71,7 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-require('lspconfig').gopls.setup({
+require('lspconfig').gopls.setup {
   lsp_cfg = false,
   lsp_gofumpt = true,
   lsp_codelens = false,
@@ -76,4 +80,4 @@ require('lspconfig').gopls.setup({
   },
   goimport = 'golines',
   luasnip = true,
-})
+}
