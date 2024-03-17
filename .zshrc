@@ -171,24 +171,6 @@ export NVM_DIR="$HOME/.nvm"
 # Kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-# Conda CLI init
-# conda init --quiet zsh
-
-CONDA_PATH="$(which conda)"
-
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$CONDA_PREFIX/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$CONDA_PREFIX/etc/profile.d/conda.sh" ]; then
-        . "$CONDA_PREFIX/etc/profile.d/conda.sh"
-    else
-        export PATH="$CONDA_PREFIX/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
 if [[ $(uname -s) == "Darwin" ]]; then
   export GOPATH=/usr/local/go
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -203,3 +185,19 @@ fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
 eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

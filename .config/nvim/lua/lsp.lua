@@ -34,6 +34,12 @@ local servers = {
 
   dockerls = {},
 
+  astro = {},
+
+  bashls = {},
+
+  html = {},
+
   docker_compose_language_service = {},
 
   terraformls = {
@@ -80,4 +86,7 @@ require('lspconfig').gopls.setup {
   },
   goimport = 'golines',
   luasnip = true,
+  capabilities = capabilities,
+  on_attach = on_attach,
+  filetypes = { 'go', 'gomod' },
 }
