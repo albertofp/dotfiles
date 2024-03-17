@@ -10,6 +10,7 @@ source $HOME/.zshenv
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
 export PATH=$CONDA_PREFIX/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto@cinference.bio"

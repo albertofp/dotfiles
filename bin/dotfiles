@@ -3,7 +3,6 @@
 # Returns errors if something goes wrong
 set -e
 DOTFILES_DIR=$HOME/dotfiles
-PLAYBOOK_DIR=$DOTFILES_DIR/ansible
 
 # Bootstrapping
 # 1. OS check

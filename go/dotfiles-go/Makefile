@@ -1,16 +1,23 @@
 APP_NAME = dotfiles-go
+BINPATH =${HOME}/.local/bin/${APP_NAME}
+UNAME := $(shell uname)
+
 .PHONY: build, run, test, clean, all, vet
 build: clean
-	GOARCH=amd64 GOOS=darwin go build -o ${APP_NAME}-darwin main.go
-	GOARCH=amd64 GOOS=linux go build -o ${APP_NAME}-linux main.go
+	@echo "Building ${APP_NAME} for ${UNAME}..."
+	@if [ "$(UNAME)" = "Darwin" ]; then \
+		GOARCH=amd64 GOOS=darwin go build -o ${BINPATH} main.go; \
+	elif [ "$(UNAME)" = "Linux" ]; then \
+		GOARCH=amd64 GOOS=linux go build -o ${BINPATH} main.go; \
+	fi
+	@echo "Done."
+
 run:
 	@go run main.go
 test:
 	@go test -v ./...
 clean:
 	@go clean
-	@rm -f ${APP_NAME}-linux
-	@rm -f ${APP_NAME}-darwin
 
 vet:	
 	@go vet ./...
