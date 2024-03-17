@@ -24,24 +24,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
-#from qtile_extras import widget
-from libqtile import hook
+from libqtile import bar, layout, widget, hook
+
+# from qtile_extras import widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 import subprocess
-from libqtile.log_utils import logger
-from libqtile.dgroups import simple_key_binder
-#from qtile_extras.widget.decorations import PowerLineDecoration
+
+# from qtile_extras.widget.decorations import PowerLineDecoration
 import os
 
-home     = os.path.expanduser('~')
-#Application defaults
-mod      = "mod4"
+home = os.path.expanduser("~")
+# Application defaults
+mod = "mod4"
 terminal = "kitty"
-browser  = "firefox"
-IDE	 = "nvim"
-files	 = "thunar"
+browser = "firefox"
+ide = "nvim"
+files = "thunar"
 
 # Colors source: https://github.com/Pakrohk/Qtile-Dracula/blob/main/config.py
 colors = [
@@ -54,10 +53,12 @@ colors = [
     ["#e1acff", "#e1acff"],  # window name
 ]
 
+
 @hook.subscribe.startup
 def autostart():
-	#subprocess.run('home/albertofp/.config/qtile/autostart.sh')
-	subprocess.Popen(['/home/albertofp/.config/qtile/autostart.sh'])
+    # subprocess.run('home/albertofp/.config/qtile/autostart.sh')
+    subprocess.Popen(["/home/albertofp/.config/qtile/autostart.sh"])
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -67,71 +68,109 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="Next keyboard layout."),
+    Key(
+        [mod],
+        "space",
+        lazy.widget["keyboardlayout"].next_keyboard(),
+        desc="Next keyboard layout.",
+    ),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod, "shift"], "space", lazy.layout.flip()),
-    Key([mod,"control"],"i", lazy.layout.grow()),
-    Key([mod,"control"],"m", lazy.layout.shrink()),
-    Key([mod,"control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    
+    Key([mod, "control"], "i", lazy.layout.grow()),
+    Key([mod, "control"], "m", lazy.layout.shrink()),
+    Key([mod, "control"], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Floating windows
-    Key([mod], "f",
-       lazy.window.toggle_floating(),
-       desc="Toggle floating",
-     ),
-    Key([mod,"shift"],"f",lazy.window.toggle_fullscreen()),
-
+    Key(
+        [mod],
+        "f",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating",
+    ),
+    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen()),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-
     Key(
         [mod, "shift"],
         "Return",
         lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack",
     ),
-    #Key([mod], "x", lazy.spawn(rofi_applets + 'rofi_powermenu'), desc="Run powermenu applet"),
+    # Key([mod], "x", lazy.spawn(rofi_applets + 'rofi_powermenu'), desc="Run powermenu applet"),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod,"control"],"h", lazy.spawn("systemctl suspend"),desc="Suspend"),
-    #Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod],"r",lazy.spawn("rofi -show drun")),
-
-    #Applications
-    Key([mod,"shift"],"r",lazy.spawn(files), desc="file manager"),
-    Key([mod,"shift"],"e",lazy.spawn(IDE),desc="code editor"),
-    Key([mod,"shift"],"b",lazy.spawn(browser)),
-    Key([], "Print", lazy.spawn("flameshot gui"), desc='Screenshot'),
-    Key([mod], "Print", lazy.spawn("flameshot gui -d 2000"), desc='Screenshot with delay'),
-
-    #Sound
-    Key([mod],"m", lazy.spawn("amixer -q set Master toggle")),
-    Key([mod],"Delete", lazy.spawn("playerctl play-pause"), desc="Play/Pause player"),
-    Key([mod],"Left",lazy.spawn("playerctl previous"), desc="Skip to previous"),
-    Key([mod],"Right",lazy.spawn("playerctl next"), desc="Skip to next"),
-    Key([mod],"Up",lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%+"), desc="Increase Volume by 1%"),
-    Key([mod],"Down",lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%-"), desc="Lower Volume by 1%"),
+    Key([mod, "control"], "h", lazy.spawn("systemctl suspend"), desc="Suspend"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "r", lazy.spawn("rofi -show drun")),
+    # Applications
+    Key([mod, "shift"], "r", lazy.spawn(files), desc="file manager"),
+    Key([mod, "shift"], "e", lazy.spawn(ide), desc="code editor"),
+    Key([mod, "shift"], "b", lazy.spawn(browser)),
+    Key([], "Print", lazy.spawn("flameshot gui"), desc="Screenshot"),
+    Key(
+        [mod],
+        "Print",
+        lazy.spawn("flameshot gui -d 2000"),
+        desc="Screenshot with delay",
+    ),
+    # Sound
+    Key([mod], "m", lazy.spawn("amixer -q set Master toggle")),
+    Key([mod], "Delete", lazy.spawn("playerctl play-pause"), desc="Play/Pause player"),
+    Key([mod], "Left", lazy.spawn("playerctl previous"), desc="Skip to previous"),
+    Key([mod], "Right", lazy.spawn("playerctl next"), desc="Skip to next"),
+    Key(
+        [mod],
+        "Up",
+        lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%+"),
+        desc="Increase Volume by 1%",
+    ),
+    Key(
+        [mod],
+        "Down",
+        lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%-"),
+        desc="Lower Volume by 1%",
+    ),
 ]
 
+group_labels = [
+    "㊀",
+    "㊁",
+    "㊂",
+    "㊃",
+    "㊄",
+    "㊅",
+    "㊆",
+    "㊇",
+    "㊈",
+    "㊉",
+]
 groups = [Group(i) for i in "123456789"]
-#group_labels = ["㊀", "㊁", "㊂", "㊃", "㊄", "㊅", "㊆", "㊇", "㊈", "㊉",]
+# groups = [Group(i) for i in group_labels]
 
 for i in groups:
     keys.extend(
@@ -153,25 +192,28 @@ for i in groups:
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group
             Key(
-		[mod, "control"], i.name, lazy.window.togroup(i.name),
-                desc="move focused window to group {}".format(i.name)),
+                [mod, "control"],
+                i.name,
+                lazy.window.togroup(i.name),
+                desc="move focused window to group {}".format(i.name),
+            ),
         ]
     )
 
 layout_theme = {
-		"margin" 	: 6,
-		"border_width"	: 2,
-		"border_focus"	: "e1acff",
-		"border_normal"	: "1D2330"
-		}
+    "margin": 6,
+    "border_width": 2,
+    "border_focus": "e1acff",
+    "border_normal": "1D2330",
+}
 
 layouts = [
     layout.MonadTall(
-		**layout_theme,
-		ratio=0.6,
-		),
+        **layout_theme,
+        ratio=0.6,
+    ),
     layout.Matrix(**layout_theme),
-    #layout.Columns(**layout_theme,border_focus_stack=["#6A83F1", "#0E2795"]),
+    # layout.Columns(**layout_theme,border_focus_stack=["#6A83F1", "#0E2795"]),
     layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -193,36 +235,52 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-	wallpaper='/home/albertofp/Pictures/Wallpapers/ultrawide/FallenTitan_Waifu2x_1080p.png',
-	wallpaper_mode='stretch',
+        # wallpaper="/home/albertofp/Pictures/Wallpapers/ultrawide/FallenTitan_Waifu2x_1080p.png",
+        # wallpaper_mode="stretch",
         top=bar.Bar(
             [
-                widget.GroupBox(disable_drag = True, rounded = True, highlight_method = 'block'),
-		        widget.Sep(linewidth=0, padding=6, foreground=colors[2], background=colors[0]),
+                widget.GroupBox(
+                    disable_drag=True, rounded=True, highlight_method="block"
+                ),
+                widget.Sep(
+                    linewidth=0, padding=6, foreground=colors[2], background=colors[0]
+                ),
                 widget.Prompt(),
                 widget.Spacer(length=25),
                 widget.WindowName(max_chars=50),
-                widget.Chord(chords_colors={"launch": ("#ff0000", "#ffffff")}, name_transform=lambda name: name.upper()),
+                widget.Chord(
+                    chords_colors={"launch": ("#ff0000", "#ffffff")},
+                    name_transform=lambda name: name.upper(),
+                ),
+                widget.Wallpaper(
+                    directory="/home/albertofp/Pictures/Wallpapers/ultrawide/",
+                    random_selection=True,
+                    option="stretch",
+                    wallpaper_command=None,
+                ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(padding = 10),
-		        widget.KeyboardLayout(configured_keyboards = ['de','br']),
-		        widget.TextBox(text=" Vol:", padding=1),
-		        widget.Volume(padding=5),
-		        #widget.ALSAWidget(mode='icon'),
+                widget.Systray(padding=10),
+                widget.KeyboardLayout(configured_keyboards=["de", "br"]),
+                widget.TextBox(text=" Vol:", padding=1),
+                widget.Volume(padding=5),
+                # widget.ALSAWidget(mode='icon'),
                 widget.Clock(format="%d-%m-%Y %a %I:%M %p"),
                 widget.Spacer(length=25),
-                widget.Wttr(
-                    location={"52.52045,13.40732":"Berlin"}
+                widget.Wttr(location={"52.52045,13.40732": "Berlin"}),
+                widget.Spacer(length=25),
+                widget.Wlan(
+                    format="{essid} {percent:2.0%}",
+                    disconnected_message="Connection lost",
                 ),
                 widget.Spacer(length=25),
-                widget.Wlan(format='{essid} {percent:2.0%}', disconnected_message = 'Connection lost'),
-                widget.Spacer(length=25),
-                widget.CurrentLayoutIcon(foregroud = colors[2], background= colors[0], scale=0.8),
+                widget.CurrentLayoutIcon(
+                    foregroud=colors[2], background=colors[0], scale=0.8
+                ),
             ],
             24,
-            background=['#282a36'],
-	         opacity=0.8
+            background=["#282a36"],
+            opacity=0.8
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
@@ -231,8 +289,15 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -252,10 +317,10 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-	Match(title="RuneLite"),
-	Match(title="KCalc"),
-	Match(title="RuneLite Launcher")
-    ]
+        # Match(title="RuneLite"),
+        Match(title="KCalc"),
+        Match(title="RuneLite Launcher"),
+    ],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
