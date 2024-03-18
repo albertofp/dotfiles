@@ -10,7 +10,6 @@ base_packages:
   - neovim
   - eza
   - glow
-  - go
   - htop
   - jq
   - yq
