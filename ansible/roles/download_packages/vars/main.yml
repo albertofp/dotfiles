@@ -9,7 +9,6 @@ base_packages:
   - bat
   - neovim
   - eza
-  - find
   - glow
   - go
   - htop
