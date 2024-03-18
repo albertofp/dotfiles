@@ -1,11 +1,15 @@
----
+aur_packages:
+  - slack-desktop
+  - walk
+  - spotify
+
 base_packages:
   - azure-cli
   - fzf
   - bat
   - neovim
   - eza
-  - fd
+  - find
   - glow
   - go
   - htop
@@ -34,17 +38,11 @@ base_packages:
 linux_packages:
   - yay
 
-aur_packages:
-  - slack-desktop
-  - walk
-  - spotify
-
 mac_packages:
   - koekeishiya/formulae/skhd
   - koekeishiya/formulae/yabai
   - karabiner-elements
   - raycast
-  # - font-jetbrains-mono-nerd-font
   - whatsapp
   - spotify
   - slack
