@@ -3,15 +3,16 @@
   roles:
     - sync_keys
     - configs
+    - aws
   tasks:
     - include_role:
         name: homebrew
-      name: '--- Homebrew ---'
+      name: "--- Homebrew ---"
       when: ansible_distribution == "MacOSX"
     - include_role:
         name: download_packages
-      name: '--- Packages ---'
+      name: "--- Packages ---"
     - include_role:
         name: yabai
-      name: '--- Yabai ---'
+      name: "--- Yabai ---"
       when: ansible_distribution == "MacOSX"

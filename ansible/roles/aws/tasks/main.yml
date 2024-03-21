@@ -1,0 +1,20 @@
+- ansible.builtin.file:
+    state: directory
+    path: "{{ ansible_env.HOME }}/.aws"
+  name: Ensure ~/.aws/ exists
+- ansible.builtin.copy:
+    dest: "{{ ansible_env.HOME }}/.aws/config"
+    src: "{{ playbook_dir }}/roles/aws/config"
+  name: Copy Config
+- ansible.builtin.copy:
+    dest: "{{ ansible_env.HOME }}/.aws/credentials"
+    src: "{{ playbook_dir }}/roles/aws/credentials"
+  name: Copy Credentials
+- name: Install CLI for Mac
+  ansible.builtin.include_tasks:
+    file: mac.yml
+  when: ansible_distribution == "MacOSX"
+- name: Install CLI for Linux
+  ansible.builtin.include_tasks:
+    file: linux.yml
+  when: ansible_distribution != "MacOSX"
