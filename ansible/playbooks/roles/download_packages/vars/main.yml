@@ -35,6 +35,7 @@ base_packages:
 
 linux_packages:
   - yay
+  - aws-cli-v2
 
 mac_packages:
   - koekeishiya/formulae/skhd
@@ -44,3 +45,4 @@ mac_packages:
   - whatsapp
   - spotify
   - slack
+  - awscli

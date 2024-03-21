@@ -1,9 +1,0 @@
-- name: Download CLI installer package
-  ansible.builtin.get_url:
-    url: "https://awscli.amazonaws.com/AWSCLIV2.pkg"
-    dest: "/tmp/AWSCLIV2.pkg"
-- name: Install AWS CLI
-  become: true
-  ansible.builtin.command:
-    cmd: "installer -pkg /tmp/AWSCLIV2.pkg -target /"
-    creates: /usr/local/bin/aws

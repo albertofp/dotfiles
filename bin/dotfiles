@@ -36,13 +36,13 @@ if [[ -f $HOME/.ansible_vault_pass.txt ]]; then
   ansible-playbook \
     --ask-become-pass \
     -i 'localhost,' \
-    -c local "$DOTFILES_DIR"/ansible/bootstrap.yaml \
+    -c local "$DOTFILES_DIR"/ansible/playbooks/bootstrap.yaml \
     --vault-password-file "$HOME"/.ansible_vault_pass.txt
 else
   echo "No .ansible_vault_pass.txt found in HOME:"
   ansible-playbook \
     --ask-become-pass \
     -i 'localhost,' \
-    -c local "$DOTFILES_DIR"/ansible/bootstrap.yaml \
+    -c local "$DOTFILES_DIR"/ansible/playbooks/bootstrap.yaml \
     --ask-vault-password
 fi

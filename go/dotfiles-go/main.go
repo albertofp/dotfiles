@@ -15,7 +15,7 @@ func main() {
 
 	cfg := ansible.AnsibleCfg{
 		Vault:    os.Getenv("HOME") + "/.ansible_vault_pass.txt",
-		Playbook: os.Getenv("HOME") + "/dotfiles/ansible/bootstrap.yaml",
+		Playbook: os.Getenv("HOME") + "/dotfiles/ansible/playbooks/bootstrap.yaml",
 	}
 
 	err := ansible.RunPlaybook(cfg)

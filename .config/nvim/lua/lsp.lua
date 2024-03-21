@@ -24,9 +24,11 @@ end
 --  define the property 'filetypes' to the map in question.
 local servers = {
 
-  yamlls = {},
+  -- yamlls = {},
 
-  ansiblels = {},
+  ansiblels = {
+    filetypes = { 'yaml.ansible' },
+  },
 
   pyright = {},
 
