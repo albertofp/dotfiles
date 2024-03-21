@@ -188,7 +188,7 @@ export PATH=$PATH:$GOPATH/bin
 eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
 
 
-export CONDA_PATH="$(find /opt/homebrew ~/ -type d -name "anaconda3" -print -maxdepth 1)"
+export CONDA_PATH="$(find ~/ /opt/ -maxdepth 1 -mindepth 1 -type d -name "anaconda3" -print)"
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$($CONDA_PATH 'shell.zsh' 'hook' 2> /dev/null)"
