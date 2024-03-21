@@ -1,7 +1,7 @@
 ---
 # TODO replace with lineinfile
 - name: Configure Yabai
-  shell: >
+  ansible.builtin.shell: >
     echo "$(whoami) ALL=(root) NOPASSWD: \
     sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > \
     /private/etc/sudoers.d/yabai
@@ -16,11 +16,11 @@
 #   become: true
 
 - name: Start Yabai
-  command: yabai --start-service
+  ansible.builtin.command: yabai --start-service
   register: yabai_start_result
   changed_when: yabai_start_result.rc != 0
 
 - name: Start Skhd
-  command: skhd --start-service
+  ansible.builtin.command: skhd --start-service
   register: skhd_start_result
   changed_when: skhd_start_result.rc != 0

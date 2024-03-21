@@ -1,23 +1,23 @@
-- ansible.builtin.package:
+- name: Core
+  ansible.builtin.package:
     name: '{{ base_packages }}'
     state: present
-  become: yes
-  name: Core
+  # become: true
 - name: MacOS
-  package:
+  ansible.builtin.package:
     name: '{{ mac_packages }}'
     state: present
     use: homebrew
   when: ansible_distribution == "MacOSX"
-- ansible.builtin.package:
+- name: Linux
+  ansible.builtin.package:
     name: '{{ linux_packages }}'
     state: present
-  become: yes
-  name: Linux
+  become: true
   when: ansible_distribution != "MacOSX"
-- ansible.builtin.shell: |-
+- name: Install Cargo
+  ansible.builtin.shell: |-
     set -o pipefail
     curl https://sh.rustup.rs -sSf | sh -s -- -y
   args:
     creates: '{{ ansible_env.HOME }}/.cargo/'
-  name: Install Cargo

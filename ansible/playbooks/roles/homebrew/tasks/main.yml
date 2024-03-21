@@ -1,7 +1,7 @@
-- args:
+- name: Install Homebrew
+  args:
     creates: /opt/homebrew/bin/brew
-  name: Install Homebrew
-  shell: |
+  ansible.builtin.shell: |
     "/bin/bash -c \
     '$(curl -fsSL \
     https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"

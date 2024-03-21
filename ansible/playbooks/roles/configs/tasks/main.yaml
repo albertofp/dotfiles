@@ -1,6 +1,6 @@
 ---
 - name: Install stow
-  package:
+  ansible.builtin.package:
     name: stow
     state: present
 

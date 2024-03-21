@@ -1,12 +1,15 @@
-- ansible.builtin.file:
+- name: Ensure ~/.aws/ exists
+  ansible.builtin.file:
     path: '{{ ansible_env.HOME }}/.aws'
     state: directory
-  name: Ensure ~/.aws/ exists
-- ansible.builtin.copy:
+    mode: '0755'
+- name: Copy Config
+  ansible.builtin.copy:
     dest: '{{ ansible_env.HOME }}/.aws/config'
     src: '{{ playbook_dir }}/roles/aws/config'
-  name: Copy Config
-- ansible.builtin.copy:
+    mode: '0755'
+- name: Copy Credentials
+  ansible.builtin.copy:
     dest: '{{ ansible_env.HOME }}/.aws/credentials'
     src: '{{ playbook_dir }}/roles/aws/credentials'
-  name: Copy Credentials
+    mode: '0755'
