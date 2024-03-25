@@ -201,9 +201,9 @@ for i in groups:
     )
 
 layout_theme = {
-    "margin": 6,
-    "border_width": 2,
-    "border_focus": "e1acff",
+    "margin": 5,
+    "border_width": 1,
+    "border_focus": "22f6e8",
     "border_normal": "1D2330",
 }
 
@@ -213,6 +213,7 @@ layouts = [
         ratio=0.6,
     ),
     layout.Matrix(**layout_theme),
+    layout.Bsp(**layout_theme),
     # layout.Columns(**layout_theme,border_focus_stack=["#6A83F1", "#0E2795"]),
     layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
@@ -220,7 +221,7 @@ layouts = [
     # layout.Bsp(),
     layout.MonadWide(**layout_theme),
     # layout.RatioTile(),
-    layout.Tile(**layout_theme),
+    # layout.Tile(**layout_theme),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
