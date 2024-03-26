@@ -1,6 +1,5 @@
 require 'options'
 require 'plugins'
--- require('neodev').setup()
 require 'autocmd'
 require 'lsp'
 require 'keymaps'

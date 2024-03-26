@@ -81,8 +81,6 @@ d10j # deletes current line and 10 below
 
 - ...debugging? Also possible
 
-- ...database UI? dadbod
-
 - (almost) everything JetBrains/VSCode etc can do, Neovim is also capable of doing
 
 ## Plugins
@@ -92,7 +90,12 @@ The vim ecosystem is vast and you can optimize your workflow with plugins, like:
 - Telescope
 - Leap
 - Oil
-- Ufo
+- Mason
+
+## LSP
+
+-> show `lsp.lua`
+-> show mason
 
 ## Inspiration/references
 
