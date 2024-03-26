@@ -13,7 +13,7 @@ return {
       lsp_inlay_hints = {
         only_current_line = true,
       },
-      goimport = 'golines',
+      goimports = 'golines',
       luasnip = true,
     }
   end,
