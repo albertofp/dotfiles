@@ -8,26 +8,20 @@ local servers = {
 
   -- yamlls = {},
 
-  gopls = {
-    lsp_cfg = false,
-    lsp_gofumpt = true,
-    lsp_codelens = false,
-    lsp_inlay_hints = {
-      enabled = false,
-    },
-    goimports = 'golines',
-    luasnip = true,
-  },
-
   ansiblels = {
     filetypes = { 'yaml.ansible' },
   },
 
   pylsp = {
-    plugins = {
-      black = { enabled = true },
-      pylsp_mypy = { enabled = true },
-      pyls_isort = { enabled = true },
+    pylsp = {
+      plugins = {
+        black = { enabled = true },
+        pyflakes = { enabled = false },
+        autopep8 = { enabled = false },
+        yapf = { enabled = false },
+        pylsp_mypy = { enabled = true },
+        pyls_isort = { enabled = true },
+      }
     }
   },
 
@@ -80,16 +74,5 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
--- require('lspconfig').gopls.setup {
---   lsp_cfg = false,
---   lsp_gofumpt = true,
---   lsp_codelens = false,
---   lsp_inlay_hints = {
---     enabled = false,
---   },
---   goimport = 'golines',
---   luasnip = true,
---   capabilities = capabilities,
---   on_attach = on_attach,
---   filetypes = { 'go', 'gomod' },
--- }
+local gocfg = require 'go.lsp'.config()
+require('lspconfig').gopls.setup(gocfg)
