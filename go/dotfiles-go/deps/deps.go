@@ -20,7 +20,7 @@ func GetDeps() error {
 	case "darwin":
 		if _, err := exec.LookPath("brew"); err != nil {
 			fmt.Println("Installing Homebrew...")
-			err := exec.Command("/bin/bash", "-c", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/instll.sh)").
+			err := exec.Command("/bin/bash", "-c", "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)").
 				Run()
 			if err != nil {
 				return err

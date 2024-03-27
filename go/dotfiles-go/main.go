@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-
 	if err := deps.GetDeps(); err != nil {
 		panic(err.Error())
 	}
