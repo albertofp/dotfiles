@@ -13,7 +13,7 @@ export PATH=$CONDA_PREFIX/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
-export WORK_EMAIL="alberto@cinference.bio"
+export WORK_EMAIL="alberto@epsilico.com"
 export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
 export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
 
