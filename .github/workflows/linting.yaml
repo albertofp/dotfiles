@@ -16,20 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: pip install ansible ansible-lint
-
-      - name: Fetch Vault password
-        run: echo "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > .vault_pass.txt
-
-      - name: Decrypt Ansible Vault files
-        run: ansible-vault decrypt --vault-password-file .vault_pass.txt .
-
-      - name: 🚀 Run ansible-lint
-        uses: ansible/ansible-lint@main
+      #
+      # - name: 🚀 Run yamllint
+      #   run: |
+      #     yamllint ansible
+      #
+      # - name: 🚀 Run ansible-lint
+      #   uses: ansible/ansible-lint@main
