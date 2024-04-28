@@ -4,6 +4,7 @@
     - sync_keys
     - configs
     - aws
+    - zsh
   tasks:
     - include_role:
         name: homebrew
