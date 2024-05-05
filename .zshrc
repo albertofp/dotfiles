@@ -13,7 +13,7 @@ export PATH=$CONDA_PREFIX/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
-export WORK_EMAIL="alberto@epsilico.com"
+export WORK_EMAIL="alberto.pluecker@justwatch.com"
 export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
 export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
 
@@ -113,15 +113,6 @@ source $ZSH/oh-my-zsh.sh
  alias vim="nvim"
  alias n="nvim"
 
- # Azure
- alias vmconnect="az ssh vm --resource-group cinference-rg --name alberto-01"
- alias vmssh="ssh -i ~/.ssh/alberto01.pem alberto@4.231.239.252  "
- alias vmstart="az vm start -g cinference-rg -n alberto-01"
- alias vmstop="az vm deallocate -g cinference-rg -n alberto-01"
- alias ccstart="az vm start -g cinference-rg -n cinference-cc"
- alias ccstop="az vm deallocate -g cinference-rg -n cinference-cc"
- alias ccssh="ssh -i ~/.ssh/cinference-cc_key.pem azureuser@cinference-cc.northeurope.cloudapp.azure.com"
-
  # alias air='~/.air'
   
  # Git
@@ -151,10 +142,6 @@ source $ZSH/oh-my-zsh.sh
  alias ..="cd .."
  alias ...="cd ../../"
  alias ....="cd ../../../"
-
- # Kubernetes
- alias kfui="kubectl port-forward svc/istio-ingressgateway -n istio-system 8080:80"
- alias kfuir="ssh -L 8080:localhost:8080 -N -i ~/.ssh/alberto01.pem alberto@4.231.239.252"
 
  alias lt="eza --tree --level=2 --long --icons"
  alias ls="eza -l --icons"
