@@ -1,19 +1,12 @@
 - hosts: localhost
   name: Bootstrap
   roles:
+    - name: homebrew
+      when: ansible_distribution == "MacOSX"
+    - download_packages
     - sync_keys
     - configs
     - aws
     - zsh
-  tasks:
-    - include_role:
-        name: homebrew
-      name: '--- Homebrew ---'
-      when: ansible_distribution == "MacOSX"
-    - include_role:
-        name: download_packages
-      name: '--- Packages ---'
-    - include_role:
-        name: yabai
-      name: '--- Yabai ---'
+    - name: yabai
       when: ansible_distribution == "MacOSX"
