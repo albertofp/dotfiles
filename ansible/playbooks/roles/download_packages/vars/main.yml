@@ -19,10 +19,12 @@ base_packages:
   - tmux
   - stow
   - tree
+  - go
   - wget
   - zsh
   - kitty
   - kubectl
+  - kubectx
   - shellcheck
   - gum
 
@@ -48,5 +50,4 @@ mac_packages:
   - raycast
   - whatsapp
   - awscli
-  - go
   - ansible-lint

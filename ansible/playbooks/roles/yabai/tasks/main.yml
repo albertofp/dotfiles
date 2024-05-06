@@ -2,9 +2,7 @@
 # TODO replace with lineinfile
 - name: Configure Yabai
   ansible.builtin.shell: >
-    echo "$(whoami) ALL=(root) NOPASSWD: \
-    sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > \
-    /private/etc/sudoers.d/yabai
+    echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai)) $(which yabai) --load-sa" > /private/etc/sudoers.d/yabai
   become: true
   args:
     creates: /private/etc/sudoers.d/yabai
