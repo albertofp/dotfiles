@@ -15,7 +15,7 @@ export PATH=$HOME/.local/bin:$PATH
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto.pluecker@justwatch.com"
 export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
-export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
+# export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
 
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
@@ -37,13 +37,13 @@ function toggle_github_user {
   if [[ "$(git config --global user.email)" == "$WORK_EMAIL" ]]; then
     echo "Setting GitHub email to $PERSONAL_EMAIL"
     git config --global user.email "$PERSONAL_EMAIL"
-    ssh-add -q $PERSONAL_SSH_KEY
-    ssh-add -q -d $WORK_SSH_KEY
+    # ssh-add -q $PERSONAL_SSH_KEY
+    # ssh-add -q -d $WORK_SSH_KEY
   else
     echo "Setting GitHub email to $WORK_EMAIL"
     git config --global user.email "$WORK_EMAIL"
-    ssh-add -q $WORK_SSH_KEY
-    ssh-add -q -d $PERSONAL_SSH_KEY
+    # ssh-add -q $WORK_SSH_KEY
+    # ssh-add -q -d $PERSONAL_SSH_KEY
   fi
 }
 # For Walk - https://github.com/antonmedv/walk

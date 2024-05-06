@@ -13,7 +13,6 @@ base_packages:
   - htop
   - jq
   - yq
-  - mpv
   - nodejs
   - pyenv
   - ripgrep
@@ -23,26 +22,31 @@ base_packages:
   - wget
   - zsh
   - kitty
-  - notion
-  - discord
-  - docker
-  - 1password
   - kubectl
-  - firefox
-  - silicon
   - shellcheck
   - gum
+
+homebrew_cask:
+  - docker
+  - firefox
+  - discord
+  - silicon
+  - notion
+  - spotify
 
 linux_packages:
   - yay
   - aws-cli-v2
+  - firefox
+  - discord
+  - docker
+  - silicon
+  - notion
 
 mac_packages:
-  - koekeishiya/formulae/skhd
-  - koekeishiya/formulae/yabai
   - karabiner-elements
   - raycast
   - whatsapp
-  - spotify
-  - slack
   - awscli
+  - go
+  - ansible-lint

@@ -2,12 +2,17 @@
   ansible.builtin.package:
     name: '{{ base_packages }}'
     state: present
-  # become: true
 - name: MacOS
   ansible.builtin.package:
     name: '{{ mac_packages }}'
     state: present
     use: homebrew
+  when: ansible_distribution == "MacOSX"
+- name: MacOS -  Cask
+  ansible.builtin.package:
+    name: '{{ homebrew_cask }}'
+    state: present
+    use: homebrew_cask
   when: ansible_distribution == "MacOSX"
 - name: Linux
   ansible.builtin.package:

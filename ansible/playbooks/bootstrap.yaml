@@ -1,8 +1,6 @@
 - hosts: localhost
   name: Bootstrap
   roles:
-    - name: homebrew
-      when: ansible_distribution == "MacOSX"
     - download_packages
     - sync_keys
     - configs
