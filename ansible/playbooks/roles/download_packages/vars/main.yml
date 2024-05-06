@@ -35,6 +35,11 @@ homebrew_cask:
   - silicon
   - notion
   - spotify
+  - font-jetbrains-mono-nerd-font
+
+homebrew_taps:
+  - koekeishiya/formulae
+  - homebrew/cask-fonts
 
 linux_packages:
   - yay

@@ -2,24 +2,34 @@
   ansible.builtin.package:
     name: '{{ base_packages }}'
     state: present
+
+- name: Homebrew Taps
+  community.general.homebrew_tap:
+    name: '{{ homebrew_taps }}'
+    state: present
+  when: ansible_distribution == "MacOSX"
+
 - name: MacOS
   ansible.builtin.package:
     name: '{{ mac_packages }}'
     state: present
     use: homebrew
   when: ansible_distribution == "MacOSX"
+
 - name: MacOS -  Cask
-  ansible.builtin.package:
+  community.general.homebrew_cask:
     name: '{{ homebrew_cask }}'
     state: present
-    use: homebrew_cask
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
   when: ansible_distribution == "MacOSX"
+
 - name: Linux
   ansible.builtin.package:
     name: '{{ linux_packages }}'
     state: present
   become: true
   when: ansible_distribution != "MacOSX"
+
 - name: Install Cargo
   ansible.builtin.shell: |-
     set -o pipefail
