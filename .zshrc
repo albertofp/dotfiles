@@ -112,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
  alias ohmyzsh="nvim ~/.oh-my-zsh"
  alias vim="nvim"
  alias n="nvim"
+ alias jw="cd ~/justwatch/"
 
  # alias air='~/.air'
   
