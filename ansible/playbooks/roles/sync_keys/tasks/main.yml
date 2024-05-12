@@ -10,3 +10,10 @@
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
+- name: Inject STK_PWD
+  ansible.builtin.lineinfile:
+    create: true
+    line: export STK_PWD="{{ stk_pwd }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
