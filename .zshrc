@@ -115,8 +115,8 @@ source $ZSH/oh-my-zsh.sh
  alias jw="cd ~/justwatch/"
 
  alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
- alias avenc="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
- alias avdec="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
+ alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt"
+ alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
  # alias air='~/.air'
   
