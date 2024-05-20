@@ -11,10 +11,15 @@ return {
       changedelete = { text = '~' },
     },
     on_attach = function(bufnr)
-      vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
-        { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-      vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-      vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+      vim.keymap.set('n', '<leader>ph', require('gitsigns').prev_hunk,
+        { buffer = bufnr, desc = '[p]revious [h]unk' })
+      vim.keymap.set('n', '<leader>nh', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[n]ext [h]unk' })
+      vim.keymap.set('n', '<leader>pp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[p]review hunk' })
+      vim.keymap.set('n', '<leader>dt', require('gitsigns').diffthis, { buffer = bufnr, desc = '[d]iff [t]his' })
+      vim.keymap.set('n', '<leader>bl', require('gitsigns').toggle_current_line_blame,
+        { buffer = bufnr, desc = '[b]lame [l]ine' })
+      -- Text object
+      vim.keymap.set({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
     end,
   },
 }
