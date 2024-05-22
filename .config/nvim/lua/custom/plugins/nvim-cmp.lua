@@ -20,6 +20,12 @@ return {
     local luasnip = require 'luasnip'
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup {}
+    cmp.setup.filetype({ 'sql' }, {
+      sources = {
+        { name = 'vim-dadbod-completion' },
+        { name = 'buffer' },
+      },
+    })
 
     ---@diagnostic disable-next-line: missing-fields
     cmp.setup {
@@ -43,12 +49,14 @@ return {
           select = false,
         },
       },
-      sources = {
+      sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'buffer' },
         { name = 'path' },
-      },
+      }, {
+        { name = 'buffer' },
+      })
     }
   end,
 }
