@@ -147,6 +147,7 @@ vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = '[f]ind [b]uffers'
 vim.keymap.set('n', '<leader>gf', telescope.git_files, { desc = 'Search [g]it [f]iles' })
 vim.keymap.set('n', '<leader>fa', telescope.find_files, { desc = '[f]ind [a]ll' })
 vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = '[f]ind [h]elp' })
+vim.keymap.set('n', '<leader>fm', telescope.marks, { desc = '[f]ind [m]arks' })
 vim.keymap.set('n', '<leader>fw', telescope.grep_string, { desc = '[f]ind current [w]ord' })
 vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = '[f]ind by [g]rep' })
 vim.keymap.set('n', '<leader>fd', telescope.diagnostics, { desc = '[f]ind [d]iagnostics' })
