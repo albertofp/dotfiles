@@ -118,6 +118,9 @@ source $ZSH/oh-my-zsh.sh
  alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt"
  alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
+ # Kubernetes
+ alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 8080:443"
+
  # alias air='~/.air'
   
  # Git
