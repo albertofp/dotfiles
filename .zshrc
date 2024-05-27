@@ -120,6 +120,7 @@ source $ZSH/oh-my-zsh.sh
 
  # Kubernetes
  alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 8080:443"
+ alias argopw="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 -n argocd get secret argocd-initial-admin-secret -ojsonpath="{.data.password}" | base64 --decode"
 
  # alias air='~/.air'
   
