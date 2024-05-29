@@ -51,12 +51,15 @@ return {
           lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
           keymaps = {
             -- You can use the capture groups defined in textobjects.scm
+            -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects#built-in-textobjects
             ['aa'] = '@parameter.outer',
             ['ia'] = '@parameter.inner',
+            ['ab'] = '@block.outer',
+            ['ib'] = '@block.inner',
             ['af'] = '@function.outer',
             ['if'] = '@function.inner',
-            ['ac'] = '@class.outer',
-            ['ic'] = '@class.inner',
+            ['ac'] = '@comment.outer',
+            ['ic'] = '@comment.inner',
             ['al'] = '@loop.outer',
             ['il'] = '@loop.inner',
           },
