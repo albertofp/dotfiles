@@ -1,0 +1,9 @@
+[user]
+	email = albertopluecker@gmail.com
+	name = Alberto Fontenelle Pluecker
+[push]
+	autoSetupRemote = true
+[alias]
+	fp = !sh -c 'git fetch && git pull origin $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
+	uncommit = reset --soft HEAD^
+	unstage = reset HEAD --
