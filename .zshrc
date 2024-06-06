@@ -104,7 +104,6 @@ source $ZSH/oh-my-zsh.sh
  # alias cat="bat"
  alias tgu="toggle_github_user"
  alias nvimconfig="nvim ~/.config/nvim/"
- alias projects="cd ~/Desktop/Projects/"
  alias infnet="cd ~/INFNET/"
  alias zshconfig="nvim ~/dotfiles/.zshrc"
  alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
@@ -113,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
  alias vim="nvim"
  alias n="nvim"
  alias jw="cd ~/justwatch/"
+ alias proj="cd ~/github/"
 
  alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
  alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt"
