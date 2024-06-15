@@ -1,9 +1,8 @@
 ## Purchase order
 
-1. (Juni) Medienkonsole + Wäschekorb | 200€
-2. (Juli) Kleiderschrank | €299
-3. (August) Schrank + Kommode | €229
-4. (September) Regal + Schreibtisch | TBA
+1. (Juli) Kleiderschrank + Wäschekorb + Hohes Regal | €420
+2. (August) Schrank + Kommode | €229
+3. (September) Regal + Schreibtisch | TBA
 
 ## Möbel (sort of important)
 
@@ -21,7 +20,9 @@
 
 ## Backlog
 
-Schreibtisch
+[Schreibtisch](https://www.amazon.de/dp/B0BMG8XJ4W?ref=cm_sw_r_cso_wa_apin_dp_WASVG53P5P51TH02Z10V&ref_=cm_sw_r_cso_wa_apin_dp_WASVG53P5P51TH02Z10V&social_share=cm_sw_r_cso_wa_apin_dp_WASVG53P5P51TH02Z10V&starsLeft=1&newPreview=1&skipTwisterOG=1)
+
+[Kallax](https://www.ikea.com/de/de/p/kallax-regal-eicheneff-wlas-00324518/#content)
 
 "Scheiß Sack in der Ecke" (beanbag)
 
