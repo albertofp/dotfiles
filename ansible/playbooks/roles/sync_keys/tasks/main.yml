@@ -1,3 +1,4 @@
+# TODO generalize env var injection
 - name: Copy Personal Github SSH key
   ansible.builtin.copy:
     dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'
@@ -14,6 +15,13 @@
   ansible.builtin.lineinfile:
     create: true
     line: export STK_PWD="{{ stk_pwd }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
+- name: Inject GITHUB_TOKEN
+  ansible.builtin.lineinfile:
+    create: true
+    line: export GITHUB_TOKEN="{{ GITHUB_TOKEN }}"
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'

@@ -49,6 +49,7 @@ linux_packages:
   - docker
   - silicon
   - notion
+  - github-cli
 
 mac_packages:
   - karabiner-elements
@@ -56,3 +57,4 @@ mac_packages:
   - whatsapp
   - awscli
   - ansible-lint
+  - gh
