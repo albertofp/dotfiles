@@ -1,3 +1,4 @@
+---
 - name: Install oh-my-zsh
   ansible.builtin.shell: |
     sh -c \
