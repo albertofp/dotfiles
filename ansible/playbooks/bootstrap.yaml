@@ -1,10 +1,9 @@
-- hosts: localhost
-  name: Bootstrap
+- name: Bootstrap
+  hosts: localhost
   roles:
     - download_packages
     - sync_keys
     - configs
     - aws
     - zsh
-    - name: yabai
-      when: ansible_distribution == "MacOSX"
+    - yabai
