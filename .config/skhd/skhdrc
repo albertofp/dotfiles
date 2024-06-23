@@ -59,10 +59,13 @@ shift + cmd - 4 : yabai -m window --space 4;
 shift + cmd - 5 : yabai -m window --space 5;
 shift + cmd - 6 : yabai -m window --space 6;
 shift + cmd - 7 : yabai -m window --space 7;
+shift + cmd - 8 : yabai -m window --space 8;
+shift + cmd - 9 : yabai -m window --space 9;
+shift + cmd - 0 : yabai -m window --space 10;
 
 # -- Starting/Stopping/Restarting Yabai --
 
 # stop/start/restart yabai
-ctrl + alt - q : brew services stop yabai
-ctrl + alt - s : brew services start yabai
-ctrl + alt - r : brew services restart yabai
+ctrl + alt - q : yabai --stop-service
+ctrl + alt - s : yabai --start-service
+ctrl + alt - r : yabai --restart-service
