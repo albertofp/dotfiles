@@ -125,6 +125,9 @@ source $ZSH/oh-my-zsh.sh
  alias argopw="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 -n argocd get secret argocd-initial-admin-secret -ojsonpath="{.data.password}" | base64 --decode"
 
  # alias air='~/.air'
+ 
+ # for linux
+ alias task="go-task"
   
  # Git
  
