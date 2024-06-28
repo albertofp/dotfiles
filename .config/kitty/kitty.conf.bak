@@ -24,7 +24,7 @@
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
- font_size 16.0
+ font_size 18.0
 
 #: Font size (in pts)
 
@@ -926,7 +926,7 @@ hide_window_decorations yes
 #: The second number is the margin between the tab bar and the
 #: contents of the current tab.
 
-tab_bar_style powerline
+tab_bar_style slant
 
 #: The tab bar style, can be one of:
 
@@ -1048,7 +1048,7 @@ tab_bar_style powerline
 
 #: Template to use for active tabs. If not specified falls back to
 #: tab_title_template.
-
+tab_title_template "{index}: {title[title.rfind('/')+1:]}"  
 # active_tab_foreground   #000
 # active_tab_background   #eee
 # active_tab_font_style   bold-italic
@@ -1079,7 +1079,7 @@ tab_bar_style powerline
 include ./theme.conf
 #: The foreground and background colors.
 
-background_opacity 0.7
+background_opacity 0.85
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -2060,8 +2060,8 @@ map kitty_mod+enter new_window
 
 #: Set tab title
 
-# map kitty_mod+alt+t set_tab_title
-# map shift+cmd+i     set_tab_title
+# map kitty_mod+. set_tab_title
+map shift+cmd+i     set_tab_title
 
 
 #: You can also create shortcuts to go to specific tabs, with 1 being
@@ -2320,7 +2320,7 @@ map kitty_mod+minus       change_font_size all -2.0
 
 #: Reload kitty.conf
 
-# map kitty_mod+f5 load_config_file
+map kitty_mod+f5 load_config_file
 # map ctrl+cmd+,   load_config_file
 
 #::  Reload kitty.conf, applying any changes since the last time it
@@ -2403,6 +2403,6 @@ map kitty_mod+minus       change_font_size all -2.0
 
 
 # BEGIN_KITTY_THEME
-# Rosé Pine
+# GitHub Dark Dimmed
 include current-theme.conf
 # END_KITTY_THEME
