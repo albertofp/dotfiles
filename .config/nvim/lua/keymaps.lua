@@ -157,3 +157,7 @@ vim.keymap.set('n', '<leader>ts', telescope.treesitter, { desc = 'Telescope [t]r
 -- toggle dark/light mode
 vim.keymap.set('n', '<leader>td', ":let &bg=(&bg=='light'?'dark':'light')<cr>",
   { desc = 'Toggle dark/light mode', silent = true })
+
+-- resizing
+vim.keymap.set('n', '<leader>+', ':vertical resize +5 <CR>', { desc = 'Increase window width', silent = true })
+vim.keymap.set('n', '<leader>-', ':vertical resize -5 <CR>', { desc = 'Decrease window width', silent = true })
