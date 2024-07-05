@@ -12,10 +12,13 @@ error_symbol = '[✗](bold red) '
 vimcmd_symbol = '[V](bold green) '
 
 [directory]
+style = 'foam'
+read_only = " 󰌾"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [git_branch]
+symbol = " "
 format =  '[$symbol$branch ]($style)'
 disabled = false
 ignore_branches = ['master', 'main']
@@ -25,15 +28,18 @@ ignore_submodules = true
 
 [golang]
 disabled = false
+format = '[$symbol($version )]($style)'
 style = 'bold blue'
 symbol = " "
 
 [python]
 symbol = " "
+style = "gold bold"
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
 [kubernetes]
 disabled = false
-format = '[$symbol$context( \($namespace\))]($style) '
+format = '[$symbol$context( \($namespace\))](bold $style) '
 contexts = [
   { context_pattern = "gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2", style = "foam", context_alias = "prod"},
   { context_pattern = "gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2", style = "iris", context_alias = "stage"},
@@ -42,15 +48,25 @@ detect_files = ['k8s']
 
 [docker_context]
 disabled = true
+symbol = " "
 
 [gcloud]
 disabled = true
 
 [aws]
+symbol = "  "
 disabled = true
+
+[time]
+disabled = false
+format = '[$time]($style) '
+style = 'subtle'
 
 [line_break]
 disabled = true
+
+[package]
+symbol = "󰏗 "
 
 [palettes.rose-pine]
 base = '#191724'
