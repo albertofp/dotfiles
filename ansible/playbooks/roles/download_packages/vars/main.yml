@@ -2,7 +2,6 @@ aur_packages:
   - slack-desktop
   - walk
   - spotify
-  - go-task
 
 base_packages:
   - azure-cli
@@ -28,6 +27,7 @@ base_packages:
   - kubectx
   - shellcheck
   - gum
+  - starship
 
 homebrew_cask:
   - docker
@@ -37,7 +37,6 @@ homebrew_cask:
   - notion
   - spotify
   - font-jetbrains-mono-nerd-font
-  - go-task
 
 homebrew_taps:
   - koekeishiya/formulae

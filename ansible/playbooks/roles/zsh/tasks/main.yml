@@ -1,25 +1,4 @@
 ---
-- name: Install oh-my-zsh
-  ansible.builtin.shell: |
-    sh -c \
-    "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  args:
-    creates: '{{ ansible_env.HOME }}/.oh-my-zsh'
-
-- name: Clone p10k repo
-  ansible.builtin.git:
-    repo: https://github.com/romkatv/powerlevel10k.git
-    dest: '{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/powerlevel10k'
-    depth: 1
-    update: false
-    version: master
-
-# - name: Symlink .p10k.zsh
-#   ansible.builtin.file:
-#     state: link
-#     src: '{{ playbook_dir }}/roles/zsh/.p10k.zsh'
-#     dest: '{{ ansible_env.HOME }}/.p10k.zsh'
-
 - name: Get path to zsh
   ansible.builtin.command: which zsh
   changed_when: false
