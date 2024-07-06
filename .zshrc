@@ -38,11 +38,7 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
  alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 8080:443"
- alias argopw="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 -n argocd get secret argocd-initial-admin-secret -ojsonpath="{.data.password}" | base64 --decode"
- 
- get_branches() {
-   gum choose --cursor="=> " $(git branch -a --format='%(refname:short)')
- }
+ alias argopw="kubectl -n argocd get secret argocd-secret -o json | jq -r '.data[\"admin.password\"]' | base64 --decode"
  
  alias gp="git push"
  alias gs="git status"
@@ -54,8 +50,7 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias gco="git checkout"
  alias gcb="git checkout -b"
  alias dog="git log --oneline --all --decorate --graph"
- # alias gg="git branch | fzf | xargs -n 1 git checkout"
- alias gg="get_branches | xargs -n 1 git checkout"
+ alias gg="git branch | fzf | xargs -n 1 git checkout"
  alias gpf="git push --force-with-lease"
 
 
@@ -65,6 +60,8 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias k="kubectl"
  alias kp="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
  alias ks="kubectl --context=gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
+ alias kp9="k9s --context gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
+ alias ks9="k9s --context gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
 
  alias ..="cd .."
  alias ...="cd ../../"
