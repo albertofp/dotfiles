@@ -1,4 +1,5 @@
 - name: Core
+  become: true
   ansible.builtin.package:
     name: '{{ base_packages }}'
     state: present

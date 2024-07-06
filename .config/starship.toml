@@ -77,8 +77,13 @@ style = 'subtle'
 [line_break]
 disabled = true
 
+[nodejs]
+style = "green"
+format = '[$symbol$version](green) '
+
 [package]
 symbol = "󰏗 "
+format = '[$symbol$version](208 bold) '
 
 [palettes.rose-pine]
 base = '#191724'
