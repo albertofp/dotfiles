@@ -44,7 +44,10 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias gs="git status"
  alias gd="git diff"
  alias ga="git add"
- alias gc="git commit -m"
+ function git_commit_m {
+  git commit -m "$*"
+}
+ alias gc="git_commit_m"
  alias gca="git commit --amend"
  alias gcan="git commit --amend --no-edit"
  alias gco="git checkout"
