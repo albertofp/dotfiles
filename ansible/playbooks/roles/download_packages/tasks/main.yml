@@ -1,5 +1,5 @@
 - name: Core
-  become: true
+  become: "{{ ansible_facts['os_family'] != 'Darwin' }}"
   ansible.builtin.package:
     name: '{{ base_packages }}'
     state: present

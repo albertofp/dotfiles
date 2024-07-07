@@ -13,3 +13,5 @@
 	insteadOf = https://github.com/
 [pull]
 	rebase = true
+[core]
+	attributesfile = /Users/albertopluecker/.gitattributes
