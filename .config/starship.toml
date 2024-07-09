@@ -57,6 +57,12 @@ contexts = [
 ]
 detect_files = ['k8s']
 
+[terraform]
+disabled = true
+
+[buf]
+disabled = true
+
 [docker_context]
 disabled = true
 symbol = " "
