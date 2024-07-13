@@ -34,10 +34,6 @@ vim.keymap.set('n', '<leader>j', '<C-w>j', { desc = 'Window down' })
 vim.keymap.set('n', '<leader>vsp', ':vsplit <CR>', { desc = 'Split window vertically', silent = true })
 vim.keymap.set('n', '<leader>hsp', ':split <CR>', { desc = 'Split window horizontally', silent = true })
 
--- Resize window vertically
-vim.keymap.set('n', '<C-+>', ':vertical resize +2 <CR>', { desc = 'Increase window height', silent = true })
-vim.keymap.set('n', '<C-->', ':vertical resize -2 <CR>', { desc = 'Decrease window height', silent = true })
-
 -- Save file
 vim.keymap.set('n', '<C-s>', ':w <CR>', { desc = 'Save file', silent = true })
 
@@ -158,6 +154,10 @@ vim.keymap.set('n', '<leader>ts', telescope.treesitter, { desc = 'Telescope [t]r
 vim.keymap.set('n', '<leader>td', ":let &bg=(&bg=='light'?'dark':'light')<cr>",
   { desc = 'Toggle dark/light mode', silent = true })
 
--- resizing
+-- Resize window width
 vim.keymap.set('n', '<leader>+', ':vertical resize +5 <CR>', { desc = 'Increase window width', silent = true })
 vim.keymap.set('n', '<leader>-', ':vertical resize -5 <CR>', { desc = 'Decrease window width', silent = true })
+
+-- Resize window height
+vim.keymap.set('n', '<C-+>', ':resize +2 <CR>', { desc = 'Increase window height', silent = true })
+vim.keymap.set('n', '<C-->', ':resize -2 <CR>', { desc = 'Decrease window height', silent = true })
