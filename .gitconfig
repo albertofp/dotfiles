@@ -15,3 +15,5 @@
 	rebase = true
 [core]
 	attributesfile = /Users/albertopluecker/.gitattributes
+[rerere]
+	enabled = true
