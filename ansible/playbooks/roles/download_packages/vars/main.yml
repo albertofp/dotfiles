@@ -28,6 +28,7 @@ base_packages:
   - shellcheck
   - gum
   - starship
+  - lazygit
 
 homebrew_cask:
   - docker
