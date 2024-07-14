@@ -11,6 +11,13 @@
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
+- name: Inject OpenAI API key (personal)
+  ansible.builtin.lineinfile:
+    create: true
+    line: export OPENAI_API_KEY_PERSONAL="{{ openai_api_key_personal }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
 - name: Inject STK_PWD
   ansible.builtin.lineinfile:
     create: true
