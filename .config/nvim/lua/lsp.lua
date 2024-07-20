@@ -6,8 +6,6 @@ end
 
 local servers = {
 
-  -- yamlls = {},
-
   ansiblels = {
     filetypes = { 'yaml.ansible' },
   },
@@ -39,6 +37,35 @@ local servers = {
 
   terraformls = {
     filetypes = { 'tf', 'hcl', 'terraform' },
+  },
+
+  yamlls = {
+    filetypes = { 'yaml', 'yaml.ansible' },
+    settings = {
+      yaml = {
+        format = {
+          enable = true,
+          singleQuote = true,
+          bracketSpacing = true,
+          printWidth = 80,
+          proseWrap = 'preserve',
+        },
+        validate = true,
+        completion = true,
+        schemaStore = {
+          enable = true,
+          url = 'https://www.schemastore.org/api/json/catalog.json',
+        },
+        schemas = {
+          ['http://json.schemastore.org/composer'] = '/docker-compose*.yaml',
+          ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+        },
+        editor = {
+          tabSize = 2,
+          formatOnType = true,
+        },
+      }
+    }
   },
 
   lua_ls = {
