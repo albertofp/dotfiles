@@ -30,6 +30,7 @@ return {
         'diff',
         'html',
         'bash',
+        'c',
       },
 
       auto_install = true,
