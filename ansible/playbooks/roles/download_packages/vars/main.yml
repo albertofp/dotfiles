@@ -1,10 +1,10 @@
-aur_packages:
+download_packages_aur:
   - slack-desktop
   - walk
   - spotify
   - golangci-lint
 
-base_packages:
+download_packages_base:
   - azure-cli
   - fzf
   - bat
@@ -31,7 +31,7 @@ base_packages:
   - starship
   - lazygit
 
-homebrew_cask:
+download_packages_homebrew_cask:
   - docker
   - firefox
   - discord
@@ -40,11 +40,11 @@ homebrew_cask:
   - spotify
   - font-jetbrains-mono-nerd-font
 
-homebrew_taps:
+download_packages_homebrew_taps:
   - koekeishiya/formulae
   - homebrew/cask-fonts
 
-linux_packages:
+download_packages_linux:
   - yay
   - aws-cli-v2
   - firefox
@@ -54,7 +54,7 @@ linux_packages:
   - notion
   - github-cli
 
-mac_packages:
+download_packages_mac:
   - karabiner-elements
   - raycast
   - whatsapp
