@@ -25,3 +25,4 @@ _darcs
 README.md
 ansible
 go
+.config/ansible-lint.yml

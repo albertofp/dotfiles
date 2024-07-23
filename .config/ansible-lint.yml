@@ -1,0 +1,42 @@
+---
+# https://ansible.readthedocs.io/projects/lint/configuring/#specifying-configuration-files
+
+profile: null # min, basic, moderate,safety, shared, production
+
+exclude_paths:
+  - .cache/ # implicit unless exclude_paths is defined in config
+  - ../ansible/playbooks/ssh_keys/
+  - ../ansible/playbooks/roles/sync_keys/
+
+use_default_rules: true
+enable_list:
+  - args
+  - empty-string-compare # opt-in
+  - no-log-password # opt-in
+  - no-same-owner # opt-in
+  - yaml
+warn_list:
+  - skip_this_tag
+  - experimental # experimental is included in the implicit list
+  - role-name
+  - yaml[document-start]  # you can also use sub-rule matches
+
+offline: true
+
+# Define required Ansible's variables to satisfy syntax check
+# extra_vars:
+#   foo: bar
+#   multiline_string_variable: |
+#     line1
+#     line2
+#   complex_variable: ":{;\t$()"
+
+# kinds:
+  # - playbook: "**/examples/*.{yml,yaml}"
+  # - galaxy: "**/folder/galaxy.yml"
+  # - tasks: "**/tasks/*.yml"
+  # - vars: "**/vars/*.yml"
+  # - meta: "**/meta/main.yml"
+
+# Limit the depth of the nested blocks:
+max_block_depth: 20

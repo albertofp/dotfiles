@@ -4,6 +4,11 @@
     dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'
     mode: '0600'
     src: '{{ playbook_dir }}/ssh_keys/id_home_github'
+- name: Create ansible vault password file
+  ansible.builtin.copy:
+    dest: '{{ ANSIBLE_VAULT_PASSWORD_FILE }}'
+    mode: '0600'
+    src: '{{ playbook_dir }}/roles/sync_keys/vars/main.yml'
 - name: Inject OpenAI API key
   ansible.builtin.lineinfile:
     create: true
@@ -29,6 +34,13 @@
   ansible.builtin.lineinfile:
     create: true
     line: export GITHUB_TOKEN="{{ GITHUB_TOKEN }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
+- name: Inject ANSIBLE_VAULT_PASSWORD_FILE
+  ansible.builtin.lineinfile:
+    create: true
+    line: export ANSIBLE_VAULT_PASSWORD_FILE="{{ ANSIBLE_VAULT_PASSWORD_FILE }}"
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
