@@ -21,5 +21,5 @@ jobs:
       #   run: |
       #     yamllint ansible
       #
-      # - name: 🚀 Run ansible-lint
-      #   uses: ansible/ansible-lint@main
+      - name: 🚀 Run ansible-lint
+        uses: ansible/ansible-lint@main
