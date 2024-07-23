@@ -16,4 +16,4 @@ cd dotfiles
 - [x] automate zsh config in playbooks
 - [x] set up .gitconfig
 - [x] port dotfiles.sh to Go using the [go-ansible](https://github.com/apenella/go-ansible) package
-- [ ] linting action
+- [x] linting action
