@@ -2,6 +2,7 @@ aur_packages:
   - slack-desktop
   - walk
   - spotify
+  - golangci-lint
 
 base_packages:
   - azure-cli
@@ -60,3 +61,4 @@ mac_packages:
   - awscli
   - ansible-lint
   - gh
+  - golangci-lint
