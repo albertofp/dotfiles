@@ -32,3 +32,10 @@
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
+- name: Inject ANSIBLE_VAULT_PASSWORD_FILE
+  ansible.builtin.lineinfile:
+    create: true
+    line: export ANSIBLE_VAULT_PASSWORD_FILE="{{ ANSIBLE_VAULT_PASSWORD_FILE }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
