@@ -3,6 +3,7 @@ download_packages_aur:
   - walk
   - spotify
   - golangci-lint
+  - nerdfetch
 
 download_packages_base:
   - azure-cli
@@ -62,3 +63,4 @@ download_packages_mac:
   - ansible-lint
   - gh
   - golangci-lint
+  - nerdfetch
