@@ -1,14 +1,17 @@
+---
 # TODO generalize env var injection
 - name: Copy Personal Github SSH key
   ansible.builtin.copy:
     dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'
     mode: '0600'
     src: '{{ playbook_dir }}/ssh_keys/id_home_github'
-- name: Create ansible vault password file
-  ansible.builtin.copy:
-    dest: '{{ ANSIBLE_VAULT_PASSWORD_FILE }}'
+- name: Write Ansible Vault password file
+  ansible.builtin.lineinfile:
+    create: true
+    line: '{{ ansible_vault_pass }}'
+    path: '{{ ANSIBLE_VAULT_PASSWORD_FILE }}'
+    state: present
     mode: '0600'
-    src: '{{ playbook_dir }}/roles/sync_keys/vars/main.yml'
 - name: Inject OpenAI API key
   ansible.builtin.lineinfile:
     create: true
