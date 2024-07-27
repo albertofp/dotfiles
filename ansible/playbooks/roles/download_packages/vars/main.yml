@@ -4,6 +4,7 @@ download_packages_aur:
   - spotify
   - golangci-lint
   - nerdfetch
+  - zsh-vi-mode
 
 download_packages_base:
   - azure-cli
@@ -31,6 +32,8 @@ download_packages_base:
   - gum
   - starship
   - lazygit
+  - zsh-autosuggestions
+  - zsh-syntax-highlighting
 
 download_packages_homebrew_cask:
   - docker
@@ -64,3 +67,4 @@ download_packages_mac:
   - gh
   - golangci-lint
   - nerdfetch
+  - zsh-vi-mode

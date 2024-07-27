@@ -81,6 +81,7 @@ if [[ $(uname -s) == "Darwin" ]]; then
   export GOPATH=/usr/local/go
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 else
   alias task="go-task"
   export GOPATH=$HOME/go
@@ -88,6 +89,7 @@ else
   source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
  # maps caps lock to escape (shift+caps still works as caps lock)
   alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
+  source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
