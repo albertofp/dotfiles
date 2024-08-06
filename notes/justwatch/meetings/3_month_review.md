@@ -7,6 +7,7 @@
 * got onboarded relatively quickly
     * including getting used to tech I had not used before (terraform/terramate, gcp, prometheus and grafana)
 * contributed to different codebases/projects (platform, business-api-external, miscellaneous like proxy server) active in tackling tickets in #devops
+
 ### negative
 
 * still not very active or effective in incidents
@@ -26,4 +27,5 @@
 
 ### negative
 
-* 
+* first project assignment maybe not ideal (esp. with Emil being let go soon after)? Probably just skill issue on my part idk
+* maybe a bit too much "piling on more things"
