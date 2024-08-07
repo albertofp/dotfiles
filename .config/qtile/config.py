@@ -24,9 +24,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget, hook
+from libqtile import bar, layout, hook
 
-# from qtile_extras import widget
+from qtile_extras import widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 import subprocess
@@ -270,6 +270,7 @@ screens = [
                 widget.Spacer(length=25),
                 widget.Wttr(location={"52.52045,13.40732": "Berlin"}),
                 widget.Spacer(length=25),
+                widget.Bluetooth(),
                 widget.Wlan(
                     format="{essid} {percent:2.0%}",
                     disconnected_message="Connection lost",
