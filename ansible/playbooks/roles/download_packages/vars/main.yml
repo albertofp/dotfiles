@@ -38,11 +38,11 @@ download_packages_base:
 download_packages_homebrew_cask:
   - docker
   - firefox
-  - discord
   - silicon
   - notion
   - spotify
   - font-jetbrains-mono-nerd-font
+  - tailscale
 
 download_packages_homebrew_taps:
   - koekeishiya/formulae
@@ -52,7 +52,6 @@ download_packages_linux:
   - yay
   - aws-cli-v2
   - firefox
-  - discord
   - docker
   - silicon
   - notion
@@ -72,3 +71,6 @@ download_packages_mac:
   - gh
   - golangci-lint
   - nerdfetch
+  - colima
+  - cassandra
+  - tailscale

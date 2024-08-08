@@ -23,10 +23,11 @@ return {
               ['<C-d>'] = false,
             },
           },
+          file_ignore_patterns = { 'node_modules', '.git', 'vendor' },
         },
         pickers = {
           find_files = {
-            find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
+            find_command = { 'rg', '--files', '--hidden', '-g', '!.git', '-g', '!**/vendor/**' },
             layout_config = {
               height = 0.70,
             },

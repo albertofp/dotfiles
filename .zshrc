@@ -21,6 +21,7 @@ export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
 export PUBLISH_REPO="$HOME/website/src/content/blog"
 
+ alias kill8000='lsof -ti :8000 | xargs kill -9'
  alias tgu="toggle_github_user"
  alias nvimconfig="nvim ~/.config/nvim/"
  alias infnet="cd ~/INFNET/"
