@@ -47,6 +47,10 @@ symbol = " "
 style = "gold bold"
 format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 
+[c]
+symbol = " "
+format = '[$symbol($version(-$name) )]($style)'
+
 [kubernetes]
 symbol = '󱃾 '
 disabled = false
@@ -55,7 +59,6 @@ contexts = [
   { context_pattern = "gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2", style = "foam", context_alias = "prod"},
   { context_pattern = "gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2", style = "iris", context_alias = "stage"},
 ]
-detect_files = ['k8s']
 
 [terraform]
 disabled = true

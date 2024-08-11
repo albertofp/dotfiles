@@ -6,6 +6,6 @@ flameshot &
 nm-applet &
 gummy start &
 setxkbmap -option "caps:escape_shifted_capslock"
-pasystray &
+# pasystray &
 thunar --daemon &
 dunst &
