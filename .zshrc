@@ -28,7 +28,7 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias zshconfig="nvim ~/dotfiles/.zshrc"
  alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
  alias reload="source ~/.zshrc"
- alias vim="nvim"
+ # alias vim="nvim"
  alias n="nvim"
  alias jw="cd ~/justwatch/"
  alias proj="cd ~/github/"
@@ -44,7 +44,7 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias gp="git push"
  alias gs="git status"
  alias gd="git diff"
- alias ga="git add"
+ alias ga="git add -p"
  function git_commit_m {
   git commit -m "$*"
 }
@@ -57,6 +57,12 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias gg="git branch | fzf | xargs -n 1 git checkout"
  alias gpf="git push --force-with-lease"
 
+ function copy_file_to_clipboard {
+   if [ $1 != "" ];then
+     cat $1|pbcopy
+   fi
+ }
+ alias copy="copy_file_to_clipboard"
 
  # Docker
  alias dockerkill="docker stop \$(docker ps -a -q)"
