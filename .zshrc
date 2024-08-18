@@ -56,6 +56,8 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias dog="git log --oneline --all --decorate --graph"
  alias gg="git branch | fzf | xargs -n 1 git checkout"
  alias gpf="git push --force-with-lease"
+ alias prw="gh pr view --web"
+ alias rw="gh repo view --web"
 
  function copy_file_to_clipboard {
    if [ $1 != "" ];then
