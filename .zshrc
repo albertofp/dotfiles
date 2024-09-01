@@ -16,7 +16,9 @@ if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
 fi
 
-export GOPRIVATE=github.com/justwatch/*
+export GOPRIVATE=github.com/justwatch,jus.tw.cx
+export GONOPROXY=github.com/justwatch,jus.tw.cx
+export GONOSUMDB=github.com/justwatch,jus.tw.cx
 export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
 export PUBLISH_REPO="$HOME/website/src/content/blog"
@@ -56,6 +58,8 @@ export PUBLISH_REPO="$HOME/website/src/content/blog"
  alias dog="git log --oneline --all --decorate --graph"
  alias gg="git branch | fzf | xargs -n 1 git checkout"
  alias gpf="git push --force-with-lease"
+ alias glc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n'"
+ alias clc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n' |pbcopy"
  alias prw="gh pr view --web"
  alias rw="gh repo view --web"
 
