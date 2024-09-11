@@ -6,7 +6,7 @@
 [alias]
 	fp = !sh -c 'git fetch && git pull origin $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 	uncommit = reset --soft HEAD^
-	unstage = reset HEAD --
+	unstage = restore --staged
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [url "ssh://git@github.com/"]
@@ -17,3 +17,9 @@
 	attributesfile = /Users/albertopluecker/.gitattributes
 [rerere]
 	enabled = true
+; for issues with go mod tidy and private modules
+; also comment out lines 10-13
+; [url "https://github.com/"]
+; 	insteadOf = git@github.com:
+; [url "https://jus.tw.cx/"]
+; 	insteadOf = git@jus.tw.cx:
