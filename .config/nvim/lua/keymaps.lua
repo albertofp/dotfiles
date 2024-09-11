@@ -159,5 +159,5 @@ vim.keymap.set('n', '<leader>+', ':vertical resize +5 <CR>', { desc = 'Increase 
 vim.keymap.set('n', '<leader>-', ':vertical resize -5 <CR>', { desc = 'Decrease window width', silent = true })
 
 -- Resize window height
-vim.keymap.set('n', '<C-+>', ':resize +2 <CR>', { desc = 'Increase window height', silent = true })
-vim.keymap.set('n', '<C-->', ':resize -2 <CR>', { desc = 'Decrease window height', silent = true })
+vim.keymap.set('n', '<leader>h+', ':resize +2 <CR>', { desc = 'Increase window height', silent = true })
+vim.keymap.set('n', '<leader>h-', ':resize -2 <CR>', { desc = 'Decrease window height', silent = true })
