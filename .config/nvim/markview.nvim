@@ -1,4 +1,0 @@
-[main f9ce8bf] nvim: markdown.nvim -
- 3 files changed, 16 insertions(+), 11 deletions(-)
- delete mode 100644 .config/nvim/lua/custom/plugins/markdown-nvim.lua
- create mode 100644 .config/nvim/lua/custom/plugins/markview.lua

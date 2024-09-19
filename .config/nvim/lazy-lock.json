@@ -47,6 +47,7 @@
   "supermaven-nvim": { "branch": "main", "commit": "4fa4ffe9e51e867ad65b9f27c5ce14f3c6f544e2" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
+  "toggleterm.nvim": { "branch": "main", "commit": "48be57eaba817f038d61bbf64d2c597f578c0827" },
   "transparent.nvim": { "branch": "main", "commit": "fd35a46f4b7c1b244249266bdcb2da3814f01724" },
   "trouble.nvim": { "branch": "main", "commit": "88c3be40c061ce053ab326ce4fdcb973a1f785ff" },
   "typescript-tools.nvim": { "branch": "master", "commit": "2be3feabc8e9f7f89fe9fbbe0279734d53ef045c" },
