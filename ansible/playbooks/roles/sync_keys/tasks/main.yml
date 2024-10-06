@@ -5,6 +5,11 @@
     dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'
     mode: '0600'
     src: '{{ playbook_dir }}/ssh_keys/id_home_github'
+- name: Copy Hetzner SSH key
+  ansible.builtin.copy:
+    dest: '{{ ansible_env.HOME }}/.ssh/hetzner'
+    mode: '0600'
+    src: '{{ playbook_dir }}/ssh_keys/hetzner'
 - name: Write Ansible Vault password file
   ansible.builtin.lineinfile:
     create: true
@@ -16,6 +21,13 @@
   ansible.builtin.lineinfile:
     create: true
     line: export OPENAI_API_KEY="{{ openai_api_key }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
+- name: Inject Hetzner API token
+  ansible.builtin.lineinfile:
+    create: true
+    line: export HCLOUD_TOKEN="{{ hetzner_api_token }}"
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
