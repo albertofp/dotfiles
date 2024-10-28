@@ -261,7 +261,10 @@ screens = [
                 ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
-                widget.Systray(padding=10),
+                widget.Systray(
+                    padding=10,
+                    background=colors[2],
+                ),
                 widget.KeyboardLayout(configured_keyboards=["de", "br"]),
                 widget.TextBox(text=" Vol:", padding=1),
                 widget.Volume(padding=5),
