@@ -4,6 +4,8 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+
+local ts_plugin_path = '/Users/albertopluecker/.nvm/versions/node/v20.8.1/lib/node_modules/@vue/typescript-plugin'
 local servers = {
 
   ansiblels = {
@@ -23,7 +25,17 @@ local servers = {
     }
   },
 
-  tsserver = {},
+  tsserver = {
+    init_options = {
+      plugins = {
+        {
+          name = '@vue/typescript-plugin',
+          location = ts_plugin_path,
+          languages = { 'vue' },
+        },
+      },
+    }
+  },
 
   dockerls = {},
 
@@ -75,10 +87,26 @@ local servers = {
       diagnostics = { globals = { 'vim' } },
     },
   },
+
+  vuels = {
+    filetypes = { 'vue' },
+    init_options = {
+      config = {
+        vetur = {
+          useWorkspaceDependencies = true,
+          validation = {
+            template = true,
+            style = true,
+            script = true
+          }
+        }
+      }
+    }
+  }
 }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
