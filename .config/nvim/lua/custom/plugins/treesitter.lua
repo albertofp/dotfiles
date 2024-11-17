@@ -31,6 +31,8 @@ return {
         'html',
         'bash',
         'c',
+        'css',
+        'scss',
       },
 
       auto_install = true,

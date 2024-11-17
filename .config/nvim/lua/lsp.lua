@@ -88,6 +88,14 @@ local servers = {
     },
   },
 
+  -- cssls = {
+  --   filetypes = { 'css', 'scss', 'less', 'vue' },
+  --   css = {
+  --     validate = true,
+  --   },
+  --   -- css = { validate = true },
+  -- },
+
   vuels = {
     filetypes = { 'vue' },
     init_options = {
