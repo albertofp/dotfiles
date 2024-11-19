@@ -271,7 +271,10 @@ screens = [
                 # widget.ALSAWidget(mode='icon'),
                 widget.Clock(format="%d-%m-%Y %a %I:%M %p"),
                 widget.Spacer(length=25),
-                widget.Wttr(location={"52.52045,13.40732": "Berlin"}),
+                widget.Wttr(
+                    location={"52.52045,13.40732": "Berlin"},
+                    update_interval=300,
+                ),
                 widget.Spacer(length=25),
                 widget.Bluetooth(),
                 widget.Wlan(
