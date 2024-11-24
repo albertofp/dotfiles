@@ -20,7 +20,7 @@
 - name: Inject OpenAI API key
   ansible.builtin.lineinfile:
     create: true
-    line: export OPENAI_API_KEY="{{ openai_api_key }}"
+    line: export OPENAI_API_KEY="{{ openai_api_key_justwatch }}"
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
