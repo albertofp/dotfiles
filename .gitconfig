@@ -23,3 +23,5 @@
 ; 	insteadOf = git@github.com:
 ; [url "https://jus.tw.cx/"]
 ; 	insteadOf = git@jus.tw.cx:
+[branch]
+	sort = -committerdate
