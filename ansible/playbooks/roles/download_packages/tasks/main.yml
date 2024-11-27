@@ -37,3 +37,13 @@
     curl https://sh.rustup.rs -sSf | sh -s -- -y
   args:
     creates: '{{ ansible_env.HOME }}/.cargo/'
+
+- name: Update Rust and Cargo
+  ansible.builtin.command:
+    cmd: rustup update
+  become: false
+  register: rustup_update
+  environment:
+    HOME: '{{ ansible_env.HOME }}'
+  changed_when: >
+    'unchanged' not in rustup_update.stdout.lower()
