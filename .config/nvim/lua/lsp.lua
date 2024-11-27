@@ -25,7 +25,7 @@ local servers = {
     }
   },
 
-  tsserver = {
+  ts_ls = {
     init_options = {
       plugins = {
         {
@@ -44,6 +44,8 @@ local servers = {
   bashls = {},
 
   html = {},
+
+  pbls = {},
 
   docker_compose_language_service = {},
 
