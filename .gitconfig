@@ -7,6 +7,10 @@
 	fp = !sh -c 'git fetch && git pull origin $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^refs/remotes/origin/@@")'
 	uncommit = reset --soft HEAD^
 	unstage = restore --staged
+	sl = stash list
+	spo= stash pop
+	spu= stash push
+	sd = stash drop
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [url "ssh://git@github.com/"]

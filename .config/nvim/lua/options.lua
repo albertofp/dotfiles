@@ -25,6 +25,9 @@ vim.o.clipboard = 'unnamedplus'
 
 vim.o.breakindent = true
 
+-- Line length marker at 80 characters
+vim.o.colorcolumn = '80'
+
 -- Save undo history
 vim.o.undofile = true
 
