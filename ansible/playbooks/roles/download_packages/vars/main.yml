@@ -5,7 +5,6 @@ download_packages_aur:
   - golangci-lint
   - nerdfetch
   - qtile-extras-git
-  - slides
 
 download_packages_base:
   - azure-cli
@@ -35,6 +34,7 @@ download_packages_base:
   - lazygit
   - zsh-autosuggestions
   - zsh-syntax-highlighting
+  - presenterm
 
 download_packages_homebrew_cask:
   - docker
@@ -76,4 +76,3 @@ download_packages_mac:
   - colima
   - cassandra
   - tailscale
-  - slides
