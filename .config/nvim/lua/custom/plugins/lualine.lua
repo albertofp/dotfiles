@@ -4,10 +4,11 @@ return {
   config = function()
     require('lualine').setup {
       options = {
+        theme = 'palenight',
         icons_enabled = true,
         disabled_filetypes = { 'NvimTree', 'Oil' },
-        section_separators = '',
         component_separators = '',
+        section_separators = { left = '', right = '' },
         extensions = {
           'lazy',
           'fugitive',
@@ -18,7 +19,7 @@ return {
           lualine_a = { 'mode' },
           lualine_b = { 'branch', 'diff', 'diagnostics' },
           lualine_c = { 'filename' },
-          lualine_x = { 'fileformat', 'filetype' },
+          lualine_x = { 'filetype' },
           lualine_y = { 'progress' },
           lualine_z = { 'location' }
         },
