@@ -8,4 +8,10 @@ Problem
 - Migrating from using `.webp` files to `.avif`
 - Pre-populate image cache before switching over
 
-![image:width:25%](./assets/martin.png)
+<!-- -->
+
+![image:width:15%](./assets/backdrop_benchmark.png)
+
+<!-- -->
+
+![image:width:15%](./assets/martin.png)
