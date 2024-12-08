@@ -5,6 +5,7 @@ download_packages_aur:
   - golangci-lint
   - nerdfetch
   - qtile-extras-git
+  - terramate
 
 download_packages_base:
   - azure-cli
@@ -35,6 +36,7 @@ download_packages_base:
   - zsh-autosuggestions
   - zsh-syntax-highlighting
   - presenterm
+  - btop
 
 download_packages_homebrew_cask:
   - docker
@@ -76,3 +78,4 @@ download_packages_mac:
   - colima
   - cassandra
   - tailscale
+  - terramate
