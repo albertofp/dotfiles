@@ -155,6 +155,13 @@ keys = [
         lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%-"),
         desc="Lower Volume by 1%",
     ),
+    # Media Keys
+    Key([], "XF86AudioMute", lazy.spawn("amixer -q set Master toggle")),
+    Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%+")),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("flock /tmp/amixer.lock amixer set Master 1%-")),
+    Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
+    Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
 ]
 
 group_labels = [
