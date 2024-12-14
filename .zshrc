@@ -3,8 +3,6 @@ autoload -U compinit
 compinit -i
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/Library/Frameworks/Python.framework/Versions/3.10/bin:$PATH
-export PATH=$CONDA_PREFIX/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
@@ -26,13 +24,11 @@ export DOTFILES_DIR="$HOME/dotfiles"
 export PUBLISH_REPO="$HOME/website/src/content/blog"
 
  alias kill8000='lsof -ti :8000 | xargs kill -9'
- alias tgu="toggle_github_user"
  alias nvimconfig="nvim ~/.config/nvim/"
  alias infnet="cd ~/INFNET/"
  alias zshconfig="nvim ~/dotfiles/.zshrc"
  alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
  alias reload="source ~/.zshrc"
- # alias vim="nvim"
  alias n="nvim"
  alias jw="cd ~/justwatch/"
  alias proj="cd ~/github/"
