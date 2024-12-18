@@ -16,7 +16,6 @@ return {
       },
       goimports = 'golines',
       gofmt = 'gofumpt',
-      luasnip = true,
     }
   end,
   event = { 'CmdlineEnter' },
