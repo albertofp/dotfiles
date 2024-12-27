@@ -46,6 +46,7 @@ download_packages_homebrew_cask:
   - spotify
   - font-jetbrains-mono-nerd-font
   - tailscale
+  - ghostty
 
 download_packages_homebrew_taps:
   - koekeishiya/formulae
@@ -65,6 +66,7 @@ download_packages_linux:
   - bluez
   - bluez-utils
 # ---------
+  - ghostty
 
 download_packages_mac:
   - karabiner-elements

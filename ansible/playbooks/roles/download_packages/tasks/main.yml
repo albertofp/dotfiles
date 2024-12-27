@@ -17,7 +17,7 @@
     use: homebrew
   when: ansible_distribution == "MacOSX"
 
-- name: MacOS -  Cask
+- name: MacOS - Cask
   community.general.homebrew_cask:
     name: '{{ download_packages_homebrew_cask }}'
     state: present
