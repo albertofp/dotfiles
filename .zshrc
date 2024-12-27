@@ -2,6 +2,8 @@ source $HOME/.zshenv
 autoload -U compinit
 compinit -i
 
+if [ "$TMUX" = "" ]; then tmux; fi
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 
@@ -23,68 +25,69 @@ export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
 export PUBLISH_REPO="$HOME/website/src/content/blog"
 
- alias kill8000='lsof -ti :8000 | xargs kill -9'
- alias nvimconfig="nvim ~/.config/nvim/"
- alias infnet="cd ~/INFNET/"
- alias zshconfig="nvim ~/dotfiles/.zshrc"
- alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
- alias ghosttyconfig="nvim ~/dotfiles/.config/ghostty/config"
- alias reload="source ~/.zshrc"
- alias n="nvim"
- alias jw="cd ~/justwatch/"
- alias proj="cd ~/github/"
- alias tf="terraform"
+alias kill8000='lsof -ti :8000 | xargs kill -9'
+alias nvimconfig="nvim ~/.config/nvim/"
+alias infnet="cd ~/INFNET/"
+alias zshconfig="nvim ~/dotfiles/.zshrc"
+alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
+alias tmuxconfig="nvim ~/dotfiles/.tmux.conf"
+alias ghosttyconfig="nvim ~/dotfiles/.config/ghostty/config"
+alias reload="source ~/.zshrc"
+alias n="nvim"
+alias jw="cd ~/justwatch/"
+alias proj="cd ~/github/"
+alias tf="terraform"
 
- alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
- alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encryt-vault-id default"
- alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
+alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
+alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encryt-vault-id default"
+alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
- alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 8080:443"
- alias argopw="kubectl -n argocd get secret argocd-secret -o json | jq -r '.data[\"admin.password\"]' | base64 --decode"
- 
- alias gp="git push"
- alias gs="git status"
- alias gd="git diff"
- alias ga="git add -p"
- function git_commit_m {
-  git commit -m "$*"
+alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 808:443"
+alias argopw="kubectl -n argocd get secret argocd-secret -o json | jq -r '.data[\"admin.password\"]' | base64 --decode"
+
+alias gp="git push"
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add -p"
+function git_commit_m {
+ git commit -m "$*"
 }
- alias gc="git_commit_m"
- alias gca="git commit --amend"
- alias gcan="git commit --amend --no-edit"
- alias gco="git checkout"
- alias gcb="git checkout -b"
- alias dog="git log --oneline --all --decorate --graph"
- alias gg="git branch | fzf | xargs -n 1 git checkout"
- alias gpf="git push --force-with-lease"
- alias glc="git log --oneline | head -n 1 | awk '{print \$1}'"
- alias clc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n' |pbcopy"
- alias prw="gh pr view --web"
- alias rw="gh repo view --web"
+alias gc="git_commit_m"
+alias gca="git commit --amend"
+alias gcan="git commit --amend --no-edit"
+alias gco="git checkout"
+alias gcb="git checkout -b"
+alias dog="git log --oneline --all --decorate --graph"
+alias gg="git branch | fzf | xargs -n 1 git checkout"
+alias gpf="git push --force-with-lease"
+alias glc="git log --oneline | head -n 1 | awk '{print \$1}'"
+alias clc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n' |pbcopy"
+alias prw="gh pr view --web"
+alias rw="gh repo view --web"
 
- function copy_file_to_clipboard {
-   if [ $1 != "" ];then
-     cat $1|pbcopy
-   fi
- }
- alias copy="copy_file_to_clipboard"
+function copy_file_to_clipboard {
+  if [ $1 != "" ];then
+    cat $1|pbcopy
+  fi
+}
+alias copy="copy_file_to_clipboard"
 
- # Docker
- alias dockerkill="docker stop \$(docker ps -a -q)"
+# Docker
+alias dockerkill="docker stop \$(docker ps -a -q)"
 
- alias k="kubectl"
- alias kp="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
- alias ks="kubectl --context=gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
- alias kp9="k9s --context gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
- alias ks9="k9s --context gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
+alias k="kubectl"
+alias kp="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
+alias ks="kubectl --context=gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
+alias kp9="k9s --context gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
+alias ks9="k9s --context gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
 
- alias ..="cd .."
- alias ...="cd ../../"
- alias ....="cd ../../../"
+alias ..="cd .."
+alias ...="cd ../../"
+alias ....="cd ../../../"
 
- alias lt="eza --tree --level=2 --long --icons"
- alias ls="eza -l --icons"
- alias la="eza  -l --icons -a"
+alias lt="eza --tree --level=2 --long --icons"
+alias ls="eza -l --icons"
+alias la="eza  -l --icons -a"
 
 # Kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
