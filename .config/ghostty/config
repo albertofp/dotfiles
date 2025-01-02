@@ -1,5 +1,3 @@
-font-family = "JetBrainsMono Nerd Font"
-
 background-opacity = 0.92
 
 theme = rose-pine
@@ -15,3 +13,7 @@ clipboard-write = allow
 quit-after-last-window-closed = true
 
 shell-integration = zsh
+
+# Keybindings
+
+keybind = ctrl+shift+f5=reload_config
