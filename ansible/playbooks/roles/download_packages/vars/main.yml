@@ -6,6 +6,7 @@ download_packages_aur:
   - nerdfetch
   - qtile-extras-git
   - terramate
+  - ghostty-git
 
 download_packages_base:
   - azure-cli
@@ -66,7 +67,6 @@ download_packages_linux:
   - bluez
   - bluez-utils
 # ---------
-  - ghostty
 
 download_packages_mac:
   - karabiner-elements

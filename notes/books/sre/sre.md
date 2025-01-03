@@ -1,0 +1,9 @@
+- instead of getting a system passively explained by the maintainers, try learning and explaining it to them and having the correct you/fill in blanks
+- postmortems have to be "teachable": the most appreciative audience is future hires
+- thinking exercise: 
+    - what metrics/observable performance characteristics can you expect to see if you cripple a specific part of the stack?
+    - validate assumptions and justify reasoning
+    - compare against similar real world scenarios
+- shadow incident response
+    - go on a call while handling incident
+    - compare thought process and procedure, reasoning, and decisions

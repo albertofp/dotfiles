@@ -37,7 +37,7 @@ import os
 home = os.path.expanduser("~")
 # Application defaults
 mod = "mod4"
-terminal = "kitty"
+terminal = "ghostty"
 browser = "firefox"
 ide = "nvim"
 files = "thunar"
