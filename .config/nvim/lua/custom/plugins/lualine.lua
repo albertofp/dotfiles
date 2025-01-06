@@ -4,7 +4,6 @@ return {
   config = function()
     require('lualine').setup {
       options = {
-        theme = 'palenight',
         icons_enabled = true,
         disabled_filetypes = { 'NvimTree', 'Oil' },
         component_separators = '',
