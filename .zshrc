@@ -43,7 +43,6 @@ alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.t
 alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
 alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 808:443"
-alias argopw="kubectl -n argocd get secret argocd-secret -o json | jq -r '.data[\"admin.password\"]' | base64 --decode"
 
 alias gp="git push"
 alias gs="git status"
