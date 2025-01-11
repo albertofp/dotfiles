@@ -63,6 +63,7 @@ alias glc="git log --oneline | head -n 1 | awk '{print \$1}'"
 alias clc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n' |pbcopy"
 alias prw="gh pr view --web"
 alias rw="gh repo view --web"
+alias ghpc="gh pr create --fill"
 
 function copy_file_to_clipboard {
   if [ $1 != "" ];then
