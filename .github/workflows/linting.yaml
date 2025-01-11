@@ -13,16 +13,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # - name: 🚀 Run ansible-lint
-      #   uses: ansible/ansible-lint@main
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
         
-      - name: Install ansible and ansible-lint
+      - name: Install ansible, yamllint and ansible-lint
         run: |
-          pip install ansible ansible-lint
+          pip install ansible ansible-lint yamllint
 
       - name: Provide Ansible Vault password
         env:
@@ -35,6 +34,9 @@ jobs:
           ANSIBLE_VAULT_PASSWORD_FILE: ./vault_password.txt
         run: |
           ansible-lint ansible
+
+      - name: Run yamllint
+        run: yamllint ansible
 
       - name: Clean up Vault password file
         run: |
