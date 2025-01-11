@@ -1,3 +1,4 @@
+---
 download_packages_aur:
   - slack-desktop
   - walk
@@ -62,7 +63,7 @@ download_packages_linux:
   - notion
   - github-cli
   - redshift
-# for bluetooth widget in qtile
+  # for bluetooth widget in qtile
   - python-dbus-next
   - bluez
   - bluez-utils

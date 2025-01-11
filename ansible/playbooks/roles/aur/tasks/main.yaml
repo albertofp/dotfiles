@@ -1,3 +1,4 @@
+---
 - name: Install AUR module
   community.general.ansible_galaxy_install:
     type: collection

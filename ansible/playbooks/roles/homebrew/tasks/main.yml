@@ -1,3 +1,4 @@
+---
 - name: Install Homebrew
   args:
     creates: /opt/homebrew/bin/brew
