@@ -2,7 +2,11 @@
 name: Linting
 on:
   pull_request:
+    paths:
+      - 'ansible/**'
   push:
+    paths:
+      - 'ansible/**'
     branches:
       - main
   workflow_dispatch:
