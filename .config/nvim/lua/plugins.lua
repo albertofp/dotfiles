@@ -12,32 +12,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-
-  { 'rose-pine/neovim',      name = 'rose-pine' },
-
+  { 'rose-pine/neovim',        name = 'rose-pine' },
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-
-  {
-    'ggandor/leap.nvim',
-    config = function()
-      require('leap').add_default_mappings()
-    end,
-  },
-
   'mattn/vim-goaddtags',
-
-  'tpope/vim-sleuth',
-
-  'hashivim/vim-terraform',
-
-  'wuelnerdotexe/vim-astro',
-
-  { 'folke/which-key.nvim',  opts = {} },
-
-  { 'numToStr/Comment.nvim', opts = {} },
-
+  { 'hashivim/vim-terraform',  lazy = true },
+  { 'wuelnerdotexe/vim-astro', lazy = true },
+  { 'folke/which-key.nvim',    opts = {} },
+  { 'numToStr/Comment.nvim',   opts = {} },
   require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
   { import = 'custom.plugins' },
 }, {})

@@ -12,8 +12,6 @@ export WORK_EMAIL="alberto.pluecker@justwatch.com"
 export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
 # export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
 
-export HOMEBBREW_NO_ENV_HINTS=1
-
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
 fi
@@ -94,6 +92,7 @@ alias la="eza  -l --icons -a"
 
 if [[ $(uname -s) == "Darwin" ]]; then
   export GOPATH=/usr/local/go
+  export HOMEBREW_NO_ENV_HINTS=1
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
