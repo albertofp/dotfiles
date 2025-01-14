@@ -45,8 +45,6 @@ local servers = {
 
   html = {},
 
-  pbls = {},
-
   docker_compose_language_service = {},
 
   terraformls = {
