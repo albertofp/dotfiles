@@ -40,7 +40,7 @@ alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt
 alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encryt-vault-id default"
 alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
-alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 808:443"
+alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 6969:443"
 
 alias gp="git push"
 alias gs="git status"
