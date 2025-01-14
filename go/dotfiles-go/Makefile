@@ -5,11 +5,7 @@ UNAME := $(shell uname)
 .PHONY: build, run, test, clean, all, vet
 build: clean
 	@echo "Building ${APP_NAME} for ${UNAME}..."
-	@if [ "$(UNAME)" = "Darwin" ]; then \
-		GOARCH=amd64 GOOS=darwin go build -o ${BINPATH} main.go; \
-	elif [ "$(UNAME)" = "Linux" ]; then \
-		GOARCH=amd64 GOOS=linux go build -o ${BINPATH} main.go; \
-	fi
+		go build -o ${BINPATH} main.go
 	@echo "Done."
 
 run:
