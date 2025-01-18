@@ -6,6 +6,8 @@
     - Chill environment
 - Store/Restaurant manager
 
+Work until end of may
+
 ### Extra options
 - ALG
 - Wohngeld
