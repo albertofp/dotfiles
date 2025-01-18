@@ -79,7 +79,7 @@ symbol = "  "
 disabled = true
 
 [time]
-disabled = false
+disabled = true
 format = '[$time]($style) '
 style = 'subtle'
 
