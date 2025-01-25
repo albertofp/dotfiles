@@ -16,7 +16,7 @@ if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
 fi
 
-export GOPRIVATE=github.com/justwatch,jus.tw.cx
+export GOPRIVATE=github.com/justwatch,jus.tw.cx,buf.build/gen/go/justwatch
 export GONOPROXY=github.com/justwatch,jus.tw.cx
 export GONOSUMDB=github.com/justwatch,jus.tw.cx
 export EDITOR="nvim"
@@ -35,6 +35,8 @@ alias n="nvim"
 alias jw="cd ~/justwatch/"
 alias proj="cd ~/github/"
 alias tf="terraform"
+alias tm="terramate"
+alias tet="terramate experimental trigger"
 
 alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
 alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encryt-vault-id default"
