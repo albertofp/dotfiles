@@ -20,8 +20,17 @@
 
 ### Positive
 
-- 
+- Direction on prioritization has been helpful
+- Technical feedback concise but thorough
+- Communication to the team & team cohesion improved
 
 ### Negative
 
-- 
+- Would appreciate more joint projects with other team members
+- Planning/vision still sometimes unclear (though improving)
+    - Could be interesting to have a "roadmap" of projects for the short-mid term (4-6 weeks max?)
+        - helpful for motivation/focus especially when doing lower priority, less interesting work
+- Regular team learning/development sessions not regular
+- In the dark when it comes to hiring
+    - Might be helpful/interesting for the team to have updates/input, even if just during weekly
+        - e.g. backend involves everyone in the interview process
