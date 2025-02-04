@@ -1,4 +1,4 @@
-# 03.02.2025 - 1 on 1
+# 04.02.2025 - 1 on 1
 
 ## Feedback for myself
 
@@ -9,12 +9,18 @@
 - More confident with releasing things
 - Able to handle more complex tasks and different projects at once
 
+- Self awareness
+- Confidence shipping
+
 ### Negative
 
 - Sometimes stuggle to finish tasks (first 90% is done very fast, last 10% drags on)
 - Still not really active in incidents
 - Sometimes get overwhelmed with juggling multiple tasks and fail to communicate it
 - Communication to stakeholders still needs work
+
+- Closing things out, sticking to deadlines
+    - be openly more defensive about my time if necessary
 
 ## Feedback for Gabi
 
@@ -34,3 +40,9 @@
 - In the dark when it comes to hiring
     - Might be helpful/interesting for the team to have updates/input, even if just during weekly
         - e.g. backend involves everyone in the interview process
+
+## Goals for raise/promotion
+
+- TBA (next week)
+- goal: +20%
+    - idea: +10% by start of Q3, +10% start Q1 2026 (same process again, doc with goals/milestones)
