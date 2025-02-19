@@ -6,6 +6,8 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
+export PATH="/opt/homebrew/opt/openjdk@21/bin":$PATH
+export JAVA_HOME="/opt/homebrew/opt/openjdk@23"
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto.pluecker@justwatch.com"
@@ -39,7 +41,7 @@ alias tm="terramate"
 alias tet="terramate experimental trigger"
 
 alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
-alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encryt-vault-id default"
+alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encrypt-vault-id default"
 alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 
 alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 6969:443"
@@ -96,6 +98,7 @@ alias la="eza  -l --icons -a"
 if [[ $(uname -s) == "Darwin" ]]; then
   export GOPATH=/usr/local/go
   export HOMEBREW_NO_ENV_HINTS=1
+  export HOMEBREW_NO_AUTO_UPDATE=1
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
