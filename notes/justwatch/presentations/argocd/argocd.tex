@@ -1,0 +1,71 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\title{ArgoCD}
+\date{\today}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.3\textwidth]{/Users/albertopluecker/dotfiles/notes/justwatch/presentations/argocd/assets/2025-02-19-01-22-13.png}
+  \label{argo-logo}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+\section{What?}
+\begin{frame}
+\frametitle{What?}
+ArgoCD is a \textbf{declarative}, \textbf{GitOps}-based continuous delivery tool for Kubernetes.
+\end{frame}
+
+\section{How?}
+\begin{frame}
+\frametitle{How?}
+\begin{enumerate}
+	\item Monitors Git repo for changes
+	\item Compare against current state
+	\item If difference $\rightarrow$ drift
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{How?}
+	\begin{figure}[h]
+	  \centering
+	  \includegraphics[width=0.9\textwidth]{/Users/albertopluecker/dotfiles/notes/justwatch/presentations/argocd/assets/2025-02-19-01-38-22.png}
+	  \label{argo-flow}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{How?}
+	UI: \texttt{https://argocd.justwatch.com}
+	\centering
+	\includegraphics[width=1\textwidth]{/Users/albertopluecker/dotfiles/notes/justwatch/presentations/argocd/assets/ui.png}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Applications}
+\textbf{Collection of resources} that are managed together
+\centering
+\includegraphics[width=0.6\textwidth]{/Users/albertopluecker/dotfiles/notes/justwatch/presentations/argocd/assets/appset.png}
+\end{frame}
+
+\section{Why?}
+\begin{frame}
+\frametitle{Why?}
+\begin{itemize}
+	\item Keep up with changes
+	\item Track changes in git history
+	\item Prevent undesired side effects
+	\item Reproducible environments
+\end{itemize}
+\end{frame}
+
+\end{document}
