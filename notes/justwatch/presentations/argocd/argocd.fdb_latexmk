@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1739927586.37751 "argocd.tex" "argocd.pdf" "argocd" 1739927588.74218 0
+["pdflatex"] 1740042957.5849 "argocd.tex" "argocd.pdf" "argocd" 1740042960.08862 0
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -194,14 +194,15 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1739921656.63483 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1739921596 8221422 8fb1237eeeab972f5f0b60ba88b840b5 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "argocd.aux" 1739927588.67902 2408 75393ad75eca1c39f49aacf43798ae20 "pdflatex"
-  "argocd.nav" 1739927588.68206 1345 fa0d50cac7a4a81df024f6967347a695 "pdflatex"
-  "argocd.out" 1739927588.68192 194 09c2eb291692bc874b7734538618f65f "pdflatex"
-  "argocd.tex" 1739927585.03763 1710 dc81f82261f3e34f57ca2d4c95459a3f ""
-  "argocd.toc" 1739927588.68208 121 b834473c9f84b519cd4b296b6898c54b "pdflatex"
+  "argocd.aux" 1740042960.01921 2421 7b51c55a0da9e7af271834d3f75b366a "pdflatex"
+  "argocd.nav" 1740042960.02289 1356 42e5a32e96eb020e0cf5a3e75473c404 "pdflatex"
+  "argocd.out" 1740042960.01959 194 09c2eb291692bc874b7734538618f65f "pdflatex"
+  "argocd.tex" 1740042954.88356 1863 ec373216e3312b6ff25c73e32d8f7493 ""
+  "argocd.toc" 1740042960.02292 122 8fc6fd70277f8402d278f7efdc1f0f64 "pdflatex"
   "assets/2025-02-19-01-22-13.png" 1739924533.59416 230607 90260952f98c6241ff490c0b2b34b2a7 ""
   "assets/2025-02-19-01-38-22.png" 1739925502.69361 952330 a5b6a3c33e3e7e103bb0e4af7d16b32a ""
   "assets/appset.png" 1739927209.39317 288216 0583c9ebd9d2985b093e4bc5da1d989b ""
+  "assets/jw-logo.png" 1739929156.90337 51575 f3a19581a1cb1313ea8efc3fd5e8bb3e ""
   "assets/ui.png" 1739926119.37571 922051 e34359d6eb3a21a90548b062130b2984 ""
   (generated)
   "argocd.aux"
