@@ -13,6 +13,12 @@ return {
       temperature = 0,
       max_tokens = 4096,
     },
+    windows = {
+      width = 40,
+      sidebar_header = {
+        enabled = false
+      },
+    },
   },
   build = "make",
   dependencies = {
