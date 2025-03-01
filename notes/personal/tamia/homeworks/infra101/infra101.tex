@@ -1,0 +1,92 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\title{Infra 101 - Lesson 1}
+\date{}
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Sample App: REST API}
+\begin{itemize}
+\item Deployed on a server
+\item Accessible via HTTP
+\item Returns "Hello World"
+\item Runs in a container
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Languages}
+\begin{itemize}
+\item Python
+\item Go (ideal for small containers and simplicity)
+\item Javascript
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cloud}
+\begin{block}{What?}
+Someone else's infrastructure (usually paid)
+\end{block}
+\begin{block}{How?}
+Use a UI, CLI, or code to provision/manage resources and tear them down when needed.
+\end{block}
+\begin{block}{Why?}
+\begin{itemize}
+\item Pay-as-you-go
+\item Reliability
+\item Scaling
+\item Security
+\end{itemize}
+\end{block}
+\begin{block}{Examples}
+AWS, Azure, Google Cloud, Hetzner
+\end{block}
+\end{frame}
+
+\begin{frame}{Infrastructure as Code}
+\textbf{Scenario 1:} Expensive, complex deployment; ensure complete teardown and recovery.
+\textbf{Scenario 2:} Team work with repetitive resources; minimize manual errors.
+\medskip
+\textbf{Solution:}
+\begin{itemize}
+\item Declarative language for desired state
+\item State logging
+\item Version control
+\item Self documenting and modularized
+\end{itemize}
+
+Terraform example:
+\includegraphics[width=0.8\textwidth]{./honigmelone.png}
+\end{frame}
+
+\begin{frame}{Containerization}
+\textbf{Problem:} "But it works on my machine!"\\[1ex]
+\textbf{Solution:} Ship your whole machine.
+\medskip
+Docker:
+\begin{itemize}
+\item Builds a container from your code
+\item Runs on any Docker-enabled machine
+\item Easy to deploy and remove
+\end{itemize}
+Dockerfile example:
+\includegraphics[width=0.8\textwidth]{./dockerfile.png}
+\end{frame}
+\begin{frame}{CI/CD}
+\begin{itemize}
+\item Frequent deployments for smaller changes
+\item Reliable deployment process
+\item Reduces manual errors
+\end{itemize}
+GitHub Actions example:
+\includegraphics[width=0.8\textwidth]{./action.png}
+\end{frame}
+\begin{frame}{Exercise}
+\begin{enumerate}
+\item Write a simple REST API
+\item Deploy a server with Terraform
+\item Containerize your API with Docker
+\item Build a pipeline to build (and deploy) your application
+\end{enumerate}
+\end{frame}
+\end{document}
