@@ -161,3 +161,10 @@ vim.keymap.set('n', '<leader>-', ':vertical resize -5 <CR>', { desc = 'Decrease 
 -- Resize window height
 vim.keymap.set('n', '<leader>h+', ':resize +2 <CR>', { desc = 'Increase window height', silent = true })
 vim.keymap.set('n', '<leader>h-', ':resize -2 <CR>', { desc = 'Decrease window height', silent = true })
+
+-- Custom commands
+
+vim.keymap.set('n', '<leader>ut', function()
+  local tag = vim.fn.input("Tag: ")
+  vim.cmd("UpdateImageTag " .. tag)
+end, { noremap = true, silent = true })
