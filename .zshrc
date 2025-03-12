@@ -7,6 +7,7 @@ if [ "$TMUX" = "" ]; then tmux; fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH="/opt/homebrew/opt/openjdk@21/bin":$PATH
+export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 export JAVA_HOME="/opt/homebrew/opt/openjdk@23"
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
