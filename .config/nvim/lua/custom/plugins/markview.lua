@@ -14,7 +14,10 @@ return {
   },
   config = function()
     require("markview").setup {
-      initial_state = false
+      preview = {
+        enable = false,
+        icon_provider = "devicons"
+      }
     }
   end
 }

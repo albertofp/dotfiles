@@ -168,3 +168,7 @@ vim.keymap.set('n', '<leader>ut', function()
   local tag = vim.fn.input("Tag: ")
   vim.cmd("UpdateImageTag " .. tag)
 end, { noremap = true, silent = true })
+
+
+vim.keymap.set('n', '<leader>yy', ':%y<CR>', { desc = 'Copy file contents to clipboard', silent = true })
+vim.keymap.set('n', '<leader>dd', ':%d<CR>', { desc = 'Delete file contents', silent = true })
