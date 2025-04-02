@@ -1,0 +1,53 @@
+---
+- name: Install Homebrew
+  args:
+    creates: /opt/homebrew/bin/brew
+  ansible.builtin.shell: |
+    "/bin/bash -c \
+    '$(curl -fsSL \
+    https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+
+- name: Configure yabai
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    # TODO replace with lineinfile
+    - name: Configure Yabai
+      ansible.builtin.shell: >
+        echo "$(whoami) ALL=(root) NOPASSWD:
+        sha256:$(shasum -a 256 $(which yabai))
+        $(which yabai) --load-sa" > /private/etc/sudoers.d/yabai
+      become: true
+      args:
+        creates: /private/etc/sudoers.d/yabai
+
+    # - name: Configure Yabai
+    #   lineinfile:
+    #     path: /private/etc/sudoers.d/yabai
+    #     line: "$(whoami) ALL=(root) NOPASSWD: $(which yabai) --load-sa"
+    #   become: true
+
+    - name: Start Yabai
+      ansible.builtin.command: yabai --start-service
+      register: yabai_start_result
+      changed_when: yabai_start_result.rc != 0
+
+    - name: Start Skhd
+      ansible.builtin.command: skhd --start-service
+      register: skhd_start_result
+      changed_when: skhd_start_result.rc != 0
+
+- name: Hide and minimize Dock
+  ansible.builtin.shell: |
+    defaults write com.apple.dock autohide -bool true
+    defaults write com.apple.dock tilesize -int 36
+    killall Dock
+
+- name: Remap Caps Lock to Esc
+  ansible.builtin.shell: |
+    hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+
+- name: Disable animations
+  ansible.builtin.shell: |
+    defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+    defaults write com.apple.dock expose-animation-duration -float 0.1
+    killall Dock
