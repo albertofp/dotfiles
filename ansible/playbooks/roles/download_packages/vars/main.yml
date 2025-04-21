@@ -1,16 +1,12 @@
 ---
 download_packages_aur:
   - slack-desktop
-  - walk
   - spotify
   - golangci-lint
   - nerdfetch
-  - qtile-extras-git
   - terramate
-  - ghostty-git
 
 download_packages_base:
-  - azure-cli
   - fzf
   - bat
   - neovim
@@ -55,14 +51,17 @@ download_packages_homebrew_taps:
   - homebrew/cask-fonts
 
 download_packages_linux:
-  - yay
-  - aws-cli-v2
+#  - yay
+#  - aws-cli-v2
   - firefox
   - docker
   - silicon
   - notion
   - github-cli
   - redshift
+  - ghostty
+  - spotify-launcher
+  - wl-clipboard # in wayland
   # for bluetooth widget in qtile
   - python-dbus-next
   - bluez

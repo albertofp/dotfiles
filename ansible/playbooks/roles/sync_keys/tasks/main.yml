@@ -1,5 +1,10 @@
 ---
 # TODO generalize env var injection
+- name: Create SSH Directory
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/.ssh'
+    state: directory
+    mode: '0755'
 - name: Copy Personal Github SSH key
   ansible.builtin.copy:
     dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'

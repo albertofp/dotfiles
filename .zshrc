@@ -6,8 +6,6 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export PATH="/opt/homebrew/opt/openjdk@21/bin":$PATH
-export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 export JAVA_HOME="/opt/homebrew/opt/openjdk@23"
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
@@ -30,9 +28,9 @@ alias kill8000='lsof -ti :8000 | xargs kill -9'
 alias nvimconfig="nvim ~/.config/nvim/"
 alias infnet="cd ~/INFNET/"
 alias zshconfig="nvim ~/dotfiles/.zshrc"
-alias kittyconfig="nvim ~/dotfiles/.config/kitty/kitty.conf"
 alias tmuxconfig="nvim ~/dotfiles/.tmux.conf"
 alias ghosttyconfig="nvim ~/dotfiles/.config/ghostty/config"
+alias hyprconfig="nvim ~/dotfiles/.config/hypr/hyprland.conf"
 alias reload="source ~/.zshrc"
 alias n="nvim"
 alias jw="cd ~/justwatch/"
@@ -103,13 +101,13 @@ if [[ $(uname -s) == "Darwin" ]]; then
   export HOMEBREW_NO_AUTO_UPDATE=1
   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  export PATH="/opt/homebrew/opt/openjdk@21/bin":$PATH
+  export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 else
   alias task="go-task"
   export GOPATH=$HOME/go
-  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
- # maps caps lock to escape (shift+caps still works as caps lock)
-  alias sce="setxkbmap -option \"caps:escape_shifted_capslock\"" 
+  #source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  #source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
