@@ -36,18 +36,40 @@
       register: skhd_start_result
       changed_when: skhd_start_result.rc != 0
 
-- name: Hide and minimize Dock
-  ansible.builtin.shell: |
-    defaults write com.apple.dock autohide -bool true
-    defaults write com.apple.dock tilesize -int 36
-    killall Dock
+- name: Set Dock autohide
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+  notify: Restart Dock
+
+- name: Set Dock tile size
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 36
+  notify: Restart Dock
 
 - name: Remap Caps Lock to Esc
-  ansible.builtin.shell: |
-    hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+  tags: [skip_ansible_lint]
+  ansible.builtin.shell: >
+    hidutil property --set
+    '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":
+    0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
 
-- name: Disable animations
-  ansible.builtin.shell: |
-    defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
-    defaults write com.apple.dock expose-animation-duration -float 0.1
-    killall Dock
+- name: Disable window animations globally
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticWindowAnimationsEnabled
+    type: bool
+    value: false
+
+- name: Set Dock expose animation duration
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: expose-animation-duration
+    type: float
+    value: 0.1
+  notify: Restart Dock

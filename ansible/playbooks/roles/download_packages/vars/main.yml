@@ -51,8 +51,6 @@ download_packages_homebrew_taps:
   # - homebrew/cask-fonts
 
 download_packages_linux:
-#  - yay
-#  - aws-cli-v2
   - firefox
   - docker
   - silicon
@@ -61,7 +59,7 @@ download_packages_linux:
   - redshift
   - ghostty
   - spotify-launcher
-  - wl-clipboard # in wayland
+  - wl-clipboard
   # for bluetooth widget in qtile
   - python-dbus-next
   - bluez

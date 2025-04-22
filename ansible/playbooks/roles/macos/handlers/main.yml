@@ -1,0 +1,5 @@
+---
+- name: Restart Dock
+  ansible.builtin.command: killall Dock
+  listen: "Restart Dock"
+  tags: [skip_ansible_lint]
