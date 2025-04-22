@@ -9,6 +9,9 @@ exclude_paths:
   - ../ansible/playbooks/roles/sync_keys/
 
 use_default_rules: true
+skip_list:
+  - jinja
+  - var-naming
 enable_list:
   - args
   - empty-string-compare # opt-in

@@ -27,13 +27,6 @@ jobs:
         run: |
           pip install ansible ansible-lint yamllint
 
-      - name: Drop vault pass & expose it to all later steps
-        shell: bash
-        run: |
-          printf '%s\n' "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > "$RUNNER_TEMP/vault.pass"
-          chmod 600 "$RUNNER_TEMP/vault.pass"
-          echo "ANSIBLE_VAULT_PASSWORD_FILE=$RUNNER_TEMP/vault.pass" >> "$GITHUB_ENV"
-
       - name: Run ansible-lint
         run: |
           ansible-lint ansible

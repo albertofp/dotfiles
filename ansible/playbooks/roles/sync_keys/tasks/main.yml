@@ -1,20 +1,21 @@
 ---
-# TODO generalize env var injection
 - name: Create SSH Directory
   ansible.builtin.file:
     path: '{{ ansible_env.HOME }}/.ssh'
     state: directory
     mode: '0755'
-- name: Copy Personal Github SSH key
+- name: Copy SSH keys
   ansible.builtin.copy:
-    dest: '{{ ansible_env.HOME }}/.ssh/id_home_github'
+    src: "{{ ssh_key_base_path }}/{{ item }}"
+    dest: "{{ ssh_key_base_dest }}/{{ item }}"
     mode: '0600'
-    src: '{{ playbook_dir }}/ssh_keys/id_home_github'
-- name: Copy Hetzner SSH key
-  ansible.builtin.copy:
-    dest: '{{ ansible_env.HOME }}/.ssh/hetzner'
-    mode: '0600'
-    src: '{{ playbook_dir }}/ssh_keys/hetzner'
+  loop:
+    - id_home_github
+    - hetzner
+  vars:
+    ssh_key_base_path: '{{ playbook_dir }}/ssh_keys'
+    ssh_key_base_dest: '{{ ansible_env.HOME }}/.ssh/'
+
 - name: Write Ansible Vault password file
   ansible.builtin.lineinfile:
     create: true
@@ -22,59 +23,20 @@
     path: '{{ ANSIBLE_VAULT_PASSWORD_FILE }}'
     state: present
     mode: '0600'
-- name: Inject OpenAI API key
+
+- name: Inject environment variables
   ansible.builtin.lineinfile:
     create: true
-    line: export OPENAI_API_KEY="{{ openai_api_key_justwatch }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
+    line: "export {{ item.name }}=\"{{ item.value }}\""
+    path: "{{ item.path }}"
     state: present
     mode: '0755'
-- name: Inject Gemini API key
-  ansible.builtin.lineinfile:
-    create: true
-    line: export GEMINI_API_KEY="{{ gemini_api_key }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
-- name: Inject Hetzner API token
-  ansible.builtin.lineinfile:
-    create: true
-    line: export HCLOUD_TOKEN="{{ hetzner_api_token }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
-- name: Inject Anthropic API token
-  ansible.builtin.lineinfile:
-    create: true
-    line: export ANTHROPIC_API_KEY="{{ anthropic_api_key }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
-- name: Inject OpenAI API key (personal)
-  ansible.builtin.lineinfile:
-    create: true
-    line: export OPENAI_API_KEY_PERSONAL="{{ openai_api_key_personal }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
-- name: Inject STK_PWD
-  ansible.builtin.lineinfile:
-    create: true
-    line: export STK_PWD="{{ stk_pwd }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
-- name: Inject GITHUB_TOKEN
-  ansible.builtin.lineinfile:
-    create: true
-    line: export GITHUB_TOKEN="{{ GITHUB_TOKEN }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
-- name: Inject ANSIBLE_VAULT_PASSWORD_FILE
-  ansible.builtin.lineinfile:
-    create: true
-    line: export ANSIBLE_VAULT_PASSWORD_FILE="{{ ANSIBLE_VAULT_PASSWORD_FILE }}"
-    path: '{{ ansible_env.HOME }}/.zshenv'
-    state: present
-    mode: '0755'
+  loop:
+    - { name: OPENAI_API_KEY, value: "{{ openai_api_key_justwatch }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: GEMINI_API_KEY, value: "{{ gemini_api_key }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: HCLOUD_TOKEN, value: "{{ hetzner_api_token }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: ANTHROPIC_API_KEY, value: "{{ anthropic_api_key }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: OPENAI_API_KEY_PERSONAL, value: "{{ openai_api_key_personal }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: STK_PWD, value: "{{ stk_pwd }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: GITHUB_TOKEN, value: "{{ GITHUB_TOKEN }}", path: "{{ ansible_env.HOME }}/.zshenv" }
+    - { name: ANSIBLE_VAULT_PASSWORD_FILE, value: "{{ ANSIBLE_VAULT_PASSWORD_FILE }}", path: "{{ ansible_env.HOME }}/.zshenv" }
