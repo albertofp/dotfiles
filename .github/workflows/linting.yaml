@@ -27,22 +27,16 @@ jobs:
         run: |
           pip install ansible ansible-lint yamllint
 
-      - name: Provide Ansible Vault password
-        env:
-          ANSIBLE_VAULT_PASSWORD_FILE: ./vault_password.txt
+      - name: Drop vault pass & expose it to all later steps
+        shell: bash
         run: |
-          echo "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > ./vault_password.txt
+          printf '%s\n' "${{ secrets.ANSIBLE_VAULT_PASSWORD }}" > "$RUNNER_TEMP/vault.pass"
+          chmod 600 "$RUNNER_TEMP/vault.pass"
+          echo "ANSIBLE_VAULT_PASSWORD_FILE=$RUNNER_TEMP/vault.pass" >> "$GITHUB_ENV"
 
       - name: Run ansible-lint
-        env:
-          ANSIBLE_VAULT_PASSWORD_FILE: ./vault_password.txt
         run: |
           ansible-lint ansible
 
       - name: Run yamllint
         run: yamllint ansible
-
-      - name: Clean up Vault password file
-        run: |
-          rm ./vault_password.txt
-

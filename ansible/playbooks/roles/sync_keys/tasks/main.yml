@@ -29,6 +29,13 @@
     path: '{{ ansible_env.HOME }}/.zshenv'
     state: present
     mode: '0755'
+- name: Inject Gemini API key
+  ansible.builtin.lineinfile:
+    create: true
+    line: export GEMINI_API_KEY="{{ gemini_api_key }}"
+    path: '{{ ansible_env.HOME }}/.zshenv'
+    state: present
+    mode: '0755'
 - name: Inject Hetzner API token
   ansible.builtin.lineinfile:
     create: true
