@@ -5,6 +5,7 @@ download_packages_aur:
   - golangci-lint
   - nerdfetch
   - terramate
+  - zen-browser-bin
 
 download_packages_base:
   - fzf
@@ -45,6 +46,7 @@ download_packages_homebrew_cask:
   - font-jetbrains-mono-nerd-font
   # - tailscale
   - ghostty
+  - zen-browser
 
 download_packages_homebrew_taps:
   - koekeishiya/formulae
