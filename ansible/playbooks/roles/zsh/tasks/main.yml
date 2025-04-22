@@ -9,3 +9,21 @@
   ansible.builtin.user:
     name: "{{ ansible_env.USER }}"
     shell: "{{ zsh_path.stdout }}"
+
+- name: zsh‑syntax‑highlighting
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ ansible_user_dir }}/zsh-syntax-highlighting"
+    force: true
+    accept_newhostkey: true
+    depth: 1
+    update: false
+
+- name: zsh‑autosuggestions
+  become: true
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: /usr/share/zsh/plugins/zsh-autosuggestions
+    force: true
+    accept_newhostkey: true
+    depth: 1

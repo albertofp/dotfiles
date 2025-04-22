@@ -108,8 +108,8 @@ if [[ $(uname -s) == "Darwin" ]]; then
 else
   alias task="go-task"
   export GOPATH=$HOME/go
-  #source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  #source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin

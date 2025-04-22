@@ -25,6 +25,7 @@
     mode: '0600'
 
 - name: Inject environment variables
+  no_log: true
   ansible.builtin.lineinfile:
     create: true
     line: "export {{ item.name }}=\"{{ item.value }}\""

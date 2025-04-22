@@ -12,6 +12,7 @@ use_default_rules: true
 skip_list:
   - jinja
   - var-naming
+  - latest[git]
 enable_list:
   - args
   - empty-string-compare # opt-in
