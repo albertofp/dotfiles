@@ -42,6 +42,7 @@ alias tet="terramate experimental trigger"
 alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
 alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encrypt-vault-id default"
 alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
+alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --ask-become-pass--forks=10 --vault-password-file=~/.ansible_vault_pass.txt"
 
 alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 6969:443"
 
@@ -67,6 +68,7 @@ alias clc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n' |pbcopy
 alias prw="gh pr view --web"
 alias rw="gh repo view --web"
 alias ghpc="gh pr create --fill"
+alias merge="gh pr merge -sd --admin"
 
 function copy_file_to_clipboard {
   if [ $1 != "" ];then

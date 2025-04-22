@@ -43,12 +43,12 @@ download_packages_homebrew_cask:
   - notion
   - spotify
   - font-jetbrains-mono-nerd-font
-  - tailscale
+  # - tailscale
   - ghostty
 
 download_packages_homebrew_taps:
   - koekeishiya/formulae
-  - homebrew/cask-fonts
+  # - homebrew/cask-fonts
 
 download_packages_linux:
 #  - yay

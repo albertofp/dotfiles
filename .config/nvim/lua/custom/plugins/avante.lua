@@ -3,7 +3,7 @@ return {
   "yetone/avante.nvim",
   event = "VeryLazy",
   lazy = false,
-  version = "*", -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     provider = "gemini",
     gemini = {
@@ -11,8 +11,19 @@ return {
       model = "gemini-2.0-flash",
       timeout = 30000,
       temperature = 0,
-      max_tokens = 4096,
+      -- max_tokens = 4096,
     },
+    -- provider = "openai",
+    -- openai = {
+    --   endpoint = "https://api.openai.com/v1",
+    --   -- model = "gpt-4.1-2025-04-14", -- your desired model (or use gpt-4o, etc.)
+    --   model = "o3-mini",
+    --   timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+    --   temperature = 0,
+    --   disable_tools = true,
+    --   -- max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+    --   --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+    -- },
     windows = {
       width = 40,
       sidebar_header = {
