@@ -165,10 +165,13 @@ vim.keymap.set('n', '<leader>h-', ':resize -2 <CR>', { desc = 'Decrease window h
 -- Custom commands
 
 vim.keymap.set('n', '<leader>ut', function()
-  local tag = vim.fn.input("Tag: ")
-  vim.cmd("UpdateImageTag " .. tag)
+  if vim.fn.expand('%:t') == 'deployment.yml' or vim.fn.expand('%:t') == 'deployment.yaml' then
+    local tag = vim.fn.input("Tag: ")
+    vim.cmd("UpdateImageTag " .. tag)
+  else
+    vim.notify("UpdateImageTag only works on deployment.yml or deployment.yaml files.", vim.log.levels.INFO)
+  end
 end, { noremap = true, silent = true })
-
 
 vim.keymap.set('n', '<leader>yy', ':%y<CR>', { desc = 'Copy file contents to clipboard', silent = true })
 vim.keymap.set('n', '<leader>dd', ':%d<CR>', { desc = 'Delete file contents', silent = true })
