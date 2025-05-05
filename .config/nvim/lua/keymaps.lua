@@ -172,3 +172,6 @@ end, { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>yy', ':%y<CR>', { desc = 'Copy file contents to clipboard', silent = true })
 vim.keymap.set('n', '<leader>dd', ':%d<CR>', { desc = 'Delete file contents', silent = true })
+
+vim.keymap.set('n', '<leader>std', 'vi"y:SearchTerraformRegistry <C-r>"<CR>',
+  { silent = true, desc = "Search TF Registry (text in \")" })
