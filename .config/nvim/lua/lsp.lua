@@ -1,13 +1,6 @@
-local on_attach = function(_, bufnr)
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-end
-
-
 local ts_plugin_path = '/Users/albertopluecker/.nvm/versions/node/v20.8.1/lib/node_modules/@vue/typescript-plugin'
-local servers = {
 
+local servers = {
   ansiblels = {
     filetypes = { 'yaml.ansible' },
   },
@@ -39,6 +32,10 @@ local servers = {
 
   dockerls = {},
 
+  gh_actions_ls = {
+    filetypes = { 'yaml.github', 'githubactions' },
+  },
+
   astro = {},
 
   bashls = {},
@@ -51,8 +48,10 @@ local servers = {
     filetypes = { 'tf', 'hcl', 'terraform' },
   },
 
+  gopls = {},
+
   yamlls = {
-    filetypes = { 'yaml', 'yaml.ansible' },
+    filetypes = { 'yaml', 'yaml.ansible', 'yaml.github' },
     settings = {
       yaml = {
         format = {
@@ -82,9 +81,19 @@ local servers = {
 
   lua_ls = {
     Lua = {
-      workspace = { checkThirdParty = false },
+      workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
       telemetry = { enable = false },
       diagnostics = { globals = { 'vim' } },
+      format = {
+        enable = true,
+        -- Stylua
+        defaultConfig = {
+          indent_width = 2,
+          indent_type = 'Spaces',
+          quote_style = 'AutoPreferSingle',
+          no_call_parentheses = true,
+        },
+      },
     },
   },
 
@@ -121,19 +130,10 @@ capabilities.textDocument.foldingRange = {
 
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
+  automatic_enable = true,
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
-}
-
-local gocfg = require 'go.lsp'.config()
-require('lspconfig').gopls.setup(gocfg)
+for server_name, server_config in pairs(servers) do
+  vim.lsp.config(server_name, vim.tbl_deep_extend('force', server_config or {}, { capabilities = capabilities }))
+end

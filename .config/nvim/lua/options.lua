@@ -59,3 +59,10 @@ vim.o.foldenable = true
 
 -- Eliminates the ~ after EOF
 vim.opt.fillchars = { eob = ' ' }
+
+-- Github Action filetype for lsp
+vim.filetype.add({
+  pattern = {
+    ['.*/%.github[%w/]+workflows[%w/]+.*%.ya?ml'] = 'yaml.github',
+  },
+})

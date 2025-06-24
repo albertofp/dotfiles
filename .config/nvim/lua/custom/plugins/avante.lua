@@ -6,14 +6,21 @@ return {
   version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     provider = "gemini",
-    gemini = {
-      endpoint = "https://generativelanguage.googleapis.com/v1beta/models/",
-      -- https://ai.google.dev/gemini-api/docs/models
-      model = "gemini-2.5-pro-preview-03-25",
-      -- model = "gemini-2.0-flash",
-      timeout = 30000,
-      temperature = 0,
-      -- max_tokens = 4096,
+    providers = {
+      gemini = {
+        endpoint = "https://generativelanguage.googleapis.com/v1beta/models/",
+        -- https://ai.google.dev/gemini-api/docs/models
+        -- model = "gemini-2.5-pro-preview-03-25",
+        model = "gemini-2.5-flash-preview-05-20",
+        disable_tools = {
+          "web_search"
+        },
+        extra_request_body = {
+          temperature = 0,
+          -- max_tokens = 4096,
+        },
+        timeout = 30000,
+      },
     },
     -- provider = "openai",
     -- openai = {
