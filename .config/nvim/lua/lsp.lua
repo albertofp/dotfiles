@@ -51,7 +51,7 @@ local servers = {
   gopls = {},
 
   yamlls = {
-    filetypes = { 'yaml', 'yaml.ansible', 'yaml.github' },
+    filetypes = { 'yaml', 'yaml.ansible' },
     settings = {
       yaml = {
         format = {

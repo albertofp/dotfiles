@@ -19,6 +19,7 @@
 	rebase = true
 [core]
 	attributesfile = /Users/albertopluecker/.gitattributes
+	excludesFile = /Users/albertopluecker/.gitignore
 [rerere]
 	enabled = true
 ; for issues with go mod tidy and private modules

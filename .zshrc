@@ -69,6 +69,7 @@ alias prw="gh pr view --web"
 alias rw="gh repo view --web"
 alias ghpc="gh pr create --fill"
 alias merge="gh pr merge -sd --admin"
+alias ghrw="gh run list --status=completed --limit 1| awk '{print \$6}'"
 
 function copy_file_to_clipboard {
   if [ $1 != "" ];then
@@ -81,6 +82,7 @@ alias copy="copy_file_to_clipboard"
 alias dockerkill="docker stop \$(docker ps -a -q)"
 
 alias k="kubectl"
+alias kai="kubectl-ai"
 alias kp="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
 alias ks="kubectl --context=gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
 alias kp9="k9s --context gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"

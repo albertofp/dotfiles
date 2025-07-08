@@ -1,8 +1,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  lazy = true,
+  lazy = false,
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
+    'OXY2DEV/markview.nvim',
+    'nvim-treesitter/nvim-treesitter-textobjects'
   },
   build = ':TSUpdate',
   event = { 'BufReadPre', 'BufNewFile' },
