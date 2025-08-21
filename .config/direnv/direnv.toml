@@ -1,0 +1,2 @@
+[global.whitelist]
+exact = ["GITHUB_TOKEN"]
