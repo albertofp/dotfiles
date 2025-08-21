@@ -1,4 +1,6 @@
 **/__pycache__/**
+**/GEMINI.md
+**/rest
 scripts/
 .config/gcloud
 .config/karabiner/automatic_backups
