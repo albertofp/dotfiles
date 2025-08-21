@@ -34,6 +34,7 @@ alias hyprconfig="nvim ~/dotfiles/.config/hypr/hyprland.conf"
 alias reload="source ~/.zshrc"
 alias n="nvim"
 alias jw="cd ~/justwatch/"
+alias sg="cd ~/justwatch/jw-sg-backend/"
 alias proj="cd ~/github/"
 alias tf="terraform"
 alias tm="terramate"
@@ -170,4 +171,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+eval "$(direnv hook zsh)"
+precmd(){
+	source $HOME/.zshenv
+}
 eval "$(starship init zsh)"
