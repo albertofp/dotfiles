@@ -11,6 +11,7 @@
 	spo= stash pop
 	spu= stash push
 	sd = stash drop
+	cp = cherry-pick
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [url "ssh://git@github.com/"]
