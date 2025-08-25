@@ -19,6 +19,7 @@ local servers = {
   },
 
   ts_ls = {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
       plugins = {
         {
@@ -27,7 +28,8 @@ local servers = {
           languages = { 'vue' },
         },
       },
-    }
+    },
+    single_file_support = false,
   },
 
   dockerls = {},
@@ -105,21 +107,21 @@ local servers = {
   --   -- css = { validate = true },
   -- },
 
-  vuels = {
-    filetypes = { 'vue' },
-    init_options = {
-      config = {
-        vetur = {
-          useWorkspaceDependencies = true,
-          validation = {
-            template = true,
-            style = true,
-            script = true
-          }
-        }
-      }
-    }
-  }
+  -- vuels = {
+  --   filetypes = { 'vue' },
+  --   init_options = {
+  --     config = {
+  --       vetur = {
+  --         useWorkspaceDependencies = true,
+  --         validation = {
+  --           template = true,
+  --           style = true,
+  --           script = true
+  --         }
+  --       }
+  --     }
+  --   }
+  -- }
 }
 
 local capabilities = require('blink.cmp').get_lsp_capabilities()
