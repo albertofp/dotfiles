@@ -1,0 +1,2 @@
+- legacy - what is it, what are you moving away from and into AWS?
+- how much is ops vs dev?

@@ -6,6 +6,7 @@ download_packages_aur:
   - nerdfetch
   - terramate
   - zen-browser-bin
+  - localsend-bin
 
 download_packages_base:
   - fzf
@@ -47,6 +48,7 @@ download_packages_homebrew_cask:
   # - tailscale
   - ghostty
   - zen-browser
+  - localsend
 
 download_packages_homebrew_taps:
   - koekeishiya/formulae

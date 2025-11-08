@@ -52,12 +52,14 @@ local servers = {
 
   gopls = {},
 
+  postgres_lsp = {},
+
   yamlls = {
     filetypes = { 'yaml', 'yaml.ansible' },
     settings = {
       yaml = {
         format = {
-          enable = true,
+          enable = false,
           singleQuote = true,
           bracketSpacing = true,
           printWidth = 80,

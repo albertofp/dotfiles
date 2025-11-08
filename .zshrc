@@ -7,6 +7,7 @@ if [ "$TMUX" = "" ]; then tmux; fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export JAVA_HOME="/opt/homebrew/opt/openjdk@23"
+export OPENSSL_CONF=/dev/null
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export WORK_EMAIL="alberto.pluecker@justwatch.com"
@@ -24,7 +25,8 @@ export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
 export PUBLISH_REPO="$HOME/website/src/content/blog"
 
-alias kill8000='lsof -ti :8000 | xargs kill -9'
+alias reset-staging="git fetch origin main && git checkout staging && git reset --hard origin/main && git push -f"
+alias kill9042='lsof -ti :9042 | xargs kill -9'
 alias nvimconfig="nvim ~/.config/nvim/"
 alias infnet="cd ~/INFNET/"
 alias zshconfig="nvim ~/dotfiles/.zshrc"
@@ -67,6 +69,8 @@ alias gcpf="git add . && git commit --amend --no-edit && git push --force-with-l
 alias glc="git log --oneline | head -n 1 | awk '{print \$1}' | tr -d '\n' | cut -c -7"
 alias clc="git log --oneline | head -n 1 | awk '{print \$1}' |tr -d '\n' | cut -c -7 |pbcopy"
 alias prw="gh pr view --web"
+alias Prw="prw"
+alias PRw="prw"
 alias rw="gh repo view --web"
 alias ghpc="gh pr create --fill"
 alias merge="gh pr merge -sd --admin"
@@ -172,8 +176,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source ~/.zsh-nvm/zsh-nvm.plugin.zsh
-eval "$(direnv hook zsh)"
-precmd(){
-	source $HOME/.zshenv
-}
+
+export HOMEBREW_PREFIX=/opt/homebrew
+export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
+export MACOSX_DEPLOYMENT_TARGET=15.5
+export PG_DUMP="mise exec -- pg_dump"
+# alias transcrypt="transcrypt 2> >(grep -v \"WARNING : deprecated key derivation used\" >&2)"
+
+eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
