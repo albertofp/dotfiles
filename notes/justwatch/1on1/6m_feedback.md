@@ -1,4 +1,0 @@
-- improve on estimating tasks and keeping people in the loop (even if things are progressing well, keep them informed) -> it's fine if deadlines have to change, but keep stakeholders updated
-- be quicker to raise concerns with teammates that are underperforming
-- continue to improve on incident response (devops tickets can help, maybe talk about this to Daivik)
-- midquarter checking

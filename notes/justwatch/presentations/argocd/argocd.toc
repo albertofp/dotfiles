@@ -1,3 +1,0 @@
-\beamer@sectionintoc {1}{What?}{3}{0}{1}
-\beamer@sectionintoc {2}{How?}{4}{0}{2}
-\beamer@sectionintoc {3}{Why?}{10}{0}{3}
