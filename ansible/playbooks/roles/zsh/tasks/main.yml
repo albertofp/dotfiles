@@ -13,7 +13,7 @@
 - name: zsh‑syntax‑highlighting
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-    dest: "{{ ansible_user_dir }}/zsh-syntax-highlighting"
+    dest: "{{ ansible_env.HOME }}/.zsh/plugins/zsh-syntax-highlighting"
     force: true
     accept_newhostkey: true
     depth: 1
@@ -23,7 +23,7 @@
   become: true
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: /usr/share/zsh/plugins/zsh-autosuggestions
+    dest: "{{ ansible_env.HOME }}/.zsh/plugins/zsh-autosuggestions"
     force: true
     accept_newhostkey: true
     depth: 1

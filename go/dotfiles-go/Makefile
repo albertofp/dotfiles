@@ -4,9 +4,10 @@ UNAME := $(shell uname)
 
 .PHONY: build, run, test, clean, all, vet
 build: clean
-	@echo "Building ${APP_NAME} for ${UNAME}..."
-		go build -o ${BINPATH} main.go
-	@echo "Done."
+	echo "Building ${APP_NAME} for ${UNAME}..."
+	@mkdir -p $(dir ${BINPATH})
+	go build -o ${BINPATH} main.go
+	echo "Done."
 
 run:
 	@go run main.go

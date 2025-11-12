@@ -4,28 +4,26 @@ compinit -i
 
 if [ "$TMUX" = "" ]; then tmux; fi
 
+export GOPATH="$HOME/go"
+export GOMODCACHE="$GOPATH/pkg/mod"
+export GOCACHE="$HOME/Library/Caches/go-build"
+export PATH="$PATH:$GOPATH/bin"
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
-export JAVA_HOME="/opt/homebrew/opt/openjdk@23"
 export OPENSSL_CONF=/dev/null
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
-export WORK_EMAIL="alberto.pluecker@justwatch.com"
 export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
-# export WORK_SSH_KEY="$HOME/.ssh/id_work_github"
 
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
 fi
 
-export GOPRIVATE=github.com/justwatch,jus.tw.cx,buf.build/gen/go/justwatch
-export GONOPROXY=github.com/justwatch,jus.tw.cx
-export GONOSUMDB=github.com/justwatch,jus.tw.cx
 export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
 export PUBLISH_REPO="$HOME/website/src/content/blog"
 
-alias reset-staging="git fetch origin main && git checkout staging && git reset --hard origin/main && git push -f"
 alias kill9042='lsof -ti :9042 | xargs kill -9'
 alias nvimconfig="nvim ~/.config/nvim/"
 alias infnet="cd ~/INFNET/"
@@ -35,19 +33,13 @@ alias ghosttyconfig="nvim ~/dotfiles/.config/ghostty/config"
 alias hyprconfig="nvim ~/dotfiles/.config/hypr/hyprland.conf"
 alias reload="source ~/.zshrc"
 alias n="nvim"
-alias jw="cd ~/justwatch/"
-alias sg="cd ~/justwatch/jw-sg-backend/"
 alias proj="cd ~/github/"
 alias tf="terraform"
-alias tm="terramate"
-alias tet="terramate experimental trigger"
 
 alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
 alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encrypt-vault-id default"
 alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
 alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --ask-become-pass--forks=10 --vault-password-file=~/.ansible_vault_pass.txt"
-
-alias argoprod="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2 port-forward svc/argocd-server -n argocd 6969:443"
 
 alias gp="git push"
 alias gs="git status"
@@ -87,11 +79,6 @@ alias copy="copy_file_to_clipboard"
 alias dockerkill="docker stop \$(docker ps -a -q)"
 
 alias k="kubectl"
-alias kai="kubectl-ai"
-alias kp="kubectl --context=gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
-alias ks="kubectl --context=gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
-alias kp9="k9s --context gke_justwatch-compute_europe-west1-d_jw-k8s-prod-eu-2"
-alias ks9="k9s --context gke_justwatch-compute_europe-west1-b_jw-k8s-stage-eu-2"
 
 alias ..="cd .."
 alias ...="cd ../../"
@@ -105,12 +92,10 @@ alias la="eza  -l --icons -a"
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 if [[ $(uname -s) == "Darwin" ]]; then
-  export GOPATH=/usr/local/go
   export HOMEBREW_NO_ENV_HINTS=1
   export HOMEBREW_NO_AUTO_UPDATE=1
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  export PATH="/opt/homebrew/opt/openjdk@21/bin":$PATH
+  source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 else
   alias task="go-task"
@@ -165,23 +150,18 @@ function take() {
 # /usr/local/share/google-cloud-sdk
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/share/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f '/home/albertofp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/albertofp/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/completion.zsh.inc'; fi
-if [ -f '/home/albertofp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/albertofp/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
-
 export HOMEBREW_PREFIX=/opt/homebrew
 export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
 export MACOSX_DEPLOYMENT_TARGET=15.5
-export PG_DUMP="mise exec -- pg_dump"
-# alias transcrypt="transcrypt 2> >(grep -v \"WARNING : deprecated key derivation used\" >&2)"
 
-eval "$(mise activate zsh)"
 eval "$(starship init zsh)"

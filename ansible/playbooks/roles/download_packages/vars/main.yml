@@ -4,7 +4,6 @@ download_packages_aur:
   - spotify
   - golangci-lint
   - nerdfetch
-  - terramate
   - zen-browser-bin
   - localsend-bin
 
@@ -33,26 +32,17 @@ download_packages_base:
   - gum
   - starship
   - lazygit
-  - zsh-autosuggestions
-  - zsh-syntax-highlighting
   - presenterm
   - btop
 
 download_packages_homebrew_cask:
   - docker
-  - firefox
   - silicon
-  - notion
   - spotify
   - font-jetbrains-mono-nerd-font
-  # - tailscale
   - ghostty
   - zen-browser
   - localsend
-
-download_packages_homebrew_taps:
-  - koekeishiya/formulae
-  # - homebrew/cask-fonts
 
 download_packages_linux:
   - firefox
@@ -80,6 +70,3 @@ download_packages_mac:
   - golangci-lint
   - nerdfetch
   - colima
-  - cassandra
-  - tailscale
-  - terramate
