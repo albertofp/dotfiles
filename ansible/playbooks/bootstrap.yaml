@@ -2,9 +2,14 @@
 - name: Bootstrap
   hosts: localhost
   roles:
+    - role: macos
+      when: ansible_distribution == "MacOSX"
     - download_packages
     - sync_keys
     - configs
     - aws
     - zsh
-    - dock
+    - role: dock
+      when: ansible_distribution == "MacOSX"
+    - role: aerospace
+      when: ansible_distribution == "MacOSX"

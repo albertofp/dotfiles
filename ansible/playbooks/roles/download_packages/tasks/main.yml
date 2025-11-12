@@ -7,7 +7,13 @@
 
 - name: MacOS
   community.general.homebrew:
-    name: '{{ download_packages_mac + download_packages_homebrew_cask }}'
+    name: '{{ download_packages_mac }}'
+    state: present
+  when: ansible_distribution == "MacOSX"
+
+- name: MacOS - Casks
+  community.general.homebrew_cask:
+    name: '{{ download_packages_homebrew_cask }}'
     state: present
   when: ansible_distribution == "MacOSX"
 

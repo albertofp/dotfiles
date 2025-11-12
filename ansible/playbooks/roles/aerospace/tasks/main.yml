@@ -1,0 +1,23 @@
+---
+- name: Install AeroSpace via Homebrew Cask
+  community.general.homebrew_cask:
+    name: nikitabobko/tap/aerospace
+    state: present
+  when: ansible_distribution == "MacOSX"
+
+- name: Start AeroSpace app
+  command: open -a Aerospace
+  args:
+    creates: /Applications/AeroSpace.app
+  when: ansible_distribution == "MacOSX"
+
+- name: Pause to allow AeroSpace to start
+  pause:
+    seconds: 2
+  when: ansible_distribution == "MacOSX"
+
+- name: Verify AeroSpace server is running
+  command: aerospace -v
+  register: aerospace_status
+  changed_when: false
+  when: ansible_distribution == "MacOSX"

@@ -4,6 +4,7 @@
     key: autohide
     type: bool
     value: true
+  notify: Restart Dock
 
 - name: Ensure Dock magnification is disabled
   community.general.osx_defaults:
@@ -11,6 +12,7 @@
     key: magnification
     type: bool
     value: false
+  notify: Restart Dock
 
 - name: Set Dock icon size to minimum
   community.general.osx_defaults:
@@ -18,6 +20,7 @@
     key: tilesize
     type: float
     value: 16.0
+  notify: Restart Dock
 
 - name: Clear all apps from Dock
   community.general.osx_defaults:
@@ -25,3 +28,12 @@
     key: persistent-apps
     type: array
     value: []
+  notify: Restart Dock
+
+- name: Set Dock expose animation duration
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: expose-animation-duration
+    type: float
+    value: 0.1
+  notify: Restart Dock

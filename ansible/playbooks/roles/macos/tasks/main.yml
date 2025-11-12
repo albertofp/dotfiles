@@ -6,51 +6,7 @@
     "/bin/bash -c \
     '$(curl -fsSL \
     https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
-
-- name: Configure yabai
-  when: ansible_facts['distribution'] == "MacOSX"
-  block:
-    # TODO replace with lineinfile
-    - name: Configure Yabai
-      ansible.builtin.shell: >
-        echo "$(whoami) ALL=(root) NOPASSWD:
-        sha256:$(shasum -a 256 $(which yabai))
-        $(which yabai) --load-sa" > /private/etc/sudoers.d/yabai
-      become: true
-      args:
-        creates: /private/etc/sudoers.d/yabai
-
-    # - name: Configure Yabai
-    #   lineinfile:
-    #     path: /private/etc/sudoers.d/yabai
-    #     line: "$(whoami) ALL=(root) NOPASSWD: $(which yabai) --load-sa"
-    #   become: true
-
-    - name: Start Yabai
-      ansible.builtin.command: yabai --start-service
-      register: yabai_start_result
-      changed_when: yabai_start_result.rc != 0
-
-    - name: Start Skhd
-      ansible.builtin.command: skhd --start-service
-      register: skhd_start_result
-      changed_when: skhd_start_result.rc != 0
-
-- name: Set Dock autohide
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: autohide
-    type: bool
-    value: true
-  notify: Restart Dock
-
-- name: Set Dock tile size
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: tilesize
-    type: int
-    value: 36
-  notify: Restart Dock
+  when: ansible_distribution == "MacOSX"
 
 - name: Remap Caps Lock to Esc
   tags: [skip_ansible_lint]
@@ -58,6 +14,19 @@
     hidutil property --set
     '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":
     0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}'
+  when: ansible_distribution == "MacOSX"
+
+
+- name: Require fn key for media keys (brightness, volume, etc.)
+  community.general.osx_defaults:
+    domain: com.apple.keyboard
+    key: "com.apple.keyboard.fnState"
+    type: int
+    value: 1
+  when: ansible_distribution == "MacOSX"
+  notify:
+    - Apply macOS UI changes
+
 
 - name: Disable window animations globally
   community.general.osx_defaults:
@@ -65,11 +34,26 @@
     key: NSAutomaticWindowAnimationsEnabled
     type: bool
     value: false
+  when: ansible_distribution == "MacOSX"
+  notify:
+    - Apply macOS UI changes
 
-- name: Set Dock expose animation duration
+- name: Set function keys as default
   community.general.osx_defaults:
-    domain: com.apple.dock
-    key: expose-animation-duration
-    type: float
-    value: 0.1
-  notify: Restart Dock
+    domain: com.apple.keyboard
+    key: "com.apple.keyboard.fnState"
+    type: int
+    value: 1
+  when: ansible_distribution == "MacOSX"
+  notify:
+    - Apply macOS UI changes
+
+- name: Enable tap to click on internal trackpad
+  community.general.osx_defaults:
+    domain: com.apple.AppleMultitouchTrackpad
+    key: "Clicking"
+    type: int
+    value: 1
+  when: ansible_distribution == "MacOSX"
+  notify:
+    - Apply macOS UI changes

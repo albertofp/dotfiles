@@ -3,3 +3,10 @@
   ansible.builtin.command: killall Dock
   listen: "Restart Dock"
   tags: [skip_ansible_lint]
+
+- name: Apply macOS UI changes
+  ansible.builtin.block:
+    - ansible.builtin.command: killall SystemUIServer
+    - ansible.builtin.command: killall -HUP cfprefsd
+  listen: "Apply macOS UI changes"
+  ignore_errors: true
