@@ -1,0 +1,27 @@
+- name: Ensure Dock auto-hide is enabled
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+
+- name: Ensure Dock magnification is disabled
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: magnification
+    type: bool
+    value: false
+
+- name: Set Dock icon size to minimum
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: float
+    value: 16.0
+
+- name: Clear all apps from Dock
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: persistent-apps
+    type: array
+    value: []
