@@ -15,6 +15,8 @@ export OPENSSL_CONF=/dev/null
 
 export PERSONAL_EMAIL="albertopluecker@gmail.com"
 export PERSONAL_SSH_KEY="$HOME/.ssh/id_home_github"
+export WORK_EMAIL="alberto.pluecker@justeattakeaway.com"
+export WORK_SSH_KEY="$HOME/.ssh/work_github"
 
 if [[ -d ${HOME}/bin ]]; then
   export PATH=${HOME}/bin:$PATH
@@ -35,11 +37,12 @@ alias reload="source ~/.zshrc"
 alias n="nvim"
 alias proj="cd ~/github/"
 alias tf="terraform"
+alias tg="terragrunt"
 
 alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
 alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encrypt-vault-id default"
 alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
-alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --ask-become-pass--forks=10 --vault-password-file=~/.ansible_vault_pass.txt"
+alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10 --vault-password-file=~/.ansible_vault_pass.txt"
 
 alias gp="git push"
 alias gs="git status"
@@ -64,8 +67,8 @@ alias prw="gh pr view --web"
 alias Prw="prw"
 alias PRw="prw"
 alias rw="gh repo view --web"
-alias ghpc="gh pr create --fill"
-alias merge="gh pr merge -sd --admin"
+alias ghpc="gh pr create"
+# alias merge="gh pr merge -sd --admin"
 alias ghrw="gh run list --status=completed --limit 1| awk '{print \$6}'"
 
 function copy_file_to_clipboard {
@@ -146,15 +149,6 @@ function take() {
     takedir "$@"
   fi
 }
-
-# /usr/local/share/google-cloud-sdk
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/share/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/path.zsh.inc'; fi
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/completion.zsh.inc'; fi
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
