@@ -9,20 +9,20 @@
   community.general.homebrew:
     name: '{{ download_packages_mac }}'
     state: present
-  when: ansible_distribution == "MacOSX"
+  when: ansible_facts['distribution'] == "MacOSX"
 
 - name: MacOS - Casks
   community.general.homebrew_cask:
     name: '{{ download_packages_homebrew_cask }}'
     state: present
-  when: ansible_distribution == "MacOSX"
+  when: ansible_facts['distribution'] == "MacOSX"
 
 - name: Linux
   ansible.builtin.package:
     name: '{{ download_packages_linux }}'
     state: present
   become: true
-  when: ansible_distribution != "MacOSX"
+  when: ansible_facts['distribution'] != "MacOSX"
 
 - name: Install Cargo
   ansible.builtin.shell: |-

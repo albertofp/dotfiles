@@ -4,11 +4,11 @@
   changed_when: false
   register: zsh_path
 
-- name: Set default shell to zsh
-  become: true
-  ansible.builtin.user:
-    name: "{{ ansible_env.USER }}"
-    shell: "{{ zsh_path.stdout }}"
+# - name: Set default shell to zsh
+#   become: true
+#   ansible.builtin.user:
+#     name: "{{ ansible_env.USER }}"
+#     shell: "{{ zsh_path.stdout }}"
 
 - name: zsh‑syntax‑highlighting
   ansible.builtin.git:

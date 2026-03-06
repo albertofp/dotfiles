@@ -25,7 +25,6 @@ download_packages_base:
   - go
   - wget
   - zsh
-  - kitty
   - kubectl
   - kubectx
   - shellcheck
@@ -36,13 +35,13 @@ download_packages_base:
   - btop
 
 download_packages_homebrew_cask:
-  - docker
+  # - docker
   - silicon
   - spotify
   - font-jetbrains-mono-nerd-font
-  - ghostty
+  # - ghostty
   - zen-browser
-  - localsend
+  # - localsend
 
 download_packages_linux:
   - firefox
@@ -61,12 +60,11 @@ download_packages_linux:
 # ---------
 
 download_packages_mac:
-  - karabiner-elements
-  - raycast
-  - whatsapp
+  # - raycast
+  # - whatsapp
   - awscli
   - ansible-lint
-  - gh
+  # - gh
   - golangci-lint
-  - nerdfetch
-  - colima
+  # - nerdfetch
+  # - colima
