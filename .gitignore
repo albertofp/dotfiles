@@ -5,3 +5,4 @@ scripts/
 .config/gcloud
 .config/karabiner/automatic_backups
 .config/op
+.DS_Store
