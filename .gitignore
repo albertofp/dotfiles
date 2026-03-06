@@ -6,3 +6,4 @@ scripts/
 .config/karabiner/automatic_backups
 .config/op
 .DS_Store
+.config/tfenv/versions/
