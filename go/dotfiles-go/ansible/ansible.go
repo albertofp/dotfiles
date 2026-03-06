@@ -19,7 +19,7 @@ func RunPlaybook(c AnsibleCfg) error {
 	opt := &playbook.AnsiblePlaybookOptions{
 		Connection:    "local",
 		Inventory:     "localhost,",
-		AskBecomePass: true,
+		AskBecomePass: false,
 	}
 
 	if _, err := os.Stat(c.Vault); os.IsNotExist(err) {
