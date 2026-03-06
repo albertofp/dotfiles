@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "copilot": {
+      "options": {
+        "github_url": "https://github.je-labs.com",
+        "api_url": "https://github.je-labs.com/api/v3"
+      }
+    }
+  }
+}
