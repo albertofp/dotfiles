@@ -1,11 +1,27 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "provider": {
-    "copilot": {
-      "options": {
-        "github_url": "https://github.je-labs.com",
-        "api_url": "https://github.je-labs.com/api/v3"
-      }
+  "permission": {
+    "read": "allow",
+    "glob": "allow",
+    "grep": "allow",
+    "list": "allow",
+    "external_directory": {
+      "~/**": "allow"
+    },
+    "bash": {
+      "*": "ask",
+      "grep *": "allow",
+      "ls *": "allow",
+      "ls": "allow",
+      "git status *": "allow",
+      "git status": "allow",
+      "git log *": "allow",
+      "git diff *": "allow",
+      "cat *": "allow",
+      "find *": "allow",
+      "head *": "allow",
+      "wc *": "allow",
+      "acli jira workitem search *": "allow"
     }
   }
 }

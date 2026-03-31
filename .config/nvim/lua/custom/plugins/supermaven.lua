@@ -1,14 +1,14 @@
 return {
-  "supermaven-inc/supermaven-nvim",
-  config = function()
-    require("supermaven-nvim").setup({
-      log_level = "off",
-      keymaps = {
-        accept_suggestion = "<C-g>",
-        clear_suggestion = "<C-x]>",
-        accept_word = "<C-w>",
-      },
-      ignore_filetypes = { md = true },
-    })
-  end,
+  -- "supermaven-inc/supermaven-nvim",
+  -- config = function()
+  --   require("supermaven-nvim").setup({
+  --     log_level = "off",
+  --     keymaps = {
+  --       accept_suggestion = "<C-g>",
+  --       clear_suggestion = "<C-x]>",
+  --       accept_word = "<C-w>",
+  --     },
+  --     ignore_filetypes = { md = true },
+  --   })
+  -- end,
 }

@@ -1,6 +1,7 @@
 return {
   "nickjvandyke/opencode.nvim",
   version = "*", -- Latest stable release
+  lazy = false,  -- Load on startup so keymaps are registered
   dependencies = {
     {
       -- `snacks.nvim` integration is recommended, but optional
@@ -27,7 +28,9 @@ return {
   config = function()
     ---@type opencode.Opts
     vim.g.opencode_opts = {
-      -- Your configuration, if any; goto definition on the type or field for details
+      server = {
+        port = 4096,
+      },
     }
 
     vim.o.autoread = true -- Required for `opts.events.reload`

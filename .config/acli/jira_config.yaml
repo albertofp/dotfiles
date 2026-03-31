@@ -1,0 +1,9 @@
+version: 1
+current_profile: ac2df4fe-2bf9-4687-aab3-8184b856e417:712020:af457a18-e17a-472f-98f2-686766a68d12
+profiles:
+    - site: justeattakeaway.atlassian.net
+      cloud_id: ac2df4fe-2bf9-4687-aab3-8184b856e417
+      account_id: 712020:af457a18-e17a-472f-98f2-686766a68d12
+      display_name: Alberto Pluecker
+      email: alberto.pluecker@justeattakeaway.com
+      auth_type: api_token

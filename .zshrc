@@ -8,6 +8,8 @@ export GOPATH="$HOME/go"
 export GOMODCACHE="$GOPATH/pkg/mod"
 export GOCACHE="$HOME/Library/Caches/go-build"
 export PATH="$PATH:$GOPATH/bin"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export KIND_EXPERIMENTAL_PROVIDER=podman
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
@@ -157,5 +159,15 @@ export NVM_DIR="$HOME/.nvm"
 export HOMEBREW_PREFIX=/opt/homebrew
 export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
 export MACOSX_DEPLOYMENT_TARGET=15.5
+
+function aws-login() {
+  local profile="${1}"
+  if [[ -z "$profile" ]]; then
+    echo "Usage: aws-login <profile-name>"
+    return 1
+  fi
+  aws sso login --profile "${profile}" && \
+  aws eks update-kubeconfig --profile "${profile}" --name "${profile}" --alias "${profile}"
+}
 
 eval "$(starship init zsh)"
