@@ -2,9 +2,9 @@
 	email = albertopluecker@gmail.com
 	name = Alberto Fontenelle Pluecker
 [includeIf "hasconfig:remote.*.url:https://github.je-labs.com/**"]
-	path = /Users/albertopluecker/.gitconfig-jet
-[includeIf "hasconfig:remote.*.url:git@github.je-labs.com:**"]
-	path = /Users/albertopluecker/.gitconfig-jet
+	path = ~/.gitconfig-jet
+[includeIf "hasconfig:remote.*.url:git@github.je-labs.com:*/**"]
+	path = ~/.gitconfig-jet
 [push]
 	autoSetupRemote = true
 [alias]
