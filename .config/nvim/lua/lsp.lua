@@ -1,5 +1,3 @@
-local ts_plugin_path = '/Users/albertopluecker/.nvm/versions/node/v20.8.1/lib/node_modules/@vue/typescript-plugin'
-
 -- ---------------------------------------------------------------------------
 -- Format on save
 -- ---------------------------------------------------------------------------
@@ -55,77 +53,86 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- ---------------------------------------------------------------------------
 -- LSP servers
 -- ---------------------------------------------------------------------------
-local servers = {
-  ansiblels = {
-    filetypes = { 'yaml.ansible' },
-  },
+-- nvim-lspconfig (in runtimepath) provides default cmd/root_patterns for each
+-- server via lsp/*.lua files. vim.lsp.config() here only overrides/extends
+-- those defaults with our custom settings.
+-- mason.nvim installs the binaries; vim.lsp.enable() activates each server.
+-- ---------------------------------------------------------------------------
 
-  pylsp = {
+require('mason').setup()
+
+local capabilities = require('blink.cmp').get_lsp_capabilities()
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
+
+-- Shared capabilities applied to all servers
+vim.lsp.config('*', { capabilities = capabilities })
+
+-- Per-server overrides (only where we differ from lspconfig defaults)
+vim.lsp.config('ansiblels', {
+  filetypes = { 'yaml.ansible' },
+})
+
+vim.lsp.config('pylsp', {
+  settings = {
     pylsp = {
       plugins = {
-        black = { enabled = true },
-        pyflakes = { enabled = false },
-        autopep8 = { enabled = false },
-        yapf = { enabled = false },
+        black      = { enabled = true },
+        pyflakes   = { enabled = false },
+        autopep8   = { enabled = false },
+        yapf       = { enabled = false },
         pylsp_mypy = { enabled = true },
         pyls_isort = { enabled = true },
       },
     },
   },
+})
 
-  ts_ls = {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-    init_options = {
-      plugins = {
-        {
-          name = '@vue/typescript-plugin',
-          location = ts_plugin_path,
-          languages = { 'vue' },
-        },
+vim.lsp.config('ts_ls', {
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+  single_file_support = false,
+})
+
+vim.lsp.config('gh_actions_ls', {
+  filetypes = { 'yaml.github', 'githubactions' },
+})
+
+vim.lsp.config('terraformls', {
+  filetypes = { 'tf', 'hcl', 'terraform' },
+})
+
+vim.lsp.config('yamlls', {
+  filetypes = { 'yaml', 'yaml.ansible' },
+  settings = {
+    yaml = {
+      format = {
+        enable = false,
+        singleQuote = true,
+        bracketSpacing = true,
+        printWidth = 80,
+        proseWrap = 'preserve',
       },
-    },
-    single_file_support = false,
-  },
-
-  dockerls = {},
-  gh_actions_ls = { filetypes = { 'yaml.github', 'githubactions' } },
-  astro = {},
-  bashls = {},
-  html = {},
-  docker_compose_language_service = {},
-  terraformls = { filetypes = { 'tf', 'hcl', 'terraform' } },
-  gopls = {},
-  postgres_lsp = {},
-
-  yamlls = {
-    filetypes = { 'yaml', 'yaml.ansible' },
-    settings = {
-      yaml = {
-        format = {
-          enable = false,
-          singleQuote = true,
-          bracketSpacing = true,
-          printWidth = 80,
-          proseWrap = 'preserve',
-        },
-        validate = true,
-        completion = true,
-        schemaStore = {
-          enable = true,
-          url = 'https://www.schemastore.org/api/json/catalog.json',
-        },
-        schemas = {
-          ['http://json.schemastore.org/composer'] = '/docker-compose*.yaml',
-          ['http://json.schemastore.org/github-workflow'] = '.github/workflows/*',
-        },
-        editor = { tabSize = 2, formatOnType = true },
+      validate = true,
+      completion = true,
+      schemaStore = {
+        enable = true,
+        url = 'https://www.schemastore.org/api/json/catalog.json',
       },
+      schemas = {
+        ['http://json.schemastore.org/composer']        = '/docker-compose*.yaml',
+        ['http://json.schemastore.org/github-workflow'] = '.github/workflows/*',
+      },
+      editor = { tabSize = 2, formatOnType = true },
     },
   },
+})
 
-  lua_ls = {
+vim.lsp.config('lua_ls', {
+  settings = {
     Lua = {
-      workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file('', true) },
+      workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       diagnostics = { globals = { 'vim' } },
       format = {
@@ -139,25 +146,21 @@ local servers = {
       },
     },
   },
+})
+
+vim.lsp.enable {
+  'ansiblels',
+  'pylsp',
+  'ts_ls',
+  'dockerls',
+  'gh_actions_ls',
+  'astro',
+  'bashls',
+  'html',
+  'docker_compose_language_service',
+  'terraformls',
+  'gopls',
+  'postgres_lsp',
+  'yamlls',
+  'lua_ls',
 }
-
--- mason must be set up before mason-lspconfig
-require('mason').setup()
-
-local capabilities = require('blink.cmp').get_lsp_capabilities()
-capabilities.textDocument.foldingRange = {
-  dynamicRegistration = false,
-  lineFoldingOnly = true,
-}
-
--- ensure_installed was removed: mason-lspconfig v2 requires Mason package names
--- (e.g. "lua-language-server"), not lspconfig names ("lua_ls"). Use :Mason to
--- install servers manually. automatic_enable = true starts any installed server
--- that has a matching vim.lsp.config() entry below.
-require('mason-lspconfig').setup {
-  automatic_enable = true,
-}
-
-for server_name, server_config in pairs(servers) do
-  vim.lsp.config(server_name, vim.tbl_deep_extend('force', server_config, { capabilities = capabilities }))
-end

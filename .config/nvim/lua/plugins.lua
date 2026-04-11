@@ -1,31 +1,9 @@
--- Build hooks: run shell commands after install/update
-vim.api.nvim_create_autocmd('PackChanged', {
-  callback = function(ev)
-    local name = ev.data.spec.name
-    local kind = ev.data.kind
-    if (kind == 'install' or kind == 'update') then
-      -- blink.cmp needs its Rust fuzzy-matching binary built after install/update
-      if name == 'blink.cmp' then
-        vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
-      end
-      -- telescope-fzf-native needs `make` after install/update
-      if name == 'telescope-fzf-native.nvim' then
-        vim.system({ 'make' }, { cwd = ev.data.path })
-      end
-      -- nvim-treesitter: update parsers after plugin update
-      if name == 'nvim-treesitter' then
-        if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
-        vim.cmd('TSUpdate')
-      end
-    end
-  end,
-})
-
 vim.pack.add {
   -- LSP & completion
+  -- nvim-lspconfig: passive data provider — its lsp/*.lua files supply default
+  -- cmd/root_patterns consumed by vim.lsp.config without any require() calls
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/mason-org/mason.nvim',
-  'https://github.com/mason-org/mason-lspconfig.nvim',
   'https://github.com/saghen/blink.cmp',
   'https://github.com/rafamadriz/friendly-snippets',
   'https://github.com/j-hui/fidget.nvim',
@@ -64,7 +42,6 @@ vim.pack.add {
   'https://github.com/folke/trouble.nvim',
 
   -- Editing
-  'https://github.com/numToStr/Comment.nvim',
   'https://github.com/kylechui/nvim-surround',
   'https://github.com/m4xshen/autoclose.nvim',
   'https://github.com/windwp/nvim-ts-autotag',
@@ -72,14 +49,11 @@ vim.pack.add {
   -- LSP extras
   'https://github.com/mfussenegger/nvim-lint',
   'https://github.com/antosha417/nvim-lsp-file-operations',
-  'https://github.com/pmizio/typescript-tools.nvim',
 
   -- Language-specific
   'https://github.com/ray-x/go.nvim',
   'https://github.com/ray-x/guihua.lua',
-  'https://github.com/mattn/vim-goaddtags',
   'https://github.com/hashivim/vim-terraform',
-  'https://github.com/wuelnerdotexe/vim-astro',
   'https://github.com/mfussenegger/nvim-ansible',
   'https://github.com/lervag/vimtex',
 
@@ -95,5 +69,38 @@ vim.pack.add {
   'https://github.com/chrishrb/gx.nvim',
   'https://github.com/michaelrommel/nvim-silicon',
   'https://github.com/github/copilot.vim',
-  'https://github.com/nickjvandyke/opencode.nvim',
 }
+
+-- Simple setup calls with no meaningful options — inlined here instead of separate files
+require('nvim-surround').setup {}
+require('ibl').setup()
+require('lsp-file-operations').setup()
+require('nvim-ts-autotag').setup()
+require('fidget').setup {}
+require('which-key').setup {}
+require('gitblame').setup { enabled = false }
+require('rose-pine').setup {}
+vim.cmd 'colorscheme rose-pine'
+
+-- Build hooks: run shell commands after install/update
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    if (kind == 'install' or kind == 'update') then
+      -- blink.cmp needs its Rust fuzzy-matching binary built after install/update
+      if name == 'blink.cmp' then
+        vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
+      end
+      -- telescope-fzf-native needs `make` after install/update
+      if name == 'telescope-fzf-native.nvim' then
+        vim.system({ 'make' }, { cwd = ev.data.path })
+      end
+      -- nvim-treesitter: update parsers after plugin update
+      if name == 'nvim-treesitter' then
+        if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+        vim.cmd('TSUpdate')
+      end
+    end
+  end,
+})

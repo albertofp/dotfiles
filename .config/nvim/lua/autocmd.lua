@@ -1,26 +1,7 @@
--- Terraform filetype detection and settings
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = { '*.tf', '*.tfvars' },
-  callback = function() vim.bo.filetype = 'terraform' end,
-})
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = { '*.hcl', '.terraformrc', 'terraform.rc' },
-  callback = function() vim.bo.filetype = 'hcl' end,
-})
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = { '*.tfstate', '*.tfstate.backup' },
-  callback = function() vim.bo.filetype = 'json' end,
-})
-
 -- vim-terraform settings (fmt on save + align)
+-- Filetype detection for .tf/.hcl/.tfstate is handled by vim-terraform's ftdetect/hcl.vim
 vim.g.terraform_fmt_on_save = 1
 vim.g.terraform_align = 1
-
--- Snakefile → Python
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = 'Snakefile',
-  callback = function() vim.bo.filetype = 'python' end,
-})
 
 -- Reopen file at last cursor position
 vim.api.nvim_create_autocmd('BufReadPost', {

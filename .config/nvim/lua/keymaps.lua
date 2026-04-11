@@ -144,6 +144,5 @@ vim.keymap.set('n', '<leader>dd', ':%d<CR>', { desc = 'Delete file contents', si
 vim.keymap.set('n', '<leader>std', 'vi"y:SearchTerraformRegistry <C-r>"<CR>',
   { silent = true, desc = "Search TF Registry (text in \")" })
 
--- nmap <Leader>f <Plug>(prettier-format)
-vim.keymap.set('n', '<leader>f', function() require('prettier').format() end,
-  { silent = true, desc = "Format with Prettier" })
+vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end,
+  { silent = true, desc = 'Format buffer' })

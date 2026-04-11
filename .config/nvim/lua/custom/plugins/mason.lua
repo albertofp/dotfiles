@@ -1,1 +1,0 @@
--- mason.setup() is called in lsp.lua to guarantee it runs before mason-lspconfig
