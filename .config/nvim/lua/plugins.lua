@@ -1,48 +1,99 @@
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.uv.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
-end
-vim.opt.rtp:prepend(lazypath)
+-- Build hooks: run shell commands after install/update
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    if (kind == 'install' or kind == 'update') then
+      -- blink.cmp needs its Rust fuzzy-matching binary built after install/update
+      if name == 'blink.cmp' then
+        vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
+      end
+      -- telescope-fzf-native needs `make` after install/update
+      if name == 'telescope-fzf-native.nvim' then
+        vim.system({ 'make' }, { cwd = ev.data.path })
+      end
+      -- nvim-treesitter: update parsers after plugin update
+      if name == 'nvim-treesitter' then
+        if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+        vim.cmd('TSUpdate')
+      end
+    end
+  end,
+})
 
-require('lazy').setup({
-  {
-    "folke/lazydev.nvim",
-    -- ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
-  'mattn/vim-goaddtags',
-  { 'hashivim/vim-terraform',  lazy = true },
-  { 'wuelnerdotexe/vim-astro', lazy = true },
-  { 'folke/which-key.nvim',    opts = {} },
-  { 'numToStr/Comment.nvim',   opts = {} },
-  require 'kickstart.plugins.autoformat',
-  {
-    'mfussenegger/nvim-lint',
-    config = function()
-      require('lint').linters_by_ft = {
-        ['yaml.github'] = { 'actionlint' },
-      }
-      vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-        callback = function()
-          require('lint').try_lint()
-        end,
-      })
-    end,
-  },
-  { import = 'custom.plugins' },
-}, {})
+vim.pack.add {
+  -- LSP & completion
+  'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/mason-org/mason.nvim',
+  'https://github.com/mason-org/mason-lspconfig.nvim',
+  'https://github.com/saghen/blink.cmp',
+  'https://github.com/rafamadriz/friendly-snippets',
+  'https://github.com/j-hui/fidget.nvim',
+  'https://github.com/folke/lazydev.nvim',
+
+  -- Treesitter
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
+
+  -- Telescope
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
+
+  -- File tree & navigation
+  'https://github.com/nvim-tree/nvim-tree.lua',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/stevearc/oil.nvim',
+
+  -- Git
+  'https://github.com/tpope/vim-fugitive',
+  'https://github.com/tpope/vim-rhubarb',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/f-person/git-blame.nvim',
+
+  -- Terminal
+  'https://github.com/akinsho/toggleterm.nvim',
+
+  -- UI
+  'https://github.com/rose-pine/neovim',
+  'https://github.com/nvim-lualine/lualine.nvim',
+  'https://github.com/lukas-reineke/indent-blankline.nvim',
+  'https://github.com/xiyaowong/transparent.nvim',
+  'https://github.com/folke/which-key.nvim',
+
+  -- Diagnostics
+  'https://github.com/folke/trouble.nvim',
+
+  -- Editing
+  'https://github.com/numToStr/Comment.nvim',
+  'https://github.com/kylechui/nvim-surround',
+  'https://github.com/m4xshen/autoclose.nvim',
+  'https://github.com/windwp/nvim-ts-autotag',
+
+  -- LSP extras
+  'https://github.com/mfussenegger/nvim-lint',
+  'https://github.com/antosha417/nvim-lsp-file-operations',
+  'https://github.com/pmizio/typescript-tools.nvim',
+
+  -- Language-specific
+  'https://github.com/ray-x/go.nvim',
+  'https://github.com/ray-x/guihua.lua',
+  'https://github.com/mattn/vim-goaddtags',
+  'https://github.com/hashivim/vim-terraform',
+  'https://github.com/wuelnerdotexe/vim-astro',
+  'https://github.com/mfussenegger/nvim-ansible',
+  'https://github.com/lervag/vimtex',
+
+  -- Folding
+  'https://github.com/kevinhwang91/nvim-ufo',
+  'https://github.com/kevinhwang91/promise-async',
+
+  -- Markdown / docs
+  'https://github.com/OXY2DEV/markview.nvim',
+  'https://github.com/brianhuster/live-preview.nvim',
+
+  -- Misc
+  'https://github.com/chrishrb/gx.nvim',
+  'https://github.com/michaelrommel/nvim-silicon',
+  'https://github.com/github/copilot.vim',
+  'https://github.com/nickjvandyke/opencode.nvim',
+}

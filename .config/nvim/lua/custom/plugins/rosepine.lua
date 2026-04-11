@@ -1,7 +1,2 @@
-return {
-  'rose-pine/neovim',
-  name = 'rose-pine',
-  config = function()
-    vim.cmd 'colorscheme rose-pine'
-  end,
-}
+require('rose-pine').setup {}
+vim.cmd 'colorscheme rose-pine'
