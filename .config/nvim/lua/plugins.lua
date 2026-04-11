@@ -144,6 +144,13 @@ require('nvim-treesitter').install {
 
 -- fzf-lua
 require('fzf-lua').setup {
+  winopts = {
+    layout = 'vertical',
+    preview = {
+      layout = 'horizontal',
+      horizontal = 'right:60%',
+    },
+  },
   files = {
     cmd = 'rg --files --hidden -g "!.git" -g "!**/vendor/**"',
   },
@@ -212,7 +219,7 @@ require('toggleterm').setup {
   persist_mode = true,
 }
 local horizontal_term = Terminal:new { direction = 'horizontal', hidden = true }
-local vertical_term   = Terminal:new { direction = 'vertical',   hidden = true }
+local vertical_term   = Terminal:new { direction = 'vertical', hidden = true }
 local float_term      = Terminal:new {
   direction = 'float',
   hidden = true,
@@ -227,7 +234,7 @@ vim.keymap.set({ 'n', 't' }, '<C-h>', function() horizontal_term:toggle() end,
   { desc = 'Toggle horizontal terminal', noremap = true, silent = true })
 vim.keymap.set({ 'n', 't' }, '<C-v>', function() vertical_term:toggle() end,
   { desc = 'Toggle vertical terminal', noremap = true, silent = true })
-vim.keymap.set({ 'n', 't' }, '<leader>t', function() float_term:toggle() end,
+vim.keymap.set({ 'n', 't' }, '<C-t>', function() float_term:toggle() end,
   { desc = 'Toggle floating terminal', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>m', function() lazygit:toggle() end,
   { desc = 'Toggle lazygit', noremap = true, silent = true })
