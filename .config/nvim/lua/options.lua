@@ -13,9 +13,9 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.opt_global.tabstop = 2
-vim.opt_global.shiftwidth = 2
-vim.opt_global.expandtab = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- Enable mouse mode
 vim.o.mouse = 'a'

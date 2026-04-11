@@ -1,6 +1,11 @@
 [user]
-	email = albertopluecker@gmail.com
+	; email = albertopluecker@gmail.com
+	email = alberto.pluecker@justeattakeaway.com
 	name = Alberto Fontenelle Pluecker
+[includeIf "hasconfig:remote.*.url:https://github.je-labs.com/**"]
+	path = ~/.gitconfig-jet
+[includeIf "hasconfig:remote.*.url:git@github.je-labs.com:**"]
+	path = ~/.gitconfig-jet
 [push]
 	autoSetupRemote = true
 [alias]
@@ -19,8 +24,8 @@
 [pull]
 	rebase = true
 [core]
-	attributesfile = /Users/albertopluecker/.gitattributes
-	excludesFile = /Users/albertopluecker/.gitignore
+	attributesfile = /Users/alberto.pluecker/.gitattributes
+	excludesFile = /Users/alberto.pluecker/.gitignore
 [rerere]
 	enabled = true
 ; for issues with go mod tidy and private modules

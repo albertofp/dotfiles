@@ -1,5 +1,6 @@
 return {
   "chrishrb/gx.nvim",
+  lazy = false,
   config = function()
     require("gx").setup {
       cmd = { "Browse" },

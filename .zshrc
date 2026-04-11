@@ -172,4 +172,84 @@ function aws-login() {
   aws eks update-kubeconfig --profile "${profile}" --name "${profile}" --alias "${profile}"
 }
 
+# Login to SSO once and refresh kubeconfig for all EKS clusters.
+# Usage: aws-login-all
+function aws-login-all() {
+  # --- Legacy SRE-EKS: profile → cluster name mapping ---
+  local -A LEGACY_CLUSTERS=(
+    [infra-eks-dev-1]="eks-cluster-dev"
+    [sre-eks-dev-1]="eks-cluster-dev"
+    [sre-eks-migration-1]="eks-cluster-dev"
+    [sre-eks-staging-1]="eks-cluster-staging-2"
+    [sre-eks-production-1]="eks-cluster-prod"
+    [sre-eks-gitlab-1]="eks-cluster-prod"
+    [sre-eks-intsvc-1]="eks-cluster-prod"
+    [p-ew1-dreks]="p-ew1-dreks"
+  )
+
+  # --- Sonic Runtime (OneEKS): profile name = cluster name ---
+  local SONIC_PROFILES=(
+    euw1-pdv-sbx-2
+    euw1-pdv-qa-2
+    euw1-pdv-qa-3
+    euw1-pdv-stg-5
+    euw1-pdv-stg-6
+    euw1-pdv-prd-5
+    euw1-pdv-prd-6
+    usw2-pdv-qa-1
+    usw2-pdv-stg-1
+    usw2-pdv-prd-2
+    apse2-pdv-qa-2
+    apse2-pdv-stg-2
+    apse2-pdv-prd-3
+    euw1-plt-stg-2
+    euw1-plt-prd-2
+    usw2-plt-prd-2
+    apse2-plt-prd-1
+    euw1-pmt-stg-1
+    euw1-pmt-prd-1
+    apse2-pmt-stg-1
+    apse2-pmt-prd-1
+  )
+
+  echo "==> Logging in to AWS SSO (orga portal)..."
+  aws sso login --profile orga
+  if [[ $? -ne 0 ]]; then
+    echo "ERROR: SSO login failed. Aborting."
+    return 1
+  fi
+
+  local failed=()
+
+  echo ""
+  echo "==> Updating kubeconfig for legacy SRE-EKS clusters..."
+  for profile cluster_name in ${(kv)LEGACY_CLUSTERS}; do
+    echo "    [legacy] profile=${profile} cluster=${cluster_name}"
+    aws eks update-kubeconfig --profile "${profile}" --name "${cluster_name}" --alias "${cluster_name}" 2>&1
+    if [[ $? -ne 0 ]]; then
+      failed+=("${profile} (cluster: ${cluster_name})")
+    fi
+  done
+
+  echo ""
+  echo "==> Updating kubeconfig for Sonic Runtime (OneEKS) clusters..."
+  for profile in "${SONIC_PROFILES[@]}"; do
+    echo "    [sonic] profile=${profile}"
+    aws eks update-kubeconfig --profile "${profile}" --name "${profile}" --alias "${profile}" 2>&1
+    if [[ $? -ne 0 ]]; then
+      failed+=("${profile}")
+    fi
+  done
+
+  echo ""
+  if [[ ${#failed[@]} -eq 0 ]]; then
+    echo "==> Done. All kubeconfigs updated successfully."
+  else
+    echo "==> Done with errors. The following profiles failed:"
+    for f in "${failed[@]}"; do
+      echo "    - ${f}"
+    done
+  fi
+}
+
 eval "$(starship init zsh)"

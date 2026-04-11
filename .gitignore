@@ -8,3 +8,4 @@ scripts/
 .DS_Store
 .config/tfenv/versions/
 .config/btop
+.config/github-copilot/
