@@ -1,68 +1,66 @@
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ","
+vim.g.maplocalleader = ','
 
--- disable netrw at the very start of your init.lua
+-- Disable netrw (replaced by nvim-tree / oil)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- Make cursor stay centered
-vim.o.scrolloff = 999
+-- Keep cursor vertically centered
+vim.opt.scrolloff = 999
 
-vim.o.hlsearch = false
+-- Search
+vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-vim.wo.number = true
-vim.wo.relativenumber = true
+-- Line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
 
+-- Indentation: 2 spaces
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
--- Enable mouse mode
-vim.o.mouse = 'a'
+-- Mouse
+vim.opt.mouse = 'a'
 
---  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+-- System clipboard
+vim.opt.clipboard = 'unnamedplus'
 
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
--- Line length marker at 80 characters
-vim.o.colorcolumn = '80'
+-- 80-char column ruler
+vim.opt.colorcolumn = '80'
 
--- Save undo history
-vim.o.undofile = true
+-- Persistent undo
+vim.opt.undofile = true
 
--- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+-- Always show sign column
+vim.opt.signcolumn = 'yes'
 
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+-- Faster update time (e.g. for gitsigns)
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+vim.opt.termguicolors = true
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
-
-vim.o.termguicolors = true
-
--- Hides default mode indicator
-vim.cmd 'set noshowmode'
+-- Hide the default mode indicator (lualine shows it instead)
+vim.opt.showmode = false
 
 vim.opt.virtualedit = 'block'
 
--- Folding
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
+-- Folding (nvim-ufo needs foldlevel=99 to start all folds open)
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
 
--- Eliminates the ~ after EOF
+-- Hide ~ after end of buffer
 vim.opt.fillchars = { eob = ' ' }
 
--- Github Action filetype for lsp
-vim.filetype.add({
+-- GitHub Actions filetype for LSP
+vim.filetype.add {
   pattern = {
     ['.*/%.github[%w/]+workflows[%w/]+.*%.ya?ml'] = 'yaml.github',
   },
-})
+}

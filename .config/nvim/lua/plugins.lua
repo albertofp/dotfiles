@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
     'git',
     'clone',
@@ -23,7 +23,6 @@ require('lazy').setup({
       },
     },
   },
-  { 'rose-pine/neovim',        name = 'rose-pine' },
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   'mattn/vim-goaddtags',

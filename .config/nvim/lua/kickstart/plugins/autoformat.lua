@@ -67,7 +67,7 @@ return {
 		})
 	end,
 	dependencies = {
-		{ 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+		{ 'j-hui/fidget.nvim', opts = {} },
 		'saghen/blink.cmp'
 	},
 	opts = { inlay_hints = { enabled = true } },
