@@ -2,7 +2,9 @@ source $HOME/.zshenv
 autoload -U compinit
 compinit -i
 
-if [ "$TMUX" = "" ]; then tmux; fi
+if [[ -t 1 && -z "$TMUX" ]]; then
+  tmux attach || tmux new
+fi
 
 export GOPATH="$HOME/go"
 export GOMODCACHE="$GOPATH/pkg/mod"
@@ -37,7 +39,7 @@ alias ghosttyconfig="nvim ~/dotfiles/.config/ghostty/config"
 alias hyprconfig="nvim ~/dotfiles/.config/hypr/hyprland.conf"
 alias reload="source ~/.zshrc"
 alias n="nvim"
-alias proj="cd ~/github/"
+alias proj="cd $HOME/github/"
 alias tf="terraform"
 alias tg="terragrunt"
 

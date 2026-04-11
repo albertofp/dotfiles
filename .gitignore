@@ -7,3 +7,4 @@ scripts/
 .config/op
 .DS_Store
 .config/tfenv/versions/
+.config/btop
