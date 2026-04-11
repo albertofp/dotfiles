@@ -90,7 +90,13 @@ vim.api.nvim_create_autocmd('PackChanged', {
     if (kind == 'install' or kind == 'update') then
       -- blink.cmp needs its Rust fuzzy-matching binary built after install/update
       if name == 'blink.cmp' then
-        vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
+        vim.system({ 'cargo', 'build', '--release' }, { cwd = ev.data.path }, function(obj)
+          if obj.code ~= 0 then
+            vim.schedule(function()
+              vim.notify('blink.cmp: cargo build failed:\n' .. obj.stderr, vim.log.levels.ERROR)
+            end)
+          end
+        end)
       end
       -- telescope-fzf-native needs `make` after install/update
       if name == 'telescope-fzf-native.nvim' then
