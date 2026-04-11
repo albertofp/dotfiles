@@ -58,22 +58,18 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
 -- [[ LSP keymaps ]]
--- Neovim 0.11+ provides defaults for: grn (rename), gra (code action), grr (references),
--- gri (implementation), grd (definition), K (hover), gD (declaration).
--- Neovim 0.12 adds: grt (type definition), grx (code lens).
--- Below we only define mappings that differ from or extend those defaults.
-
 local nmap = function(keys, func, desc)
   vim.keymap.set('n', keys, func, { desc = 'LSP: ' .. desc })
 end
 
--- Override gr* with Telescope-powered variants for a richer UI
-nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-nmap('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+-- Override gr* with fzf-lua powered variants for a richer UI
+local fzf = require('fzf-lua')
+nmap('gd', fzf.lsp_definitions, '[G]oto [D]efinition')
+nmap('gr', fzf.lsp_references, '[G]oto [R]eferences')
+nmap('gI', fzf.lsp_implementations, '[G]oto [I]mplementation')
+nmap('<leader>D', fzf.lsp_typedefs, 'Type [D]efinition')
+nmap('<leader>ds', fzf.lsp_document_symbols, '[D]ocument [S]ymbols')
+nmap('<leader>ws', fzf.lsp_live_workspace_symbols, '[W]orkspace [S]ymbols')
 
 -- Signature help (not covered by defaults)
 nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
@@ -85,35 +81,26 @@ nmap('<leader>wl', function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, '[W]orkspace [L]ist Folders')
 
-local telescope = require 'telescope.builtin'
+-- Git
+vim.keymap.set('n', '<leader>gt', fzf.git_status, { desc = 'Git status' })
+vim.keymap.set('n', '<leader>gc', fzf.git_commits, { desc = 'Git commits' })
+vim.keymap.set('n', '<leader>gb', fzf.git_branches, { desc = 'Git branches' })
 
--- Telescope git keybindings
-vim.keymap.set('n', '<leader>gt', telescope.git_status)
-vim.keymap.set('n', '<leader>gc', telescope.git_commits)
-vim.keymap.set('n', '<leader>gb', telescope.git_branches)
-
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = true,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>th', telescope.colorscheme, { desc = '[th]emes' })
-vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = '[f]ind [b]uffers' })
-vim.keymap.set('n', '<leader>gf', telescope.git_files, { desc = 'Search [g]it [f]iles' })
-vim.keymap.set('n', '<leader>fa', telescope.find_files, { desc = '[f]ind [a]ll' })
+-- Fuzzy find
+vim.keymap.set('n', '<leader>/', fzf.lgrep_curbuf, { desc = '[/] Fuzzily search in current buffer' })
+vim.keymap.set('n', '<leader>th', fzf.colorschemes, { desc = '[th]emes' })
+vim.keymap.set('n', '<leader>fb', fzf.buffers, { desc = '[f]ind [b]uffers' })
+vim.keymap.set('n', '<leader>gf', fzf.git_files, { desc = 'Search [g]it [f]iles' })
+vim.keymap.set('n', '<leader>fa', fzf.files, { desc = '[f]ind [a]ll' })
 vim.keymap.set('n', '<leader>ff', function()
-  telescope.find_files { no_ignore = true, hidden = true }
+  fzf.files { fd_opts = '--hidden --no-ignore' }
 end, { desc = '[f]ind all [f]iles (include ignored)' })
-vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = '[f]ind [h]elp' })
-vim.keymap.set('n', '<leader>fm', telescope.marks, { desc = '[f]ind [m]arks' })
-vim.keymap.set('n', '<leader>fw', telescope.grep_string, { desc = '[f]ind current [w]ord' })
-vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = '[f]ind by [g]rep' })
-vim.keymap.set('n', '<leader>fd', telescope.diagnostics, { desc = '[f]ind [d]iagnostics' })
-vim.keymap.set('n', '<leader>fo', telescope.oldfiles, { desc = '[f]ind [o]ld files' })
+vim.keymap.set('n', '<leader>fh', fzf.help_tags, { desc = '[f]ind [h]elp' })
+vim.keymap.set('n', '<leader>fm', fzf.marks, { desc = '[f]ind [m]arks' })
+vim.keymap.set('n', '<leader>fw', fzf.grep_cword, { desc = '[f]ind current [w]ord' })
+vim.keymap.set('n', '<leader>fg', fzf.live_grep, { desc = '[f]ind by [g]rep' })
+vim.keymap.set('n', '<leader>fd', fzf.diagnostics_document, { desc = '[f]ind [d]iagnostics' })
+vim.keymap.set('n', '<leader>fo', fzf.oldfiles, { desc = '[f]ind [o]ld files' })
 
 -- toggle dark/light mode
 vim.keymap.set('n', '<leader>td', ":let &bg=(&bg=='light'?'dark':'light')<cr>",

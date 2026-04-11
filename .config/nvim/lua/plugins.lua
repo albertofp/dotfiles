@@ -13,9 +13,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
           end
         end)
       end
-      if name == 'telescope-fzf-native.nvim' then
-        vim.system({ 'make' }, { cwd = ev.data.path })
-      end
       if name == 'nvim-treesitter' then
         if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
         vim.cmd('TSUpdate')
@@ -38,10 +35,8 @@ vim.pack.add {
   -- Treesitter
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'main' },
 
-  -- Telescope
-  'https://github.com/nvim-telescope/telescope.nvim',
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
+  -- Fuzzy finder
+  'https://github.com/ibhagwan/fzf-lua',
 
   -- File tree & navigation
   'https://github.com/nvim-tree/nvim-tree.lua',
@@ -73,7 +68,6 @@ vim.pack.add {
 
   -- LSP extras
   'https://github.com/mfussenegger/nvim-lint',
-  'https://github.com/antosha417/nvim-lsp-file-operations',
 
   -- Language-specific
   'https://github.com/ray-x/go.nvim',
@@ -148,28 +142,16 @@ require('nvim-treesitter').install {
   'diff', 'html', 'c', 'css', 'scss',
 }
 
--- Telescope
-require('telescope').setup {
-  defaults = {
-    mappings = { i = { ['<C-u>'] = false, ['<C-d>'] = false } },
-    file_ignore_patterns = { 'node_modules', '.git$', 'vendor', 'appdev' },
+-- fzf-lua
+require('fzf-lua').setup {
+  files = {
+    cmd = 'rg --files --hidden -g "!.git" -g "!**/vendor/**"',
   },
-  pickers = {
-    find_files = {
-      find_command = { 'rg', '--files', '--hidden', '-g', '!.git', '-g', '!**/vendor/**' },
-      layout_config = { height = 0.70 },
-    },
+  grep = {
+    rg_opts = '--hidden --glob "!.git" --column --line-number --no-heading --color=always',
   },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = 'smart_case',
-    },
-  },
+  file_ignore_patterns = { 'node_modules', '^.git/', 'vendor/', 'appdev/' },
 }
-pcall(require('telescope').load_extension, 'fzf')
 
 -- File tree
 require('nvim-tree').setup {
@@ -230,12 +212,23 @@ require('toggleterm').setup {
   persist_mode = true,
 }
 local horizontal_term = Terminal:new { direction = 'horizontal', hidden = true }
-local vertical_term   = Terminal:new { direction = 'vertical', hidden = true }
+local vertical_term   = Terminal:new { direction = 'vertical',   hidden = true }
+local float_term      = Terminal:new {
+  direction = 'float',
+  hidden = true,
+  float_opts = {
+    border = 'curved',
+    width = function() return math.floor(vim.o.columns * 0.85) end,
+    height = function() return math.floor(vim.o.lines * 0.85) end,
+  },
+}
 local lazygit         = Terminal:new { cmd = 'lazygit', hidden = true, direction = 'float' }
 vim.keymap.set({ 'n', 't' }, '<C-h>', function() horizontal_term:toggle() end,
   { desc = 'Toggle horizontal terminal', noremap = true, silent = true })
 vim.keymap.set({ 'n', 't' }, '<C-v>', function() vertical_term:toggle() end,
   { desc = 'Toggle vertical terminal', noremap = true, silent = true })
+vim.keymap.set({ 'n', 't' }, '<leader>t', function() float_term:toggle() end,
+  { desc = 'Toggle floating terminal', noremap = true, silent = true })
 vim.keymap.set('n', '<leader>m', function() lazygit:toggle() end,
   { desc = 'Toggle lazygit', noremap = true, silent = true })
 
@@ -314,7 +307,6 @@ require('gx').setup {}
 vim.keymap.set({ 'n', 'x' }, 'gx', '<cmd>Browse<cr>')
 
 -- LSP extras
-require('lsp-file-operations').setup()
 
 -- Language-specific
 require('go').setup {
