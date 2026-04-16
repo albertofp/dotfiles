@@ -283,6 +283,14 @@ setup_from_thumb() {
 
 # ── Clone dotfiles ────────────────────────────────────────────────────────
 clone_dotfiles() {
+  # If running as root, clone into the target user's home instead of /root
+  if [[ "$EUID" -eq 0 && -n "$SUDO_USER" ]]; then
+    DOTFILES_DIR="/home/$SUDO_USER/dotfiles"
+  elif [[ "$EUID" -eq 0 ]]; then
+    # Running as root directly (not via sudo) — use a sensible default
+    DOTFILES_DIR="/home/alberto/dotfiles"
+  fi
+
   if [[ -d "$DOTFILES_DIR/.git" ]]; then
     info "Dotfiles already cloned, pulling latest (branch: $DOTFILES_BRANCH)..."
     git -C "$DOTFILES_DIR" fetch
@@ -291,7 +299,14 @@ clone_dotfiles() {
   else
     info "Cloning dotfiles (branch: $DOTFILES_BRANCH)..."
     ssh-keyscan github.com >> "$SSH_DIR/known_hosts" 2>/dev/null
+    mkdir -p "$(dirname "$DOTFILES_DIR")"
     git clone --branch "$DOTFILES_BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"
+    # Fix ownership if root cloned into another user's home
+    if [[ "$EUID" -eq 0 && "$DOTFILES_DIR" != /root/* ]]; then
+      local owner
+      owner=$(basename "$(dirname "$DOTFILES_DIR")")
+      chown -R "$owner:$owner" "$DOTFILES_DIR" 2>/dev/null || true
+    fi
   fi
 }
 
