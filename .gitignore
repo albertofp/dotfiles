@@ -4,6 +4,7 @@ ssh/hetzner
 ssh/work_*
 !ssh/*.pub
 !ssh/.gitkeep
+**/flake.lock
 
 **/__pycache__/**
 **/GEMINI.md
