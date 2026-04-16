@@ -40,7 +40,8 @@
     "nvidia-drm.modeset=1"
     "nvidia-drm.fbdev=1"
   ];
-  boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.kernelModules        = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
   # ── Hyprland (compositor) ─────────────────────────────────────────────────
   programs.hyprland = {
@@ -59,6 +60,7 @@
     enable         = true;
     wayland.enable = true;
   };
+  services.displayManager.defaultSession = "hyprland";
   services.xserver.enable = true;
 
   # ── Audio (Pipewire) ──────────────────────────────────────────────────────
