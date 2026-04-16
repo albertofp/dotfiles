@@ -32,12 +32,10 @@ find_thumb_drive() {
   local candidates=()
 
   if [[ "$OSTYPE" == darwin* ]]; then
-    # macOS: removable volumes under /Volumes
     while IFS= read -r vol; do
       [[ -f "$vol/$SSH_KEY_NAME" ]] && candidates+=("$vol")
     done < <(find /Volumes -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
   else
-    # Linux: try common mount points
     for mp in /media /mnt /run/media/"$USER"; do
       [[ -d "$mp" ]] || continue
       while IFS= read -r vol; do
@@ -47,18 +45,18 @@ find_thumb_drive() {
   fi
 
   case "${#candidates[@]}" in
-    0) die "Thumb drive not found. Plug it in and retry." ;;
+    0) return 1 ;;
     1) echo "${candidates[0]}" ;;
-    *) echo "Multiple thumb drives found. Enter the number to use:"; \
+    *) echo "Multiple thumb drives found. Enter the number to use:" >&2
        select vol in "${candidates[@]}"; do echo "$vol"; break; done ;;
   esac
 }
 
 # ── Copy SSH key from thumb drive ─────────────────────────────────────────
-setup_ssh() {
+copy_ssh_from_thumb() {
   local thumb="$1"
 
-  info "Setting up SSH key from thumb drive..."
+  info "Copying SSH key from thumb drive..."
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
 
@@ -66,34 +64,60 @@ setup_ssh() {
   cp "$thumb/$SSH_KEY_NAME.pub" "$SSH_DIR/$SSH_KEY_NAME.pub"
   chmod 600 "$SSH_DIR/$SSH_KEY_NAME"
   chmod 644 "$SSH_DIR/$SSH_KEY_NAME.pub"
+}
 
-  # Start agent and add key for the rest of this session
+# ── Ensure SSH key is present (from disk or thumb drive) ──────────────────
+setup_ssh() {
+  mkdir -p "$SSH_DIR"
+  chmod 700 "$SSH_DIR"
+
+  if [[ -f "$SSH_DIR/$SSH_KEY_NAME" ]]; then
+    info "SSH key already present at $SSH_DIR/$SSH_KEY_NAME"
+  else
+    info "SSH key not found — looking for thumb drive..."
+    local thumb
+    if thumb=$(find_thumb_drive); then
+      info "Found thumb drive: $thumb"
+      copy_ssh_from_thumb "$thumb"
+    else
+      die "SSH key not found and no thumb drive detected. Plug in the thumb drive and retry."
+    fi
+  fi
+
+  # Start agent and load key for this session
   eval "$(ssh-agent -s)" > /dev/null
   ssh-add "$SSH_DIR/$SSH_KEY_NAME"
 }
 
-# ── Copy secrets from thumb drive ─────────────────────────────────────────
+# ── Copy secrets from thumb drive (only if not already present) ───────────
 setup_secrets() {
-  local thumb="$1"
+  if [[ -f "$HOME/.zshenv" ]]; then
+    info ".zshenv already present — skipping secrets copy."
+    return
+  fi
 
-  if [[ -f "$thumb/.zshenv" ]]; then
-    info "Copying .zshenv secrets from thumb drive..."
-    cp "$thumb/.zshenv" "$HOME/.zshenv"
-    chmod 600 "$HOME/.zshenv"
+  info "Looking for .zshenv on thumb drive..."
+  local thumb
+  if thumb=$(find_thumb_drive); then
+    if [[ -f "$thumb/.zshenv" ]]; then
+      info "Copying .zshenv from thumb drive..."
+      cp "$thumb/.zshenv" "$HOME/.zshenv"
+      chmod 600 "$HOME/.zshenv"
+    else
+      echo "WARNING: No .zshenv on thumb drive — create $HOME/.zshenv manually."
+    fi
   else
-    echo "WARNING: No .zshenv found on thumb drive — secrets not copied."
-    echo "         Create $HOME/.zshenv manually with your env vars."
+    echo "WARNING: No thumb drive found — create $HOME/.zshenv manually."
   fi
 }
 
 # ── Clone dotfiles ─────────────────────────────────────────────────────────
 clone_dotfiles() {
   if [[ -d "$DOTFILES_DIR/.git" ]]; then
-    info "Dotfiles already cloned at $DOTFILES_DIR, pulling latest..."
+    info "Dotfiles already cloned, pulling latest..."
     git -C "$DOTFILES_DIR" pull
   else
     info "Cloning dotfiles..."
-    # Accept GitHub's host key automatically on first connect
     ssh-keyscan github.com >> "$SSH_DIR/known_hosts" 2>/dev/null
     git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
   fi
@@ -103,11 +127,8 @@ clone_dotfiles() {
 # Main
 # ═══════════════════════════════════════════════════════════════════════════
 
-THUMB=$(find_thumb_drive)
-info "Using thumb drive: $THUMB"
-
-setup_ssh "$THUMB"
-setup_secrets "$THUMB"
+setup_ssh
+setup_secrets
 
 case "$OSTYPE" in
   # ── NixOS ───────────────────────────────────────────────────────────────
