@@ -6,10 +6,12 @@ DOTFILES_DIR=$HOME/dotfiles
 
 case "$OSTYPE" in
   linux-gnu*)
-    # NixOS: bootstrap via home-manager flake
+    # Install Nix if not present (handles both NixOS and other Linux)
     if ! command -v nix &>/dev/null; then
-      echo "Nix not found. Install NixOS first, then re-run this script."
-      exit 1
+      echo "Installing Nix..."
+      curl -sSL https://nixos.org/nix/install | sh -s -- --daemon
+      # shellcheck disable=SC1091
+      . /etc/profile.d/nix.sh
     fi
 
     if ! command -v git &>/dev/null; then
@@ -17,7 +19,7 @@ case "$OSTYPE" in
     fi
 
     if [ ! -d "$DOTFILES_DIR" ]; then
-      git clone https://github.com/albertopluecker/dotfiles "$DOTFILES_DIR"
+      git clone https://github.com/albertofp/dotfiles "$DOTFILES_DIR"
     fi
 
     echo "Running home-manager switch..."
@@ -35,7 +37,7 @@ case "$OSTYPE" in
     fi
 
     if [ ! -d "$DOTFILES_DIR" ]; then
-      git clone https://github.com/albertopluecker/dotfiles "$DOTFILES_DIR"
+      git clone https://github.com/albertofp/dotfiles "$DOTFILES_DIR"
     fi
 
     if [[ -f $HOME/.ansible_vault_pass.txt ]]; then

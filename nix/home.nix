@@ -9,9 +9,7 @@
   home.packages = with pkgs; [
     # Shell / terminal
     zsh
-    starship
     tmux
-    fzf
     zsh-syntax-highlighting
     zsh-autosuggestions
 
@@ -25,7 +23,6 @@
     eza
     bat
     tree
-    stow
     wget
     ripgrep
     jq
@@ -52,7 +49,6 @@
     spotify
     slack
     localsend
-    zen-browser
     wl-clipboard
 
     # AWS / cloud
@@ -65,20 +61,30 @@
     bluez
     bluez-utils
 
+    # Hyprland ecosystem
+    hyprland
+    waybar
+    wofi
+    networkmanagerapplet  # nm-applet
+    brightnessctl
+    playerctl
+    wireplumber           # wpctl (audio)
+
     # Fonts
     nerd-fonts.jetbrains-mono
   ];
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
-  # Mirror what `stow .` does from ~/dotfiles — symlink each config into $HOME.
+  # Symlink configs into $HOME — mirrors what `stow .` did under Ansible.
   home.file = {
-    ".zshrc".source    = ../. + "/.zshrc";
-    ".tmux.conf".source = ../. + "/.tmux.conf";
-    ".gitconfig".source = ../. + "/.gitconfig";
-    ".gitconfig-jet".source = ../. + "/.gitconfig-jet";
-    ".config/nvim".source   = ../. + "/.config/nvim";
-    ".config/ghostty".source = ../. + "/.config/ghostty";
-    ".config/hypr".source    = ../. + "/.config/hypr";
+    ".zshrc".source             = ../. + "/.zshrc";
+    ".tmux.conf".source         = ../. + "/.tmux.conf";
+    ".gitconfig".source         = ../. + "/.gitconfig";
+    ".gitconfig-jet".source     = ../. + "/.gitconfig-jet";
+    ".config/nvim".source       = ../. + "/.config/nvim";
+    ".config/ghostty".source    = ../. + "/.config/ghostty";
+    ".config/hypr".source       = ../. + "/.config/hypr";
+    ".config/waybar".source     = ../. + "/.config/waybar";
     ".config/starship.toml".source = ../. + "/.config/starship.toml";
   };
 
