@@ -8,7 +8,11 @@ fi
 
 export GOPATH="$HOME/go"
 export GOMODCACHE="$GOPATH/pkg/mod"
-export GOCACHE="$HOME/Library/Caches/go-build"
+if [[ $(uname -s) == "Darwin" ]]; then
+  export GOCACHE="$HOME/Library/Caches/go-build"
+else
+  export GOCACHE="$HOME/.cache/go-build"
+fi
 export PATH="$PATH:$GOPATH/bin"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export KIND_EXPERIMENTAL_PROVIDER=podman
@@ -105,10 +109,9 @@ if [[ $(uname -s) == "Darwin" ]]; then
   source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 else
-  alias task="go-task"
-  export GOPATH=$HOME/go
-  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  # NixOS: plugins installed via home-manager, available in nix profile
+  source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
@@ -158,9 +161,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export HOMEBREW_PREFIX=/opt/homebrew
-export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
-export MACOSX_DEPLOYMENT_TARGET=15.5
+if [[ $(uname -s) == "Darwin" ]]; then
+  export HOMEBREW_PREFIX=/opt/homebrew
+  export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
+  export MACOSX_DEPLOYMENT_TARGET=15.5
+fi
 
 function aws-login() {
   local profile="${1}"
@@ -255,4 +260,6 @@ function aws-login-all() {
 eval "$(starship init zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
+if [[ $(uname -s) == "Darwin" ]]; then
+  complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
+fi
