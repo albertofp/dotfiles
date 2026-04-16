@@ -1,55 +1,34 @@
 warning: Git tree '/home/alberto/dotfiles' is dirty
 building the system configuration...
 warning: Git tree '/home/alberto/dotfiles' is dirty
+evaluation warning: The option `hardware.pulseaudio' defined in `/nix/store/awf906ch30qak17zinj2y38jm6dmfyym-source/nix/system.nix' has been renamed to `services.pulseaudio'.
 error:
-       … while calling the 'head' builtin
-         at «github:nixos/nixpkgs/4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9?narHash=sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM%3D»/lib/attrsets.nix:1712:13:
-         1711|           if length values == 1 || pred here (elemAt values 1) (head values) then
-         1712|             head values
-             |             ^
-         1713|           else
+       … while calling the 'derivationStrict' builtin
+         at «nix-internal»/derivation-internal.nix:37:12:
+           36|
+           37|   strict = derivationStrict drvAttrs;
+             |            ^
+           38|
 
-       … while evaluating the attribute 'value'
-         at «github:nixos/nixpkgs/4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9?narHash=sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM%3D»/lib/modules.nix:1159:7:
-         1158|     // {
-         1159|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+       … while evaluating derivation 'nixos-system-nixos-26.05.20260414.4bd9165'
+         whose name attribute is located at «github:nixos/nixpkgs/4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9?narHash=sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM%3D»/pkgs/stdenv/generic/make-derivation.nix:541:11
+
+       … while evaluating attribute 'buildCommand' of derivation 'nixos-system-nixos-26.05.20260414.4bd9165'
+         at «github:nixos/nixpkgs/4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9?narHash=sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM%3D»/nixos/modules/system/activation/top-level.nix:64:7:
+           63|       passAsFile = [ "extraDependencies" ];
+           64|       buildCommand = systemBuilder;
              |       ^
-         1160|       inherit (res.defsFinal') highestPrio;
+           65|
 
-       … while evaluating the option `system.build.toplevel':
+       … while evaluating the option `environment.etc."ssh/authorized_keys.d/alberto".source':
 
-       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/system/activation/top-level.nix':
-
-       … while evaluating the option `warnings':
-
-       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/system/boot/systemd/tmpfiles.nix':
-
-       … while evaluating the option `systemd.tmpfiles.settings.graphics-driver."/run/opengl-driver"."L+".argument':
-
-       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/hardware/graphics.nix':
+       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/services/networking/ssh/sshd.nix':
 
        (stack trace truncated; use '--show-trace' to show the full, detailed trace)
 
-       error: Refusing to evaluate package 'nvidia-x11-595.58.03-6.18.22' in /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/pkgs/os-specific/linux/nvidia-x11/generic.nix:333 because it has an unfree license (‘unfreeRedistributable’)
-       a) To temporarily allow unfree packages, you can use an environment variable
-          for a single invocation of the nix tools.
+       error: Path 'ssh/id_home_github.pub' in the repository "/home/alberto/dotfiles" is not tracked by Git.
 
-            $ export NIXPKGS_ALLOW_UNFREE=1
+       To make it visible to Nix, run:
 
-          Note: When using `nix shell`, `nix build`, `nix develop`, etc with a flake,
-                then pass `--impure` in order to allow use of environment variables.
-
-       b) For `nixos-rebuild` you can set
-         { nixpkgs.config.allowUnfree = true; }
-       in configuration.nix to override this.
-
-       Alternatively you can configure a predicate to allow specific packages:
-         { nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-             "nvidia-x11"
-           ];
-         }
-
-       c) For `nix-env`, `nix-build`, `nix-shell` or any other Nix command you can add
-         { allowUnfree = true; }
-       to ~/.config/nixpkgs/config.nix.
+       git -C "/home/alberto/dotfiles" add "ssh/id_home_github.pub"
 Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link' returned non-zero exit status 1.
