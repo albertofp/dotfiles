@@ -51,10 +51,10 @@
     xwayland.enable = true;
   };
 
-  # Display manager — greet with SDDM on Wayland
+  # Display manager — SDDM on X11 (Wayland mode broken with NVIDIA/Weston)
   services.displayManager.sddm = {
     enable         = true;
-    wayland.enable = true;
+    wayland.enable = false;
   };
   services.displayManager.defaultSession = "hyprland";
   services.xserver.enable = true;
