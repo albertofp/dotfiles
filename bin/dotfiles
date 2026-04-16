@@ -3,11 +3,11 @@
 # Bootstrap dotfiles on a new machine.
 #
 # Usage: dotfiles [THUMB_DIR]
-#   THUMB_DIR   Optional path to directory containing SSH key + .zshenv.
+#   THUMB_DIR   Optional path to directory containing encrypted secrets.
 #               If omitted, common mount points are searched automatically.
 #
 # NixOS workflow:
-#   1. Boot fresh NixOS install (minimal ISO is fine)
+#   1. Boot fresh NixOS install (minimal ISO is fine — gpg is pre-installed)
 #   2. Plug in thumb drive
 #   3. Run: sh <(curl -sSL https://raw.githubusercontent.com/albertofp/dotfiles/main/bin/dotfiles)
 #      Or with explicit path: bash dotfiles /run/media/alberto/KEYS
@@ -16,10 +16,15 @@
 #   1. Open Terminal
 #   2. Run the same curl command (or: bash dotfiles /Volumes/KEYS)
 #
-# Thumb drive must contain:
-#   id_home_github        — private SSH key for GitHub
-#   id_home_github.pub    — public key
-#   .zshenv               — secrets (HCLOUD_TOKEN, ANTHROPIC_API_KEY, etc.)
+# Thumb drive must contain (gpg symmetric-encrypted files):
+#   id_home_github.gpg      — encrypted private SSH key
+#   id_home_github.pub.gpg  — encrypted public key
+#   .zshenv.gpg             — encrypted secrets (HCLOUD_TOKEN, ANTHROPIC_API_KEY, etc.)
+#
+# To encrypt files onto the thumb drive:
+#   gpg --symmetric --cipher-algo AES256 -o /path/to/thumb/id_home_github.gpg     ~/.ssh/id_home_github
+#   gpg --symmetric --cipher-algo AES256 -o /path/to/thumb/id_home_github.pub.gpg ~/.ssh/id_home_github.pub
+#   gpg --symmetric --cipher-algo AES256 -o /path/to/thumb/.zshenv.gpg            ~/.zshenv
 
 set -e
 
@@ -35,6 +40,31 @@ THUMB_DIR_OVERRIDE="${1:-}"
 die()  { echo "ERROR: $*" >&2; exit 1; }
 info() { echo "==> $*"; }
 
+# Ensure gpg is available (it is on NixOS ISO and macOS; install via brew if needed)
+ensure_gpg() {
+  if command -v gpg &>/dev/null; then
+    return
+  fi
+  if [[ "$OSTYPE" == darwin* ]]; then
+    info "Installing gpg via Homebrew..."
+    # Homebrew may not be installed yet — use macOS's built-in curl + a temp install
+    if command -v brew &>/dev/null; then
+      brew install gnupg
+    else
+      die "gpg not found. Install Homebrew first or install gpg manually, then retry."
+    fi
+  else
+    # Shouldn't happen on NixOS ISO, but handle gracefully
+    die "gpg not found. On NixOS it should be pre-installed on the live ISO."
+  fi
+}
+
+# Decrypt a single gpg-encrypted file to a destination path
+gpg_decrypt() {
+  local src="$1" dst="$2"
+  gpg --quiet --batch --yes --decrypt --output "$dst" "$src"
+}
+
 # ── Find thumb drive ──────────────────────────────────────────────────────
 find_thumb_drive() {
   # If an explicit path was given, validate and use it directly
@@ -43,17 +73,18 @@ find_thumb_drive() {
     echo "$THUMB_DIR_OVERRIDE"
     return
   fi
+
   local candidates=()
 
   if [[ "$OSTYPE" == darwin* ]]; then
     while IFS= read -r vol; do
-      [[ -f "$vol/$SSH_KEY_NAME" ]] && candidates+=("$vol")
+      [[ -f "$vol/$SSH_KEY_NAME.gpg" ]] && candidates+=("$vol")
     done < <(find /Volumes -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
   else
     for mp in /media /mnt /run/media/"$USER"; do
       [[ -d "$mp" ]] || continue
       while IFS= read -r vol; do
-        [[ -f "$vol/$SSH_KEY_NAME" ]] && candidates+=("$vol")
+        [[ -f "$vol/$SSH_KEY_NAME.gpg" ]] && candidates+=("$vol")
       done < <(find "$mp" -mindepth 1 -maxdepth 2 -type d 2>/dev/null)
     done
   fi
@@ -66,16 +97,16 @@ find_thumb_drive() {
   esac
 }
 
-# ── Copy SSH key from thumb drive ─────────────────────────────────────────
+# ── Decrypt and install SSH key from thumb drive ───────────────────────────
 copy_ssh_from_thumb() {
   local thumb="$1"
 
-  info "Copying SSH key from thumb drive..."
+  info "Decrypting SSH key from thumb drive (you will be prompted for your passphrase)..."
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
 
-  cp "$thumb/$SSH_KEY_NAME"     "$SSH_DIR/$SSH_KEY_NAME"
-  cp "$thumb/$SSH_KEY_NAME.pub" "$SSH_DIR/$SSH_KEY_NAME.pub"
+  gpg_decrypt "$thumb/$SSH_KEY_NAME.gpg"     "$SSH_DIR/$SSH_KEY_NAME"
+  gpg_decrypt "$thumb/$SSH_KEY_NAME.pub.gpg" "$SSH_DIR/$SSH_KEY_NAME.pub"
   chmod 600 "$SSH_DIR/$SSH_KEY_NAME"
   chmod 644 "$SSH_DIR/$SSH_KEY_NAME.pub"
 }
@@ -92,6 +123,7 @@ setup_ssh() {
     local thumb
     if thumb=$(find_thumb_drive); then
       info "Found thumb drive: $thumb"
+      ensure_gpg
       copy_ssh_from_thumb "$thumb"
     else
       die "SSH key not found and no thumb drive detected. Plug in the thumb drive and retry."
@@ -103,22 +135,23 @@ setup_ssh() {
   ssh-add "$SSH_DIR/$SSH_KEY_NAME"
 }
 
-# ── Copy secrets from thumb drive (only if not already present) ───────────
+# ── Decrypt and install secrets from thumb drive ───────────────────────────
 setup_secrets() {
   if [[ -f "$HOME/.zshenv" ]]; then
     info ".zshenv already present — skipping secrets copy."
     return
   fi
 
-  info "Looking for .zshenv on thumb drive..."
+  info "Looking for .zshenv.gpg on thumb drive..."
   local thumb
   if thumb=$(find_thumb_drive); then
-    if [[ -f "$thumb/.zshenv" ]]; then
-      info "Copying .zshenv from thumb drive..."
-      cp "$thumb/.zshenv" "$HOME/.zshenv"
+    if [[ -f "$thumb/.zshenv.gpg" ]]; then
+      info "Decrypting .zshenv from thumb drive (you will be prompted for your passphrase)..."
+      ensure_gpg
+      gpg_decrypt "$thumb/.zshenv.gpg" "$HOME/.zshenv"
       chmod 600 "$HOME/.zshenv"
     else
-      echo "WARNING: No .zshenv on thumb drive — create $HOME/.zshenv manually."
+      echo "WARNING: No .zshenv.gpg on thumb drive — create $HOME/.zshenv manually."
     fi
   else
     echo "WARNING: No thumb drive found — create $HOME/.zshenv manually."
@@ -166,7 +199,6 @@ case "$OSTYPE" in
     cp "$SSH_DIR/$SSH_KEY_NAME.pub" "$DOTFILES_DIR/ssh/$SSH_KEY_NAME.pub"
 
     info "Applying NixOS configuration (system + home-manager)..."
-    # hardware.nix must exist — generate it if this is a fresh install
     if [[ ! -f "$DOTFILES_DIR/nix/hardware.nix" ]]; then
       info "Generating hardware configuration..."
       sudo nixos-generate-config --show-hardware-config > "$DOTFILES_DIR/nix/hardware.nix"
