@@ -1,0 +1,20 @@
+warning: Git tree '/home/alberto/dotfiles' is dirty
+error:
+       … while calling the 'seq' builtin
+         at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/modules.nix:402:18:
+          401|         options = checked options;
+          402|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          403|         _module = checked (config._module);
+
+       … while evaluating a branch condition
+         at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/modules.nix:305:9:
+          304|       checkUnmatched =
+          305|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |         ^
+          306|           let
+
+       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
+
+       error: path '/nix/store/y0qahhi595i7rr6h671n72hx564mxf4x-source/nix/hardware.nix' does not exist
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.nixos-rebuild' --no-link' returned non-zero exit status 1.
