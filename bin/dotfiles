@@ -1,14 +1,120 @@
 #!/bin/bash
 
+# Bootstrap dotfiles on a new machine.
+#
+# NixOS workflow:
+#   1. Boot fresh NixOS install (minimal ISO is fine)
+#   2. Plug in thumb drive
+#   3. Run: sh <(curl -sSL https://raw.githubusercontent.com/albertofp/dotfiles/main/bin/dotfiles)
+#
+# macOS workflow:
+#   1. Open Terminal
+#   2. Run the same curl command above
+#
+# Thumb drive must contain:
+#   id_home_github        — private SSH key for GitHub
+#   id_home_github.pub    — public key
+#   .zshenv               — secrets (HCLOUD_TOKEN, ANTHROPIC_API_KEY, etc.)
+
 set -e
 
-DOTFILES_DIR=$HOME/dotfiles
+DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_REPO="git@github.com:albertofp/dotfiles.git"
+SSH_KEY_NAME="id_home_github"
+SSH_DIR="$HOME/.ssh"
+
+# ── Helpers ───────────────────────────────────────────────────────────────
+die()  { echo "ERROR: $*" >&2; exit 1; }
+info() { echo "==> $*"; }
+
+# ── Find thumb drive ──────────────────────────────────────────────────────
+find_thumb_drive() {
+  local candidates=()
+
+  if [[ "$OSTYPE" == darwin* ]]; then
+    # macOS: removable volumes under /Volumes
+    while IFS= read -r vol; do
+      [[ -f "$vol/$SSH_KEY_NAME" ]] && candidates+=("$vol")
+    done < <(find /Volumes -mindepth 1 -maxdepth 1 -type d 2>/dev/null)
+  else
+    # Linux: try common mount points
+    for mp in /media /mnt /run/media/"$USER"; do
+      [[ -d "$mp" ]] || continue
+      while IFS= read -r vol; do
+        [[ -f "$vol/$SSH_KEY_NAME" ]] && candidates+=("$vol")
+      done < <(find "$mp" -mindepth 1 -maxdepth 2 -type d 2>/dev/null)
+    done
+  fi
+
+  case "${#candidates[@]}" in
+    0) die "Thumb drive not found. Plug it in and retry." ;;
+    1) echo "${candidates[0]}" ;;
+    *) echo "Multiple thumb drives found. Enter the number to use:"; \
+       select vol in "${candidates[@]}"; do echo "$vol"; break; done ;;
+  esac
+}
+
+# ── Copy SSH key from thumb drive ─────────────────────────────────────────
+setup_ssh() {
+  local thumb="$1"
+
+  info "Setting up SSH key from thumb drive..."
+  mkdir -p "$SSH_DIR"
+  chmod 700 "$SSH_DIR"
+
+  cp "$thumb/$SSH_KEY_NAME"     "$SSH_DIR/$SSH_KEY_NAME"
+  cp "$thumb/$SSH_KEY_NAME.pub" "$SSH_DIR/$SSH_KEY_NAME.pub"
+  chmod 600 "$SSH_DIR/$SSH_KEY_NAME"
+  chmod 644 "$SSH_DIR/$SSH_KEY_NAME.pub"
+
+  # Start agent and add key for the rest of this session
+  eval "$(ssh-agent -s)" > /dev/null
+  ssh-add "$SSH_DIR/$SSH_KEY_NAME"
+}
+
+# ── Copy secrets from thumb drive ─────────────────────────────────────────
+setup_secrets() {
+  local thumb="$1"
+
+  if [[ -f "$thumb/.zshenv" ]]; then
+    info "Copying .zshenv secrets from thumb drive..."
+    cp "$thumb/.zshenv" "$HOME/.zshenv"
+    chmod 600 "$HOME/.zshenv"
+  else
+    echo "WARNING: No .zshenv found on thumb drive — secrets not copied."
+    echo "         Create $HOME/.zshenv manually with your env vars."
+  fi
+}
+
+# ── Clone dotfiles ─────────────────────────────────────────────────────────
+clone_dotfiles() {
+  if [[ -d "$DOTFILES_DIR/.git" ]]; then
+    info "Dotfiles already cloned at $DOTFILES_DIR, pulling latest..."
+    git -C "$DOTFILES_DIR" pull
+  else
+    info "Cloning dotfiles..."
+    # Accept GitHub's host key automatically on first connect
+    ssh-keyscan github.com >> "$SSH_DIR/known_hosts" 2>/dev/null
+    git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+  fi
+}
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Main
+# ═══════════════════════════════════════════════════════════════════════════
+
+THUMB=$(find_thumb_drive)
+info "Using thumb drive: $THUMB"
+
+setup_ssh "$THUMB"
+setup_secrets "$THUMB"
 
 case "$OSTYPE" in
+  # ── NixOS ───────────────────────────────────────────────────────────────
   linux-gnu*)
-    # Install Nix if not present (handles both NixOS and other Linux)
+    # Nix is pre-installed on NixOS. On other Linux, install it.
     if ! command -v nix &>/dev/null; then
-      echo "Installing Nix..."
+      info "Installing Nix..."
       curl -sSL https://nixos.org/nix/install | sh -s -- --daemon
       # shellcheck disable=SC1091
       . /etc/profile.d/nix.sh
@@ -18,17 +124,32 @@ case "$OSTYPE" in
       nix-env -iA nixpkgs.git
     fi
 
-    if [ ! -d "$DOTFILES_DIR" ]; then
-      git clone https://github.com/albertofp/dotfiles "$DOTFILES_DIR"
+    clone_dotfiles
+
+    # Copy public key into the expected location so system.nix can reference it
+    mkdir -p "$DOTFILES_DIR/ssh"
+    cp "$SSH_DIR/$SSH_KEY_NAME.pub" "$DOTFILES_DIR/ssh/$SSH_KEY_NAME.pub"
+
+    info "Applying NixOS configuration (system + home-manager)..."
+    # hardware.nix must exist — generate it if this is a fresh install
+    if [[ ! -f "$DOTFILES_DIR/nix/hardware.nix" ]]; then
+      info "Generating hardware configuration..."
+      sudo nixos-generate-config --show-hardware-config > "$DOTFILES_DIR/nix/hardware.nix"
     fi
 
-    echo "Running home-manager switch..."
-    nix run home-manager -- switch --flake "$DOTFILES_DIR/nix#alberto"
+    sudo nixos-rebuild switch --flake "$DOTFILES_DIR/nix#alberto"
+
+    info "Setting passwords (you will be prompted)..."
+    echo "Set your user password:"
+    passwd
+    echo "Set the root password:"
+    sudo passwd root
     ;;
 
+  # ── macOS ───────────────────────────────────────────────────────────────
   darwin*)
     if ! command -v brew &>/dev/null; then
-      echo "Installing Homebrew..."
+      info "Installing Homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
 
@@ -36,26 +157,25 @@ case "$OSTYPE" in
       brew install ansible
     fi
 
-    if [ ! -d "$DOTFILES_DIR" ]; then
-      git clone https://github.com/albertofp/dotfiles "$DOTFILES_DIR"
-    fi
+    clone_dotfiles
 
-    if [[ -f $HOME/.ansible_vault_pass.txt ]]; then
+    if [[ -f "$HOME/.ansible_vault_pass.txt" ]]; then
       ansible-playbook \
         -i 'localhost,' \
-        -c local "$DOTFILES_DIR"/ansible/playbooks/bootstrap.yaml \
-        --vault-password-file "$HOME"/.ansible_vault_pass.txt
+        -c local "$DOTFILES_DIR/ansible/playbooks/bootstrap.yaml" \
+        --vault-password-file "$HOME/.ansible_vault_pass.txt"
     else
-      echo "No .ansible_vault_pass.txt found, prompting for vault password..."
+      info "No .ansible_vault_pass.txt found, prompting for vault password..."
       ansible-playbook \
         -i 'localhost,' \
-        -c local "$DOTFILES_DIR"/ansible/playbooks/bootstrap.yaml \
+        -c local "$DOTFILES_DIR/ansible/playbooks/bootstrap.yaml" \
         --ask-vault-password
     fi
     ;;
 
   *)
-    echo "OS not supported: $OSTYPE"
-    exit 1
+    die "OS not supported: $OSTYPE"
     ;;
 esac
+
+info "Bootstrap complete."
