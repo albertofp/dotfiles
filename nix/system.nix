@@ -52,9 +52,10 @@
 
   # Display manager — greet with SDDM on Wayland
   services.displayManager.sddm = {
-    enable      = true;
+    enable         = true;
     wayland.enable = true;
   };
+  services.xserver.enable = true;
 
   # ── Audio (Pipewire) ──────────────────────────────────────────────────────
   services.pipewire = {

@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, zen-browser, ... }:
     let
       system = "x86_64-linux";
       pkgs   = nixpkgs.legacyPackages.${system};
@@ -25,6 +29,9 @@
             home-manager.useGlobalPkgs   = true;
             home-manager.useUserPackages = true;
             home-manager.users.alberto   = import ./home.nix;
+            home-manager.extraSpecialArgs = {
+              zen-browser-pkg = zen-browser.packages.${system}.default;
+            };
           }
         ];
       };
@@ -35,6 +42,9 @@
       homeConfigurations.alberto = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [ ./home.nix ];
+        extraSpecialArgs = {
+          zen-browser-pkg = zen-browser.packages.${system}.default;
+        };
       };
     };
 }

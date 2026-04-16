@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, zen-browser-pkg ? null, ... }:
 
 {
   home.username = "alberto";
@@ -48,10 +48,9 @@
     jellyfin-media-player
     slack
     localsend
-    zen-browser
     wl-clipboard
     silicon       # code screenshot tool
-    redshift      # screen colour temperature
+    wlsunset      # screen colour temperature (Wayland replacement for redshift)
 
     # Hyprland user-space tools (compositor itself enabled in system.nix)
     waybar
@@ -68,7 +67,7 @@
 
     # Fonts
     nerd-fonts.jetbrains-mono
-  ];
+  ] ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else []);
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
   home.file = {
