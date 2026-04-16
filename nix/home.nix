@@ -46,16 +46,13 @@
     # Apps / GUI
     firefox
     ghostty
-    spotify
+    jellyfin-media-player
     slack
     localsend
     zen-browser
     wl-clipboard
     silicon       # code screenshot tool
     redshift      # screen colour temperature
-
-    # notion is not in nixpkgs — install via flatpak:
-    #   flatpak install flathub notion.so.Notion
 
     # Hyprland user-space tools (compositor itself enabled in system.nix)
     waybar
