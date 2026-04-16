@@ -26,7 +26,7 @@
 
   hardware.nvidia = {
     modesetting.enable             = true;
-    open                           = false;   # use proprietary kernel module
+    open                           = false;   # Pascal (GTX 1080) — open module not supported
     nvidiaSettings                 = true;
     package                        = config.boot.kernelPackages.nvidiaPackages.stable;
     powerManagement.enable         = false;
@@ -42,17 +42,13 @@
   ];
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
   boot.kernelModules        = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+  boot.extraModulePackages  = [ config.boot.kernelPackages.nvidia_x11 ];
 
   # ── Hyprland (compositor) ─────────────────────────────────────────────────
+  # programs.hyprland.enable handles portals, polkit, xwayland, desktop entry
   programs.hyprland = {
-    enable         = true;
+    enable          = true;
     xwayland.enable = true;
-  };
-
-  # XDG portal needed for screenshare, file pickers, etc.
-  xdg.portal = {
-    enable      = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
   # Display manager — greet with SDDM on Wayland
@@ -124,7 +120,6 @@
     git
     curl
     vim
-    xdg-desktop-portal-hyprland
   ];
 
   nixpkgs.config.allowUnfree = true;
