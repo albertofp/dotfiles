@@ -1,3 +1,4 @@
+warning: Git tree '/home/alberto/dotfiles' is dirty
 warning: creating lock file "/home/alberto/dotfiles/nix/flake.lock": 
 • Added input 'home-manager':
     'github:nix-community/home-manager/3c7524c68348ef79ce48308e0978611a050089b2?narHash=sha256-No6QGBmIv5ChiwKCcbkxjdEQ/RO2ZS1gD7SFy6EZ7rc%3D' (2026-04-14)
@@ -14,6 +15,7 @@ warning: creating lock file "/home/alberto/dotfiles/nix/flake.lock":
 • Added input 'zen-browser/nixpkgs':
     follows 'nixpkgs'
 building the system configuration...
+warning: Git tree '/home/alberto/dotfiles' is dirty
 error:
        … while calling the 'derivationStrict' builtin
          at «nix-internal»/derivation-internal.nix:37:12:
@@ -38,5 +40,5 @@ error:
 
        (stack trace truncated; use '--show-trace' to show the full, detailed trace)
 
-       error: path '/nix/store/61ybz2lyk7n0iz4mgz37nr9jq7mm4rph-source/ssh/id_home_github.pub' does not exist
-Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths 'path:/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link --impure' returned non-zero exit status 1.
+       error: path '/nix/store/napjv337ry9mcydvpzvrmql0nad72sm2-source/nix/ssh/id_home_github.pub' does not exist
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link --impure' returned non-zero exit status 1.
