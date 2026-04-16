@@ -4,8 +4,6 @@
   roles:
     - role: macos
     - download_packages
-    - sync_keys
     - configs
-    - aws
     # - role: dock
     # - role: aerospace

@@ -47,10 +47,7 @@ alias proj="cd $HOME/github/"
 alias tf="terraform"
 alias tg="terragrunt"
 
-alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
-alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encrypt-vault-id default"
-alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
-alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10 --vault-password-file=~/.ansible_vault_pass.txt"
+alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10"
 
 alias gp="git push"
 alias gs="git status"

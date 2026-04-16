@@ -101,13 +101,14 @@ find_thumb_drive() {
   esac
 }
 
-# ── Decrypt and install SSH keys from thumb drive ─────────────────────────
+# ── Decrypt and install files from thumb drive ────────────────────────────
 copy_ssh_from_thumb() {
   local thumb="$1"
 
   info "Decrypting files from thumb drive (you will be prompted for your passphrase)..."
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
+  mkdir -p "$HOME/.aws"
 
   local found=0
   while IFS= read -r src; do
@@ -115,26 +116,29 @@ copy_ssh_from_thumb() {
     filename=$(basename "$src" .gpg)
     local dst
 
-    # .zshenv goes to $HOME, everything else to $SSH_DIR
-    if [[ "$filename" == ".zshenv" ]]; then
-      dst="$HOME/$filename"
-    else
-      dst="$SSH_DIR/$filename"
-    fi
+    case "$filename" in
+      .zshenv)
+        dst="$HOME/$filename" ;;
+      aws_config)
+        dst="$HOME/.aws/config" ;;
+      aws_credentials)
+        dst="$HOME/.aws/credentials" ;;
+      *)
+        dst="$SSH_DIR/$filename" ;;
+    esac
 
     if [[ -f "$dst" ]]; then
-      echo "  SKIP (already exists): $filename"
+      echo "  SKIP (already exists): $dst"
       continue
     fi
 
     gpg_decrypt "$src" "$dst"
-    # Private keys: 600; public keys and .zshenv: 600; .pub: 644
     if [[ "$filename" == *.pub ]]; then
       chmod 644 "$dst"
     else
       chmod 600 "$dst"
     fi
-    echo "  decrypted: $filename"
+    echo "  decrypted: $filename → $dst"
     found=1
   done < <(find "$thumb" -maxdepth 1 -name "*.gpg" 2>/dev/null | sort)
 
@@ -147,8 +151,9 @@ setup_from_thumb() {
   chmod 700 "$SSH_DIR"
 
   local needs_thumb=0
-  [[ ! -f "$SSH_DIR/$SSH_KEY_NAME" ]] && needs_thumb=1
-  [[ ! -f "$HOME/.zshenv" ]]          && needs_thumb=1
+  [[ ! -f "$SSH_DIR/$SSH_KEY_NAME" ]]    && needs_thumb=1
+  [[ ! -f "$HOME/.zshenv" ]]             && needs_thumb=1
+  [[ ! -f "$HOME/.aws/credentials" ]]    && needs_thumb=1
 
   if [[ $needs_thumb -eq 1 ]]; then
     info "Some files missing — looking for thumb drive..."
