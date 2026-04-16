@@ -2,14 +2,19 @@
 
 # Bootstrap dotfiles on a new machine.
 #
+# Usage: dotfiles [THUMB_DIR]
+#   THUMB_DIR   Optional path to directory containing SSH key + .zshenv.
+#               If omitted, common mount points are searched automatically.
+#
 # NixOS workflow:
 #   1. Boot fresh NixOS install (minimal ISO is fine)
 #   2. Plug in thumb drive
 #   3. Run: sh <(curl -sSL https://raw.githubusercontent.com/albertofp/dotfiles/main/bin/dotfiles)
+#      Or with explicit path: bash dotfiles /run/media/alberto/KEYS
 #
 # macOS workflow:
 #   1. Open Terminal
-#   2. Run the same curl command above
+#   2. Run the same curl command (or: bash dotfiles /Volumes/KEYS)
 #
 # Thumb drive must contain:
 #   id_home_github        — private SSH key for GitHub
@@ -23,12 +28,21 @@ DOTFILES_REPO="git@github.com:albertofp/dotfiles.git"
 SSH_KEY_NAME="id_home_github"
 SSH_DIR="$HOME/.ssh"
 
+# Optional explicit thumb drive location — override via first argument
+THUMB_DIR_OVERRIDE="${1:-}"
+
 # ── Helpers ───────────────────────────────────────────────────────────────
 die()  { echo "ERROR: $*" >&2; exit 1; }
 info() { echo "==> $*"; }
 
 # ── Find thumb drive ──────────────────────────────────────────────────────
 find_thumb_drive() {
+  # If an explicit path was given, validate and use it directly
+  if [[ -n "$THUMB_DIR_OVERRIDE" ]]; then
+    [[ -d "$THUMB_DIR_OVERRIDE" ]] || die "Specified thumb drive path not found: $THUMB_DIR_OVERRIDE"
+    echo "$THUMB_DIR_OVERRIDE"
+    return
+  fi
   local candidates=()
 
   if [[ "$OSTYPE" == darwin* ]]; then
