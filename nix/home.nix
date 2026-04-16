@@ -44,7 +44,6 @@
     rustup
 
     # Apps / GUI
-    firefox
     ghostty
     jellyfin-media-player
     slack
