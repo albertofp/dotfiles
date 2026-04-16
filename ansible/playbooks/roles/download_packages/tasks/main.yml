@@ -1,28 +1,18 @@
 ---
 - name: Core
-  become: "{{ ansible_facts['os_family'] != 'Darwin' }}"
-  ansible.builtin.package:
+  community.general.homebrew:
     name: '{{ download_packages_base }}'
     state: present
-
-- name: MacOS
-  community.general.homebrew:
-    name: '{{ download_packages_mac }}'
-    state: present
-  when: ansible_facts['distribution'] == "MacOSX"
 
 - name: MacOS - Casks
   community.general.homebrew_cask:
     name: '{{ download_packages_homebrew_cask }}'
     state: present
-  when: ansible_facts['distribution'] == "MacOSX"
 
-- name: Linux
-  ansible.builtin.package:
-    name: '{{ download_packages_linux }}'
+- name: MacOS - Brew packages
+  community.general.homebrew:
+    name: '{{ download_packages_mac }}'
     state: present
-  become: true
-  when: ansible_facts['distribution'] != "MacOSX"
 
 - name: Install Cargo
   ansible.builtin.shell: |-
@@ -30,13 +20,3 @@
     curl https://sh.rustup.rs -sSf | sh -s -- -y
   args:
     creates: '{{ ansible_env.HOME }}/.cargo/'
-
-# - name: Update Rust and Cargo
-#   ansible.builtin.command:
-#     cmd: rustup update
-#   become: false
-#   register: rustup_update
-#   environment:
-#     HOME: '{{ ansible_env.HOME }}'
-#   changed_when: >
-#     'unchanged' not in rustup_update.stdout.lower()
