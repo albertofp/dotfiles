@@ -1,4 +1,4 @@
-{ config, pkgs, zen-browser-pkg ? null, ... }:
+{ config, pkgs, zen-browser-pkg ? null, dotfilesRoot ? null, ... }:
 
 {
   home.username = "alberto";
@@ -70,16 +70,16 @@
   ] ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else []);
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
-  home.file = {
-    ".zshrc".source                = ../.zshrc;
-    ".tmux.conf".source            = ../.tmux.conf;
-    ".gitconfig".source            = ../.gitconfig;
-    ".gitconfig-jet".source        = ../.gitconfig-jet;
-    ".config/nvim".source          = ../.config/nvim;
-    ".config/ghostty".source       = ../.config/ghostty;
-    ".config/hypr".source          = ../.config/hypr;
-    ".config/waybar".source        = ../.config/waybar;
-    ".config/starship.toml".source = ../.config/starship.toml;
+  home.file = let root = if dotfilesRoot != null then dotfilesRoot else ../..; in {
+    ".zshrc".source                = "${root}/.zshrc";
+    ".tmux.conf".source            = "${root}/.tmux.conf";
+    ".gitconfig".source            = "${root}/.gitconfig";
+    ".gitconfig-jet".source        = "${root}/.gitconfig-jet";
+    ".config/nvim".source          = "${root}/.config/nvim";
+    ".config/ghostty".source       = "${root}/.config/ghostty";
+    ".config/hypr".source          = "${root}/.config/hypr";
+    ".config/waybar".source        = "${root}/.config/waybar";
+    ".config/starship.toml".source = "${root}/.config/starship.toml";
   };
 
   # ── Programs ──────────────────────────────────────────────────────────────

@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, ... }:
+  outputs = { self, nixpkgs, home-manager, zen-browser, ... }:
     let
       system = "x86_64-linux";
       pkgs   = nixpkgs.legacyPackages.${system};
@@ -31,6 +31,7 @@
             home-manager.users.alberto   = import ./home.nix;
             home-manager.extraSpecialArgs = {
               zen-browser-pkg = zen-browser.packages.${system}.default;
+              dotfilesRoot = self;
             };
           }
         ];
@@ -44,6 +45,7 @@
         modules = [ ./home.nix ];
         extraSpecialArgs = {
           zen-browser-pkg = zen-browser.packages.${system}.default;
+          dotfilesRoot = self;
         };
       };
     };
