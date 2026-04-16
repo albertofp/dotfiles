@@ -48,7 +48,13 @@
       "poetry run *": "allow",
       "poetry install *": "allow",
       "poetry install": "allow",
-      "poetry env *": "allow"
+      "poetry env *": "allow",
+      "kubectl get *": "allow",
+      "* /tmp *": "allow",
+      "wiz_query *": "allow",
+      "aws sts get-caller-identity *": "allow",
+      "aws ec2 describe*": "allow",
+      "aws elbv2 describe*": "allow"
     }
   }
 }

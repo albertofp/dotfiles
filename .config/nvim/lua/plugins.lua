@@ -348,7 +348,7 @@ end, { silent = true, desc = 'Peek fold' })
 require('markview').setup {
   ---@diagnostic disable-next-line: missing-fields
   experimental = { check_rtp_message = false },
-  preview = { enable = false, icon_provider = 'devicons' },
+  preview = { enable = true, icon_provider = 'devicons', map_gx = false },
 }
 
 -- Silicon (code screenshots)

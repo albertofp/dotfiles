@@ -253,3 +253,6 @@ function aws-login-all() {
 }
 
 eval "$(starship init zsh)"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
