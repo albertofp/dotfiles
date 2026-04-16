@@ -128,21 +128,46 @@ connect_wifi() {
     return
   fi
 
-  [[ -f "$thumb/wifi.gpg" ]] || die "wifi.gpg not found on thumb drive. Cannot connect to wifi."
-
-  info "Decrypting wifi credentials..."
-  local tmpfile
-  tmpfile=$(mktemp)
-  gpg_decrypt "$thumb/wifi.gpg" "$tmpfile"
-
-  local stored_ssid password
-  stored_ssid=$(grep '^SSID='     "$tmpfile" | cut -d= -f2-)
-  password=$(    grep '^PASSWORD=' "$tmpfile" | cut -d= -f2-)
-  rm -f "$tmpfile"
+  # Try to load password from wifi.gpg; fall back to manual prompt
+  local stored_ssid="" password=""
+  if [[ -f "$thumb/wifi.gpg" ]]; then
+    info "Decrypting wifi credentials..."
+    local tmpfile
+    tmpfile=$(mktemp)
+    if gpg_decrypt "$thumb/wifi.gpg" "$tmpfile" 2>/dev/null; then
+      stored_ssid=$(grep '^SSID='     "$tmpfile" | cut -d= -f2-)
+      password=$(    grep '^PASSWORD=' "$tmpfile" | cut -d= -f2-)
+    else
+      echo "WARNING: Failed to decrypt wifi.gpg — will prompt for password."
+    fi
+    rm -f "$tmpfile"
+  else
+    echo "WARNING: wifi.gpg not found on thumb drive — will prompt for password."
+  fi
 
   local target_ssid="${ssid:-$stored_ssid}"
-  info "Connecting to wifi: $target_ssid"
-  nmcli device wifi connect "$target_ssid" password "$password"
+  [[ -n "$target_ssid" ]] || read -rp "Wifi SSID: " target_ssid
+
+  # Attempt connection; retry with manual password on failure
+  local max_attempts=3 attempt=1
+  while [[ $attempt -le $max_attempts ]]; do
+    if [[ -z "$password" ]]; then
+      read -rsp "Wifi password for '$target_ssid': " password
+      echo
+    fi
+
+    info "Connecting to wifi: $target_ssid (attempt $attempt/$max_attempts)..."
+    if nmcli device wifi connect "$target_ssid" password "$password" 2>/dev/null; then
+      info "Connected to $target_ssid."
+      return
+    fi
+
+    echo "Connection failed — password may be incorrect."
+    password=""  # clear so next iteration prompts again
+    (( attempt++ ))
+  done
+
+  die "Failed to connect to wifi after $max_attempts attempts."
 }
 
 # ── Find thumb drive ──────────────────────────────────────────────────────
