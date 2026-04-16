@@ -111,7 +111,7 @@ ensure_gpg() {
 # ── Decrypt a single gpg-encrypted file ───────────────────────────────────
 gpg_decrypt() {
   local src="$1" dst="$2"
-  gpg --quiet --batch --yes --decrypt --output "$dst" "$src"
+  gpg --quiet --yes --pinentry-mode loopback --decrypt --output "$dst" "$src"
 }
 
 # ── Connect to wifi ───────────────────────────────────────────────────────
