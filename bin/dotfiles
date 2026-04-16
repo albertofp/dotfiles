@@ -1,39 +1,78 @@
 #!/bin/bash
 
-# Bootstrap dotfiles on a new machine.
-#
-# Usage: dotfiles [--ssid <SSID>] [THUMB_DIR]
-#   --ssid SSID   Connect to wifi before cloning. Password is read from
-#                 wifi.gpg on the thumb drive.
-#   THUMB_DIR     Optional path to directory containing encrypted secrets.
-#                 If omitted, common mount points are searched automatically.
-#
-# NixOS workflow:
-#   1. Boot fresh NixOS install (minimal ISO is fine — gpg is pre-installed)
-#   2. Plug in thumb drive
-#   3. Run: bash /run/media/nixos/<drive>/dotfiles [--ssid MagentaWLAN-T95R]
-#
-# macOS workflow:
-#   1. Open Terminal
-#   2. Run: bash /Volumes/<drive>/dotfiles [--ssid MagentaWLAN-T95R]
-#
-# Thumb drive must contain (gpg symmetric-encrypted files):
-#   id_home_github.gpg    — personal GitHub SSH private key
-#   hetzner.gpg           — Hetzner SSH private key
-#   work_github.gpg       — work GitHub SSH private key
-#   work_github.pub.gpg   — work GitHub public key
-#   .zshenv.gpg           — secrets (HCLOUD_TOKEN, GITHUB_TOKEN, etc.)
-#   aws_config.gpg        — ~/.aws/config
-#   aws_credentials.gpg   — ~/.aws/credentials
-#   wifi.gpg              — wifi credentials (SSID=... PASSWORD=...)
-#   dotfiles              — this script (so it can run offline)
-
 set -e
 
 DOTFILES_DIR="$HOME/dotfiles"
 DOTFILES_REPO="git@github.com:albertofp/dotfiles.git"
+DOTFILES_BRANCH="main"
 SSH_KEY_NAME="id_home_github"
 SSH_DIR="$HOME/.ssh"
+
+# ── Help ──────────────────────────────────────────────────────────────────
+usage() {
+  cat <<EOF
+Usage: dotfiles [OPTIONS] [THUMB_DIR]
+
+Bootstrap a new machine from encrypted secrets on a thumb drive.
+Works on NixOS (home-manager + nixos-rebuild) and macOS (Homebrew + Ansible).
+
+ARGUMENTS:
+  THUMB_DIR             Path to the thumb drive directory containing .gpg files.
+                        If omitted, common mount points are searched automatically:
+                          Linux: /media, /mnt, /run/media/\$USER
+                          macOS: /Volumes
+
+OPTIONS:
+  --ssid <SSID>         Connect to wifi before cloning the dotfiles repo.
+                        The password is read from wifi.gpg on the thumb drive.
+                        If omitted and no internet is detected, wifi.gpg is still
+                        used with the SSID stored inside it.
+
+  --branch <BRANCH>     Git branch to clone from the dotfiles repo.
+                        Default: main
+
+  -h, --help            Show this help message and exit.
+
+THUMB DRIVE CONTENTS:
+  The thumb drive must contain these gpg-encrypted files (AES256, passphrase):
+    id_home_github.gpg    Personal GitHub SSH private key  → ~/.ssh/
+    hetzner.gpg           Hetzner SSH private key          → ~/.ssh/
+    work_github.gpg       Work GitHub SSH private key      → ~/.ssh/
+    work_github.pub.gpg   Work GitHub public key           → ~/.ssh/
+    .zshenv.gpg           Shell secrets (tokens, etc.)     → ~/
+    aws_config.gpg        AWS config                       → ~/.aws/config
+    aws_credentials.gpg   AWS credentials                  → ~/.aws/credentials
+    wifi.gpg              Wifi credentials (SSID+PASSWORD) → used then discarded
+    dotfiles              This script (for offline use)
+
+  Any additional *.gpg files found are decrypted into ~/.ssh/.
+
+EXAMPLES:
+  # Auto-detect thumb drive, connect to stored wifi, use main branch:
+  bash dotfiles
+
+  # Explicit thumb drive path:
+  bash dotfiles /run/media/nixos/KEYS
+
+  # Connect to a specific wifi network:
+  bash dotfiles --ssid MagentaWLAN-T95R
+
+  # Test a feature branch before merging:
+  bash dotfiles --branch nixos-migration
+
+  # All options combined:
+  bash dotfiles --ssid MagentaWLAN-T95R --branch nixos-migration /run/media/nixos/KEYS
+
+NOTES:
+  - SSH key and secrets are only copied from the thumb drive if not already
+    present on the machine. Re-running the script on an existing machine is safe.
+  - On NixOS, gpg is pre-installed on the minimal ISO.
+  - On macOS, gpg is installed via Homebrew if not present.
+  - The wifi password is decrypted into a temp file and deleted immediately.
+  - Passwords (user + root) are set interactively at the end on NixOS.
+EOF
+  exit 0
+}
 
 # ── Argument parsing ──────────────────────────────────────────────────────
 WIFI_SSID=""
@@ -41,8 +80,10 @@ THUMB_DIR_OVERRIDE=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --ssid) WIFI_SSID="$2"; shift 2 ;;
-    *)      THUMB_DIR_OVERRIDE="$1"; shift ;;
+    -h|--help)   usage ;;
+    --ssid)      WIFI_SSID="$2";       shift 2 ;;
+    --branch)    DOTFILES_BRANCH="$2"; shift 2 ;;
+    *)           THUMB_DIR_OVERRIDE="$1"; shift ;;
   esac
 done
 
@@ -50,26 +91,24 @@ done
 die()  { echo "ERROR: $*" >&2; exit 1; }
 info() { echo "==> $*"; }
 
-# Ensure gpg is available (it is on NixOS ISO and macOS; install via brew if needed)
+# ── Ensure gpg is available ───────────────────────────────────────────────
 ensure_gpg() {
   if command -v gpg &>/dev/null; then
     return
   fi
   if [[ "$OSTYPE" == darwin* ]]; then
     info "Installing gpg via Homebrew..."
-    # Homebrew may not be installed yet — use macOS's built-in curl + a temp install
     if command -v brew &>/dev/null; then
       brew install gnupg
     else
       die "gpg not found. Install Homebrew first or install gpg manually, then retry."
     fi
   else
-    # Shouldn't happen on NixOS ISO, but handle gracefully
     die "gpg not found. On NixOS it should be pre-installed on the live ISO."
   fi
 }
 
-# Decrypt a single gpg-encrypted file to a destination path
+# ── Decrypt a single gpg-encrypted file ───────────────────────────────────
 gpg_decrypt() {
   local src="$1" dst="$2"
   gpg --quiet --batch --yes --decrypt --output "$dst" "$src"
@@ -84,15 +123,12 @@ connect_wifi() {
     return
   fi
 
-  # Check if already connected
   if nmcli -t -f CONNECTIVITY general | grep -q "^full$"; then
     info "Already connected to the internet — skipping wifi."
     return
   fi
 
-  if [[ ! -f "$thumb/wifi.gpg" ]]; then
-    die "wifi.gpg not found on thumb drive. Cannot connect to wifi."
-  fi
+  [[ -f "$thumb/wifi.gpg" ]] || die "wifi.gpg not found on thumb drive. Cannot connect to wifi."
 
   info "Decrypting wifi credentials..."
   local tmpfile
@@ -104,16 +140,13 @@ connect_wifi() {
   password=$(    grep '^PASSWORD=' "$tmpfile" | cut -d= -f2-)
   rm -f "$tmpfile"
 
-  # Use the stored SSID unless one was explicitly passed
   local target_ssid="${ssid:-$stored_ssid}"
-
   info "Connecting to wifi: $target_ssid"
   nmcli device wifi connect "$target_ssid" password "$password"
 }
 
 # ── Find thumb drive ──────────────────────────────────────────────────────
 find_thumb_drive() {
-  # If an explicit path was given, validate and use it directly
   if [[ -n "$THUMB_DIR_OVERRIDE" ]]; then
     [[ -d "$THUMB_DIR_OVERRIDE" ]] || die "Specified thumb drive path not found: $THUMB_DIR_OVERRIDE"
     echo "$THUMB_DIR_OVERRIDE"
@@ -143,8 +176,8 @@ find_thumb_drive() {
   esac
 }
 
-# ── Decrypt and install files from thumb drive ────────────────────────────
-copy_ssh_from_thumb() {
+# ── Decrypt and install all files from thumb drive ────────────────────────
+copy_from_thumb() {
   local thumb="$1"
 
   info "Decrypting files from thumb drive (you will be prompted for your passphrase)..."
@@ -159,14 +192,11 @@ copy_ssh_from_thumb() {
     local dst
 
     case "$filename" in
-      .zshenv)
-        dst="$HOME/$filename" ;;
-      aws_config)
-        dst="$HOME/.aws/config" ;;
-      aws_credentials)
-        dst="$HOME/.aws/credentials" ;;
-      *)
-        dst="$SSH_DIR/$filename" ;;
+      .zshenv)         dst="$HOME/$filename" ;;
+      aws_config)      dst="$HOME/.aws/config" ;;
+      aws_credentials) dst="$HOME/.aws/credentials" ;;
+      wifi)            continue ;;  # used only by connect_wifi, not installed
+      *)               dst="$SSH_DIR/$filename" ;;
     esac
 
     if [[ -f "$dst" ]]; then
@@ -175,11 +205,7 @@ copy_ssh_from_thumb() {
     fi
 
     gpg_decrypt "$src" "$dst"
-    if [[ "$filename" == *.pub ]]; then
-      chmod 644 "$dst"
-    else
-      chmod 600 "$dst"
-    fi
+    [[ "$filename" == *.pub ]] && chmod 644 "$dst" || chmod 600 "$dst"
     echo "  decrypted: $filename → $dst"
     found=1
   done < <(find "$thumb" -maxdepth 1 -name "*.gpg" 2>/dev/null | sort)
@@ -187,15 +213,15 @@ copy_ssh_from_thumb() {
   [[ $found -eq 0 ]] && echo "  WARNING: no .gpg files found on thumb drive."
 }
 
-# ── Ensure SSH key + secrets are present (from disk or thumb drive) ───────
+# ── Ensure SSH key + secrets are present ─────────────────────────────────
 setup_from_thumb() {
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
 
   local needs_thumb=0
-  [[ ! -f "$SSH_DIR/$SSH_KEY_NAME" ]]    && needs_thumb=1
-  [[ ! -f "$HOME/.zshenv" ]]             && needs_thumb=1
-  [[ ! -f "$HOME/.aws/credentials" ]]    && needs_thumb=1
+  [[ ! -f "$SSH_DIR/$SSH_KEY_NAME" ]] && needs_thumb=1
+  [[ ! -f "$HOME/.zshenv" ]]          && needs_thumb=1
+  [[ ! -f "$HOME/.aws/credentials" ]] && needs_thumb=1
 
   if [[ $needs_thumb -eq 1 ]]; then
     info "Some files missing — looking for thumb drive..."
@@ -203,41 +229,41 @@ setup_from_thumb() {
     if thumb=$(find_thumb_drive); then
       info "Found thumb drive: $thumb"
       ensure_gpg
-      copy_ssh_from_thumb "$thumb"
+      copy_from_thumb "$thumb"
     else
       die "Required files missing and no thumb drive detected. Plug in the thumb drive and retry."
     fi
   else
-    info "SSH key and .zshenv already present — skipping thumb drive."
+    info "SSH key and secrets already present — skipping thumb drive."
   fi
 
-  # Start agent and load key for this session
   eval "$(ssh-agent -s)" > /dev/null
   ssh-add "$SSH_DIR/$SSH_KEY_NAME"
 }
 
-# ── Clone dotfiles ─────────────────────────────────────────────────────────
+# ── Clone dotfiles ────────────────────────────────────────────────────────
 clone_dotfiles() {
   if [[ -d "$DOTFILES_DIR/.git" ]]; then
-    info "Dotfiles already cloned, pulling latest..."
+    info "Dotfiles already cloned, pulling latest (branch: $DOTFILES_BRANCH)..."
+    git -C "$DOTFILES_DIR" fetch
+    git -C "$DOTFILES_DIR" checkout "$DOTFILES_BRANCH"
     git -C "$DOTFILES_DIR" pull
   else
-    info "Cloning dotfiles..."
+    info "Cloning dotfiles (branch: $DOTFILES_BRANCH)..."
     ssh-keyscan github.com >> "$SSH_DIR/known_hosts" 2>/dev/null
-    git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+    git clone --branch "$DOTFILES_BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"
   fi
 }
 
-# ═══════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════════════
 # Main
-# ═══════════════════════════════════════════════════════════════════════════
+# ═════════════════════════════════════════════════════════════════════════
 
 setup_from_thumb
 
 case "$OSTYPE" in
   # ── NixOS ───────────────────────────────────────────────────────────────
   linux-gnu*)
-    # Nix is pre-installed on NixOS. On other Linux, install it.
     if ! command -v nix &>/dev/null; then
       info "Installing Nix..."
       curl -sSL https://nixos.org/nix/install | sh -s -- --daemon
@@ -249,8 +275,7 @@ case "$OSTYPE" in
       nix-env -iA nixpkgs.git
     fi
 
-    # Connect to wifi if requested or if not already online
-    if [[ -n "$WIFI_SSID" ]] || ! curl -sf https://github.com &>/dev/null; then
+    if [[ -n "$WIFI_SSID" ]] || ! curl -sf --max-time 5 https://github.com &>/dev/null; then
       local thumb
       thumb=$(find_thumb_drive) || die "Thumb drive not found for wifi credentials."
       ensure_gpg
@@ -259,7 +284,6 @@ case "$OSTYPE" in
 
     clone_dotfiles
 
-    # Copy public key into the expected location so system.nix can reference it
     mkdir -p "$DOTFILES_DIR/ssh"
     cp "$SSH_DIR/$SSH_KEY_NAME.pub" "$DOTFILES_DIR/ssh/$SSH_KEY_NAME.pub"
 
@@ -272,10 +296,8 @@ case "$OSTYPE" in
     sudo nixos-rebuild switch --flake "$DOTFILES_DIR/nix#alberto"
 
     info "Setting passwords (you will be prompted)..."
-    echo "Set your user password:"
-    passwd
-    echo "Set the root password:"
-    sudo passwd root
+    echo "Set your user password:"; passwd
+    echo "Set the root password:";  sudo passwd root
     ;;
 
   # ── macOS ───────────────────────────────────────────────────────────────
