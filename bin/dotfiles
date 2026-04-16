@@ -2,19 +2,20 @@
 
 # Bootstrap dotfiles on a new machine.
 #
-# Usage: dotfiles [THUMB_DIR]
-#   THUMB_DIR   Optional path to directory containing encrypted secrets.
-#               If omitted, common mount points are searched automatically.
+# Usage: dotfiles [--ssid <SSID>] [THUMB_DIR]
+#   --ssid SSID   Connect to wifi before cloning. Password is read from
+#                 wifi.gpg on the thumb drive.
+#   THUMB_DIR     Optional path to directory containing encrypted secrets.
+#                 If omitted, common mount points are searched automatically.
 #
 # NixOS workflow:
 #   1. Boot fresh NixOS install (minimal ISO is fine — gpg is pre-installed)
 #   2. Plug in thumb drive
-#   3. Run: sh <(curl -sSL https://raw.githubusercontent.com/albertofp/dotfiles/main/bin/dotfiles)
-#      Or with explicit path: bash dotfiles /run/media/alberto/KEYS
+#   3. Run: bash /run/media/nixos/<drive>/dotfiles [--ssid MagentaWLAN-T95R]
 #
 # macOS workflow:
 #   1. Open Terminal
-#   2. Run the same curl command (or: bash dotfiles /Volumes/KEYS)
+#   2. Run: bash /Volumes/<drive>/dotfiles [--ssid MagentaWLAN-T95R]
 #
 # Thumb drive must contain (gpg symmetric-encrypted files):
 #   id_home_github.gpg    — personal GitHub SSH private key
@@ -24,6 +25,7 @@
 #   .zshenv.gpg           — secrets (HCLOUD_TOKEN, GITHUB_TOKEN, etc.)
 #   aws_config.gpg        — ~/.aws/config
 #   aws_credentials.gpg   — ~/.aws/credentials
+#   wifi.gpg              — wifi credentials (SSID=... PASSWORD=...)
 #   dotfiles              — this script (so it can run offline)
 
 set -e
@@ -33,8 +35,16 @@ DOTFILES_REPO="git@github.com:albertofp/dotfiles.git"
 SSH_KEY_NAME="id_home_github"
 SSH_DIR="$HOME/.ssh"
 
-# Optional explicit thumb drive location — override via first argument
-THUMB_DIR_OVERRIDE="${1:-}"
+# ── Argument parsing ──────────────────────────────────────────────────────
+WIFI_SSID=""
+THUMB_DIR_OVERRIDE=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --ssid) WIFI_SSID="$2"; shift 2 ;;
+    *)      THUMB_DIR_OVERRIDE="$1"; shift ;;
+  esac
+done
 
 # ── Helpers ───────────────────────────────────────────────────────────────
 die()  { echo "ERROR: $*" >&2; exit 1; }
@@ -63,6 +73,42 @@ ensure_gpg() {
 gpg_decrypt() {
   local src="$1" dst="$2"
   gpg --quiet --batch --yes --decrypt --output "$dst" "$src"
+}
+
+# ── Connect to wifi ───────────────────────────────────────────────────────
+connect_wifi() {
+  local ssid="$1" thumb="$2"
+
+  if ! command -v nmcli &>/dev/null; then
+    echo "WARNING: nmcli not found — skipping wifi setup."
+    return
+  fi
+
+  # Check if already connected
+  if nmcli -t -f CONNECTIVITY general | grep -q "^full$"; then
+    info "Already connected to the internet — skipping wifi."
+    return
+  fi
+
+  if [[ ! -f "$thumb/wifi.gpg" ]]; then
+    die "wifi.gpg not found on thumb drive. Cannot connect to wifi."
+  fi
+
+  info "Decrypting wifi credentials..."
+  local tmpfile
+  tmpfile=$(mktemp)
+  gpg_decrypt "$thumb/wifi.gpg" "$tmpfile"
+
+  local stored_ssid password
+  stored_ssid=$(grep '^SSID='     "$tmpfile" | cut -d= -f2-)
+  password=$(    grep '^PASSWORD=' "$tmpfile" | cut -d= -f2-)
+  rm -f "$tmpfile"
+
+  # Use the stored SSID unless one was explicitly passed
+  local target_ssid="${ssid:-$stored_ssid}"
+
+  info "Connecting to wifi: $target_ssid"
+  nmcli device wifi connect "$target_ssid" password "$password"
 }
 
 # ── Find thumb drive ──────────────────────────────────────────────────────
@@ -201,6 +247,14 @@ case "$OSTYPE" in
 
     if ! command -v git &>/dev/null; then
       nix-env -iA nixpkgs.git
+    fi
+
+    # Connect to wifi if requested or if not already online
+    if [[ -n "$WIFI_SSID" ]] || ! curl -sf https://github.com &>/dev/null; then
+      local thumb
+      thumb=$(find_thumb_drive) || die "Thumb drive not found for wifi credentials."
+      ensure_gpg
+      connect_wifi "$WIFI_SSID" "$thumb"
     fi
 
     clone_dotfiles
