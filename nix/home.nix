@@ -71,15 +71,15 @@
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
   home.file = {
-    ".zshrc".source                = ../. + "/.zshrc";
-    ".tmux.conf".source            = ../. + "/.tmux.conf";
-    ".gitconfig".source            = ../. + "/.gitconfig";
-    ".gitconfig-jet".source        = ../. + "/.gitconfig-jet";
-    ".config/nvim".source          = ../. + "/.config/nvim";
-    ".config/ghostty".source       = ../. + "/.config/ghostty";
-    ".config/hypr".source          = ../. + "/.config/hypr";
-    ".config/waybar".source        = ../. + "/.config/waybar";
-    ".config/starship.toml".source = ../. + "/.config/starship.toml";
+    ".zshrc".source                = ../.zshrc;
+    ".tmux.conf".source            = ../.tmux.conf;
+    ".gitconfig".source            = ../.gitconfig;
+    ".gitconfig-jet".source        = ../.gitconfig-jet;
+    ".config/nvim".source          = ../.config/nvim;
+    ".config/ghostty".source       = ../.config/ghostty;
+    ".config/hypr".source          = ../.config/hypr;
+    ".config/waybar".source        = ../.config/waybar;
+    ".config/starship.toml".source = ../.config/starship.toml;
   };
 
   # ── Programs ──────────────────────────────────────────────────────────────
