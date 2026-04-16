@@ -325,6 +325,11 @@ case "$OSTYPE" in
     clone_dotfiles
 
     mkdir -p "$DOTFILES_DIR/ssh"
+    # Derive public key from private if .pub doesn't exist
+    if [[ ! -f "$SSH_DIR/$SSH_KEY_NAME.pub" ]]; then
+      info "Deriving public key from private key..."
+      ssh-keygen -y -f "$SSH_DIR/$SSH_KEY_NAME" > "$SSH_DIR/$SSH_KEY_NAME.pub"
+    fi
     cp "$SSH_DIR/$SSH_KEY_NAME.pub" "$DOTFILES_DIR/ssh/$SSH_KEY_NAME.pub"
 
     info "Applying NixOS configuration (system + home-manager)..."
