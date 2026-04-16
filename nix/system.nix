@@ -74,11 +74,9 @@
   security.rtkit.enable      = true;
 
   # ── Bluetooth ─────────────────────────────────────────────────────────────
-  hardware.bluetooth = {
-    enable      = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
+  # Disabled temporarily — was hanging boot
+  # hardware.bluetooth.enable = true;
+  # services.blueman.enable = true;
 
   # ── Docker ────────────────────────────────────────────────────────────────
   virtualisation.docker = {
