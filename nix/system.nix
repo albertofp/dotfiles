@@ -22,21 +22,25 @@
   i18n.defaultLocale              = "en_US.UTF-8";
 
   # ── NVIDIA ────────────────────────────────────────────────────────────────
-  # Requires hardware.nix to set: boot.kernelModules = [ "nvidia" ];
   services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
-    modesetting.enable   = true;
-    open                 = false;   # use proprietary kernel module
-    nvidiaSettings       = true;
-    package              = config.boot.kernelPackages.nvidiaPackages.stable;
-
-    # Power management — safe default; tune if you have issues on suspend
-    powerManagement.enable             = false;
-    powerManagement.finegrained        = false;
+    modesetting.enable             = true;
+    open                           = false;   # use proprietary kernel module
+    nvidiaSettings                 = true;
+    package                        = config.boot.kernelPackages.nvidiaPackages.stable;
+    powerManagement.enable         = false;
+    powerManagement.finegrained    = false;
   };
 
   hardware.graphics.enable = true;
+
+  # Required for NVIDIA + Wayland (Hyprland)
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "nvidia-drm.fbdev=1"
+  ];
+  boot.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 
   # ── Hyprland (compositor) ─────────────────────────────────────────────────
   programs.hyprland = {
