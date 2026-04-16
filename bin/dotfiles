@@ -111,7 +111,20 @@ ensure_gpg() {
 # ── Decrypt a single gpg-encrypted file ───────────────────────────────────
 gpg_decrypt() {
   local src="$1" dst="$2"
-  gpg --quiet --yes --pinentry-mode loopback --decrypt --output "$dst" "$src"
+  gpg --quiet --yes --batch \
+    --pinentry-mode loopback \
+    --passphrase "$GPG_PASSPHRASE" \
+    --decrypt --output "$dst" "$src"
+}
+
+# ── Prompt for gpg passphrase once ────────────────────────────────────────
+prompt_passphrase() {
+  if [[ -n "$GPG_PASSPHRASE" ]]; then
+    return
+  fi
+  read -rsp "Enter gpg passphrase for thumb drive: " GPG_PASSPHRASE
+  echo
+  export GPG_PASSPHRASE
 }
 
 # ── Connect to wifi ───────────────────────────────────────────────────────
@@ -132,6 +145,7 @@ connect_wifi() {
   local stored_ssid="" password=""
   if [[ -f "$thumb/wifi.gpg" ]]; then
     info "Decrypting wifi credentials..."
+  prompt_passphrase
     local tmpfile
     tmpfile=$(mktemp)
     if gpg_decrypt "$thumb/wifi.gpg" "$tmpfile" 2>/dev/null; then
@@ -205,7 +219,8 @@ find_thumb_drive() {
 copy_from_thumb() {
   local thumb="$1"
 
-  info "Decrypting files from thumb drive (you will be prompted for your passphrase)..."
+  info "Decrypting files from thumb drive..."
+  prompt_passphrase
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
   mkdir -p "$HOME/.aws"
