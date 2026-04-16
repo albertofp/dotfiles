@@ -112,6 +112,11 @@
   # Set imperatively: `sudo passwd root`
   # Declarative option (hashed): users.users.root.hashedPassword = "...";
 
+  # ── Flatpak (for apps not in nixpkgs, e.g. Notion) ──────────────────────
+  services.flatpak.enable = true;
+  # After first boot: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  # Then: flatpak install flathub notion.so.Notion
+
   # ── System packages (minimal — user packages live in home.nix) ────────────
   environment.systemPackages = with pkgs; [
     git
