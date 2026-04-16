@@ -17,14 +17,18 @@
 #   2. Run the same curl command (or: bash dotfiles /Volumes/KEYS)
 #
 # Thumb drive must contain (gpg symmetric-encrypted files):
-#   id_home_github.gpg      — encrypted private SSH key
-#   id_home_github.pub.gpg  — encrypted public key
-#   .zshenv.gpg             — encrypted secrets (HCLOUD_TOKEN, ANTHROPIC_API_KEY, etc.)
+#   id_home_github.gpg    — personal GitHub SSH private key
+#   hetzner.gpg           — Hetzner SSH private key
+#   work_github.gpg       — work GitHub SSH private key
+#   work_github.pub.gpg   — work GitHub public key
+#   .zshenv.gpg           — secrets (HCLOUD_TOKEN, GITHUB_TOKEN, etc.)
 #
 # To encrypt files onto the thumb drive:
-#   gpg --symmetric --cipher-algo AES256 -o /path/to/thumb/id_home_github.gpg     ~/.ssh/id_home_github
-#   gpg --symmetric --cipher-algo AES256 -o /path/to/thumb/id_home_github.pub.gpg ~/.ssh/id_home_github.pub
-#   gpg --symmetric --cipher-algo AES256 -o /path/to/thumb/.zshenv.gpg            ~/.zshenv
+#   gpg --symmetric --cipher-algo AES256 -o /thumb/id_home_github.gpg  ~/.ssh/id_home_github
+#   gpg --symmetric --cipher-algo AES256 -o /thumb/hetzner.gpg         ~/.ssh/hetzner
+#   gpg --symmetric --cipher-algo AES256 -o /thumb/work_github.gpg     ~/.ssh/work_github
+#   gpg --symmetric --cipher-algo AES256 -o /thumb/work_github.pub.gpg ~/.ssh/work_github.pub
+#   gpg --symmetric --cipher-algo AES256 -o /thumb/.zshenv.gpg         ~/.zshenv
 
 set -e
 
@@ -97,65 +101,72 @@ find_thumb_drive() {
   esac
 }
 
-# ── Decrypt and install SSH key from thumb drive ───────────────────────────
+# ── Decrypt and install SSH keys from thumb drive ─────────────────────────
 copy_ssh_from_thumb() {
   local thumb="$1"
 
-  info "Decrypting SSH key from thumb drive (you will be prompted for your passphrase)..."
+  info "Decrypting files from thumb drive (you will be prompted for your passphrase)..."
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
 
-  gpg_decrypt "$thumb/$SSH_KEY_NAME.gpg"     "$SSH_DIR/$SSH_KEY_NAME"
-  gpg_decrypt "$thumb/$SSH_KEY_NAME.pub.gpg" "$SSH_DIR/$SSH_KEY_NAME.pub"
-  chmod 600 "$SSH_DIR/$SSH_KEY_NAME"
-  chmod 644 "$SSH_DIR/$SSH_KEY_NAME.pub"
+  local found=0
+  while IFS= read -r src; do
+    local filename
+    filename=$(basename "$src" .gpg)
+    local dst
+
+    # .zshenv goes to $HOME, everything else to $SSH_DIR
+    if [[ "$filename" == ".zshenv" ]]; then
+      dst="$HOME/$filename"
+    else
+      dst="$SSH_DIR/$filename"
+    fi
+
+    if [[ -f "$dst" ]]; then
+      echo "  SKIP (already exists): $filename"
+      continue
+    fi
+
+    gpg_decrypt "$src" "$dst"
+    # Private keys: 600; public keys and .zshenv: 600; .pub: 644
+    if [[ "$filename" == *.pub ]]; then
+      chmod 644 "$dst"
+    else
+      chmod 600 "$dst"
+    fi
+    echo "  decrypted: $filename"
+    found=1
+  done < <(find "$thumb" -maxdepth 1 -name "*.gpg" 2>/dev/null | sort)
+
+  [[ $found -eq 0 ]] && echo "  WARNING: no .gpg files found on thumb drive."
 }
 
-# ── Ensure SSH key is present (from disk or thumb drive) ──────────────────
-setup_ssh() {
+# ── Ensure SSH key + secrets are present (from disk or thumb drive) ───────
+setup_from_thumb() {
   mkdir -p "$SSH_DIR"
   chmod 700 "$SSH_DIR"
 
-  if [[ -f "$SSH_DIR/$SSH_KEY_NAME" ]]; then
-    info "SSH key already present at $SSH_DIR/$SSH_KEY_NAME"
-  else
-    info "SSH key not found — looking for thumb drive..."
+  local needs_thumb=0
+  [[ ! -f "$SSH_DIR/$SSH_KEY_NAME" ]] && needs_thumb=1
+  [[ ! -f "$HOME/.zshenv" ]]          && needs_thumb=1
+
+  if [[ $needs_thumb -eq 1 ]]; then
+    info "Some files missing — looking for thumb drive..."
     local thumb
     if thumb=$(find_thumb_drive); then
       info "Found thumb drive: $thumb"
       ensure_gpg
       copy_ssh_from_thumb "$thumb"
     else
-      die "SSH key not found and no thumb drive detected. Plug in the thumb drive and retry."
+      die "Required files missing and no thumb drive detected. Plug in the thumb drive and retry."
     fi
+  else
+    info "SSH key and .zshenv already present — skipping thumb drive."
   fi
 
   # Start agent and load key for this session
   eval "$(ssh-agent -s)" > /dev/null
   ssh-add "$SSH_DIR/$SSH_KEY_NAME"
-}
-
-# ── Decrypt and install secrets from thumb drive ───────────────────────────
-setup_secrets() {
-  if [[ -f "$HOME/.zshenv" ]]; then
-    info ".zshenv already present — skipping secrets copy."
-    return
-  fi
-
-  info "Looking for .zshenv.gpg on thumb drive..."
-  local thumb
-  if thumb=$(find_thumb_drive); then
-    if [[ -f "$thumb/.zshenv.gpg" ]]; then
-      info "Decrypting .zshenv from thumb drive (you will be prompted for your passphrase)..."
-      ensure_gpg
-      gpg_decrypt "$thumb/.zshenv.gpg" "$HOME/.zshenv"
-      chmod 600 "$HOME/.zshenv"
-    else
-      echo "WARNING: No .zshenv.gpg on thumb drive — create $HOME/.zshenv manually."
-    fi
-  else
-    echo "WARNING: No thumb drive found — create $HOME/.zshenv manually."
-  fi
 }
 
 # ── Clone dotfiles ─────────────────────────────────────────────────────────
@@ -174,8 +185,7 @@ clone_dotfiles() {
 # Main
 # ═══════════════════════════════════════════════════════════════════════════
 
-setup_ssh
-setup_secrets
+setup_from_thumb
 
 case "$OSTYPE" in
   # ── NixOS ───────────────────────────────────────────────────────────────
