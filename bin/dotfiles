@@ -331,10 +331,9 @@ case "$OSTYPE" in
     fi
 
     if [[ -n "$WIFI_SSID" ]] || ! curl -sf --max-time 5 https://github.com &>/dev/null; then
-      local thumb
-      thumb=$(find_thumb_drive) || die "Thumb drive not found for wifi credentials."
+      WIFI_THUMB=$(find_thumb_drive) || die "Thumb drive not found for wifi credentials."
       ensure_gpg
-      connect_wifi "$WIFI_SSID" "$thumb"
+      connect_wifi "$WIFI_SSID" "$WIFI_THUMB"
     fi
 
     clone_dotfiles
