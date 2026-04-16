@@ -1,3 +1,10 @@
+# SSH private keys — never commit these; only .pub files are tracked
+ssh/id_*
+ssh/hetzner
+ssh/work_*
+!ssh/*.pub
+!ssh/.gitkeep
+
 **/__pycache__/**
 **/GEMINI.md
 **/rest

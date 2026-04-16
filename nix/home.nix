@@ -51,53 +51,46 @@
     localsend
     wl-clipboard
 
+    # Hyprland user-space tools (compositor itself enabled in system.nix)
+    waybar
+    wofi
+    networkmanagerapplet  # nm-applet
+    brightnessctl
+    playerctl
+
     # AWS / cloud
     awscli2
 
     # GitHub CLI
     gh
 
-    # Bluetooth
-    bluez
-    bluez-utils
-
-    # Hyprland ecosystem
-    hyprland
-    waybar
-    wofi
-    networkmanagerapplet  # nm-applet
-    brightnessctl
-    playerctl
-    wireplumber           # wpctl (audio)
-
     # Fonts
     nerd-fonts.jetbrains-mono
   ];
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
-  # Symlink configs into $HOME — mirrors what `stow .` did under Ansible.
   home.file = {
-    ".zshrc".source             = ../. + "/.zshrc";
-    ".tmux.conf".source         = ../. + "/.tmux.conf";
-    ".gitconfig".source         = ../. + "/.gitconfig";
-    ".gitconfig-jet".source     = ../. + "/.gitconfig-jet";
-    ".config/nvim".source       = ../. + "/.config/nvim";
-    ".config/ghostty".source    = ../. + "/.config/ghostty";
-    ".config/hypr".source       = ../. + "/.config/hypr";
-    ".config/waybar".source     = ../. + "/.config/waybar";
+    ".zshrc".source                = ../. + "/.zshrc";
+    ".tmux.conf".source            = ../. + "/.tmux.conf";
+    ".gitconfig".source            = ../. + "/.gitconfig";
+    ".gitconfig-jet".source        = ../. + "/.gitconfig-jet";
+    ".config/nvim".source          = ../. + "/.config/nvim";
+    ".config/ghostty".source       = ../. + "/.config/ghostty";
+    ".config/hypr".source          = ../. + "/.config/hypr";
+    ".config/waybar".source        = ../. + "/.config/waybar";
     ".config/starship.toml".source = ../. + "/.config/starship.toml";
   };
 
-  # ── Programs managed by home-manager ──────────────────────────────────────
+  # ── Programs ──────────────────────────────────────────────────────────────
   programs.home-manager.enable = true;
 
   programs.starship = {
-    enable = true;
+    enable              = true;
     enableZshIntegration = true;
   };
 
   programs.fzf = {
-    enable = true;
+    enable              = true;
     enableZshIntegration = true;
   };
 }
