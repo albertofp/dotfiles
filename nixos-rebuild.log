@@ -1,20 +1,55 @@
 warning: Git tree '/home/alberto/dotfiles' is dirty
+building the system configuration...
+warning: Git tree '/home/alberto/dotfiles' is dirty
 error:
-       … while calling the 'seq' builtin
-         at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/modules.nix:402:18:
-          401|         options = checked options;
-          402|         config = checked (removeAttrs config [ "_module" ]);
-             |                  ^
-          403|         _module = checked (config._module);
+       … while calling the 'head' builtin
+         at «github:nixos/nixpkgs/4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9?narHash=sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM%3D»/lib/attrsets.nix:1712:13:
+         1711|           if length values == 1 || pred here (elemAt values 1) (head values) then
+         1712|             head values
+             |             ^
+         1713|           else
 
-       … while evaluating a branch condition
-         at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/modules.nix:305:9:
-          304|       checkUnmatched =
-          305|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
-             |         ^
-          306|           let
+       … while evaluating the attribute 'value'
+         at «github:nixos/nixpkgs/4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9?narHash=sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM%3D»/lib/modules.nix:1159:7:
+         1158|     // {
+         1159|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+         1160|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `system.build.toplevel':
+
+       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/system/activation/top-level.nix':
+
+       … while evaluating the option `warnings':
+
+       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/system/boot/systemd/tmpfiles.nix':
+
+       … while evaluating the option `systemd.tmpfiles.settings.graphics-driver."/run/opengl-driver"."L+".argument':
+
+       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/hardware/graphics.nix':
 
        (stack trace truncated; use '--show-trace' to show the full, detailed trace)
 
-       error: path '/nix/store/y0qahhi595i7rr6h671n72hx564mxf4x-source/nix/hardware.nix' does not exist
-Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.nixos-rebuild' --no-link' returned non-zero exit status 1.
+       error: Refusing to evaluate package 'nvidia-x11-595.58.03-6.18.22' in /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/pkgs/os-specific/linux/nvidia-x11/generic.nix:333 because it has an unfree license (‘unfreeRedistributable’)
+       a) To temporarily allow unfree packages, you can use an environment variable
+          for a single invocation of the nix tools.
+
+            $ export NIXPKGS_ALLOW_UNFREE=1
+
+          Note: When using `nix shell`, `nix build`, `nix develop`, etc with a flake,
+                then pass `--impure` in order to allow use of environment variables.
+
+       b) For `nixos-rebuild` you can set
+         { nixpkgs.config.allowUnfree = true; }
+       in configuration.nix to override this.
+
+       Alternatively you can configure a predicate to allow specific packages:
+         { nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "nvidia-x11"
+           ];
+         }
+
+       c) For `nix-env`, `nix-build`, `nix-shell` or any other Nix command you can add
+         { allowUnfree = true; }
+       to ~/.config/nixpkgs/config.nix.
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link' returned non-zero exit status 1.
