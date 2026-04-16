@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfilesRoot, ... }:
 
 {
   imports = [ ./hardware.nix ];
@@ -104,7 +104,7 @@
     extraGroups    = [ "wheel" "docker" "networkmanager" "video" "audio" ];
 
     # Public key for SSH login — private key lives on thumb drive
-    openssh.authorizedKeys.keyFiles = [ ../ssh/id_home_github.pub ];
+    openssh.authorizedKeys.keyFiles = [ "${dotfilesRoot}/ssh/id_home_github.pub" ];
   };
 
   # Allow `sudo` for wheel group without password prompt during bootstrap

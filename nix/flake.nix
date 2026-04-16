@@ -22,6 +22,7 @@
       #   sudo nixos-rebuild switch --flake .#alberto
       nixosConfigurations.alberto = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { dotfilesRoot = self; };
         modules = [
           ./system.nix
           home-manager.nixosModules.home-manager
