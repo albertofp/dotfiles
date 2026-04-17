@@ -1,4 +1,16 @@
-source $HOME/.zshenv
+[[ -f $HOME/.zshenv ]] && source $HOME/.zshenv
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt EXTENDED_HISTORY       # write timestamps
+setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
+setopt HIST_IGNORE_DUPS       # no consecutive duplicates
+setopt HIST_IGNORE_SPACE      # don't record lines starting with space
+setopt HIST_VERIFY            # don't execute immediately on history expansion
+setopt SHARE_HISTORY          # share history across sessions
+
 autoload -U compinit
 compinit -i
 
