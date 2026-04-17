@@ -38,6 +38,10 @@
 
   hardware.graphics.enable = true;
 
+  # Mesa 25.x loads nvidia-drm_gbm.so which crashes with legacy_535.
+  # Override the GBM backend path to use only Mesa's own implementation.
+  environment.variables.GBM_BACKEND = "drm";
+
   # Required for NVIDIA + Wayland (Hyprland)
   boot.kernelParams = [
     "nvidia-drm.modeset=1"
