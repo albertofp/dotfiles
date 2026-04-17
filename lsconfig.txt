@@ -1,0 +1,8 @@
+environment.d
+fontconfig
+ghostty
+hypr
+nvim
+starship.toml
+systemd
+waybar
