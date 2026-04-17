@@ -1,150 +1,150 @@
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   __NIXOS_SET_ENVIRONMENT_DONE
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]: Exporting variables to systemd user manager:
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   DESKTOP_SESSION
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   EDITOR
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   LESSKEYIN_SYSTEM
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   NIXPKGS_CONFIG
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   NIX_PROFILES
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   NIX_USER_PROFILE_DIR
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   OLDPWD
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   PAGER
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   PATH (updating)
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   PYTHONNOUSERSITE
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   SSH_ASKPASS
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   UWSM_FINALIZE_VARNAMES
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   UWSM_WAIT_VARNAMES
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_BACKEND
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_CACHE_HOME
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_CONFIG_HOME
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_CURRENT_DESKTOP
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_DATA_HOME
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_MENU_PREFIX
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_SESSION_CLASS
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_SESSION_DESKTOP
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_SESSION_TYPE
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   XDG_STATE_HOME
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   __ETC_PROFILE_DONE
-Apr 17 11:23:34 nixos uwsm_env-preloader[2166]:   __NIXOS_SET_ENVIRONMENT_DONE
-Apr 17 11:23:34 nixos systemd[1813]: Finished Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
-Apr 17 11:23:34 nixos systemd[1813]: Reached target Preparation for session of hyprland.desktop Wayland compositor.
-Apr 17 11:23:34 nixos systemd[1813]: Starting Main service for Hyprland, An intelligent dynamic tiling Wayland compositor...
-Apr 17 11:23:34 nixos uwsm_hyprland.desktop[2236]: Starting: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland...
-Apr 17 11:23:34 nixos uwsm_waitenv[2235]: Expecting variables to appear in activation environment:
-Apr 17 11:23:34 nixos uwsm_waitenv[2235]:   WAYLAND_DISPLAY, HYPRLAND_INSTANCE_SIGNATURE
-Apr 17 11:23:34 nixos uwsm_hyprland.desktop[2238]: Expecting variables to appear in activation environment:
-Apr 17 11:23:34 nixos uwsm_hyprland.desktop[2238]:   WAYLAND_DISPLAY, HYPRLAND_INSTANCE_SIGNATURE
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: Welcome to Hyprland!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Instance Signature: 521ece463c4a9d3d128670688a34756805a4328f_1776417815_277423829
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Runtime directory: /run/user/1000/hypr/521ece463c4a9d3d128670688a34756805a4328f_1776417815_277423829
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Hyprland PID: 2241
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: ===== SYSTEM INFO: =====
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: System name: Linux
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Node name: nixos
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Release: 6.18.22
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Version: #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]:
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: GPU information:
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: 1c:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: WARN ]: Warning: you're using an NVIDIA GPU. Make sure you follow the instructions on the wiki if anything is amiss.
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: os-release:
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: ANSI_COLOR="0;38;2;126;186;228"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: BUG_REPORT_URL="https://github.com/NixOS/nixpkgs/issues"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: BUILD_ID="26.05.20260414.4bd9165"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: CPE_NAME="cpe:/o:nixos:nixos:26.05"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEFAULT_HOSTNAME=nixos
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DOCUMENTATION_URL="https://nixos.org/learn.html"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: HOME_URL="https://nixos.org/"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: ID=nixos
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: ID_LIKE=""
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: IMAGE_ID=""
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: IMAGE_VERSION=""
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: LOGO="nix-snowflake"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: NAME=NixOS
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: PRETTY_NAME="NixOS 26.05 (Yarara)"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: SUPPORT_URL="https://nixos.org/community.html"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VARIANT=""
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VARIANT_ID=""
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VENDOR_NAME=NixOS
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VENDOR_URL="https://nixos.org/"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VERSION="26.05 (Yarara)"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VERSION_CODENAME=yarara
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: VERSION_ID="26.05"
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: ========================
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]:
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: If you are crashing, or encounter any bugs, please consult https://wiki.hypr.land/Crashes-and-Bugs/
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]:
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: Current splash: You're gonna hear my voice when I shout it out loud
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Old rlimit: soft -> 1024, hard -> 524288
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: New rlimit: soft -> 524288, hard -> 524288
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the EventLoopManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the KeybindManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the AnimationManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the DynamicPermissionManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the ConfigManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Using config: /home/alberto/.config/hypr/hyprland.conf
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Warning: config descriptions have 326 entries, but there are 326 config values. This should fail tests!!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: !!!!HEY YOU, YES YOU!!!!: further logs to stdout / logfile are disabled by default. BEFORE SENDING THIS LOG, ENABLE THEM. Use debug:disable_logs = false to do so: https://wiki.hypr.land/Configuring/Variables/#debug
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the CHyprError!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the LayoutManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the TokenManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Using config: /home/alberto/.config/hypr/hyprland.conf
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Disabling stdout logs! Check the log for further logs.
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the PointerManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the EventManager!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: DEBUG ]: Creating the AsyncResourceGatherer!
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2241]: Hyprland has crashed :( Consult the crash report at /home/alberto/.cache/hyprland/hyprlandCrashReport2241.txt for more information.
-Apr 17 11:23:35 nixos systemd-coredump[2267]: Process 2241 (.Hyprland-wrapp) of user 1000 terminated abnormally with signal 6/ABRT, processing...
-Apr 17 11:23:35 nixos systemd-coredump[2268]: Process 2241 (.Hyprland-wrapp) of user 1000 dumped core.
-                                              Module /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/.Hyprland-wrapped without build-id.
-                                              #3  0x000055ab4986f2ca _ZL25handleUnrecoverableSignali (/nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/.Hyprland-wrapped + 0x3572ca)
-                                              #13 0x000055ab49896452 _ZN11CCompositor10initServerENSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEi (/nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/.Hyprland-wrapped + 0x37e452)
-                                              #14 0x000055ab4985c126 main (/nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/.Hyprland-wrapped + 0x344126)
-                                              #17 0x000055ab49857da5 _start (/nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/.Hyprland-wrapped + 0x33fda5)
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2236]: ERR from start-hyprland ]: Couldn't waitpid for hyprland: No child processes
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2236]: DEBUG from start-hyprland ]: hyprland exit, breaking poll, checking state
-Apr 17 11:23:35 nixos uwsm_hyprland.desktop[2236]: DEBUG from start-hyprland ]: Hyprland exit cleanly.
-Apr 17 11:23:35 nixos systemd[1813]: wayland-wm@hyprland.desktop.service: Failed with result 'protocol'.
-Apr 17 11:23:35 nixos systemd[1813]: Stopped Main service for Hyprland, An intelligent dynamic tiling Wayland compositor.
-Apr 17 11:23:35 nixos systemd[1813]: wayland-wm@hyprland.desktop.service: Triggering OnFailure= dependencies.
-Apr 17 11:23:35 nixos systemd[1813]: Stopped target Preparation for session of hyprland.desktop Wayland compositor.
-Apr 17 11:23:35 nixos systemd[1813]: Stopping Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Cleaning up...
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Found environment cleanup file "env_cleanup.list".
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Found initial systemd state file "env_pre".
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Removing variables from systemd user manager:
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   DESKTOP_SESSION
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   EDITOR
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   LESSKEYIN_SYSTEM
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   NIXPKGS_CONFIG
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   NIX_PROFILES
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   NIX_USER_PROFILE_DIR
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   OLDPWD
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   PAGER
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   PYTHONNOUSERSITE
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   SSH_ASKPASS
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   UWSM_FINALIZE_VARNAMES
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   UWSM_WAIT_VARNAMES
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_BACKEND
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_CACHE_HOME
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_CONFIG_HOME
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_CURRENT_DESKTOP
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_DATA_HOME
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_MENU_PREFIX
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_SESSION_CLASS
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_SESSION_DESKTOP
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_SESSION_TYPE
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   XDG_STATE_HOME
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   __ETC_PROFILE_DONE
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   __NIXOS_SET_ENVIRONMENT_DONE
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Restoring initial systemd vars.
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Exporting variables to systemd user manager:
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]:   PATH (updating)
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Removed "env_cleanup.list".
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Removed "env_pre".
-Apr 17 11:23:35 nixos uwsm_env-preloader[2288]: Removed "env_session.conf".
-Apr 17 11:23:35 nixos systemd[1813]: Stopped Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
-Apr 17 11:23:35 nixos systemd[1813]: wayland-wm-env@hyprland.desktop.service: Triggering OnSuccess= dependencies.
-Apr 17 11:23:35 nixos systemd[1813]: Stopped target Session envelope of hyprland.desktop Wayland compositor.
-Apr 17 11:23:35 nixos uwsm[1850]: PID 2165 exited with RC 0
-Apr 17 11:23:36 nixos sddm-greeter-qt6[2328]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
-Apr 17 11:23:36 nixos sddm-greeter-qt6[2328]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland.desktop"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_layout" "us"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (WW) Option "xkb_variant" requires a string value
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_options" "terminate:ctrl_alt_bksp"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event4  - USB-HID Keyboard: is tagged by udev as: Keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event4  - USB-HID Keyboard: device is a keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device Logitech MX Vertical (/dev/input/event5)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "Keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "evdev pointer catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "evdev keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "libinput pointer catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "libinput keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "libinput mouse configuration"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) Using input driver 'libinput' for 'Logitech MX Vertical'
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: always reports core events
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "Device" "/dev/input/event5"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: is tagged by udev as: Keyboard Mouse
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: device is a pointer
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: device is a keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: device removed
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "AccelProfile" "adaptive"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: Step value 0 was provided, libinput Fallback acceleration function is used.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: Step value 0 was provided, libinput Fallback acceleration function is used.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: Step value 0 was provided, libinput Fallback acceleration function is used.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "NaturalScrolling" "off"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "SendEventsMode" "enabled"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "LeftHanded" "off"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "ScrollMethod" "twofinger"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "MiddleEmulation" "on"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "HorizontalScrolling" "on"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: needs a virtual subdevice
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb1/1-4/1-4:1.2/0003:046D:C52B.0007/0003:046D:407B.0009/input/input16/event5"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) XINPUT: Adding extended input device "Logitech MX Vertical" (type: MOUSE, id 13)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (EE) libinput: Logitech MX Vertical: Failed to set scroll to twofinger
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "AccelerationScheme" "none"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: (accel) selected scheme none/0
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: (accel) acceleration factor: 2.000
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: (accel) acceleration threshold: 4
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: is tagged by udev as: Keyboard Mouse
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: device is a pointer
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: device is a keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (EE) libinput: Logitech MX Vertical: Failed to set scroll to twofinger
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device Logitech MX Vertical (/dev/input/mouse1)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "Keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HDA NVidia HDMI/DP,pcm=3 (/dev/input/event8)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HDA NVidia HDMI/DP,pcm=7 (/dev/input/event9)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HDA NVidia HDMI/DP,pcm=8 (/dev/input/event10)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HDA NVidia HDMI/DP,pcm=9 (/dev/input/event11)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HDX Webcam USB: HDX Webcam USB (/dev/input/event12)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) HDX Webcam USB: HDX Webcam USB: Applying InputClass "Keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) HDX Webcam USB: HDX Webcam USB: Applying InputClass "evdev keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) HDX Webcam USB: HDX Webcam USB: Applying InputClass "libinput keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) Using input driver 'libinput' for 'HDX Webcam USB: HDX Webcam USB'
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) HDX Webcam USB: HDX Webcam USB: always reports core events
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "Device" "/dev/input/event12"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event12 - HDX Webcam USB: HDX Webcam USB: is tagged by udev as: Keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event12 - HDX Webcam USB: HDX Webcam USB: device is a keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event12 - HDX Webcam USB: HDX Webcam USB: device removed
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:07.1/0000:1d:00.3/usb3/3-2/3-2:1.0/input/input23/event12"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) XINPUT: Adding extended input device "HDX Webcam USB: HDX Webcam USB" (type: KEYBOARD, id 14)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_model" "pc104"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_layout" "us"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (WW) Option "xkb_variant" requires a string value
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_options" "terminate:ctrl_alt_bksp"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event12 - HDX Webcam USB: HDX Webcam USB: is tagged by udev as: Keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) event12 - HDX Webcam USB: HDX Webcam USB: device is a keyboard
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Rear Mic (/dev/input/event13)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Front Mic (/dev/input/event14)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Line (/dev/input/event15)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Line Out Front (/dev/input/event16)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Line Out Surround (/dev/input/event17)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Line Out CLFE (/dev/input/event18)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Line Out Side (/dev/input/event19)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) config/udev: Adding input device HD-Audio Generic Front Headphone (/dev/input/event20)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) No input driver specified, ignoring this device.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) This device may have been added with another device file.
+Apr 17 11:44:51 nixos sddm[1705]: Setting default cursor
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "Keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "evdev pointer catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "evdev keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "libinput pointer catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "libinput keyboard catchall"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: Applying InputClass "libinput mouse configuration"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) Using input driver 'libinput' for 'Logitech MX Vertical'
+Apr 17 11:44:51 nixos sddm[1705]: Could not setup default cursor
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Logitech MX Vertical: always reports core events
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "Device" "/dev/input/event5"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: is a virtual subdevice
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "AccelProfile" "adaptive"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: Step value 0 was provided, libinput Fallback acceleration function is used.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: Step value 0 was provided, libinput Fallback acceleration function is used.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) libinput: Logitech MX Vertical: Step value 0 was provided, libinput Fallback acceleration function is used.
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "NaturalScrolling" "off"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "SendEventsMode" "enabled"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "LeftHanded" "off"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "ScrollMethod" "twofinger"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "MiddleEmulation" "on"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:01.3/0000:03:00.0/usb1/1-4/1-4:1.2/0003:046D:C52B.0007/0003:046D:407B.0009/input/input16/event5"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (II) XINPUT: Adding extended input device "Logitech MX Vertical" (type: KEYBOARD, id 15)
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_model" "pc104"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_layout" "us"
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (WW) Option "xkb_variant" requires a string value
+Apr 17 11:44:51 nixos xserver-wrapper[1707]: (**) Option "xkb_options" "terminate:ctrl_alt_bksp"
+Apr 17 11:44:51 nixos sddm[1705]: Running display setup script  "/nix/store/2k8hfkkrpv4y81w2zd82cfp384zz24ra-Xsetup"
+Apr 17 11:44:51 nixos sddm[1705]: Display server started.
+Apr 17 11:44:51 nixos sddm[1705]: Socket server starting...
+Apr 17 11:44:51 nixos sddm[1705]: Socket server started.
+Apr 17 11:44:51 nixos sddm[1705]: Loaded empty theme configuration
+Apr 17 11:44:51 nixos sddm[1705]: Greeter starting...
+Apr 17 11:44:51 nixos sddm-helper[1713]: [PAM] Starting...
+Apr 17 11:44:51 nixos sddm-helper[1713]: [PAM] Authenticating...
+Apr 17 11:44:51 nixos sddm-helper[1713]: [PAM] returning.
+Apr 17 11:44:51 nixos sddm-helper[1713]: Writing cookie to "/tmp/xauth_fDEXbI"
+Apr 17 11:44:51 nixos sddm-helper[1713]: Starting X11 session: "" "/nix/store/3vz1yna3hhljvfhlgjm9y0d6y7fyqzi8-sddm-wrapped/bin/sddm-greeter-qt6 --socket /tmp/sddm-:0-WZoEnb"
+Apr 17 11:44:51 nixos sddm[1705]: Greeter session started successfully
+Apr 17 11:44:51 nixos sddm[1705]: Message received from greeter: Connect
+Apr 17 11:44:52 nixos sddm[1705]: Auth: sddm-helper exited with 6
+Apr 17 11:44:52 nixos sddm[1705]: Greeter stopped. SDDM::Auth::HelperExitStatus(6)
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event7  - Power Button: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event6  - Power Button: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event0  - USB-HID Keyboard: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event1  - USB-HID Keyboard System Control: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event2  - USB-HID Keyboard Consumer Control: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event3  - USB-HID Keyboard Mouse: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event4  - USB-HID Keyboard: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event12 - HDX Webcam USB: HDX Webcam USB: device removed
+Apr 17 11:45:19 nixos xserver-wrapper[1707]: (II) event5  - Logitech MX Vertical: device removed
