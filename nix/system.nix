@@ -40,9 +40,8 @@
     "nvidia-drm.modeset=1"
     "nvidia-drm.fbdev=1"
   ];
+  # Load nvidia modules early so KMS is available before display manager starts
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.kernelModules        = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.extraModulePackages  = [ config.boot.kernelPackages.nvidia_x11 ];
 
   # ── Hyprland (compositor) ─────────────────────────────────────────────────
   # programs.hyprland.enable handles portals, polkit, xwayland, desktop entry
