@@ -1,0 +1,328 @@
+Apr 17 09:21:44 nixos systemd[1]: Starting Display Manager...
+Apr 17 09:21:44 nixos systemd[1]: Started Display Manager.
+Apr 17 09:21:45 nixos sddm[1623]: Initializing...
+Apr 17 09:21:45 nixos sddm[1623]: Starting...
+Apr 17 09:21:45 nixos sddm[1623]: Logind interface found
+Apr 17 09:21:45 nixos sddm[1623]: Adding new display...
+Apr 17 09:21:45 nixos sddm[1623]: Loaded empty theme configuration
+Apr 17 09:21:45 nixos sddm[1623]: Xauthority path: "/run/sddm/xauth_leQNik"
+Apr 17 09:21:45 nixos sddm[1623]: Using VT 2
+Apr 17 09:21:45 nixos sddm[1623]: Display server starting...
+Apr 17 09:21:45 nixos sddm[1623]: Writing cookie to "/run/sddm/xauth_leQNik"
+Apr 17 09:21:45 nixos sddm[1623]: Running: /nix/store/xbc4yn8cvnw42za12bz5fjjj527gbmmw-xserver-wrapper -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_leQNik -noreset -displayfd 16
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: X.Org X Server 1.21.1.21
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: X Protocol Version 11, Revision 0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: Current Operating System: Linux nixos 6.18.22 #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026 x86_64
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: Kernel command line: initrd=\EFI\nixos\a8k3fr59v4l647lxnf48ffyprz3vk94f-initrd-linux-6.18.22-initrd.efi init=/nix/store/pga0f5anq1lr9kxhavnjvj5vjmr0k9aj-nixos-system-nixos-26.05.20260414.4bd9165/init nvidia-drm.modeset=1 nvidia-drm.fbdev=1 root=fstab loglevel=4 lsm=landlock,yama,bpf nvidia-drm.modeset=1 nvidia-drm.fbdev=1
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:  
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: Current version of pixman: 0.46.4
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Before reporting problems, check http://wiki.x.org
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         to make sure that you have the latest version.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: Markers: (--) probed, (**) from config file, (==) default setting,
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         (++) from command line, (!!) notice, (II) informational,
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (++) Log file: "/dev/null", Time: Fri Apr 17 09:21:45 2026
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (++) Using config file: "/nix/store/21m8n32liy3xnjrdhh9zkssx1x7wih9n-xserver.conf"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Using config directory: "/etc/X11/xorg.conf.d"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Using system config directory "/nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/share/X11/xorg.conf.d"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) ServerLayout "Layout[all]"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) |-->Screen "Screen-nvidia[0]" (0)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) |   |-->Monitor "<default monitor>"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) |   |-->Device "Device-nvidia[0]"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) No monitor specified for screen "Screen-nvidia[0]".
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Using a default monitor configuration.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) Option "DontZap" "on"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) Option "AllowMouseOpenFail" "on"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) Allowing byte-swapped clients
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Automatically adding devices
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Automatically enabling devices
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Automatically adding GPU devices
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Automatically binding GPU devices
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (==) Max clients allowed: 256, resource mask: 0x1fffff
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/misc" does not exist.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Entry deleted from font path.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/TTF" does not exist.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Entry deleted from font path.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/OTF" does not exist.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Entry deleted from font path.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/Type1" does not exist.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Entry deleted from font path.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/100dpi" does not exist.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Entry deleted from font path.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/75dpi" does not exist.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Entry deleted from font path.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) FontPath set to:
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         /nix/store/bv8d7nyinzicmgdiy4l5m9rcshbg2qrv-font-cursor-misc-1.0.4/share/fonts/X11/misc,
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         /nix/store/apfxgpnk18yjgp9aazx6v3mq3j4lyy0m-font-misc-misc-1.1.3/share/fonts/X11/misc,
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         /nix/store/j6fil6mv9bdi7aff7gmiwza7l3qif898-unifont-17.0.04/share/fonts,
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         /nix/store/dnfrcq0pz25wg16mn6k7xxmddr551wnd-font-adobe-100dpi-1.0.4/share/fonts/X11/100dpi,
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         /nix/store/l129xrsjka07c8mrjv1v047zirm8xvpp-font-adobe-75dpi-1.0.4/share/fonts/X11/75dpi
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (**) ModulePath set to "/nix/store/6m5ylh349svnjcby76v633f8pllghrxj-nvidia-x11-595.58.03-6.18.22-bin/lib/xorg/modules,/nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules,/nix/store/vy6f52kwq3s5xgrmxz35iyl9cjfx350r-xf86-input-evdev-2.11.0/lib/xorg/modules,/nix/store/vfgbhbcpg4ppgmgs1g8ajjgfafq0ylgm-xf86-input-libinput-1.5.0/lib/xorg/modules"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) The server relies on udev to provide the list of input devices.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         If no devices become available, reconfigure udev or disable AutoAddDevices.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Module ABI versions:
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         X.Org ANSI C Emulation: 0.4
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         X.Org Video Driver: 25.2
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         X.Org XInput driver : 24.4
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         X.Org Server Extension : 10.0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (++) using VT number 2
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) systemd-logind: logind integration requires -keeptty and -keeptty was not provided, disabling logind integration
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) xfree86: Adding drm device (/dev/dri/card0)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Platform probe for /sys/devices/pci0000:00/0000:00:03.1/0000:1c:00.0/simple-framebuffer.0/drm/card0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (--) PCI:*(28@0:0:0) 10de:1b80:10de:119e rev 161, Mem @ 0xf6000000/16777216, 0xe0000000/268435456, 0xf0000000/33554432, I/O @ 0x0000e000/128, BIOS @ 0x????????/131072
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Open ACPI successful (/var/run/acpid.socket)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) "glx" will be loaded by default.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) LoadModule: "glx"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Loading /nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules/extensions/libglx.so
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Module glx: vendor="X.Org Foundation"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         compiled for 1.21.1.21, module version = 1.0.0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         ABI class: X.Org Server Extension, version 10.0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) LoadModule: "nvidia"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Loading /nix/store/6m5ylh349svnjcby76v633f8pllghrxj-nvidia-x11-595.58.03-6.18.22-bin/lib/xorg/modules/drivers/nvidia_drv.so
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Module nvidia: vendor="NVIDIA Corporation"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         compiled for 1.16.99.901, module version = 1.0.0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         Module class: X.Org Video Driver
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) NVIDIA dlloader X Driver  595.58.03  Tue Mar 17 19:40:22 UTC 2026
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) NVIDIA Unified Driver for all Supported NVIDIA GPUs
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Loading sub module "fb"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) LoadModule: "fb"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Module "fb" already built-in
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Loading sub module "wfb"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) LoadModule: "wfb"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Loading /nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules/libwfb.so
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (II) Module wfb: vendor="X.Org Foundation"
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         compiled for 1.21.1.21, module version = 1.0.0
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:         ABI class: X.Org ANSI C Emulation, version 0.4
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) NVIDIA(0): The NVIDIA NVIDIA GeForce GTX 1080 GPU installed in this
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) NVIDIA(0):     system is supported through the NVIDIA 580.xx Legacy
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) NVIDIA(0):     drivers. Please visit
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) NVIDIA(0):     http://www.nvidia.com/object/unix.html for more
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) NVIDIA(0):     information.  The 595.58.03 NVIDIA driver will ignore this
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (WW) NVIDIA(0):     GPU.  Continuing probe...
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE) No devices detected.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: Fatal server error:
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE) no screens found(EE)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: Please consult the The X.Org Foundation support
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:          at http://wiki.x.org
+Apr 17 09:21:45 nixos xserver-wrapper[1625]:  for help.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE) Please also check the log file at "/dev/null" for additional information.
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE)
+Apr 17 09:21:45 nixos xserver-wrapper[1625]: (EE) Server terminated with error (1). Closing log file.
+Apr 17 09:21:45 nixos sddm[1623]: Failed to read display number from pipe
+Apr 17 09:21:45 nixos sddm[1623]: Display server stopping...
+Apr 17 09:21:45 nixos sddm[1623]: Attempt 1 starting the Display server on vt 2 failed
+Apr 17 09:21:47 nixos sddm[1623]: Display server starting...
+Apr 17 09:21:47 nixos sddm[1623]: Writing cookie to "/run/sddm/xauth_leQNik"
+Apr 17 09:21:47 nixos sddm[1623]: Running: /nix/store/xbc4yn8cvnw42za12bz5fjjj527gbmmw-xserver-wrapper -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_leQNik -noreset -displayfd 16
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: X.Org X Server 1.21.1.21
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: X Protocol Version 11, Revision 0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: Current Operating System: Linux nixos 6.18.22 #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026 x86_64
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: Kernel command line: initrd=\EFI\nixos\a8k3fr59v4l647lxnf48ffyprz3vk94f-initrd-linux-6.18.22-initrd.efi init=/nix/store/pga0f5anq1lr9kxhavnjvj5vjmr0k9aj-nixos-system-nixos-26.05.20260414.4bd9165/init nvidia-drm.modeset=1 nvidia-drm.fbdev=1 root=fstab loglevel=4 lsm=landlock,yama,bpf nvidia-drm.modeset=1 nvidia-drm.fbdev=1
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:  
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: Current version of pixman: 0.46.4
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Before reporting problems, check http://wiki.x.org
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         to make sure that you have the latest version.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: Markers: (--) probed, (**) from config file, (==) default setting,
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         (++) from command line, (!!) notice, (II) informational,
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (++) Log file: "/dev/null", Time: Fri Apr 17 09:21:47 2026
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (++) Using config file: "/nix/store/21m8n32liy3xnjrdhh9zkssx1x7wih9n-xserver.conf"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Using config directory: "/etc/X11/xorg.conf.d"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Using system config directory "/nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/share/X11/xorg.conf.d"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) ServerLayout "Layout[all]"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) |-->Screen "Screen-nvidia[0]" (0)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) |   |-->Monitor "<default monitor>"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) |   |-->Device "Device-nvidia[0]"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) No monitor specified for screen "Screen-nvidia[0]".
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Using a default monitor configuration.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) Option "DontZap" "on"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) Option "AllowMouseOpenFail" "on"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) Allowing byte-swapped clients
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Automatically adding devices
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Automatically enabling devices
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Automatically adding GPU devices
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Automatically binding GPU devices
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (==) Max clients allowed: 256, resource mask: 0x1fffff
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/misc" does not exist.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Entry deleted from font path.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/TTF" does not exist.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Entry deleted from font path.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/OTF" does not exist.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Entry deleted from font path.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/Type1" does not exist.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Entry deleted from font path.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/100dpi" does not exist.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Entry deleted from font path.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/75dpi" does not exist.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Entry deleted from font path.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) FontPath set to:
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         /nix/store/bv8d7nyinzicmgdiy4l5m9rcshbg2qrv-font-cursor-misc-1.0.4/share/fonts/X11/misc,
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         /nix/store/apfxgpnk18yjgp9aazx6v3mq3j4lyy0m-font-misc-misc-1.1.3/share/fonts/X11/misc,
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         /nix/store/j6fil6mv9bdi7aff7gmiwza7l3qif898-unifont-17.0.04/share/fonts,
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         /nix/store/dnfrcq0pz25wg16mn6k7xxmddr551wnd-font-adobe-100dpi-1.0.4/share/fonts/X11/100dpi,
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         /nix/store/l129xrsjka07c8mrjv1v047zirm8xvpp-font-adobe-75dpi-1.0.4/share/fonts/X11/75dpi
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (**) ModulePath set to "/nix/store/6m5ylh349svnjcby76v633f8pllghrxj-nvidia-x11-595.58.03-6.18.22-bin/lib/xorg/modules,/nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules,/nix/store/vy6f52kwq3s5xgrmxz35iyl9cjfx350r-xf86-input-evdev-2.11.0/lib/xorg/modules,/nix/store/vfgbhbcpg4ppgmgs1g8ajjgfafq0ylgm-xf86-input-libinput-1.5.0/lib/xorg/modules"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) The server relies on udev to provide the list of input devices.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         If no devices become available, reconfigure udev or disable AutoAddDevices.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Module ABI versions:
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         X.Org ANSI C Emulation: 0.4
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         X.Org Video Driver: 25.2
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         X.Org XInput driver : 24.4
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         X.Org Server Extension : 10.0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (++) using VT number 2
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) systemd-logind: logind integration requires -keeptty and -keeptty was not provided, disabling logind integration
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) xfree86: Adding drm device (/dev/dri/card0)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Platform probe for /sys/devices/pci0000:00/0000:00:03.1/0000:1c:00.0/simple-framebuffer.0/drm/card0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (--) PCI:*(28@0:0:0) 10de:1b80:10de:119e rev 161, Mem @ 0xf6000000/16777216, 0xe0000000/268435456, 0xf0000000/33554432, I/O @ 0x0000e000/128, BIOS @ 0x????????/131072
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Open ACPI successful (/var/run/acpid.socket)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) "glx" will be loaded by default.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) LoadModule: "glx"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Loading /nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules/extensions/libglx.so
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Module glx: vendor="X.Org Foundation"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         compiled for 1.21.1.21, module version = 1.0.0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         ABI class: X.Org Server Extension, version 10.0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) LoadModule: "nvidia"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Loading /nix/store/6m5ylh349svnjcby76v633f8pllghrxj-nvidia-x11-595.58.03-6.18.22-bin/lib/xorg/modules/drivers/nvidia_drv.so
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Module nvidia: vendor="NVIDIA Corporation"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         compiled for 1.16.99.901, module version = 1.0.0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         Module class: X.Org Video Driver
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) NVIDIA dlloader X Driver  595.58.03  Tue Mar 17 19:40:22 UTC 2026
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) NVIDIA Unified Driver for all Supported NVIDIA GPUs
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Loading sub module "fb"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) LoadModule: "fb"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Module "fb" already built-in
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Loading sub module "wfb"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) LoadModule: "wfb"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Loading /nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules/libwfb.so
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (II) Module wfb: vendor="X.Org Foundation"
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         compiled for 1.21.1.21, module version = 1.0.0
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:         ABI class: X.Org ANSI C Emulation, version 0.4
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) NVIDIA(0): The NVIDIA NVIDIA GeForce GTX 1080 GPU installed in this
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) NVIDIA(0):     system is supported through the NVIDIA 580.xx Legacy
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) NVIDIA(0):     drivers. Please visit
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) NVIDIA(0):     http://www.nvidia.com/object/unix.html for more
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) NVIDIA(0):     information.  The 595.58.03 NVIDIA driver will ignore this
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (WW) NVIDIA(0):     GPU.  Continuing probe...
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE) No devices detected.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: Fatal server error:
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE) no screens found(EE)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: Please consult the The X.Org Foundation support
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:          at http://wiki.x.org
+Apr 17 09:21:47 nixos xserver-wrapper[1651]:  for help.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE) Please also check the log file at "/dev/null" for additional information.
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE)
+Apr 17 09:21:47 nixos xserver-wrapper[1651]: (EE) Server terminated with error (1). Closing log file.
+Apr 17 09:21:47 nixos sddm[1623]: Failed to read display number from pipe
+Apr 17 09:21:47 nixos sddm[1623]: Display server stopping...
+Apr 17 09:21:47 nixos sddm[1623]: Attempt 2 starting the Display server on vt 2 failed
+Apr 17 09:21:49 nixos sddm[1623]: Display server starting...
+Apr 17 09:21:49 nixos sddm[1623]: Writing cookie to "/run/sddm/xauth_leQNik"
+Apr 17 09:21:49 nixos sddm[1623]: Running: /nix/store/xbc4yn8cvnw42za12bz5fjjj527gbmmw-xserver-wrapper -nolisten tcp -background none -seat seat0 vt2 -auth /run/sddm/xauth_leQNik -noreset -displayfd 16
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: X.Org X Server 1.21.1.21
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: X Protocol Version 11, Revision 0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: Current Operating System: Linux nixos 6.18.22 #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026 x86_64
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: Kernel command line: initrd=\EFI\nixos\a8k3fr59v4l647lxnf48ffyprz3vk94f-initrd-linux-6.18.22-initrd.efi init=/nix/store/pga0f5anq1lr9kxhavnjvj5vjmr0k9aj-nixos-system-nixos-26.05.20260414.4bd9165/init nvidia-drm.modeset=1 nvidia-drm.fbdev=1 root=fstab loglevel=4 lsm=landlock,yama,bpf nvidia-drm.modeset=1 nvidia-drm.fbdev=1
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:  
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: Current version of pixman: 0.46.4
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Before reporting problems, check http://wiki.x.org
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         to make sure that you have the latest version.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: Markers: (--) probed, (**) from config file, (==) default setting,
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         (++) from command line, (!!) notice, (II) informational,
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         (WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (++) Log file: "/dev/null", Time: Fri Apr 17 09:21:49 2026
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (++) Using config file: "/nix/store/21m8n32liy3xnjrdhh9zkssx1x7wih9n-xserver.conf"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Using config directory: "/etc/X11/xorg.conf.d"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Using system config directory "/nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/share/X11/xorg.conf.d"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) ServerLayout "Layout[all]"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) |-->Screen "Screen-nvidia[0]" (0)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) |   |-->Monitor "<default monitor>"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) |   |-->Device "Device-nvidia[0]"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) No monitor specified for screen "Screen-nvidia[0]".
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Using a default monitor configuration.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) Option "DontZap" "on"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) Option "AllowMouseOpenFail" "on"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) Allowing byte-swapped clients
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Automatically adding devices
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Automatically enabling devices
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Automatically adding GPU devices
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Automatically binding GPU devices
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (==) Max clients allowed: 256, resource mask: 0x1fffff
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/misc" does not exist.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Entry deleted from font path.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/TTF" does not exist.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Entry deleted from font path.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/OTF" does not exist.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Entry deleted from font path.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/Type1" does not exist.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Entry deleted from font path.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/100dpi" does not exist.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Entry deleted from font path.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) The directory "/nix/store/l6qlx376axs4kmakp2l564ran3m8rgpj-font-util-1.4.1/share/fonts/X11/75dpi" does not exist.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Entry deleted from font path.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) FontPath set to:
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         /nix/store/bv8d7nyinzicmgdiy4l5m9rcshbg2qrv-font-cursor-misc-1.0.4/share/fonts/X11/misc,
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         /nix/store/apfxgpnk18yjgp9aazx6v3mq3j4lyy0m-font-misc-misc-1.1.3/share/fonts/X11/misc,
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         /nix/store/j6fil6mv9bdi7aff7gmiwza7l3qif898-unifont-17.0.04/share/fonts,
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         /nix/store/dnfrcq0pz25wg16mn6k7xxmddr551wnd-font-adobe-100dpi-1.0.4/share/fonts/X11/100dpi,
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         /nix/store/l129xrsjka07c8mrjv1v047zirm8xvpp-font-adobe-75dpi-1.0.4/share/fonts/X11/75dpi
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (**) ModulePath set to "/nix/store/6m5ylh349svnjcby76v633f8pllghrxj-nvidia-x11-595.58.03-6.18.22-bin/lib/xorg/modules,/nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules,/nix/store/vy6f52kwq3s5xgrmxz35iyl9cjfx350r-xf86-input-evdev-2.11.0/lib/xorg/modules,/nix/store/vfgbhbcpg4ppgmgs1g8ajjgfafq0ylgm-xf86-input-libinput-1.5.0/lib/xorg/modules"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) The server relies on udev to provide the list of input devices.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         If no devices become available, reconfigure udev or disable AutoAddDevices.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Module ABI versions:
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         X.Org ANSI C Emulation: 0.4
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         X.Org Video Driver: 25.2
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         X.Org XInput driver : 24.4
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         X.Org Server Extension : 10.0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (++) using VT number 2
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) systemd-logind: logind integration requires -keeptty and -keeptty was not provided, disabling logind integration
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) xfree86: Adding drm device (/dev/dri/card0)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Platform probe for /sys/devices/pci0000:00/0000:00:03.1/0000:1c:00.0/simple-framebuffer.0/drm/card0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (--) PCI:*(28@0:0:0) 10de:1b80:10de:119e rev 161, Mem @ 0xf6000000/16777216, 0xe0000000/268435456, 0xf0000000/33554432, I/O @ 0x0000e000/128, BIOS @ 0x????????/131072
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Open ACPI successful (/var/run/acpid.socket)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) "glx" will be loaded by default.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) LoadModule: "glx"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Loading /nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules/extensions/libglx.so
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Module glx: vendor="X.Org Foundation"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         compiled for 1.21.1.21, module version = 1.0.0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         ABI class: X.Org Server Extension, version 10.0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) LoadModule: "nvidia"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Loading /nix/store/6m5ylh349svnjcby76v633f8pllghrxj-nvidia-x11-595.58.03-6.18.22-bin/lib/xorg/modules/drivers/nvidia_drv.so
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Module nvidia: vendor="NVIDIA Corporation"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         compiled for 1.16.99.901, module version = 1.0.0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         Module class: X.Org Video Driver
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) NVIDIA dlloader X Driver  595.58.03  Tue Mar 17 19:40:22 UTC 2026
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) NVIDIA Unified Driver for all Supported NVIDIA GPUs
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Loading sub module "fb"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) LoadModule: "fb"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Module "fb" already built-in
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Loading sub module "wfb"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) LoadModule: "wfb"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Loading /nix/store/g88acx6rngz2vsvf65cx56vk41n9r7gm-xorg-server-21.1.21/lib/xorg/modules/libwfb.so
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (II) Module wfb: vendor="X.Org Foundation"
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         compiled for 1.21.1.21, module version = 1.0.0
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:         ABI class: X.Org ANSI C Emulation, version 0.4
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) NVIDIA(0): The NVIDIA NVIDIA GeForce GTX 1080 GPU installed in this
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) NVIDIA(0):     system is supported through the NVIDIA 580.xx Legacy
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) NVIDIA(0):     drivers. Please visit
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) NVIDIA(0):     http://www.nvidia.com/object/unix.html for more
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) NVIDIA(0):     information.  The 595.58.03 NVIDIA driver will ignore this
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (WW) NVIDIA(0):     GPU.  Continuing probe...
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE) No devices detected.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: Fatal server error:
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE) no screens found(EE)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: Please consult the The X.Org Foundation support
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:          at http://wiki.x.org
+Apr 17 09:21:49 nixos xserver-wrapper[1667]:  for help.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE) Please also check the log file at "/dev/null" for additional information.
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE)
+Apr 17 09:21:49 nixos xserver-wrapper[1667]: (EE) Server terminated with error (1). Closing log file.
+Apr 17 09:21:49 nixos sddm[1623]: Failed to read display number from pipe
+Apr 17 09:21:49 nixos sddm[1623]: Display server stopping...
+Apr 17 09:21:49 nixos sddm[1623]: Attempt 3 starting the Display server on vt 2 failed
+Apr 17 09:21:49 nixos sddm[1623]: Could not start Display server on vt 2
