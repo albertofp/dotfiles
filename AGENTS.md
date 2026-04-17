@@ -1,0 +1,201 @@
+# AGENTS.md
+
+Guidelines for AI agents working in this repository.
+
+## What this repo is
+
+Alberto's personal dotfiles, serving two platforms from a single repo:
+
+- **NixOS** (primary): fully declarative via a Nix flake + home-manager
+- **macOS** (secondary): Homebrew + Ansible bootstrap playbook
+
+The NixOS side is the active focus. The macOS side is maintained but secondary.
+
+---
+
+## Repository layout
+
+```
+flake.nix                        # Entry point — NixOS + home-manager + agenix + zen-browser
+nixos/
+  system.nix                     # NixOS: boot, nix settings, imports only
+  home.nix                       # HM: user identity, session vars, imports only
+  hardware.nix                   # Auto-generated — do not edit
+  home/
+    packages.nix                 # home.packages
+    dotfiles.nix                 # Live symlinks via mkOutOfStoreSymlink
+    zsh.nix                      # programs.zsh (history, aliases, functions, initContent)
+    tmux.nix                     # programs.tmux (no TPM — plugins via pkgs.tmuxPlugins)
+    starship.nix                 # programs.starship.settings
+    desktop.nix                  # fzf, GTK/Qt theme, Hyprland systemd override
+  system/
+    audio.nix                    # Pipewire stack
+    desktop.nix                  # Hyprland, SDDM, Steam, Ozone
+    networking.nix               # NetworkManager, DNS, hostname, locale
+    nvidia.nix                   # GTX 1080 Pascal — proprietary driver + Wayland workarounds
+    services.nix                 # Docker, ratbagd
+    users.nix                    # User alberto, sudo, sshd, system-level zsh
+secrets/
+  secrets.nix                    # agenix key registry
+  shell-secrets.age              # Encrypted secrets — safe to commit
+.config/                         # Configs symlinked into ~ via dotfiles.nix (live-editable)
+  nvim/                          # Neovim (Lua, native 0.11 package manager + LSP API)
+  ghostty/                       # Terminal
+  hypr/                          # Hyprland compositor
+  waybar/                        # Status bar
+  starship.toml                  # macOS only — NixOS uses starship.nix
+.zshrc                           # macOS only — NixOS uses programs.zsh
+.tmux.conf                       # macOS only — NixOS uses programs.tmux
+.github/workflows/build.yml      # CI: fmt → lint → nix build
+ansible/                         # macOS bootstrap only
+bin/                             # Bootstrap + utility scripts
+```
+
+---
+
+## NixOS module conventions
+
+### Module function signatures
+- If the module uses arguments (`pkgs`, `config`, etc.): `{ pkgs, config, ... }:`
+- If the module takes no arguments: `_:` — **never use `{ ... }:`**, statix will flag it
+
+### Module structure
+`system.nix` and `home.nix` are pure aggregators — they contain only `imports = [...]` and
+minimal top-level settings. All logic lives in the sub-modules under `home/` and `system/`.
+When adding new concerns, create a new file in the appropriate subdirectory and add it to the
+imports list.
+
+### Live symlinks vs. Nix-managed configs
+There are two categories of config:
+
+| Category | Mechanism | Rebuild to change? |
+|---|---|---|
+| Managed in Nix (`zsh.nix`, `tmux.nix`, `starship.nix`) | HM generates the file | Yes |
+| Symlinked from dotfiles (`dotfiles.nix`) | `mkOutOfStoreSymlink` → `~/dotfiles/...` | No |
+
+Use `mkOutOfStoreSymlink` for configs that have their own hot-reload mechanism (Ghostty, Hyprland,
+Waybar, Neovim). Use Nix-managed programs modules for everything else.
+
+`mkOutOfStoreSymlink` requires an absolute path and lives in `dotfiles.nix`:
+```nix
+{ config, ... }:
+let
+  dotfiles = "/home/alberto/dotfiles";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+in
+{
+  home.file.".config/foo".source = link ".config/foo";
+}
+```
+
+### Secrets
+Secrets are managed by **agenix**. Never put secrets in `sessionVariables`, `home.file`, or
+anywhere that would land in the Nix store (world-readable).
+
+- Encrypted secrets live in `secrets/shell-secrets.age` — safe to commit
+- Decrypted at boot to `/run/agenix/shell-secrets` (owner: alberto, mode: 0400)
+- Sourced by zsh at shell start via `initContent` in `zsh.nix`
+- Format of the decrypted file is plain shell: `export KEY="value"`
+
+To edit secrets:
+```sh
+cd ~/dotfiles/secrets
+agenix -e shell-secrets.age -i ~/.ssh/id_home_github
+```
+
+To add a new secret file:
+1. Add entry to `secrets/secrets.nix`: `"new-secret.age".publicKeys = allKeys;`
+2. Create it: `agenix -e new-secret.age -i ~/.ssh/id_home_github`
+3. Declare it in `flake.nix` under `age.secrets`
+4. Reference the path `/run/agenix/new-secret` wherever needed
+5. Rebuild once
+
+### Packages
+All user packages go in `nixos/home/packages.nix`. System-level packages (available to all
+users and root) go in `environment.systemPackages` in `nixos/system.nix`. Keep that list
+minimal — prefer user packages.
+
+### macOS split
+`.zshrc` and `.tmux.conf` at the repo root are **macOS-only**. On NixOS these are generated by
+`programs.zsh` and `programs.tmux` respectively — do not symlink them on NixOS. Changes to
+shell behaviour on NixOS go in `nixos/home/zsh.nix`, not in `.zshrc`.
+
+Similarly, `starship.toml` is macOS-only. NixOS uses `nixos/home/starship.nix`.
+
+---
+
+## After making any changes to `.nix` files
+
+Always run linting and formatting before rebuilding:
+
+```sh
+# Format
+nixfmt path/to/file.nix
+# or format everything:
+nixfmt nixos/home.nix nixos/system.nix nixos/home/*.nix nixos/system/*.nix flake.nix
+
+# Lint
+statix check .
+deadnix .
+```
+
+Both `statix` and `deadnix` are available as system packages. Fix all warnings before
+committing — CI will catch them if you don't.
+
+Then rebuild:
+```sh
+rebuild   # alias for: sudo nixos-rebuild switch --flake path:/home/alberto/dotfiles#alberto --impure
+```
+
+---
+
+## CI
+
+`.github/workflows/build.yml` runs on every push and PR to `main`:
+
+1. **Check formatting** — `nix fmt -- --check .`
+2. **Lint** — `statix check .` and `deadnix .`
+3. **Build** — `nix build .#nixosConfigurations.alberto.config.system.build.toplevel`
+
+Build artifacts are pushed to the Cachix binary cache `albertofp-dotfiles.cachix.org`, which
+is also configured as a substituter in `nixos/system.nix` so local rebuilds benefit from CI
+cache hits.
+
+The `CACHIX_AUTH_TOKEN` GitHub Actions secret must be set for cache pushes to work.
+
+---
+
+## Hardware notes
+
+- **CPU**: AMD (kvm-amd module, AMD microcode)
+- **GPU**: NVIDIA GTX 1080 Pascal — uses `legacy_580` proprietary driver, open module not supported
+- **Display**: Wayland (Hyprland) via SDDM on X11 (SDDM Wayland mode disabled — NVIDIA bug)
+- **NVIDIA + Wayland workarounds**: KMS params in `nvidia.nix`, `GBM_BACKEND=drm` env var,
+  `WLR_NO_HARDWARE_CURSORS=1` in `hyprland.conf`, `AQ_DRM_DEVICES=/dev/dri/card1`
+- **Audio**: Pipewire (ALSA + PulseAudio compat). PulseAudio explicitly disabled
+- **Keyboard**: German layout (`de`) in both console and Hyprland
+- **Timezone**: Europe/Amsterdam
+
+---
+
+## Theming
+
+The entire stack uses **Rose Pine**. When adding new tools, look for a Rose Pine theme option
+before inventing new colors. The palette hex values are:
+
+| Name | Hex |
+|---|---|
+| base | `#191724` |
+| surface | `#1f1d2e` |
+| overlay | `#26233a` |
+| muted | `#6e6a86` |
+| subtle | `#908caa` |
+| text | `#e0def4` |
+| love | `#eb6f92` |
+| gold | `#f6c177` |
+| rose | `#ebbcba` |
+| pine | `#31748f` |
+| foam | `#9ccfd8` |
+| iris | `#c4a7e7` |
+
+Tmux uses the **Rose Pine Moon** variant (slightly different base colors). Keep this consistent.
