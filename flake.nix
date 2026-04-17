@@ -69,5 +69,7 @@
           zen-browser-pkg = zen-browser.packages.${system}.default;
         };
       };
+
+      formatter.${system} = pkgs.nixfmt;
     };
 }
