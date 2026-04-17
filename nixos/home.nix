@@ -1,146 +1,47 @@
-{
-  pkgs,
-  zen-browser-pkg ? null,
-  ...
-}:
+_:
 
 {
+  imports = [
+    ./home/packages.nix
+    ./home/dotfiles.nix
+    ./home/zsh.nix
+    ./home/tmux.nix
+    ./home/starship.nix
+    ./home/desktop.nix
+  ];
+
   home = {
     username = "alberto";
     homeDirectory = "/home/alberto";
     stateVersion = "24.11";
 
-    # ── Packages ──────────────────────────────────────────────────────────────
-    packages =
-      with pkgs;
-      [
-        # Shell / terminal
-        zsh
-        tmux
-        zsh-syntax-highlighting
-        zsh-autosuggestions
-
-        # Editors / viewers
-        neovim
-        glow
-        presenterm
-        lazygit
-
-        # File utils
-        eza
-        bat
-        tree
-        wget
-        ripgrep
-        jq
-        yq
-        btop
-        htop
-
-        # Dev
-        go
-        nodejs
-        pyenv
-        shellcheck
-        tree-sitter
-        golangci-lint
-        kubectl
-        kubectx
-        gum
-
-        # Nix linting / formatting
-        statix
-        deadnix
-        nixfmt
-
-        # Rust toolchain (provides cargo, rustc)
-        rustup
-        gcc # C linker required for cargo build steps (e.g. blink.cmp)
-
-        # Apps / GUI
-        runelite
-        piper
-        ghostty
-        jellyfin-media-player
-        slack
-        localsend
-        wl-clipboard
-        silicon # code screenshot tool
-        wlsunset # screen colour temperature (Wayland replacement for redshift)
-
-        # Hyprland user-space tools (compositor itself enabled in system.nix)
-        waybar
-        wofi
-        networkmanagerapplet # nm-applet
-        brightnessctl
-        playerctl
-
-        # AWS / cloud
-        awscli2
-
-        # GitHub CLI
-        gh
-
-        # OpenCode AI coding agent
-        opencode
-
-        # Fonts
-        nerd-fonts.jetbrains-mono
-      ]
-      ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else [ ]);
-
-    # ── Dotfiles ──────────────────────────────────────────────────────────────
-    file = {
-      ".zshrc".source = ../.zshrc;
-      ".tmux.conf".source = ../.tmux.conf;
-      ".gitconfig".source = ../.gitconfig;
-      ".gitconfig-jet".source = ../.gitconfig-jet;
-      ".config/nvim" = {
-        source = ../.config/nvim;
-        recursive = true;
-      };
-      ".config/ghostty" = {
-        source = ../.config/ghostty;
-        recursive = true;
-      };
-      ".config/hypr" = {
-        source = ../.config/hypr;
-        recursive = true;
-      };
-      ".config/waybar" = {
-        source = ../.config/waybar;
-        recursive = true;
-      };
-      ".config/starship.toml".source = ../.config/starship.toml;
+    sessionVariables = {
+      EDITOR = "nvim";
+      GOPATH = "$HOME/go";
+      GOMODCACHE = "$HOME/go/pkg/mod";
+      GOCACHE = "$HOME/.cache/go-build";
+      DOTFILES_DIR = "$HOME/dotfiles";
+      OPENSSL_CONF = "/dev/null";
+      KIND_EXPERIMENTAL_PROVIDER = "podman";
+      PERSONAL_EMAIL = "albertopluecker@gmail.com";
+      PERSONAL_SSH_KEY = "$HOME/.ssh/id_home_github";
+      WORK_EMAIL = "alberto.pluecker@justeattakeaway.com";
+      WORK_SSH_KEY = "$HOME/.ssh/work_github";
+      FZF_DEFAULT_OPTS = ''
+        --color=fg:#908caa,bg:#191724,hl:#ebbcba
+        --color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
+        --color=border:#403d52,header:#31748f,gutter:#191724
+        --color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
+        --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa'';
     };
+
+    sessionPath = [
+      "$HOME/bin"
+      "$HOME/.local/bin"
+      "$HOME/go/bin"
+      "\${ASDF_DATA_DIR:-$HOME/.asdf}/shims"
+    ];
   };
 
-  # ── Programs ──────────────────────────────────────────────────────────────
-  programs = {
-    home-manager.enable = true;
-    starship = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-  };
-
-  # Disable home-manager's systemd integration for Hyprland — conflicts with UWSM
-  wayland.windowManager.hyprland.systemd.enable = false;
-
-  # ── Dark theme ────────────────────────────────────────────────────────────
-  gtk = {
-    enable = true;
-    gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-    gtk4.extraConfig.gtk-application-prefer-dark-theme = true;
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk";
-    style.name = "adwaita-dark";
-  };
+  programs.home-manager.enable = true;
 }
