@@ -22,7 +22,6 @@
       #   sudo nixos-rebuild switch --flake .#alberto
       nixosConfigurations.alberto = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { dotfilesRoot = self + "/.."; };
         modules = [
           ./system.nix
           home-manager.nixosModules.home-manager
@@ -32,7 +31,6 @@
             home-manager.users.alberto   = import ./home.nix;
             home-manager.extraSpecialArgs = {
               zen-browser-pkg = zen-browser.packages.${system}.default;
-              dotfilesRoot = self + "/..";
             };
           }
         ];
@@ -46,7 +44,6 @@
         modules = [ ./home.nix ];
         extraSpecialArgs = {
           zen-browser-pkg = zen-browser.packages.${system}.default;
-          dotfilesRoot = self + "/..";
         };
       };
     };

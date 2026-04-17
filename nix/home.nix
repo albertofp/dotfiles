@@ -1,4 +1,4 @@
-{ config, pkgs, zen-browser-pkg ? null, dotfilesRoot ? null, ... }:
+{ config, pkgs, zen-browser-pkg ? null, ... }:
 
 {
   home.username = "alberto";
@@ -70,7 +70,7 @@
   ] ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else []);
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
-  home.file = let root = if dotfilesRoot != null then dotfilesRoot else ../..; in {
+  home.file = let root = ../.; in {
     ".zshrc".source                = "${root}/.zshrc";
     ".tmux.conf".source            = "${root}/.tmux.conf";
     ".gitconfig".source            = "${root}/.gitconfig";
