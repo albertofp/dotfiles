@@ -1,12 +1,768 @@
-Selected compositor ID: hyprland.desktop
-          Command Line: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
-      Plugin/binary ID: start_hyprland
- Initial Desktop Names: Hyprland
-                  Name: Hyprland
-           Description: An intelligent dynamic tiling Wayland compositor
-
-Units unchanged.
-Starting hyprland.desktop and waiting while it is running...
-Starting wayland-session-envelope@hyprland.desktop.target...
-Forked systemctl, PID 3058.
-PID 3058 exited with RC 0
+Apr 17 09:42:17 nixos sddm-greeter-qt6[1696]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
+Apr 17 09:42:17 nixos sddm-greeter-qt6[1696]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland.desktop"
+Apr 17 09:42:17 nixos dbus-broker-launch[1699]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 09:42:17 nixos dbus-broker-launch[1699]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/xmzl9zj2fljypr61fvhxip42ml44bfgc-xdg-desktop-portal-hyprland-1.3.11/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 09:42:28 nixos sddm-greeter-qt6[1696]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
+Apr 17 09:42:28 nixos sddm[1646]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
+Apr 17 09:42:28 nixos sddm[1646]: Session "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop" selected, command: "/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop" for VT 1
+Apr 17 09:42:28 nixos sddm-helper[2076]: Starting Wayland user session: "/nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/share/sddm/scripts/wayland-session" "/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop"
+Apr 17 09:42:29 nixos uwsm[2122]: Selected compositor ID: hyprland.desktop
+                                            Command Line: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
+                                        Plugin/binary ID: start_hyprland
+                                   Initial Desktop Names: Hyprland
+                                                    Name: Hyprland
+                                             Description: An intelligent dynamic tiling Wayland compositor
+Apr 17 09:42:29 nixos dbus-broker-launch[2127]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 09:42:29 nixos dbus-broker-launch[2127]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/xmzl9zj2fljypr61fvhxip42ml44bfgc-xdg-desktop-portal-hyprland-1.3.11/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 09:42:29 nixos uwsm[2122]: Created dir "/run/user/1000/systemd/user/"
+Apr 17 09:42:29 nixos uwsm[2122]: Created unit subdir "wayland-wm-env@hyprland.desktop.service.d/" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created "wayland-wm-env@hyprland.desktop.service.d/50_custom.conf" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created unit subdir "wayland-wm@hyprland.desktop.service.d/" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created "wayland-wm@hyprland.desktop.service.d/50_custom.conf" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created unit subdir "app-@autostart.service.d/" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created "app-@autostart.service.d/slice-tweak.conf" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created unit subdir "app-flatpak-.scope.d/" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created "app-flatpak-.scope.d/order-tweak.conf" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created unit subdir "plasma-xdg-desktop-portal-kde.service.d/" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Created "plasma-xdg-desktop-portal-kde.service.d/order-tweak.conf" (run).
+Apr 17 09:42:29 nixos uwsm[2122]: Reloading systemd user manager.
+Apr 17 09:42:29 nixos uwsm[2122]: Starting hyprland.desktop and waiting while it is running...
+Apr 17 09:42:29 nixos uwsm[2122]: Starting wayland-session-envelope@hyprland.desktop.target...
+Apr 17 09:42:29 nixos uwsm[2122]: Forked systemctl, PID 2135.
+Apr 17 09:42:29 nixos systemd[2082]: Reached target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 09:42:29 nixos systemd[2082]: Starting Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Preparing environment for start-hyprland...
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Got saved login session variables.
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Loading plugin "/run/current-system/sw/share/uwsm/plugins/start_hyprland.sh"
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Loading shell profile.
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Applying quirks for "start_hyprland".
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Marking variables for later cleanup from systemd user manager on stop:
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   DESKTOP_SESSION
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   EDITOR
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   LESSKEYIN_SYSTEM
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   NIXPKGS_CONFIG
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   NIX_PROFILES
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   NIX_USER_PROFILE_DIR
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   OLDPWD
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   PAGER
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   PATH
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   PYTHONNOUSERSITE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   SSH_ASKPASS
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   UWSM_FINALIZE_VARNAMES
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   UWSM_WAIT_VARNAMES
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_BACKEND
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_CACHE_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_CONFIG_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_CURRENT_DESKTOP
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_DATA_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_MENU_PREFIX
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_SESSION_CLASS
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_SESSION_DESKTOP
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_SESSION_TYPE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_STATE_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   __ETC_PROFILE_DONE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]: Exporting variables to systemd user manager:
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   DESKTOP_SESSION
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   EDITOR
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   LESSKEYIN_SYSTEM
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   NIXPKGS_CONFIG
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   NIX_PROFILES
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   NIX_USER_PROFILE_DIR
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   OLDPWD
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   PAGER
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   PATH (updating)
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   PYTHONNOUSERSITE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   SSH_ASKPASS
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   UWSM_FINALIZE_VARNAMES
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   UWSM_WAIT_VARNAMES
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_BACKEND
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_CACHE_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_CONFIG_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_CURRENT_DESKTOP
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_DATA_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_MENU_PREFIX
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_SESSION_CLASS
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_SESSION_DESKTOP
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_SESSION_TYPE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   XDG_STATE_HOME
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   __ETC_PROFILE_DONE
+Apr 17 09:42:29 nixos uwsm_env-preloader[2136]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 09:42:29 nixos systemd[2082]: Finished Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 09:42:29 nixos systemd[2082]: Reached target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 09:42:29 nixos systemd[2082]: Starting Main service for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2206]: Starting: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland...
+Apr 17 09:42:30 nixos uwsm_waitenv[2205]: Expecting variables to appear in activation environment:
+Apr 17 09:42:30 nixos uwsm_waitenv[2205]:   WAYLAND_DISPLAY, HYPRLAND_INSTANCE_SIGNATURE
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2208]: Expecting variables to appear in activation environment:
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2208]:   WAYLAND_DISPLAY, HYPRLAND_INSTANCE_SIGNATURE
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: Welcome to Hyprland!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Instance Signature: 521ece463c4a9d3d128670688a34756805a4328f_1776411750_699536010
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Runtime directory: /run/user/1000/hypr/521ece463c4a9d3d128670688a34756805a4328f_1776411750_699536010
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Hyprland PID: 2211
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: ===== SYSTEM INFO: =====
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: System name: Linux
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Node name: nixos
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Release: 6.18.22
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Version: #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]:
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: GPU information:
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: 1c:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: WARN ]: Warning: you're using an NVIDIA GPU. Make sure you follow the instructions on the wiki if anything is amiss.
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: os-release:
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: ANSI_COLOR="0;38;2;126;186;228"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: BUG_REPORT_URL="https://github.com/NixOS/nixpkgs/issues"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: BUILD_ID="26.05.20260414.4bd9165"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: CPE_NAME="cpe:/o:nixos:nixos:26.05"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEFAULT_HOSTNAME=nixos
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DOCUMENTATION_URL="https://nixos.org/learn.html"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: HOME_URL="https://nixos.org/"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: ID=nixos
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: ID_LIKE=""
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: IMAGE_ID=""
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: IMAGE_VERSION=""
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: LOGO="nix-snowflake"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: NAME=NixOS
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: PRETTY_NAME="NixOS 26.05 (Yarara)"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: SUPPORT_URL="https://nixos.org/community.html"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VARIANT=""
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VARIANT_ID=""
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VENDOR_NAME=NixOS
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VENDOR_URL="https://nixos.org/"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VERSION="26.05 (Yarara)"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VERSION_CODENAME=yarara
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: VERSION_ID="26.05"
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: ========================
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]:
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: If you are crashing, or encounter any bugs, please consult https://wiki.hypr.land/Crashes-and-Bugs/
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]:
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: Current splash: Funny animation compositor woo
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Old rlimit: soft -> 1024, hard -> 524288
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: New rlimit: soft -> 524288, hard -> 524288
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the EventLoopManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the KeybindManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the AnimationManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the DynamicPermissionManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the ConfigManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: ERR ]: Couldn't create config home directory (File exists): /home/alberto/.config/hypr
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Using config: Config could not be generated.
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Warning: config descriptions have 326 entries, but there are 326 config values. This should fail tests!!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: !!!!HEY YOU, YES YOU!!!!: further logs to stdout / logfile are disabled by default. BEFORE SENDING THIS LOG, ENABLE THEM. Use debug:disable_logs = false to do so: https://wiki.hypr.land/Configuring/Variables/#debug
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the CHyprError!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the LayoutManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the TokenManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Using config: Config could not be generated.
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Disabling stdout logs! Check the log for further logs.
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the PointerManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the EventManager!
+Apr 17 09:42:30 nixos uwsm_hyprland.desktop[2211]: DEBUG ]: Creating the AsyncResourceGatherer!
+Apr 17 09:42:31 nixos systemd[2082]: Started Main service for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2206]: DEBUG from start-hyprland ]: got an event from hyprland
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: The XKEYBOARD keymap compiler (xkbcomp) reports:
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: > Warning:          Multiple symbols for level 1/group 1 on key <FK23>
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: >                   Using F23, ignoring XF86TouchpadOff
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: > Warning:          Symbol map for key <FK23> redefined
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: >                   Using last definition for conflicting fields
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: > Warning:          Symbol map for key <FK24> redefined
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: >                   Using last definition for conflicting fields
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2237]: Errors from xkbcomp are not fatal to the X server
+Apr 17 09:42:31 nixos uwsm_waitenv[2205]: All expected variables appeared in activation environment.
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]: All expected variables appeared in activation environment.
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: The XKEYBOARD keymap compiler (xkbcomp) reports:
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: > Warning:          Unsupported maximum keycode 709, clipping.
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: >                   X11 cannot support keycodes above 255.
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: > Warning:          Virtual modifier Hyper multiply defined
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: >                   Using 0, ignoring 0
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: > Warning:          Virtual modifier ScrollLock multiply defined
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: >                   Using 0, ignoring 0
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2238]: Errors from xkbcomp are not fatal to the X server
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]: Exporting variables to systemd user manager:
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]:   DISPLAY (already set)
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]:   HYPRLAND_INSTANCE_SIGNATURE (already set)
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]:   PATH (already set)
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]:   WAYLAND_DISPLAY (already set)
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]: Marking variables for later cleanup from systemd user manager on stop:
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]:   HYPRLAND_INSTANCE_SIGNATURE
+Apr 17 09:42:31 nixos uwsm_hyprland.desktop[2208]: Autoready: Unit for hyprland.desktop is already active, restricting notification access.
+Apr 17 09:42:31 nixos systemd[2082]: Reached target Session of hyprland.desktop Wayland compositor.
+Apr 17 09:42:31 nixos systemd[2082]: Reached target XDG Autostart for session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:22 nixos uwsm[2122]: Received SIGTERM, stopping wayland-session-envelope@hyprland.desktop.target...
+Apr 17 10:00:22 nixos systemd[2082]: Stopped target XDG Autostart for session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:22 nixos systemd[2082]: Stopped target Session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:22 nixos systemd[2082]: Stopping Main service for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:00:22 nixos uwsm_hyprland.desktop[2236]: (EE) could not connect to wayland server
+Apr 17 10:00:22 nixos systemd[2082]: Stopped Main service for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:00:22 nixos systemd[2082]: wayland-wm@hyprland.desktop.service: Consumed 1.579s CPU time over 17min 52.502s wall clock time, 323.3M memory peak.
+Apr 17 10:00:22 nixos systemd[2082]: wayland-wm@hyprland.desktop.service: Triggering OnSuccess= dependencies.
+Apr 17 10:00:22 nixos systemd[2082]: Stopped target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:22 nixos systemd[2082]: Stopping Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:00:22 nixos systemd[2082]: wayland-session-bindpid@2122.service: Triggering OnSuccess= dependencies.
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Cleaning up...
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Found environment cleanup file "env_cleanup.list".
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Found initial systemd state file "env_pre".
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Removing variables from systemd user manager:
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   DESKTOP_SESSION
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   EDITOR
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   LESSKEYIN_SYSTEM
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   NIXPKGS_CONFIG
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   NIX_PROFILES
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   NIX_USER_PROFILE_DIR
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   OLDPWD
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   PAGER
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   PYTHONNOUSERSITE
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   SSH_ASKPASS
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   UWSM_WAIT_VARNAMES
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   WAYLAND_DISPLAY
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_BACKEND
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_CACHE_HOME
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_CONFIG_HOME
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_CURRENT_DESKTOP
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_DATA_HOME
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_MENU_PREFIX
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_SESSION_CLASS
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_SESSION_DESKTOP
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_SESSION_TYPE
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   XDG_STATE_HOME
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   __ETC_PROFILE_DONE
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Restoring initial systemd vars.
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Exporting variables to systemd user manager:
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]:   PATH (updating)
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Removed "env_cleanup.list".
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Removed "env_pre".
+Apr 17 10:00:22 nixos uwsm_env-preloader[2556]: Removed "env_session.conf".
+Apr 17 10:00:22 nixos systemd[2082]: Stopped Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:00:22 nixos systemd[2082]: wayland-wm-env@hyprland.desktop.service: Triggering OnSuccess= dependencies.
+Apr 17 10:00:22 nixos systemd[2082]: Stopped target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 10:00:22 nixos uwsm[2122]: PID 2135 exited with RC 0
+Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
+Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland.desktop"
+Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/xmzl9zj2fljypr61fvhxip42ml44bfgc-xdg-desktop-portal-hyprland-1.3.11/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 10:00:29 nixos sddm-greeter-qt6[2620]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
+Apr 17 10:00:29 nixos sddm[2570]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
+Apr 17 10:00:29 nixos sddm[2570]: Session "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop" selected, command: "/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop" for VT 2
+Apr 17 10:00:29 nixos sddm-helper[2629]: Starting Wayland user session: "/nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/share/sddm/scripts/wayland-session" "/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop"
+Apr 17 10:00:30 nixos uwsm[2633]: Selected compositor ID: hyprland.desktop
+                                            Command Line: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
+                                        Plugin/binary ID: start_hyprland
+                                   Initial Desktop Names: Hyprland
+                                                    Name: Hyprland
+                                             Description: An intelligent dynamic tiling Wayland compositor
+Apr 17 10:00:30 nixos uwsm[2633]: Units unchanged.
+Apr 17 10:00:30 nixos uwsm[2633]: Starting hyprland.desktop and waiting while it is running...
+Apr 17 10:00:30 nixos uwsm[2633]: Starting wayland-session-envelope@hyprland.desktop.target...
+Apr 17 10:00:30 nixos uwsm[2633]: Forked systemctl, PID 2666.
+Apr 17 10:00:30 nixos systemd[2082]: Reached target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 10:00:30 nixos systemd[2082]: Starting Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Preparing environment for start-hyprland...
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Got saved login session variables.
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Loading plugin "/run/current-system/sw/share/uwsm/plugins/start_hyprland.sh"
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Loading shell profile.
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Applying quirks for "start_hyprland".
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Marking variables for later cleanup from systemd user manager on stop:
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   DESKTOP_SESSION
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   EDITOR
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   LESSKEYIN_SYSTEM
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   NIXPKGS_CONFIG
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   NIX_PROFILES
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   NIX_USER_PROFILE_DIR
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   OLDPWD
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   PAGER
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   PATH
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   PYTHONNOUSERSITE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   SSH_ASKPASS
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   UWSM_WAIT_VARNAMES
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_BACKEND
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_CACHE_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_CONFIG_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_CURRENT_DESKTOP
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_DATA_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_MENU_PREFIX
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_SESSION_CLASS
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_SESSION_DESKTOP
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_SESSION_TYPE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_STATE_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   __ETC_PROFILE_DONE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]: Exporting variables to systemd user manager:
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   DESKTOP_SESSION
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   EDITOR
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   LESSKEYIN_SYSTEM
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   NIXPKGS_CONFIG
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   NIX_PROFILES
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   NIX_USER_PROFILE_DIR
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   OLDPWD
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   PAGER
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   PATH (updating)
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   PYTHONNOUSERSITE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   SSH_ASKPASS
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   UWSM_WAIT_VARNAMES
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_BACKEND
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_CACHE_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_CONFIG_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_CURRENT_DESKTOP
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_DATA_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_MENU_PREFIX
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_SESSION_CLASS
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_SESSION_DESKTOP
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_SESSION_TYPE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   XDG_STATE_HOME
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   __ETC_PROFILE_DONE
+Apr 17 10:00:30 nixos uwsm_env-preloader[2667]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:00:30 nixos systemd[2082]: Finished Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:00:30 nixos systemd[2082]: Reached target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:30 nixos systemd[2082]: Starting Main service for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2737]: Starting: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland...
+Apr 17 10:00:30 nixos uwsm_waitenv[2736]: Expecting variables to appear in activation environment:
+Apr 17 10:00:30 nixos uwsm_waitenv[2736]:   HYPRLAND_INSTANCE_SIGNATURE, WAYLAND_DISPLAY
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2739]: Expecting variables to appear in activation environment:
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2739]:   WAYLAND_DISPLAY, HYPRLAND_INSTANCE_SIGNATURE
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: Welcome to Hyprland!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Instance Signature: 521ece463c4a9d3d128670688a34756805a4328f_1776412830_1702251859
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Runtime directory: /run/user/1000/hypr/521ece463c4a9d3d128670688a34756805a4328f_1776412830_1702251859
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Hyprland PID: 2742
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: ===== SYSTEM INFO: =====
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: System name: Linux
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Node name: nixos
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Release: 6.18.22
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Version: #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]:
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: GPU information:
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: 1c:00.0 VGA compatible controller [0300]: NVIDIA Corporation GP104 [GeForce GTX 1080] [10de:1b80] (rev a1) (prog-if 00 [VGA controller])
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: WARN ]: Warning: you're using an NVIDIA GPU. Make sure you follow the instructions on the wiki if anything is amiss.
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: os-release:
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: ANSI_COLOR="0;38;2;126;186;228"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: BUG_REPORT_URL="https://github.com/NixOS/nixpkgs/issues"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: BUILD_ID="26.05.20260414.4bd9165"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: CPE_NAME="cpe:/o:nixos:nixos:26.05"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEFAULT_HOSTNAME=nixos
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DOCUMENTATION_URL="https://nixos.org/learn.html"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: HOME_URL="https://nixos.org/"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: ID=nixos
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: ID_LIKE=""
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: IMAGE_ID=""
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: IMAGE_VERSION=""
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: LOGO="nix-snowflake"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: NAME=NixOS
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: PRETTY_NAME="NixOS 26.05 (Yarara)"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: SUPPORT_URL="https://nixos.org/community.html"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VARIANT=""
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VARIANT_ID=""
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VENDOR_NAME=NixOS
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VENDOR_URL="https://nixos.org/"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VERSION="26.05 (Yarara)"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VERSION_CODENAME=yarara
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: VERSION_ID="26.05"
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: ========================
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]:
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: If you are crashing, or encounter any bugs, please consult https://wiki.hypr.land/Crashes-and-Bugs/
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]:
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: Current splash: Take on me, take me on...
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Old rlimit: soft -> 1024, hard -> 524288
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: New rlimit: soft -> 524288, hard -> 524288
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the EventLoopManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the KeybindManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the AnimationManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the DynamicPermissionManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the ConfigManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: ERR ]: Couldn't create config home directory (File exists): /home/alberto/.config/hypr
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Using config: Config could not be generated.
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Warning: config descriptions have 326 entries, but there are 326 config values. This should fail tests!!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: !!!!HEY YOU, YES YOU!!!!: further logs to stdout / logfile are disabled by default. BEFORE SENDING THIS LOG, ENABLE THEM. Use debug:disable_logs = false to do so: https://wiki.hypr.land/Configuring/Variables/#debug
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the CHyprError!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the LayoutManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the TokenManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Using config: Config could not be generated.
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Disabling stdout logs! Check the log for further logs.
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the PointerManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the EventManager!
+Apr 17 10:00:30 nixos uwsm_hyprland.desktop[2742]: DEBUG ]: Creating the AsyncResourceGatherer!
+Apr 17 10:00:31 nixos systemd[2082]: Started Main service for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2737]: DEBUG from start-hyprland ]: got an event from hyprland
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: The XKEYBOARD keymap compiler (xkbcomp) reports:
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: > Warning:          Multiple symbols for level 1/group 1 on key <FK23>
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: >                   Using F23, ignoring XF86TouchpadOff
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: > Warning:          Symbol map for key <FK23> redefined
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: >                   Using last definition for conflicting fields
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: > Warning:          Symbol map for key <FK24> redefined
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: >                   Using last definition for conflicting fields
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2774]: Errors from xkbcomp are not fatal to the X server
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: The XKEYBOARD keymap compiler (xkbcomp) reports:
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: > Warning:          Unsupported maximum keycode 709, clipping.
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: >                   X11 cannot support keycodes above 255.
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: > Warning:          Virtual modifier Hyper multiply defined
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: >                   Using 0, ignoring 0
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: > Warning:          Virtual modifier ScrollLock multiply defined
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: >                   Using 0, ignoring 0
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2775]: Errors from xkbcomp are not fatal to the X server
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2767]: warning: queue 0x5585efb60f80 destroyed while proxies still attached:
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2767]:   wl_registry#38 still attached
+Apr 17 10:00:31 nixos uwsm_waitenv[2736]: All expected variables appeared in activation environment.
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]: All expected variables appeared in activation environment.
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]: Exporting variables to systemd user manager:
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]:   DISPLAY (already set)
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]:   HYPRLAND_INSTANCE_SIGNATURE (already set)
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]:   PATH (already set)
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]:   WAYLAND_DISPLAY (already set)
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]: Marking variables for later cleanup from systemd user manager on stop:
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]:   HYPRLAND_INSTANCE_SIGNATURE
+Apr 17 10:00:31 nixos uwsm_hyprland.desktop[2739]: Autoready: Unit for hyprland.desktop is already active, restricting notification access.
+Apr 17 10:00:31 nixos systemd[2082]: Reached target Session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:31 nixos systemd[2082]: Reached target XDG Autostart for session of hyprland.desktop Wayland compositor.
+Apr 17 10:00:31 nixos systemd[2082]: Starting Portal service (Hyprland implementation)...
+Apr 17 10:00:31 nixos systemd[2082]: Started Portal service (Hyprland implementation).
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] Initializing xdph...
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] XDG_CURRENT_DESKTOP set to Hyprland
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] Gathering exported interfaces
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wl_seat (ver 9)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wl_data_device_manager (ver 3)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wl_compositor (ver 6)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wl_subcompositor (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wl_shm (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_viewporter (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_tearing_control_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_fractional_scale_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zxdg_output_manager_v1 (ver 3)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_cursor_shape_manager_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_idle_inhibit_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_relative_pointer_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zxdg_decoration_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_alpha_modifier_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_gamma_control_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_foreign_toplevel_list_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_pointer_gestures_v1 (ver 3)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_foreign_toplevel_manager_v1 (ver 3)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] [toplevel] (activate) locks: 1
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_keyboard_shortcuts_inhibit_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_text_input_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_text_input_manager_v3 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_pointer_constraints_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_output_power_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: xdg_activation_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_idle_notifier_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_lock_notifier_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_session_lock_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_input_method_manager_v2 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_virtual_keyboard_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_virtual_pointer_manager_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_output_manager_v1 (ver 4)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: org_kde_kwin_server_decoration_manager (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_focus_grab_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_tablet_manager_v2 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_layer_shell_v1 (ver 5)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_presentation (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: xdg_wm_base (ver 7)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_data_control_manager_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_primary_selection_device_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: xwayland_shell_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_toplevel_mapping_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] [toplevel mapping] registered manager
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_global_shortcuts_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] [globalshortcuts] registered
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: xdg_wm_dialog_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_single_pixel_buffer_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_security_context_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_ctm_control_manager_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_surface_manager_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_content_type_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: xdg_toplevel_tag_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: xdg_system_bell_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_workspace_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_data_control_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_pointer_warp_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_fifo_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_commit_timing_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwlr_screencopy_manager_v1 (ver 3)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] [pipewire] connected
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG] [screencopy] init successful
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: hyprland_toplevel_export_manager_v1 (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_output_image_capture_source_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_foreign_toplevel_image_capture_source_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: ext_image_copy_capture_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_color_manager_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_drm_lease_device_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wp_drm_lease_device_v1 (ver 1)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: wl_drm (ver 2)
+Apr 17 10:00:31 nixos xdg-desktop-portal-hyprland[2855]: [LOG]  | Got interface: zwp_linux_dmabuf_v1 (ver 5)
+Apr 17 10:00:31 nixos hyprland-update-screen[2767]: Failed to register with host portal QDBusError("org.freedesktop.portal.Error.Failed", "Could not register app ID: App info not found for ''")
+Apr 17 10:04:04 nixos uwsm[2955]: Selected compositor ID: hyprland.desktop
+                                            Command Line: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
+                                        Plugin/binary ID: start_hyprland
+                                   Initial Desktop Names: Hyprland
+                                                    Name: Hyprland
+                                             Description: An intelligent dynamic tiling Wayland compositor
+Apr 17 10:04:04 nixos dbus-broker-launch[2956]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 10:04:04 nixos dbus-broker-launch[2956]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/xmzl9zj2fljypr61fvhxip42ml44bfgc-xdg-desktop-portal-hyprland-1.3.11/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
+Apr 17 10:04:04 nixos uwsm[2955]: Created dir "/run/user/0/systemd/user/"
+Apr 17 10:04:04 nixos uwsm[2955]: Created unit subdir "wayland-wm-env@hyprland.desktop.service.d/" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created "wayland-wm-env@hyprland.desktop.service.d/50_custom.conf" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created unit subdir "wayland-wm@hyprland.desktop.service.d/" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created "wayland-wm@hyprland.desktop.service.d/50_custom.conf" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created unit subdir "app-@autostart.service.d/" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created "app-@autostart.service.d/slice-tweak.conf" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created unit subdir "app-flatpak-.scope.d/" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created "app-flatpak-.scope.d/order-tweak.conf" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created unit subdir "plasma-xdg-desktop-portal-kde.service.d/" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Created "plasma-xdg-desktop-portal-kde.service.d/order-tweak.conf" (run).
+Apr 17 10:04:04 nixos uwsm[2955]: Reloading systemd user manager.
+Apr 17 10:04:04 nixos uwsm[2955]: Starting hyprland.desktop and waiting while it is running...
+Apr 17 10:04:04 nixos uwsm[2955]: Starting wayland-session-envelope@hyprland.desktop.target...
+Apr 17 10:04:04 nixos uwsm[2955]: Forked systemctl, PID 2965.
+Apr 17 10:04:04 nixos systemd[2379]: Reached target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 10:04:04 nixos systemd[2379]: Starting Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Preparing environment for start-hyprland...
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Got saved login session variables.
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Loading plugin "/run/current-system/sw/share/uwsm/plugins/start_hyprland.sh"
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Loading shell profile.
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Applying quirks for "start_hyprland".
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Marking variables for later cleanup from systemd user manager on stop:
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   EDITOR
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   HUSHLOGIN
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   LESSKEYIN_SYSTEM
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIXPKGS_CONFIG
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIX_PATH
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIX_PROFILES
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIX_USER_PROFILE_DIR
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   OLDPWD
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   PAGER
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   PATH
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   PYTHONNOUSERSITE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   SSH_ASKPASS
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   UWSM_WAIT_VARNAMES
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_BACKEND
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_CACHE_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_CONFIG_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_CURRENT_DESKTOP
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_DATA_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_MENU_PREFIX
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_SESSION_CLASS
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_SESSION_DESKTOP
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_SESSION_TYPE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_STATE_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   __ETC_PROFILE_DONE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]: Exporting variables to systemd user manager:
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   EDITOR
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   HUSHLOGIN
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   LESSKEYIN_SYSTEM
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIXPKGS_CONFIG
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIX_PATH (updating)
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIX_PROFILES
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   NIX_USER_PROFILE_DIR
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   OLDPWD
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   PAGER
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   PATH (updating)
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   PYTHONNOUSERSITE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   SSH_AGENT_PID
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   SSH_ASKPASS
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   SSH_AUTH_SOCK
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   UWSM_WAIT_VARNAMES
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_BACKEND
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_CACHE_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_CONFIG_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_CURRENT_DESKTOP
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_DATA_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_MENU_PREFIX
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_SESSION_CLASS
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_SESSION_DESKTOP
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_SESSION_TYPE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   XDG_STATE_HOME
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   __ETC_PROFILE_DONE
+Apr 17 10:04:04 nixos uwsm_env-preloader[2966]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:04:04 nixos systemd[2379]: Finished Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:04:04 nixos systemd[2379]: Reached target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 10:04:04 nixos systemd[2379]: Starting Main service for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3036]: Starting: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland...
+Apr 17 10:04:04 nixos uwsm_waitenv[3035]: Expecting variables to appear in activation environment:
+Apr 17 10:04:04 nixos uwsm_waitenv[3035]:   HYPRLAND_INSTANCE_SIGNATURE, WAYLAND_DISPLAY
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3038]: Expecting variables to appear in activation environment:
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3038]:   WAYLAND_DISPLAY, HYPRLAND_INSTANCE_SIGNATURE
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3041]: [ ERROR ] Hyprland was launched with superuser privileges, but the privileges check is not omitted.
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3041]:           Hint: Use the --i-am-really-stupid flag to omit that check.
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3036]: DEBUG from start-hyprland ]: hyprland exit, breaking poll, checking state
+Apr 17 10:04:04 nixos uwsm_hyprland.desktop[3036]: DEBUG from start-hyprland ]: Hyprland exit cleanly.
+Apr 17 10:04:04 nixos systemd[2379]: wayland-wm@hyprland.desktop.service: Failed with result 'protocol'.
+Apr 17 10:04:04 nixos systemd[2379]: Stopped Main service for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:04:04 nixos systemd[2379]: wayland-wm@hyprland.desktop.service: Triggering OnFailure= dependencies.
+Apr 17 10:04:04 nixos systemd[2379]: wayland-session-bindpid@2955.service: Triggering OnSuccess= dependencies.
+Apr 17 10:04:04 nixos systemd[2379]: wayland-session-waitenv.service: Main process exited, code=killed, status=15/TERM
+Apr 17 10:04:04 nixos systemd[2379]: wayland-session-waitenv.service: Failed with result 'signal'.
+Apr 17 10:04:04 nixos systemd[2379]: wayland-session-waitenv.service: Triggering OnFailure= dependencies.
+Apr 17 10:04:04 nixos systemd[2379]: Stopped target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 10:04:04 nixos systemd[2379]: Stopping Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Cleaning up...
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Found environment cleanup file "env_cleanup.list".
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Found initial systemd state file "env_pre".
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Removing variables from systemd user manager:
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   EDITOR
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   HUSHLOGIN
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   LESSKEYIN_SYSTEM
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   NIXPKGS_CONFIG
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   NIX_PROFILES
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   NIX_USER_PROFILE_DIR
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   OLDPWD
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   PAGER
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   PYTHONNOUSERSITE
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   SSH_ASKPASS
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   UWSM_WAIT_VARNAMES
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_BACKEND
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_CACHE_HOME
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_CONFIG_HOME
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_CURRENT_DESKTOP
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_DATA_HOME
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_MENU_PREFIX
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_SESSION_CLASS
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_SESSION_DESKTOP
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_SESSION_TYPE
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   XDG_STATE_HOME
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   __ETC_PROFILE_DONE
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Restoring initial systemd vars.
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Exporting variables to systemd user manager:
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   NIX_PATH (updating)
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]:   PATH (updating)
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Removed "env_cleanup.list".
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Removed "env_pre".
+Apr 17 10:04:05 nixos uwsm_env-preloader[3047]: Removed "env_session.conf".
+Apr 17 10:04:05 nixos systemd[2379]: Stopped Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:04:05 nixos systemd[2379]: wayland-wm-env@hyprland.desktop.service: Triggering OnSuccess= dependencies.
+Apr 17 10:04:05 nixos systemd[2379]: Stopped target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 10:04:05 nixos uwsm[2955]: PID 2965 exited with RC 0
+Apr 17 10:04:28 nixos uwsm[3055]: Selected compositor ID: hyprland.desktop
+                                            Command Line: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
+                                        Plugin/binary ID: start_hyprland
+                                   Initial Desktop Names: Hyprland
+                                                    Name: Hyprland
+                                             Description: An intelligent dynamic tiling Wayland compositor
+Apr 17 10:04:28 nixos uwsm[3055]: Units unchanged.
+Apr 17 10:04:28 nixos uwsm[3055]: Starting hyprland.desktop and waiting while it is running...
+Apr 17 10:04:28 nixos uwsm[3055]: Starting wayland-session-envelope@hyprland.desktop.target...
+Apr 17 10:04:28 nixos uwsm[3055]: Forked systemctl, PID 3058.
+Apr 17 10:04:28 nixos systemd[2379]: Reached target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 10:04:28 nixos systemd[2379]: Starting Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Preparing environment for start-hyprland...
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Got saved login session variables.
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Loading plugin "/run/current-system/sw/share/uwsm/plugins/start_hyprland.sh"
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Loading shell profile.
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Applying quirks for "start_hyprland".
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Marking variables for later cleanup from systemd user manager on stop:
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   EDITOR
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   HUSHLOGIN
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   LESSKEYIN_SYSTEM
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIXPKGS_CONFIG
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIX_PATH
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIX_PROFILES
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIX_USER_PROFILE_DIR
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   OLDPWD
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   PAGER
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   PATH
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   PYTHONNOUSERSITE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   SSH_ASKPASS
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   UWSM_WAIT_VARNAMES
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_BACKEND
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_CACHE_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_CONFIG_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_CURRENT_DESKTOP
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_DATA_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_MENU_PREFIX
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_SESSION_CLASS
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_SESSION_DESKTOP
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_SESSION_TYPE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_STATE_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   __ETC_PROFILE_DONE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]: Exporting variables to systemd user manager:
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   EDITOR
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   HUSHLOGIN
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   LESSKEYIN_SYSTEM
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIXPKGS_CONFIG
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIX_PATH (updating)
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIX_PROFILES
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   NIX_USER_PROFILE_DIR
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   OLDPWD
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   PAGER
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   PATH (updating)
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   PYTHONNOUSERSITE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   SSH_ASKPASS
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   UWSM_WAIT_VARNAMES
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_BACKEND
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_CACHE_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_CONFIG_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_CURRENT_DESKTOP
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_DATA_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_MENU_PREFIX
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_SESSION_CLASS
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_SESSION_DESKTOP
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_SESSION_TYPE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   XDG_STATE_HOME
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   __ETC_PROFILE_DONE
+Apr 17 10:04:28 nixos uwsm_env-preloader[3059]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:04:28 nixos systemd[2379]: Finished Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:04:28 nixos systemd[2379]: Reached target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 10:04:28 nixos systemd[2379]: Starting Main service for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3129]: Starting: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland...
+Apr 17 10:04:28 nixos uwsm_waitenv[3128]: Expecting variables to appear in activation environment:
+Apr 17 10:04:28 nixos uwsm_waitenv[3128]:   HYPRLAND_INSTANCE_SIGNATURE, WAYLAND_DISPLAY
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3131]: Expecting variables to appear in activation environment:
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3131]:   HYPRLAND_INSTANCE_SIGNATURE, WAYLAND_DISPLAY
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3134]: [ ERROR ] Hyprland was launched with superuser privileges, but the privileges check is not omitted.
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3134]:           Hint: Use the --i-am-really-stupid flag to omit that check.
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3129]: DEBUG from start-hyprland ]: hyprland exit, breaking poll, checking state
+Apr 17 10:04:28 nixos uwsm_hyprland.desktop[3129]: DEBUG from start-hyprland ]: Hyprland exit cleanly.
+Apr 17 10:04:28 nixos systemd[2379]: wayland-wm@hyprland.desktop.service: Failed with result 'protocol'.
+Apr 17 10:04:28 nixos systemd[2379]: Stopped Main service for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:04:28 nixos systemd[2379]: wayland-wm@hyprland.desktop.service: Triggering OnFailure= dependencies.
+Apr 17 10:04:28 nixos systemd[2379]: wayland-session-bindpid@3055.service: Triggering OnSuccess= dependencies.
+Apr 17 10:04:28 nixos systemd[2379]: wayland-session-waitenv.service: Main process exited, code=killed, status=15/TERM
+Apr 17 10:04:28 nixos systemd[2379]: wayland-session-waitenv.service: Failed with result 'signal'.
+Apr 17 10:04:28 nixos systemd[2379]: wayland-session-waitenv.service: Triggering OnFailure= dependencies.
+Apr 17 10:04:28 nixos systemd[2379]: Stopped target Preparation for session of hyprland.desktop Wayland compositor.
+Apr 17 10:04:28 nixos systemd[2379]: Stopping Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor...
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Cleaning up...
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Found environment cleanup file "env_cleanup.list".
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Found initial systemd state file "env_pre".
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Removing variables from systemd user manager:
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   EDITOR
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   HUSHLOGIN
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   LESSKEYIN_SYSTEM
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   NIXPKGS_CONFIG
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   NIX_PROFILES
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   NIX_USER_PROFILE_DIR
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   OLDPWD
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   PAGER
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   PYTHONNOUSERSITE
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   SSH_ASKPASS
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   UWSM_FINALIZE_VARNAMES
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   UWSM_WAIT_VARNAMES
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_BACKEND
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_CACHE_HOME
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_CONFIG_HOME
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_CURRENT_DESKTOP
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_DATA_HOME
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_MENU_PREFIX
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_SESSION_CLASS
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_SESSION_DESKTOP
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_SESSION_TYPE
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   XDG_STATE_HOME
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   __ETC_PROFILE_DONE
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   __NIXOS_SET_ENVIRONMENT_DONE
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Restoring initial systemd vars.
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Exporting variables to systemd user manager:
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   NIX_PATH (updating)
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]:   PATH (updating)
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Removed "env_cleanup.list".
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Removed "env_pre".
+Apr 17 10:04:29 nixos uwsm_env-preloader[3140]: Removed "env_session.conf".
+Apr 17 10:04:29 nixos systemd[2379]: Stopped Environment preloader for Hyprland, An intelligent dynamic tiling Wayland compositor.
+Apr 17 10:04:29 nixos systemd[2379]: wayland-wm-env@hyprland.desktop.service: Triggering OnSuccess= dependencies.
+Apr 17 10:04:29 nixos systemd[2379]: Stopped target Session envelope of hyprland.desktop Wayland compositor.
+Apr 17 10:04:29 nixos uwsm[3055]: PID 3058 exited with RC 0
