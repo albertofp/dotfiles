@@ -12,6 +12,9 @@
 
   networking.networkmanager.enable = true;
 
+  # Fallback DNS — avoids link-local IPv6 resolver failures in CLI tools
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
   networking.hosts = {
     # Add custom /etc/hosts entries here, e.g.:
     # "192.168.1.100" = [ "mydevice.local" ];
