@@ -70,16 +70,16 @@
   ] ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else []);
 
   # ── Dotfiles ──────────────────────────────────────────────────────────────
-  home.file = let root = ../.; in {
-    ".zshrc".source                = "${root}/.zshrc";
-    ".tmux.conf".source            = "${root}/.tmux.conf";
-    ".gitconfig".source            = "${root}/.gitconfig";
-    ".gitconfig-jet".source        = "${root}/.gitconfig-jet";
-    ".config/nvim" = { source = "${root}/.config/nvim"; recursive = true; };
-    ".config/ghostty" = { source = "${root}/.config/ghostty"; recursive = true; };
-    ".config/hypr" = { source = "${root}/.config/hypr"; recursive = true; };
-    ".config/waybar" = { source = "${root}/.config/waybar"; recursive = true; };
-    ".config/starship.toml".source = "${root}/.config/starship.toml";
+  home.file = {
+    ".zshrc".source                = ../.zshrc;
+    ".tmux.conf".source            = ../.tmux.conf;
+    ".gitconfig".source            = ../.gitconfig;
+    ".gitconfig-jet".source        = ../.gitconfig-jet;
+    ".config/nvim"     = { source = ../.config/nvim;     recursive = true; };
+    ".config/ghostty"  = { source = ../.config/ghostty;  recursive = true; };
+    ".config/hypr"     = { source = ../.config/hypr;     recursive = true; };
+    ".config/waybar"   = { source = ../.config/waybar;   recursive = true; };
+    ".config/starship.toml".source = ../.config/starship.toml;
   };
 
   # ── Programs ──────────────────────────────────────────────────────────────
