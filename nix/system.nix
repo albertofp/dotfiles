@@ -28,7 +28,7 @@
     modesetting.enable             = true;
     open                           = false;   # Pascal (GTX 1080) — open module not supported
     nvidiaSettings                 = true;
-    package                        = config.boot.kernelPackages.nvidiaPackages.stable;
+    package                        = config.boot.kernelPackages.nvidiaPackages.legacy_535;
     powerManagement.enable         = false;
     powerManagement.finegrained    = false;
   };
