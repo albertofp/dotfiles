@@ -1,3 +1,6 @@
+**/flake.lock
+!flake.lock
+
 **/__pycache__/**
 **/GEMINI.md
 **/rest

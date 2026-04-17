@@ -1,4 +1,16 @@
-source $HOME/.zshenv
+[[ -f $HOME/.zshenv ]] && source $HOME/.zshenv
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt EXTENDED_HISTORY       # write timestamps
+setopt HIST_EXPIRE_DUPS_FIRST # expire duplicates first
+setopt HIST_IGNORE_DUPS       # no consecutive duplicates
+setopt HIST_IGNORE_SPACE      # don't record lines starting with space
+setopt HIST_VERIFY            # don't execute immediately on history expansion
+setopt SHARE_HISTORY          # share history across sessions
+
 autoload -U compinit
 compinit -i
 
@@ -8,7 +20,11 @@ fi
 
 export GOPATH="$HOME/go"
 export GOMODCACHE="$GOPATH/pkg/mod"
-export GOCACHE="$HOME/Library/Caches/go-build"
+if [[ $(uname -s) == "Darwin" ]]; then
+  export GOCACHE="$HOME/Library/Caches/go-build"
+else
+  export GOCACHE="$HOME/.cache/go-build"
+fi
 export PATH="$PATH:$GOPATH/bin"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export KIND_EXPERIMENTAL_PROVIDER=podman
@@ -28,7 +44,8 @@ fi
 
 export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
-export PUBLISH_REPO="$HOME/website/src/content/blog"
+
+alias rebuild="sudo nixos-rebuild switch --flake path:/home/alberto/dotfiles#alberto --impure"
 
 alias kill9042='lsof -ti :9042 | xargs kill -9'
 alias nvimconfig="nvim ~/.config/nvim/"
@@ -43,10 +60,7 @@ alias proj="cd $HOME/github/"
 alias tf="terraform"
 alias tg="terragrunt"
 
-alias avedit="ansible-vault edit --vault-password-file ~/.ansible_vault_pass.txt"
-alias avenc="ansible-vault encrypt --vault-password-file ~/.ansible_vault_pass.txt --encrypt-vault-id default"
-alias avdec="ansible-vault decrypt --vault-password-file ~/.ansible_vault_pass.txt"
-alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10 --vault-password-file=~/.ansible_vault_pass.txt"
+alias sync="ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10"
 
 alias gp="git push"
 alias gs="git status"
@@ -105,10 +119,11 @@ if [[ $(uname -s) == "Darwin" ]]; then
   source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 else
-  alias task="go-task"
-  export GOPATH=$HOME/go
-  source $HOME/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  # NixOS: plugins installed via home-manager, available in nix profile
+  source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null || \
+    source /etc/profiles/per-user/$USER/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+  source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null || \
+    source /etc/profiles/per-user/$USER/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
@@ -158,9 +173,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export HOMEBREW_PREFIX=/opt/homebrew
-export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
-export MACOSX_DEPLOYMENT_TARGET=15.5
+if [[ $(uname -s) == "Darwin" ]]; then
+  export HOMEBREW_PREFIX=/opt/homebrew
+  export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
+  export MACOSX_DEPLOYMENT_TARGET=15.5
+fi
 
 function aws-login() {
   local profile="${1}"
@@ -255,4 +272,6 @@ function aws-login-all() {
 eval "$(starship init zsh)"
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
+if [[ $(uname -s) == "Darwin" ]]; then
+  complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
+fi

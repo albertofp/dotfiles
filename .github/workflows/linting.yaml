@@ -3,33 +3,29 @@ name: Linting
 on:
   pull_request:
     paths:
-      - 'ansible/**'
+      - '**/*.nix'
   push:
     paths:
-      - 'ansible/**'
+      - '**/*.nix'
     branches:
       - main
   workflow_dispatch:
 jobs:
-  linting:
-    name: Ansible Lint
+  nix-lint:
+    name: Nix Lint
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-        
-      - name: Install ansible, yamllint and ansible-lint
-        run: |
-          pip install ansible ansible-lint yamllint
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
 
-      - name: Run ansible-lint
-        run: |
-          ansible-lint ansible
+      - name: Check formatting (nixfmt)
+        run: nix run nixpkgs#nixfmt -- --check $(find . -name '*.nix')
 
-      - name: Run yamllint
-        run: yamllint ansible
+      - name: Run statix
+        run: nix run nixpkgs#statix -- check .
+
+      - name: Run deadnix
+        run: nix run nixpkgs#deadnix -- .

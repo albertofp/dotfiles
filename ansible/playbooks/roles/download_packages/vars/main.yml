@@ -1,12 +1,4 @@
 ---
-download_packages_aur:
-  - slack-desktop
-  - spotify
-  - golangci-lint
-  - nerdfetch
-  - zen-browser-bin
-  - localsend-bin
-
 download_packages_base:
   - fzf
   - bat
@@ -42,22 +34,6 @@ download_packages_homebrew_cask:
   # - ghostty
   - zen-browser
   # - localsend
-
-download_packages_linux:
-  - firefox
-  - docker
-  - silicon
-  - notion
-  - github-cli
-  - redshift
-  - ghostty
-  - spotify-launcher
-  - wl-clipboard
-  # for bluetooth widget in qtile
-  - python-dbus-next
-  - bluez
-  - bluez-utils
-# ---------
 
 download_packages_mac:
   # - raycast

@@ -1,0 +1,58 @@
+{
+  description = "Alberto's NixOS + home-manager configuration";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      # Full NixOS system — apply with:
+      #   sudo nixos-rebuild switch --flake .#alberto
+      nixosConfigurations.alberto = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./nixos/system.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.alberto = import ./nixos/home.nix;
+              extraSpecialArgs = {
+                zen-browser-pkg = zen-browser.packages.${system}.default;
+              };
+            };
+          }
+        ];
+      };
+
+      # Standalone home-manager — apply with:
+      #   nix run home-manager -- switch --flake .#alberto
+      homeConfigurations.alberto = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./nixos/home.nix ];
+        extraSpecialArgs = {
+          zen-browser-pkg = zen-browser.packages.${system}.default;
+        };
+      };
+    };
+}
