@@ -1,6 +1,4 @@
-warning: '--recreate-lock-file' is deprecated and will be removed in a future version; use 'nix flake update' instead.
 building the system configuration...
-warning: '--recreate-lock-file' is deprecated and will be removed in a future version; use 'nix flake update' instead.
 error:
        … while calling the 'head' builtin
          at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/attrsets.nix:1712:13:
@@ -28,11 +26,7 @@ error:
 
        … while evaluating definitions from `/nix/store/j17hffy66a3qy44zqvwy1pcnr85axbwy-source/nixos':
 
-       … while evaluating the option `home-manager.users.alberto.home.file.".zshrc".source':
-
-       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/flake.nix':
-
        (stack trace truncated; use '--show-trace' to show the full, detailed trace)
 
-       error: path '/nix/store/' is not in the Nix store
-Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths 'path:/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link --impure --recreate-lock-file' returned non-zero exit status 1.
+       error: '.zshrc' is too short to be a valid store path
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths 'path:/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link --impure' returned non-zero exit status 1.
