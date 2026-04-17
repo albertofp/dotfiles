@@ -85,6 +85,9 @@
   # ── Programs ──────────────────────────────────────────────────────────────
   programs.home-manager.enable = true;
 
+  # Disable home-manager's systemd integration for Hyprland — conflicts with UWSM
+  wayland.windowManager.hyprland.systemd.enable = false;
+
   programs.starship = {
     enable              = true;
     enableZshIntegration = true;

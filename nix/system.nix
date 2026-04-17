@@ -47,15 +47,19 @@
   # programs.hyprland.enable handles portals, polkit, xwayland, desktop entry
   programs.hyprland = {
     enable          = true;
+    withUWSM        = true;   # recommended: systemd session integration via UWSM
     xwayland.enable = true;
   };
+
+  # Hint Electron apps to use Wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Display manager — SDDM on X11 (Wayland mode broken with NVIDIA/Weston)
   services.displayManager.sddm = {
     enable         = true;
     wayland.enable = false;
   };
-  services.displayManager.defaultSession = "hyprland";
+  services.displayManager.defaultSession = "hyprland-uwsm";
   services.xserver.enable = true;
 
   # ── Audio (Pipewire) ──────────────────────────────────────────────────────
