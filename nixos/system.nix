@@ -80,7 +80,12 @@
       withUWSM = true; # recommended: systemd session integration via UWSM
       xwayland.enable = true;
     };
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      syntaxHighlighting.enable = true;
+      autosuggestions.enable = true;
+    };
+    steam.enable = true;
   };
 
   services = {
@@ -122,6 +127,9 @@
     # (tighten after first boot if preferred)
     sudo.wheelNeedsPassword = false;
   };
+
+  # ── Logitech (Piper — MX Vertical mouse config) ───────────────────────────
+  services.ratbagd.enable = true; # backend required by Piper
 
   # ── Bluetooth ─────────────────────────────────────────────────────────────
   # Disabled temporarily — was hanging boot

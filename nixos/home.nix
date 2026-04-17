@@ -58,6 +58,8 @@
         gcc # C linker required for cargo build steps (e.g. blink.cmp)
 
         # Apps / GUI
+        runelite
+        piper
         ghostty
         jellyfin-media-player
         slack

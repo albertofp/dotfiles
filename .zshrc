@@ -118,26 +118,20 @@ if [[ $(uname -s) == "Darwin" ]]; then
   source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
   export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
-else
-  # NixOS: plugins installed via home-manager, available in nix profile
-  source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null || \
-    source /etc/profiles/per-user/$USER/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-  source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null || \
-    source /etc/profiles/per-user/$USER/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+  source <(fzf --zsh)
+  eval "$(starship init zsh)"
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
 eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
 
 # ---- FZF ----
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS="
 	--color=fg:#908caa,bg:#191724,hl:#ebbcba
 	--color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
 	--color=border:#403d52,header:#31748f,gutter:#191724
 	--color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
 	--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa"
-source <(fzf --zsh)
 # ---- ----- ----
 
 function mkcd takedir() {
@@ -269,9 +263,11 @@ function aws-login-all() {
   fi
 }
 
-eval "$(starship init zsh)"
-
 autoload -U +X bashcompinit && bashcompinit
+if [[ $(uname -s) != "Darwin" ]]; then
+  # zsh-syntax-highlighting must be sourced last (after all zle widgets are set up)
+  source /nix/store/*-zsh-syntax-highlighting-*/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
 if [[ $(uname -s) == "Darwin" ]]; then
   complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
 fi
