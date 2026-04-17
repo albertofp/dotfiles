@@ -35,6 +35,7 @@
     nodejs
     pyenv
     shellcheck
+    tree-sitter
     golangci-lint
     kubectl
     kubectx
@@ -42,6 +43,7 @@
 
     # Rust toolchain (provides cargo, rustc)
     rustup
+    gcc  # C linker required for cargo build steps (e.g. blink.cmp)
 
     # Apps / GUI
     ghostty

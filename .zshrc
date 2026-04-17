@@ -44,7 +44,8 @@ fi
 
 export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
-export PUBLISH_REPO="$HOME/website/src/content/blog"
+
+alias rebuild="sudo nixos-rebuild switch --flake path:/home/alberto/dotfiles#alberto --impure"
 
 alias kill9042='lsof -ti :9042 | xargs kill -9'
 alias nvimconfig="nvim ~/.config/nvim/"
