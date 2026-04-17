@@ -1,32 +1,49 @@
 building the system configuration...
-error:
-       … while calling the 'head' builtin
-         at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/attrsets.nix:1712:13:
-         1711|           if length values == 1 || pred here (elemAt values 1) (head values) then
-         1712|             head values
-             |             ^
-         1713|           else
+these 7 derivations will be built:
+  /nix/store/jv91xkfd6vxkvl7g9pr1p7m4kjaky2jl-home-manager-files.drv
+  /nix/store/8yz7dh65k5vlyfm8ggkkbqzp8wdrnkya-home-manager-generation.drv
+  /nix/store/xd0h5jpdr4aq62y5291zffflgd21h2rx-unit-home-manager-alberto.service.drv
+  /nix/store/rywy3zh48lw2mm7sxicxckp46j6nvwjp-system-units.drv
+  /nix/store/mkpm9k7vycmp75hwljqgdscc3wgcnbvy-etc.drv
+  /nix/store/b7nnwnawbnz8zcf2nyf5qhgws75933m3-activate.drv
+  /nix/store/a8x1r1hsy0g0nl7qyd32vk7b76wzzvlm-nixos-system-nixos-26.05.20260414.4bd9165.drv
+building '/nix/store/jv91xkfd6vxkvl7g9pr1p7m4kjaky2jl-home-manager-files.drv'...
+building '/nix/store/8yz7dh65k5vlyfm8ggkkbqzp8wdrnkya-home-manager-generation.drv'...
+building '/nix/store/xd0h5jpdr4aq62y5291zffflgd21h2rx-unit-home-manager-alberto.service.drv'...
+building '/nix/store/rywy3zh48lw2mm7sxicxckp46j6nvwjp-system-units.drv'...
+building '/nix/store/mkpm9k7vycmp75hwljqgdscc3wgcnbvy-etc.drv'...
+building '/nix/store/b7nnwnawbnz8zcf2nyf5qhgws75933m3-activate.drv'...
+building '/nix/store/a8x1r1hsy0g0nl7qyd32vk7b76wzzvlm-nixos-system-nixos-26.05.20260414.4bd9165.drv'...
+Checking switch inhibitors... done
+activating the configuration...
+setting up /etc...
+reloading user units for alberto...
+reloading user units for root...
+restarting sysinit-reactivation.target
+restarting the following units: home-manager-alberto.service
+Failed to restart home-manager-alberto.service
+the following new units were started: NetworkManager-dispatcher.service, sysinit-reactivation.target, systemd-tmpfiles-resetup.service
+warning: the following units failed: home-manager-alberto.service
+× home-manager-alberto.service - Home Manager environment for alberto
+     Loaded: loaded (/etc/systemd/system/home-manager-alberto.service; enabled; preset: ignored)
+     Active: failed (Result: exit-code) since Fri 2026-04-17 11:18:13 CEST; 277ms ago
+   Duration: 13min 3.085s
+ Invocation: fe697fb58fb8466dad954b6b1716f42f
+    Process: 4194 ExecStart=/nix/store/c2gwx27r3m9jlydxwllvlm1camcivd65-hm-setup-env /nix/store/ynqa0309zp22y9hkpfsf1q2v7f9k6bgp-home-manager-generation (code=exited, status=1/FAILURE)
+   Main PID: 4194 (code=exited, status=1/FAILURE)
+         IP: 0B in, 0B out
+         IO: 0B read, 0B written
+   Mem peak: 16M
+        CPU: 205ms
 
-       … while evaluating the attribute 'value'
-         at /nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/lib/modules.nix:1159:7:
-         1158|     // {
-         1159|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
-             |       ^
-         1160|       inherit (res.defsFinal') highestPrio;
-
-       … while evaluating the option `system.build.toplevel':
-
-       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/system/activation/top-level.nix':
-
-       … while evaluating the option `warnings':
-
-       … while evaluating definitions from `/nix/store/0d1kf07ph2ply64i1y247f9q2an9cw00-source/nixos/modules/system/boot/systemd.nix':
-
-       … while evaluating the option `systemd.services.home-manager-alberto.serviceConfig':
-
-       … while evaluating definitions from `/nix/store/j17hffy66a3qy44zqvwy1pcnr85axbwy-source/nixos':
-
-       (stack trace truncated; use '--show-trace' to show the full, detailed trace)
-
-       error: '.zshrc' is too short to be a valid store path
-Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths 'path:/home/alberto/dotfiles/nix#nixosConfigurations."alberto".config.system.build.toplevel' --no-link --impure' returned non-zero exit status 1.
+Apr 17 11:18:13 nixos hm-activate-alberto[4194]: Activating writeBoundary
+Apr 17 11:18:13 nixos hm-activate-alberto[4194]: Activating installPackages
+Apr 17 11:18:13 nixos hm-activate-alberto[4194]: Activating linkGeneration
+Apr 17 11:18:13 nixos hm-activate-alberto[4194]: Cleaning up orphan links from /home/alberto
+Apr 17 11:18:13 nixos hm-activate-alberto[4194]: Creating home file links in /home/alberto
+Apr 17 11:18:13 nixos hm-activate-alberto[4300]: mkdir: cannot create directory ‘/home/alberto/.config/nvim’: File exists
+Apr 17 11:18:13 nixos hm-activate-alberto[4301]: ln: failed to create symbolic link '/home/alberto/.config/nvim/.gitignore': No such file or directory
+Apr 17 11:18:13 nixos systemd[1]: home-manager-alberto.service: Main process exited, code=exited, status=1/FAILURE
+Apr 17 11:18:13 nixos systemd[1]: home-manager-alberto.service: Failed with result 'exit-code'.
+Apr 17 11:18:13 nixos systemd[1]: Failed to start Home Manager environment for alberto.
+Command 'systemd-run -E LOCALE_ARCHIVE -E NIXOS_INSTALL_BOOTLOADER -E NIXOS_NO_CHECK --collect --no-ask-password --pipe --quiet --service-type=exec --unit=nixos-rebuild-switch-to-configuration /nix/store/l7zvii5g98vbd6jacqq5s7rmvc3ypgb3-nixos-system-nixos-26.05.20260414.4bd9165/bin/switch-to-configuration switch' returned non-zero exit status 4.
