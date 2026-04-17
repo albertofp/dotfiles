@@ -23,12 +23,12 @@
       nixosConfigurations.alberto = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./system.nix
+          ./nixos/system.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs   = true;
             home-manager.useUserPackages = true;
-            home-manager.users.alberto   = import ./home.nix;
+            home-manager.users.alberto   = import ./nixos/home.nix;
             home-manager.extraSpecialArgs = {
               zen-browser-pkg = zen-browser.packages.${system}.default;
             };
@@ -41,7 +41,7 @@
       #   nix run home-manager -- switch --flake .#alberto
       homeConfigurations.alberto = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./home.nix ];
+        modules = [ ./nixos/home.nix ];
         extraSpecialArgs = {
           zen-browser-pkg = zen-browser.packages.${system}.default;
         };
