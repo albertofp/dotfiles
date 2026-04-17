@@ -65,6 +65,9 @@
     # GitHub CLI
     gh
 
+    # OpenCode AI coding agent
+    opencode
+
     # Fonts
     nerd-fonts.jetbrains-mono
   ] ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else []);

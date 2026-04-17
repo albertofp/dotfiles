@@ -107,8 +107,10 @@ if [[ $(uname -s) == "Darwin" ]]; then
   export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
 else
   # NixOS: plugins installed via home-manager, available in nix profile
-  source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source $HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null || \
+    source /etc/profiles/per-user/$USER/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+  source $HOME/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null || \
+    source /etc/profiles/per-user/$USER/share/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 fi
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
