@@ -5,6 +5,7 @@ ssh/work_*
 !ssh/*.pub
 !ssh/.gitkeep
 **/flake.lock
+!flake.lock
 
 **/__pycache__/**
 **/GEMINI.md
