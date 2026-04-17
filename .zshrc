@@ -20,11 +20,7 @@ fi
 
 export GOPATH="$HOME/go"
 export GOMODCACHE="$GOPATH/pkg/mod"
-if [[ $(uname -s) == "Darwin" ]]; then
-  export GOCACHE="$HOME/Library/Caches/go-build"
-else
-  export GOCACHE="$HOME/.cache/go-build"
-fi
+export GOCACHE="$HOME/Library/Caches/go-build"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export KIND_EXPERIMENTAL_PROVIDER=podman
@@ -44,8 +40,6 @@ fi
 
 export EDITOR="nvim"
 export DOTFILES_DIR="$HOME/dotfiles"
-
-alias rebuild="sudo nixos-rebuild switch --flake path:/home/alberto/dotfiles#alberto --impure"
 
 alias kill9042='lsof -ti :9042 | xargs kill -9'
 alias nvimconfig="nvim ~/.config/nvim/"
@@ -86,7 +80,6 @@ alias Prw="prw"
 alias PRw="prw"
 alias rw="gh repo view --web"
 alias ghpc="gh pr create"
-# alias merge="gh pr merge -sd --admin"
 alias ghrw="gh run list --status=completed --limit 1| awk '{print \$6}'"
 
 function copy_file_to_clipboard {
@@ -112,15 +105,15 @@ alias la="eza  -l --icons -a"
 # Kubectl autocomplete
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
-if [[ $(uname -s) == "Darwin" ]]; then
-  export HOMEBREW_NO_ENV_HINTS=1
-  export HOMEBREW_NO_AUTO_UPDATE=1
-  source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-  export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
-  source <(fzf --zsh)
-  eval "$(starship init zsh)"
-fi
+# macOS-only
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+source $HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export PATH=/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin:$PATH
+source <(fzf --zsh)
+eval "$(starship init zsh)"
+
 export PATH=$PATH:$GOPATH
 export PATH=$PATH:$GOPATH/bin
 eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
@@ -164,14 +157,12 @@ function take() {
 }
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-if [[ $(uname -s) == "Darwin" ]]; then
-  export HOMEBREW_PREFIX=/opt/homebrew
-  export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
-  export MACOSX_DEPLOYMENT_TARGET=15.5
-fi
+export HOMEBREW_PREFIX=/opt/homebrew
+export PKG_CONFIG_PATH="/opt/homebrew/bin/pkg-config:$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig"
+export MACOSX_DEPLOYMENT_TARGET=15.5
 
 function aws-login() {
   local profile="${1}"
@@ -183,10 +174,7 @@ function aws-login() {
   aws eks update-kubeconfig --profile "${profile}" --name "${profile}" --alias "${profile}"
 }
 
-# Login to SSO once and refresh kubeconfig for all EKS clusters.
-# Usage: aws-login-all
 function aws-login-all() {
-  # --- Legacy SRE-EKS: profile → cluster name mapping ---
   local -A LEGACY_CLUSTERS=(
     [infra-eks-dev-1]="eks-cluster-dev"
     [sre-eks-dev-1]="eks-cluster-dev"
@@ -198,7 +186,6 @@ function aws-login-all() {
     [p-ew1-dreks]="p-ew1-dreks"
   )
 
-  # --- Sonic Runtime (OneEKS): profile name = cluster name ---
   local SONIC_PROFILES=(
     euw1-pdv-sbx-2
     euw1-pdv-qa-2
@@ -264,10 +251,4 @@ function aws-login-all() {
 }
 
 autoload -U +X bashcompinit && bashcompinit
-if [[ $(uname -s) != "Darwin" ]]; then
-  # zsh-syntax-highlighting must be sourced last (after all zle widgets are set up)
-  source /nix/store/*-zsh-syntax-highlighting-*/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-if [[ $(uname -s) == "Darwin" ]]; then
-  complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
-fi
+complete -o nospace -C /opt/homebrew/bin/wizcli wizcli
