@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Hyprland
+Comment=An intelligent dynamic tiling Wayland compositor
+Exec=/nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
+Type=Application
+DesktopNames=Hyprland
+Keywords=tiling;wayland;compositor;
+[Desktop Entry]
+Name=Hyprland (uwsm-managed)
+Comment=An intelligent dynamic tiling Wayland compositor
+Exec=/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop
+TryExec=/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm
+DesktopNames=Hyprland
+Type=Application

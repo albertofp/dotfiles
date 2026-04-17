@@ -1,0 +1,50 @@
+Apr 17 09:42:08 nixos kernel: Linux version 6.18.22 (nixbld@localhost) (gcc (GCC) 15.2.0, GNU ld (GNU Binutils) 2.44) #1-NixOS SMP PREEMPT_DYNAMIC Sat Apr 11 12:26:52 UTC 2026
+Apr 17 09:42:08 nixos kernel: Command line: initrd=\EFI\nixos\bk1ks65aqi60jf52smx6lqinliqgy58c-initrd-linux-6.18.22-initrd.efi init=/nix/store/gbr0n204vnbmg0yq1a4my89p6i9brxmy-nixos-system-nixos-26.05.20260414.4bd9165/init nvidia-drm.modeset=1 nvidia-drm.fbdev=1 root=fstab loglevel=4 lsm=landlock,yama,bpf nvidia-drm.modeset=1
+Apr 17 09:42:08 nixos kernel: BIOS-provided physical RAM map:
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000000a0000-0x00000000000fffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x0000000000100000-0x0000000009d7ffff] usable
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x0000000009d80000-0x0000000009ffffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x000000000a000000-0x000000000a1fffff] usable
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x000000000a200000-0x000000000a209fff] ACPI NVS
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x000000000a20a000-0x000000000affffff] usable
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x000000000b000000-0x000000000b01ffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x000000000b020000-0x00000000dd29efff] usable
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000dd29f000-0x00000000dd3dffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000dd3e0000-0x00000000dd45cfff] ACPI data
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000dd45d000-0x00000000dd970fff] ACPI NVS
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000dd971000-0x00000000de65cfff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000de65d000-0x00000000deffffff] usable
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000df000000-0x00000000dfffffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000f8000000-0x00000000fbffffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fd100000-0x00000000fdffffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fea00000-0x00000000fea0ffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000feb80000-0x00000000fec01fff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fec10000-0x00000000fec10fff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fec30000-0x00000000fec30fff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fed00000-0x00000000fed00fff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fed40000-0x00000000fed44fff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fed80000-0x00000000fed8ffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fedc2000-0x00000000fedcffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fedd4000-0x00000000fedd5fff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000fee00000-0x00000000feefffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x00000000ff000000-0x00000000ffffffff] reserved
+Apr 17 09:42:08 nixos kernel: BIOS-e820: [mem 0x0000000100000000-0x000000041f37ffff] usable
+Apr 17 09:42:08 nixos kernel: NX (Execute Disable) protection: active
+Apr 17 09:42:08 nixos kernel: APIC: Static calls initialized
+Apr 17 09:42:08 nixos kernel: efi: EFI v2.7 by American Megatrends
+Apr 17 09:42:08 nixos kernel: efi: ACPI 2.0=0xdd8f0000 ACPI=0xdd8f0000 SMBIOS=0xde47d000 ESRT=0xd96b0f98 MEMATTR=0xd9635698 RNG=0xdd45cf18 INITRD=0xd1b18d98 
+Apr 17 09:42:08 nixos kernel: random: crng init done
+Apr 17 09:42:08 nixos kernel: efi: Remove mem34: MMIO range=[0xf8000000-0xfbffffff] (64MB) from e820 map
+Apr 17 09:42:08 nixos kernel: e820: remove [mem 0xf8000000-0xfbffffff] reserved
+Apr 17 09:42:08 nixos kernel: efi: Remove mem35: MMIO range=[0xfd100000-0xfdffffff] (15MB) from e820 map
+Apr 17 09:42:08 nixos kernel: e820: remove [mem 0xfd100000-0xfdffffff] reserved
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem36: MMIO range=[0xfea00000-0xfea0ffff] (64KB) from e820 map
+Apr 17 09:42:08 nixos kernel: efi: Remove mem37: MMIO range=[0xfeb80000-0xfec01fff] (0MB) from e820 map
+Apr 17 09:42:08 nixos kernel: e820: remove [mem 0xfeb80000-0xfec01fff] reserved
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem38: MMIO range=[0xfec10000-0xfec10fff] (4KB) from e820 map
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem39: MMIO range=[0xfec30000-0xfec30fff] (4KB) from e820 map
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem40: MMIO range=[0xfed00000-0xfed00fff] (4KB) from e820 map
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem41: MMIO range=[0xfed40000-0xfed44fff] (20KB) from e820 map
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem42: MMIO range=[0xfed80000-0xfed8ffff] (64KB) from e820 map
+Apr 17 09:42:08 nixos kernel: efi: Not removing mem43: MMIO range=[0xfedc2000-0xfedcffff] (56KB) from e820 map

@@ -1,0 +1,11 @@
+● nixos
+    State: running
+    Units: 131 loaded (incl. loaded aliases)
+     Jobs: 0 queued
+   Failed: 0 units
+    Since: Fri 2026-04-17 09:44:04 CEST; 5min ago
+  systemd: 259.3
+   CGroup: /user.slice/user-0.slice/user@0.service
+           └─init.scope
+             ├─2379 /nix/store/ik8a7b32nqv2q5p4g86hmp65jklmrp3g-systemd-259.3/lib/systemd/systemd --user
+             └─2383 "(sd-pam)"
