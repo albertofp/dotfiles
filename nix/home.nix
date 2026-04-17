@@ -75,10 +75,10 @@
     ".tmux.conf".source            = "${root}/.tmux.conf";
     ".gitconfig".source            = "${root}/.gitconfig";
     ".gitconfig-jet".source        = "${root}/.gitconfig-jet";
-    ".config/nvim".source          = "${root}/.config/nvim";
-    ".config/ghostty".source       = "${root}/.config/ghostty";
-    ".config/hypr".source          = "${root}/.config/hypr";
-    ".config/waybar".source        = "${root}/.config/waybar";
+    ".config/nvim" = { source = "${root}/.config/nvim"; recursive = true; };
+    ".config/ghostty" = { source = "${root}/.config/ghostty"; recursive = true; };
+    ".config/hypr" = { source = "${root}/.config/hypr"; recursive = true; };
+    ".config/waybar" = { source = "${root}/.config/waybar"; recursive = true; };
     ".config/starship.toml".source = "${root}/.config/starship.toml";
   };
 
