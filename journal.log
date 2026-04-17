@@ -1,100 +1,12 @@
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.machine1' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.machine1.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.portal.Desktop' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.portal.Desktop.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.portal.Documents' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.portal.Documents.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.systemd1' in service file '/nix/store/k88jhypqgy2gifqhbqf57mlwqjdzjf0l-system-path/share/dbus-1/services/org.freedesktop.systemd1.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'ca.desrt.dconf' in service file '/nix/store/6j2gzrryz8327ba6dj0s311f70mgwnvd-dconf-0.49.0/share/dbus-1/services/ca.desrt.dconf.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.impl.portal.PermissionStore' in service file '/nix/store/hn4yqa95qmna06rdhgyxr9pjzqhk231v-xdg-desktop-portal-1.20.4/share/dbus-1/services/org.freedesktop.impl.portal.PermissionStore.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.portal.Desktop' in service file '/nix/store/hn4yqa95qmna06rdhgyxr9pjzqhk231v-xdg-desktop-portal-1.20.4/share/dbus-1/services/org.freedesktop.portal.Desktop.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.portal.Documents' in service file '/nix/store/hn4yqa95qmna06rdhgyxr9pjzqhk231v-xdg-desktop-portal-1.20.4/share/dbus-1/services/org.freedesktop.portal.Documents.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.hyprland' in service file '/nix/store/xmzl9zj2fljypr61fvhxip42ml44bfgc-xdg-desktop-portal-hyprland-1.3.11/share/dbus-1/services/org.freedesktop.impl.portal.desktop.hyprland.service'
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ignoring duplicate name 'org.freedesktop.impl.portal.desktop.gtk' in service file '/nix/store/86zmqzjz652wlnaiv5v7byyp8rcp81a3-xdg-desktop-portal-gtk-1.15.3/share/dbus-1/services/org.freedesktop.impl.portal.desktop.gtk.service'
-Apr 17 10:00:23 nixos systemd[2609]: Started D-Bus User Message Bus.
-Apr 17 10:00:23 nixos dbus-broker-launch[2623]: Ready
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Connected to the daemon.
-Apr 17 10:00:23 nixos sddm[2570]: Message received from greeter: Connect
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Loading qrc:/theme/Main.qml...
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: file:///nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/lib/qt-6/qml/SddmComponents/LayoutBox.qml:35:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: file:///nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/lib/qt-6/qml/SddmComponents/ComboBox.qml:105:9: QML Image: Cannot open: file:///nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/lib/qt-6/qml/SddmComponents/angle-down.png
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: file:///nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/lib/qt-6/qml/SddmComponents/ComboBox.qml:105:9: QML Image: Cannot open: file:///nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/lib/qt-6/qml/SddmComponents/angle-down.png
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: qrc:/theme/Main.qml:41:5: QML Connections: Implicitly defined onFoo properties in Connections are deprecated. Use this syntax instead: function onFoo(<arguments>) { ... }
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Adding view for "DP-4" QRect(0,0 3440x1440)
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Message received from daemon: Capabilities
-Apr 17 10:00:23 nixos sddm-greeter-qt6[2620]: Message received from daemon: HostName
-Apr 17 10:00:29 nixos sddm-greeter-qt6[2620]: file:///nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/lib/qt-6/qml/SddmComponents/PictureBox.qml:106:13 Parameter "event" is not declared. Injection of parameters into signal handlers is deprecated. Use JavaScript functions with formal parameters instead.
-Apr 17 10:00:29 nixos sddm-greeter-qt6[2620]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
-Apr 17 10:00:29 nixos sddm[2570]: Message received from greeter: Login
-Apr 17 10:00:29 nixos sddm[2570]: Reading from "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop"
-Apr 17 10:00:29 nixos sddm[2570]: Session "/nix/store/gqvd6m52s5vxms6bsg3rjdk5jav07cid-desktops/share/wayland-sessions/hyprland-uwsm.desktop" selected, command: "/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop" for VT 2
-Apr 17 10:00:29 nixos sddm-helper[2629]: [PAM] Starting...
-Apr 17 10:00:29 nixos sddm-helper[2629]: [PAM] Authenticating...
-Apr 17 10:00:29 nixos sddm-helper[2629]: [PAM] Preparing to converse...
-Apr 17 10:00:29 nixos sddm-helper[2629]: [PAM] Conversation with 1 messages
-Apr 17 10:00:29 nixos sddm-helper[2629]: [PAM] returning.
-Apr 17 10:00:29 nixos sddm[2570]: Authentication for user  "alberto"  successful
-Apr 17 10:00:29 nixos sddm-greeter-qt6[2620]: Message received from daemon: LoginSucceeded
-Apr 17 10:00:29 nixos sddm-helper[2629]: pam_unix(sddm:session): session opened for user alberto(uid=1000) by (uid=0)
-Apr 17 10:00:29 nixos systemd-logind[1283]: New session '7' of user 'alberto' with class 'user' and type 'wayland'.
-Apr 17 10:00:29 nixos systemd[1]: Started Session 7 of User alberto.
-Apr 17 10:00:29 nixos sddm-helper[2629]: Starting Wayland user session: "/nix/store/36hzsmxz6yfmn5lr88rikg81cyb8373c-sddm-unwrapped-0.21.0/share/sddm/scripts/wayland-session" "/nix/store/d5n5x68jj5rbdnpi5f4w5k0v67fih32g-uwsm-0.26.4/bin/uwsm start -e -D Hyprland hyprland.desktop"
-Apr 17 10:00:29 nixos sddm-helper[2633]: Jumping to VT 2
-Apr 17 10:00:29 nixos sddm-helper[2633]: VT mode didn't need to be fixed
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event7  - Power Button: device removed
-Apr 17 10:00:29 nixos sddm-helper[2603]: [PAM] Closing session
-Apr 17 10:00:29 nixos sddm-helper[2603]: [PAM] Ended.
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event6  - Power Button: device removed
-Apr 17 10:00:29 nixos sddm[2570]: Auth: sddm-helper exited successfully
-Apr 17 10:00:29 nixos sddm[2570]: Greeter stopped. SDDM::Auth::HELPER_SUCCESS
-Apr 17 10:00:29 nixos systemd[1]: session-c2.scope: Deactivated successfully.
-Apr 17 10:00:29 nixos systemd-logind[1283]: Session c2 logged out. Waiting for processes to exit.
-Apr 17 10:00:29 nixos systemd-logind[1283]: Removed session c2.
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event0  - USB-HID Keyboard: device removed
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event1  - USB-HID Keyboard System Control: device removed
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event2  - USB-HID Keyboard Consumer Control: device removed
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event3  - USB-HID Keyboard Mouse: device removed
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event4  - USB-HID Keyboard: device removed
-Apr 17 10:00:29 nixos systemd[2609]: Reached target Sound Card.
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event20 - HDX Webcam USB: HDX Webcam USB: device removed
-Apr 17 10:00:29 nixos xserver-wrapper[2572]: (II) event5  - Logitech MX Vertical: device removed
-Apr 17 10:00:29 nixos sddm[2570]: Session started true
-Apr 17 10:00:29 nixos acpid[1249]: client 2572[0:0] has disconnected
-Apr 17 10:00:29 nixos acpid[1249]: client 2572[0:0] has disconnected
-Apr 17 10:00:31 nixos systemd[1]: Starting RealtimeKit Scheduling Policy Service...
-Apr 17 10:00:31 nixos systemd[1]: Started RealtimeKit Scheduling Policy Service.
-Apr 17 10:00:31 nixos rtkit-daemon[2820]: Handling system-suspend using logind.
-Apr 17 10:00:31 nixos rtkit-daemon[2820]: Successfully made thread 2843 of process 2843 owned by '1000' high priority at nice level -11.
-Apr 17 10:00:31 nixos rtkit-daemon[2820]: Successfully made thread 2847 of process 2843 owned by '1000' RT at priority 20.
-Apr 17 10:00:31 nixos rtkit-daemon[2820]: Successfully made thread 2844 of process 2844 owned by '1000' high priority at nice level -11.
-Apr 17 10:00:31 nixos rtkit-daemon[2820]: Successfully made thread 2858 of process 2844 owned by '1000' RT at priority 20.
-Apr 17 10:00:32 nixos kernel: uvcvideo 3-2:1.0: UVC non compliance: permanently disabling control 98090e (Red Balance), due to error -5
-Apr 17 10:00:32 nixos kernel: uvcvideo 3-2:1.0: UVC non compliance: permanently disabling control 98090f (Blue Balance), due to error -5
-Apr 17 10:00:33 nixos kernel: uvcvideo 3-2:1.0: UVC non compliance: GET_DEF control 4 on unit 1 returned 2 bytes when we expected 4.
-Apr 17 10:00:39 nixos systemd[1]: Stopping User Manager for UID 175...
-Apr 17 10:00:39 nixos systemd[2609]: Activating special unit Exit the Session...
-Apr 17 10:00:39 nixos systemd[2609]: Stopped target Main User Target.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped target Basic System.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped target Paths.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped target Sockets.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped target Sound Card.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped target Timers.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped Daily Cleanup of User's Temporary Directories.
-Apr 17 10:00:39 nixos systemd[2609]: Closed PipeWire PulseAudio.
-Apr 17 10:00:39 nixos systemd[2609]: Closed PipeWire Multimedia System Sockets.
-Apr 17 10:00:39 nixos systemd[2609]: Closed Speech Dispatcher Socket.
-Apr 17 10:00:39 nixos dbus-broker[2624]: Dispatched 165 messages @ 2(±3)μs / message.
-Apr 17 10:00:39 nixos systemd[2609]: Stopping D-Bus User Message Bus...
-Apr 17 10:00:39 nixos systemd[2609]: Stopped Create User Files and Directories.
-Apr 17 10:00:39 nixos systemd[2609]: Stopped D-Bus User Message Bus.
-Apr 17 10:00:39 nixos systemd[2609]: Removed slice User Core Session Slice.
-Apr 17 10:00:39 nixos systemd[2609]: Closed D-Bus User Message Bus Socket.
-Apr 17 10:00:39 nixos systemd[2609]: Removed slice User Application Slice.
-Apr 17 10:00:39 nixos systemd[2609]: Reached target Shutdown.
-Apr 17 10:00:39 nixos systemd[2609]: Finished Exit the Session.
-Apr 17 10:00:39 nixos systemd[2609]: Reached target Exit the Session.
-Apr 17 10:00:39 nixos systemd-logind[1283]: Removed session 6.
-Apr 17 10:00:39 nixos (sd-pam)[2611]: pam_unix(systemd-user:session): session closed for user sddm
-Apr 17 10:00:39 nixos systemd[1]: user@175.service: Deactivated successfully.
-Apr 17 10:00:39 nixos systemd[1]: Stopped User Manager for UID 175.
-Apr 17 10:00:39 nixos systemd[1]: Stopping User Runtime Directory /run/user/175...
-Apr 17 10:00:39 nixos systemd[1]: run-user-175.mount: Deactivated successfully.
-Apr 17 10:00:39 nixos systemd[1]: user-runtime-dir@175.service: Deactivated successfully.
-Apr 17 10:00:39 nixos systemd[1]: Stopped User Runtime Directory /run/user/175.
+Selected compositor ID: hyprland.desktop
+          Command Line: /nix/store/qwwjx2jbdw14al948hqxn1bzkvk6c4j5-hyprland-0.54.3/bin/start-hyprland
+      Plugin/binary ID: start_hyprland
+ Initial Desktop Names: Hyprland
+                  Name: Hyprland
+           Description: An intelligent dynamic tiling Wayland compositor
+
+Units unchanged.
+Starting hyprland.desktop and waiting while it is running...
+Starting wayland-session-envelope@hyprland.desktop.target...
+Forked systemctl, PID 3058.
+PID 3058 exited with RC 0
