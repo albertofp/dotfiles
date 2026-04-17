@@ -13,11 +13,18 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, zen-browser, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      zen-browser,
+      ...
+    }:
     let
       system = "x86_64-linux";
-      pkgs   = nixpkgs.legacyPackages.${system};
-    in {
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
       # Full NixOS system — apply with:
       #   sudo nixos-rebuild switch --flake .#alberto
       nixosConfigurations.alberto = nixpkgs.lib.nixosSystem {
@@ -26,11 +33,13 @@
           ./nixos/system.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs   = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.alberto   = import ./nixos/home.nix;
-            home-manager.extraSpecialArgs = {
-              zen-browser-pkg = zen-browser.packages.${system}.default;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.alberto = import ./nixos/home.nix;
+              extraSpecialArgs = {
+                zen-browser-pkg = zen-browser.packages.${system}.default;
+              };
             };
           }
         ];
