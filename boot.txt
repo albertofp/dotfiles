@@ -1,0 +1,8 @@
+total 510M
+-rwxr-xr-x 1 root root  60M Apr 17 09:31 bk1ks65aqi60jf52smx6lqinliqgy58c-initrd-linux-6.18.22-initrd.efiuvd605o0.tmp
+-rwxr-xr-x 1 root root 194M Apr 17 09:20 a8k3fr59v4l647lxnf48ffyprz3vk94f-initrd-linux-6.18.22-initrd.efi
+-rwxr-xr-x 1 root root 195M Apr 16 17:26 3srzzywq7nplckw2y25m8n0mm26xd37b-initrd-linux-6.18.22-initrd.efi
+-rwxr-xr-x 1 root root  26M Apr 16 15:03 8l8qv9y34gfhir887sw5rkzwvrbvg7vc-initrd-linux-6.18.22-initrd.efi
+-rwxr-xr-x 1 root root  13M Apr 16 15:03 wxqfnd1m4g9vxkhbmsqaxg7z8mwz87jl-linux-6.18.22-bzImage.efi
+-rwxr-xr-x 1 root root  12M Apr 16 13:45 h6zfv8153zvk83phniwxpp14fwax9h5v-initrd-linux-6.12.81-initrd.efi
+-rwxr-xr-x 1 root root  12M Apr 16 13:45 jkjzxqr062zylnvnkvq668jlhpnb9dmq-linux-6.12.81-bzImage.efi
