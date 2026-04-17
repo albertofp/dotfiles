@@ -51,19 +51,13 @@
     xwayland.enable = true;
   };
 
-  # Display manager — greetd + tuigreet (SDDM dropped: Weston/TTY issues with NVIDIA)
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd Hyprland";
-        user    = "greeter";
-      };
-    };
+  # Display manager — SDDM on X11 (Wayland mode broken with NVIDIA/Weston)
+  services.displayManager.sddm = {
+    enable         = true;
+    wayland.enable = false;
   };
-  # Suppress "getty conflict" noise on tty1
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  services.displayManager.defaultSession = "hyprland";
+  services.xserver.enable = true;
 
   # ── Audio (Pipewire) ──────────────────────────────────────────────────────
   services.pipewire = {
