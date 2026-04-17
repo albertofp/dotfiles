@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +21,7 @@
     {
       nixpkgs,
       home-manager,
+      agenix,
       zen-browser,
       ...
     }:
@@ -32,6 +37,7 @@
         modules = [
           ./nixos/system.nix
           home-manager.nixosModules.home-manager
+          agenix.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;
@@ -41,6 +47,15 @@
                 zen-browser-pkg = zen-browser.packages.${system}.default;
               };
             };
+
+            # ── Secrets ───────────────────────────────────────────────────────
+            age.secrets.shell-secrets = {
+              file = ./secrets/shell-secrets.age;
+              owner = "alberto";
+              mode = "0400";
+            };
+
+            environment.systemPackages = [ agenix.packages.${system}.default ];
           }
         ];
       };

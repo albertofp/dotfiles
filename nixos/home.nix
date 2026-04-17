@@ -217,6 +217,9 @@
           tmux attach || tmux new
         fi
 
+        # Secrets (API keys, tokens — decrypted by agenix at boot)
+        [[ -f /run/agenix/shell-secrets ]] && source /run/agenix/shell-secrets
+
         # kubectl completion
         [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
