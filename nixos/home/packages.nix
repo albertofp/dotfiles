@@ -27,7 +27,7 @@
       # Dev
       go
       nodejs
-      pyenv
+
       shellcheck
       tree-sitter
       golangci-lint
