@@ -28,7 +28,10 @@ in
   services.hyprpaper = {
     enable = true;
     package = hyprpaper-pkg;
-    settings.ipc = "on";
+    settings = {
+      ipc = "on";
+      splash = false;
+    };
   };
 
   systemd.user.services.wallpaper-cycle = {
