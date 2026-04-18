@@ -15,6 +15,10 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -23,6 +27,7 @@
       home-manager,
       agenix,
       zen-browser,
+      hyprpaper,
       ...
     }:
     let
@@ -45,6 +50,7 @@
               users.alberto = import ./nixos/home.nix;
               extraSpecialArgs = {
                 zen-browser-pkg = zen-browser.packages.${system}.default;
+                hyprpaper-pkg = hyprpaper.packages.${system}.hyprpaper;
               };
             };
 
