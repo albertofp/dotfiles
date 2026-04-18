@@ -46,7 +46,9 @@
     let
       linuxSystem = "x86_64-linux";
       darwinSystem = "aarch64-darwin";
-      rustOverlay = { nixpkgs.overlays = [ rust-overlay.overlays.default ]; };
+      rustOverlay = {
+        nixpkgs.overlays = [ rust-overlay.overlays.default ];
+      };
     in
     {
       # ── NixOS ────────────────────────────────────────────────────────────────
