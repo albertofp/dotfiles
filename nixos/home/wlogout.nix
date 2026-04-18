@@ -6,7 +6,7 @@ let
       --protocol layer-shell \
       --layout "$HOME/.config/wlogout/layout" \
       --css "$HOME/.config/wlogout/style.css" \
-      -b 4 \
+      -b 2 \
       -c 20 \
       -r 20 \
       -m 20
@@ -63,12 +63,12 @@ in
       color: #e0def4;
       background-color: rgba(31, 29, 46, 0.9);
       border-radius: 12px;
-      margin: 10px;
-      font-size: 16pt;
+      margin: 6px;
+      font-size: 11pt;
       background-repeat: no-repeat;
-      background-position: center 30%;
-      background-size: 25%;
-      padding-top: 140px;
+      background-position: center 25%;
+      background-size: 20%;
+      padding-top: 70px;
       transition: background-color 0.2s ease, border-color 0.2s ease;
       border: 2px solid rgba(86, 82, 110, 0.4);
     }
