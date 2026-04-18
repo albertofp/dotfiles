@@ -1,116 +1,110 @@
 { pkgs, ... }:
 
 let
+  t = import ../lib/theme.nix;
+
+  # Thin wrapper — config files are managed by programs.wlogout, these are display args only.
   power-menu = pkgs.writeShellScriptBin "power-menu" ''
-    ${pkgs.wlogout}/bin/wlogout \
-      --protocol layer-shell \
-      --layout "$HOME/.config/wlogout/layout" \
-      --css "$HOME/.config/wlogout/style.css" \
-      -b 2 \
-      -c 20 \
-      -r 20 \
-      -m 20
+    ${pkgs.wlogout}/bin/wlogout --protocol layer-shell -b 2 -c 20 -r 20 -m 20
   '';
 in
 {
-  home.packages = [
-    pkgs.wlogout
-    pkgs.hyprlock
-    power-menu
-  ];
+  home.packages = [ power-menu ];
 
-  xdg.configFile."wlogout/layout".text = ''
-    {
-      "label": "lock",
-      "action": "hyprlock",
-      "text": "Lock",
-      "keybind": "l"
-    }
-    {
-      "label": "suspend",
-      "action": "hyprlock & sleep 0.5 && systemctl suspend -i",
-      "text": "Sleep",
-      "keybind": "s"
-    }
-    {
-      "label": "reboot",
-      "action": "systemctl reboot",
-      "text": "Restart",
-      "keybind": "r"
-    }
-    {
-      "label": "shutdown",
-      "action": "systemctl poweroff",
-      "text": "Shutdown",
-      "keybind": "p"
-    }
-  '';
+  programs.wlogout = {
+    enable = true;
+    layout = [
+      {
+        label = "lock";
+        action = "hyprlock";
+        text = "Lock";
+        keybind = "l";
+      }
+      {
+        label = "suspend";
+        action = "hyprlock & sleep 0.5 && systemctl suspend -i";
+        text = "Sleep";
+        keybind = "s";
+      }
+      {
+        label = "reboot";
+        action = "systemctl reboot";
+        text = "Restart";
+        keybind = "r";
+      }
+      {
+        label = "shutdown";
+        action = "systemctl poweroff";
+        text = "Shutdown";
+        keybind = "p";
+      }
+    ];
+    style = ''
+      * {
+        background-image: none;
+        box-shadow: none;
+        border: none;
+        outline: none;
+      }
 
-  xdg.configFile."wlogout/style.css".text = ''
-    * {
-      background-image: none;
-      box-shadow: none;
-      border: none;
-      outline: none;
-    }
+      window {
+        background-color: ${t.base}D9;
+        font-family: JetBrains Mono Nerd Font, monospace;
+      }
 
-    window {
-      background-color: rgba(25, 23, 36, 0.85);
-      font-family: JetBrains Mono Nerd Font, monospace;
-    }
+      button {
+        color: ${t.text};
+        background-color: ${t.surface}E6;
+        border-radius: 12px;
+        margin: 6px;
+        font-size: 11pt;
+        background-repeat: no-repeat;
+        background-position: center 25%;
+        background-size: 20%;
+        padding-top: 70px;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+        border: 2px solid ${t.moon.highlightHigh}66;
+      }
 
-    button {
-      color: #e0def4;
-      background-color: rgba(31, 29, 46, 0.9);
-      border-radius: 12px;
-      margin: 6px;
-      font-size: 11pt;
-      background-repeat: no-repeat;
-      background-position: center 25%;
-      background-size: 20%;
-      padding-top: 70px;
-      transition: background-color 0.2s ease, border-color 0.2s ease;
-      border: 2px solid rgba(86, 82, 110, 0.4);
-    }
+      button:hover {
+        border-color: ${t.subtle}CC;
+      }
 
-    button:hover {
-      border-color: rgba(144, 140, 170, 0.8);
-    }
+      #lock {
+        background-image: url("${pkgs.wlogout}/share/wlogout/icons/lock.png");
+        color: ${t.foam};
+      }
+      #lock:hover {
+        background-color: ${t.foam}26;
+        border-color: ${t.foam};
+      }
 
-    #lock {
-      background-image: url("${pkgs.wlogout}/share/wlogout/icons/lock.png");
-      color: #9ccfd8;
-    }
-    #lock:hover {
-      background-color: rgba(156, 207, 216, 0.15);
-      border-color: #9ccfd8;
-    }
+      #suspend {
+        background-image: url("${pkgs.wlogout}/share/wlogout/icons/suspend.png");
+        color: ${t.iris};
+      }
+      #suspend:hover {
+        background-color: ${t.iris}26;
+        border-color: ${t.iris};
+      }
 
-    #suspend {
-      background-image: url("${pkgs.wlogout}/share/wlogout/icons/suspend.png");
-      color: #c4a7e7;
-    }
-    #suspend:hover {
-      background-color: rgba(196, 167, 231, 0.15);
-      border-color: #c4a7e7;
-    }
+      #reboot {
+        background-image: url("${pkgs.wlogout}/share/wlogout/icons/reboot.png");
+        color: ${t.gold};
+      }
+      #reboot:hover {
+        background-color: ${t.gold}26;
+        border-color: ${t.gold};
+      }
 
-    #reboot {
-      background-image: url("${pkgs.wlogout}/share/wlogout/icons/reboot.png");
-      color: #f6c177;
-    }
-    #reboot:hover {
-      background-color: rgba(246, 193, 119, 0.15);
-      border-color: #f6c177;
-    }
-
-    #shutdown {
-      background-image: url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png");
-      color: #eb6f92;
-    }
-    #shutdown:hover {
-      background-color: rgba(235, 111, 146, 0.15);
-      border-color: #eb6f92;
-    }
-  '';
+      #shutdown {
+        background-image: url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png");
+        color: ${t.love};
+      }
+      #shutdown:hover {
+        background-color: ${t.love}26;
+        border-color: ${t.love};
+      }
+    '';
+  };
 }

@@ -9,6 +9,14 @@ _:
   # Disable home-manager's systemd integration for Hyprland — conflicts with UWSM
   wayland.windowManager.hyprland.systemd.enable = false;
 
+  # ── SSH agent ────────────────────────────────────────────────────────────────
+  # One persistent agent per user session; key is added on first use via ssh config.
+  services.ssh-agent.enable = true;
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+  };
+
   # ── Dark theme ──────────────────────────────────────────────────────────────
   gtk = {
     enable = true;

@@ -8,9 +8,6 @@
   home.packages =
     with pkgs;
     [
-      # Shell / terminal
-      tmux
-
       # Editors / viewers
       neovim
       glow
@@ -26,12 +23,11 @@
       jq
       yq
       btop
-      htop
 
       # Dev
       go
       nodejs
-      pyenv
+
       shellcheck
       tree-sitter
       golangci-lint
@@ -44,9 +40,8 @@
       deadnix
       nixfmt
 
-      # Rust toolchain (provides cargo, rustc)
-      rustup
-      gcc # C linker required for cargo build steps (e.g. blink.cmp)
+      # Rust toolchain — pinned stable via rust-overlay
+      rust-bin.stable.latest.default
 
       # Apps / GUI
       runelite

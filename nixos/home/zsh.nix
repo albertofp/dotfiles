@@ -25,7 +25,6 @@ _:
       n = "nvim";
       nvimconfig = "nvim ~/.config/nvim/";
       ghosttyconfig = "nvim ~/dotfiles/.config/ghostty/config";
-      hyprconfig = "nvim ~/dotfiles/.config/hypr/hyprland.conf";
       nixedit = "nvim ~/dotfiles/nixos/";
 
       # Navigation
@@ -68,9 +67,6 @@ _:
       tg = "terragrunt";
       kill9042 = "lsof -ti :9042 | xargs kill -9";
       dockerkill = "docker stop $(docker ps -a -q)";
-
-      # Ansible
-      sync = "ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10";
     };
 
     initContent = ''
@@ -87,9 +83,6 @@ _:
 
       # bashcompinit (needed for some CLI completions e.g. terraform)
       autoload -U +X bashcompinit && bashcompinit
-
-      # SSH agent
-      eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
 
       # Git commit helper
       function git_commit_m { git commit -m "$*" }

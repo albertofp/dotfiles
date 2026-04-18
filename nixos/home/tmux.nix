@@ -1,5 +1,8 @@
 { pkgs, ... }:
 
+let
+  m = (import ../lib/theme.nix).moon;
+in
 {
   programs.tmux = {
     enable = true;
@@ -27,33 +30,17 @@
       set -g detach-on-destroy off
       set -g renumber-windows on
 
-      # Rose Pine theme
-      rosepine_moon_base="#232136"
-      rosepine_moon_surface="#2a273f"
-      rosepine_moon_overlay="#393552"
-      rosepine_moon_muted="#6e6a86"
-      rosepine_moon_subtle="#908caa"
-      rosepine_moon_text="#e0def4"
-      rosepine_moon_love="#eb6f92"
-      rosepine_moon_gold="#f6c177"
-      rosepine_moon_rose="#ea9a97"
-      rosepine_moon_pine="#3e8fb0"
-      rosepine_moon_foam="#9ccfd8"
-      rosepine_moon_iris="#c4a7e7"
-      rosepine_moon_hl_low="#2a283e"
-      rosepine_moon_hl_med="#44415a"
-      rosepine_moon_hl_high="#56526e"
-
-      set -g display-panes-active-colour "''${rosepine_moon_text}"
-      set -g display-panes-colour "''${rosepine_moon_gold}"
-      set -g status-style "fg=''${rosepine_moon_pine},bg=''${rosepine_moon_base}"
-      set -g message-style "fg=''${rosepine_moon_muted},bg=''${rosepine_moon_base}"
-      set -g message-command-style "fg=''${rosepine_moon_base},bg=''${rosepine_moon_gold}"
-      set -g pane-border-style "fg=''${rosepine_moon_hl_high}"
-      set -g pane-active-border-style "fg=''${rosepine_moon_gold}"
-      set -gw window-status-style "fg=''${rosepine_moon_iris},bg=''${rosepine_moon_base}"
-      set -gw window-status-activity-style "fg=''${rosepine_moon_base},bg=''${rosepine_moon_rose}"
-      set -gw window-status-current-style "fg=''${rosepine_moon_gold},bg=''${rosepine_moon_base}"
+      # Rose Pine Moon theme
+      set -g display-panes-active-colour "${m.text}"
+      set -g display-panes-colour "${m.gold}"
+      set -g status-style "fg=${m.pine},bg=${m.base}"
+      set -g message-style "fg=${m.muted},bg=${m.base}"
+      set -g message-command-style "fg=${m.base},bg=${m.gold}"
+      set -g pane-border-style "fg=${m.highlightHigh}"
+      set -g pane-active-border-style "fg=${m.gold}"
+      set -gw window-status-style "fg=${m.iris},bg=${m.base}"
+      set -gw window-status-activity-style "fg=${m.base},bg=${m.rose}"
+      set -gw window-status-current-style "fg=${m.gold},bg=${m.base}"
 
       # Fix scrolling in k9s
       bind -Troot WheelUpPane if-shell -F '#{alternate_on}' 'send-keys -M' 'copy-mode -e'

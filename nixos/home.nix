@@ -1,6 +1,7 @@
-_:
-
-{
+let
+  t = import ./lib/theme.nix;
+in
+_: {
   imports = [
     ./home/packages.nix
     ./home/dotfiles.nix
@@ -25,18 +26,12 @@ _:
       GOMODCACHE = "$HOME/go/pkg/mod";
       GOCACHE = "$HOME/.cache/go-build";
       DOTFILES_DIR = "$HOME/dotfiles";
-      OPENSSL_CONF = "/dev/null";
-      KIND_EXPERIMENTAL_PROVIDER = "podman";
-      PERSONAL_EMAIL = "albertopluecker@gmail.com";
-      PERSONAL_SSH_KEY = "$HOME/.ssh/id_home_github";
-      WORK_EMAIL = "alberto.pluecker@justeattakeaway.com";
-      WORK_SSH_KEY = "$HOME/.ssh/work_github";
       FZF_DEFAULT_OPTS = ''
-        --color=fg:#908caa,bg:#191724,hl:#ebbcba
-        --color=fg+:#e0def4,bg+:#26233a,hl+:#ebbcba
-        --color=border:#403d52,header:#31748f,gutter:#191724
-        --color=spinner:#f6c177,info:#9ccfd8,separator:#403d52
-        --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa'';
+        --color=fg:${t.subtle},bg:${t.base},hl:${t.rose}
+        --color=fg+:${t.text},bg+:${t.overlay},hl+:${t.rose}
+        --color=border:${t.highlightMed},header:${t.pine},gutter:${t.base}
+        --color=spinner:${t.gold},info:${t.foam},separator:${t.highlightMed}
+        --color=pointer:${t.iris},marker:${t.love},prompt:${t.subtle}'';
     };
 
     sessionPath = [

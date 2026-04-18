@@ -1,6 +1,9 @@
-_:
-
-{
+let
+  # Strip leading '#' — hyprlock uses rgb(rrggbb) format
+  hex = c: builtins.substring 1 6 c;
+  m = (import ../lib/theme.nix).moon;
+in
+_: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = false; # UWSM handles session management (enabled at NixOS level)
@@ -113,11 +116,6 @@ _:
           animation = workspacesOut, 1, 1.94, almostLinear, fade
       }
 
-      dwindle {
-          pseudotile = true
-          preserve_split = true
-      }
-
       master {
           new_status = master
       }
@@ -143,12 +141,6 @@ _:
               natural_scroll = false
           }
       }
-
-      device {
-          name = epic-mouse-v1
-          sensitivity = -0.5
-      }
-
 
       ###################
       ### KEYBINDINGS ###
@@ -250,7 +242,7 @@ _:
 
       background {
         monitor =
-        color = rgb(232136)
+        color = rgb(${hex m.base})
       }
 
       input-field {
@@ -259,15 +251,15 @@ _:
         outline_thickness = 2
         dots_size = 0.2
         dots_spacing = 0.2
-        outer_color = rgb(f6c177)
-        inner_color = rgb(2a273f)
-        font_color = rgb(e0def4)
+        outer_color = rgb(${hex m.gold})
+        inner_color = rgb(${hex m.surface})
+        font_color = rgb(${hex m.text})
         fade_on_empty = true
         placeholder_text = <i>Password...</i>
         hide_input = false
         rounding = 8
-        check_color = rgb(9ccfd8)
-        fail_color = rgb(eb6f92)
+        check_color = rgb(${hex m.foam})
+        fail_color = rgb(${hex m.love})
         fail_text = <i>$FAIL ($ATTEMPTS)</i>
         position = 0, -120
         halign = center
@@ -277,7 +269,7 @@ _:
       label {
         monitor =
         text = cmd[update:1000] echo "$(date +"%H:%M")"
-        color = rgb(e0def4)
+        color = rgb(${hex m.text})
         font_size = 72
         font_family = JetBrainsMono Nerd Font
         position = 0, 100
@@ -288,7 +280,7 @@ _:
       label {
         monitor =
         text = cmd[update:60000] echo "$(date +"%A, %B %d")"
-        color = rgb(908caa)
+        color = rgb(${hex m.subtle})
         font_size = 20
         font_family = JetBrainsMono Nerd Font
         position = 0, 20

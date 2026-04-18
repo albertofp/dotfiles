@@ -18,12 +18,14 @@
     "nvidia-drm.fbdev=1"
   ];
 
-  # Load nvidia modules early so KMS is available before display manager starts
+  # Load nvidia modules early so KMS is available before display manager starts.
+  # btusb is loaded here too — without early loading it can hang boot on NVIDIA systems.
   boot.initrd.kernelModules = [
     "nvidia"
     "nvidia_modeset"
     "nvidia_uvm"
     "nvidia_drm"
+    "btusb"
   ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
