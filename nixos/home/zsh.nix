@@ -84,9 +84,6 @@ _:
       # bashcompinit (needed for some CLI completions e.g. terraform)
       autoload -U +X bashcompinit && bashcompinit
 
-      # SSH agent
-      eval $(ssh-agent -s) > /dev/null 2>&1 && ssh-add -q $HOME/.ssh/id_home_github > /dev/null 2>&1
-
       # Git commit helper
       function git_commit_m { git commit -m "$*" }
 
