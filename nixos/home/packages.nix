@@ -23,7 +23,6 @@
       jq
       yq
       btop
-      htop
 
       # Dev
       go
