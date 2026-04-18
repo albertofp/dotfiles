@@ -5,35 +5,13 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-    paths: ['**/*.nix']
   workflow_dispatch:
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    outputs:
-      shared: ${{ steps.filter.outputs.shared }}
-      nixos: ${{ steps.filter.outputs.nixos }}
-      darwin: ${{ steps.filter.outputs.darwin }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: dorny/paths-filter@v3
-        id: filter
-        with:
-          filters: |
-            shared:
-              - 'flake.nix'
-              - 'flake.lock'
-              - 'home/**'
-            nixos:
-              - 'nixos/**'
-            darwin:
-              - 'darwin/**'
-
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: cachix/install-nix-action@v30
         with:
@@ -49,10 +27,7 @@ jobs:
           nix run nixpkgs#deadnix -- .
 
   build:
-    needs: [lint, changes]
-    if: |
-      (matrix.platform == 'nixos' && (needs.changes.outputs.shared == 'true' || needs.changes.outputs.nixos == 'true')) ||
-      (matrix.platform == 'darwin' && (needs.changes.outputs.shared == 'true' || needs.changes.outputs.darwin == 'true'))
+    needs: [lint]
     strategy:
       matrix:
         include:
