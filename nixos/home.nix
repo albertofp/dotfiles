@@ -8,6 +8,9 @@ _:
     ./home/tmux.nix
     ./home/starship.nix
     ./home/desktop.nix
+    ./home/hyprland.nix
+    ./home/waybar.nix
+    ./home/wlogout.nix
   ];
 
   home = {

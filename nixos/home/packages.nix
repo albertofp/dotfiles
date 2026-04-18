@@ -60,7 +60,6 @@
       wlsunset
 
       # Hyprland user-space tools (compositor itself enabled in system.nix)
-      waybar
       wofi
       networkmanagerapplet # nm-applet
       brightnessctl
