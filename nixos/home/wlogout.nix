@@ -3,6 +3,9 @@
 let
   t = import ../lib/theme.nix;
 
+  # GTK3 does not support 8-digit hex colours (#rrggbbAA) — use rgba() instead.
+  # RGB values come from t.rgb.* and t.moon.rgb.* in theme.nix.
+
   # Thin wrapper — config files are managed by programs.wlogout, these are display args only.
   power-menu = pkgs.writeShellScriptBin "power-menu" ''
     ${pkgs.wlogout}/bin/wlogout --protocol layer-shell -b 2 -c 20 -r 20 -m 20
@@ -48,13 +51,13 @@ in
       }
 
       window {
-        background-color: ${t.base}D9;
+        background-color: rgba(${t.rgb.base}, 0.85);
         font-family: JetBrains Mono Nerd Font, monospace;
       }
 
       button {
         color: ${t.text};
-        background-color: ${t.surface}E6;
+        background-color: rgba(${t.rgb.surface}, 0.9);
         border-radius: 12px;
         margin: 6px;
         font-size: 11pt;
@@ -63,11 +66,11 @@ in
         background-size: 20%;
         padding-top: 70px;
         transition: background-color 0.2s ease, border-color 0.2s ease;
-        border: 2px solid ${t.moon.highlightHigh}66;
+        border: 2px solid rgba(${t.moon.rgb.highlightHigh}, 0.4);
       }
 
       button:hover {
-        border-color: ${t.subtle}CC;
+        border-color: rgba(${t.rgb.subtle}, 0.8);
       }
 
       #lock {
@@ -75,7 +78,7 @@ in
         color: ${t.foam};
       }
       #lock:hover {
-        background-color: ${t.foam}26;
+        background-color: rgba(${t.rgb.foam}, 0.15);
         border-color: ${t.foam};
       }
 
@@ -84,7 +87,7 @@ in
         color: ${t.iris};
       }
       #suspend:hover {
-        background-color: ${t.iris}26;
+        background-color: rgba(${t.rgb.iris}, 0.15);
         border-color: ${t.iris};
       }
 
@@ -93,7 +96,7 @@ in
         color: ${t.gold};
       }
       #reboot:hover {
-        background-color: ${t.gold}26;
+        background-color: rgba(${t.rgb.gold}, 0.15);
         border-color: ${t.gold};
       }
 
@@ -102,7 +105,7 @@ in
         color: ${t.love};
       }
       #shutdown:hover {
-        background-color: ${t.love}26;
+        background-color: rgba(${t.rgb.love}, 0.15);
         border-color: ${t.love};
       }
     '';
