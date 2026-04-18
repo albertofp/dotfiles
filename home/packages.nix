@@ -53,6 +53,9 @@
       deadnix
       nixfmt
 
+      # CI / workflow linting
+      actionlint
+
       # Rust toolchain — pinned stable via rust-overlay
       rust-bin.stable.latest.default
 
