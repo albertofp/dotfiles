@@ -6,7 +6,7 @@
 
 - name: Stow dotfiles
   ansible.builtin.shell:
-    cmd: "stow --dir=$HOME/dotfiles ."
+    cmd: "stow --dir=$HOME/dotfiles/mac ."
   register: stow
   changed_when: stow.rc != 0
 # - name: Symlink config files

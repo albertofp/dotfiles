@@ -374,7 +374,7 @@ case "$OSTYPE" in
 
     ansible-playbook \
       -i 'localhost,' \
-      -c local "$DOTFILES_DIR/ansible/playbooks/bootstrap.yaml"
+      -c local "$DOTFILES_DIR/mac/ansible/playbooks/bootstrap.yaml"
     ;;
 
   *)
