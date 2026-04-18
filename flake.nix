@@ -40,7 +40,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      # Full NixOS system — apply with:
       #   sudo nixos-rebuild switch --flake .#alberto
       nixosConfigurations.alberto = nixpkgs.lib.nixosSystem {
         inherit system;
@@ -70,16 +69,6 @@
             environment.systemPackages = [ agenix.packages.${system}.default ];
           }
         ];
-      };
-
-      # Standalone home-manager — apply with:
-      #   nix run home-manager -- switch --flake .#alberto
-      homeConfigurations.alberto = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./nixos/home.nix ];
-        extraSpecialArgs = {
-          zen-browser-pkg = zen-browser.packages.${system}.default;
-        };
       };
 
       formatter.${system} = pkgs.nixfmt;
