@@ -25,7 +25,6 @@ _:
       n = "nvim";
       nvimconfig = "nvim ~/.config/nvim/";
       ghosttyconfig = "nvim ~/dotfiles/.config/ghostty/config";
-      hyprconfig = "nvim ~/dotfiles/.config/hypr/hyprland.conf";
       nixedit = "nvim ~/dotfiles/nixos/";
 
       # Navigation
@@ -68,9 +67,6 @@ _:
       tg = "terragrunt";
       kill9042 = "lsof -ti :9042 | xargs kill -9";
       dockerkill = "docker stop $(docker ps -a -q)";
-
-      # Ansible
-      sync = "ANSIBLE_PYTHON_INTERPRETER=auto_silent ansible-playbook ~/dotfiles/ansible/playbooks/bootstrap.yaml --connection=local --inventory=localhost, --forks=10";
     };
 
     initContent = ''
