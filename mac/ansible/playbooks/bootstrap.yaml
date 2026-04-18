@@ -1,9 +1,0 @@
----
-- name: Bootstrap
-  hosts: localhost
-  roles:
-    - role: macos
-    - download_packages
-    - configs
-    # - role: dock
-    # - role: aerospace
