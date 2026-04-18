@@ -70,7 +70,7 @@
         nixedit = "nvim ~/dotfiles/nixos/";
       }
       // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-        rebuild = "darwin-rebuild switch --flake path:/Users/albertopluecker/dotfiles#alberto-mac --impure";
+        rebuild = "sudo darwin-rebuild switch --flake path:/Users/albertopluecker/dotfiles#alberto-mac --impure";
         nixedit = "nvim ~/dotfiles/";
         reload = "source ~/.zshrc";
         # Copy last git commit hash to clipboard

@@ -225,7 +225,7 @@ sudo nixos-rebuild switch --flake path:/home/alberto/dotfiles#alberto --impure
 
 On macOS, the `rebuild` alias expands to:
 ```sh
-darwin-rebuild switch --flake path:/Users/albertopluecker/dotfiles#alberto-mac --impure
+sudo darwin-rebuild switch --flake path:/Users/albertopluecker/dotfiles#alberto-mac --impure
 ```
 
 First-time macOS bootstrap (before `darwin-rebuild` is on PATH):

@@ -35,6 +35,11 @@
     activationScripts.capsLockToEscape.text = ''
       hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}' > /dev/null
     '';
+
+    # Default browser — zen browser (idempotent; macOS may still prompt once)
+    activationScripts.defaultBrowser.text = ''
+      ${pkgs.defaultbrowser}/bin/defaultbrowser zen 2>/dev/null || true
+    '';
   };
 
   # ── Homebrew — only for packages unavailable in nixpkgs ────────────────────
