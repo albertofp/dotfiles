@@ -1,6 +1,45 @@
 { pkgs, ... }:
 
 let
+  t = import ../lib/theme.nix;
+
+  # Convert a #rrggbb hex color to "r, g, b" decimal string for rgba()
+  hexToDec =
+    h:
+    let
+      d = {
+        "0" = 0;
+        "1" = 1;
+        "2" = 2;
+        "3" = 3;
+        "4" = 4;
+        "5" = 5;
+        "6" = 6;
+        "7" = 7;
+        "8" = 8;
+        "9" = 9;
+        "a" = 10;
+        "b" = 11;
+        "c" = 12;
+        "d" = 13;
+        "e" = 14;
+        "f" = 15;
+      };
+    in
+    d.${builtins.substring 0 1 h} * 16 + d.${builtins.substring 1 2 h};
+
+  toRgb =
+    color:
+    let
+      h = builtins.substring 1 6 color;
+      r = hexToDec (builtins.substring 0 2 h);
+      g = hexToDec (builtins.substring 2 2 h);
+      b = hexToDec (builtins.substring 4 2 h);
+    in
+    "${toString r}, ${toString g}, ${toString b}";
+
+  rgba = color: alpha: "rgba(${toRgb color}, ${alpha})";
+
   power-menu = pkgs.writeShellScriptBin "power-menu" ''
     ${pkgs.wlogout}/bin/wlogout \
       --protocol layer-shell \
@@ -55,13 +94,13 @@ in
     }
 
     window {
-      background-color: rgba(25, 23, 36, 0.85);
+      background-color: ${rgba t.base "0.85"};
       font-family: JetBrains Mono Nerd Font, monospace;
     }
 
     button {
-      color: #e0def4;
-      background-color: rgba(31, 29, 46, 0.9);
+      color: ${t.text};
+      background-color: ${rgba t.surface "0.9"};
       border-radius: 12px;
       margin: 6px;
       font-size: 11pt;
@@ -70,47 +109,47 @@ in
       background-size: 20%;
       padding-top: 70px;
       transition: background-color 0.2s ease, border-color 0.2s ease;
-      border: 2px solid rgba(86, 82, 110, 0.4);
+      border: 2px solid ${rgba t.moon.highlightHigh "0.4"};
     }
 
     button:hover {
-      border-color: rgba(144, 140, 170, 0.8);
+      border-color: ${rgba t.subtle "0.8"};
     }
 
     #lock {
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/lock.png");
-      color: #9ccfd8;
+      color: ${t.foam};
     }
     #lock:hover {
-      background-color: rgba(156, 207, 216, 0.15);
-      border-color: #9ccfd8;
+      background-color: ${rgba t.foam "0.15"};
+      border-color: ${t.foam};
     }
 
     #suspend {
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/suspend.png");
-      color: #c4a7e7;
+      color: ${t.iris};
     }
     #suspend:hover {
-      background-color: rgba(196, 167, 231, 0.15);
-      border-color: #c4a7e7;
+      background-color: ${rgba t.iris "0.15"};
+      border-color: ${t.iris};
     }
 
     #reboot {
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/reboot.png");
-      color: #f6c177;
+      color: ${t.gold};
     }
     #reboot:hover {
-      background-color: rgba(246, 193, 119, 0.15);
-      border-color: #f6c177;
+      background-color: ${rgba t.gold "0.15"};
+      border-color: ${t.gold};
     }
 
     #shutdown {
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png");
-      color: #eb6f92;
+      color: ${t.love};
     }
     #shutdown:hover {
-      background-color: rgba(235, 111, 146, 0.15);
-      border-color: #eb6f92;
+      background-color: ${rgba t.love "0.15"};
+      border-color: ${t.love};
     }
   '';
 }

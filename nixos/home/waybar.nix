@@ -3,6 +3,7 @@
 let
   dotfiles = "/home/alberto/dotfiles";
   link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+  t = import ../lib/theme.nix;
 in
 {
   programs.waybar = {
@@ -13,23 +14,23 @@ in
       }
 
       /* Rose Pine */
-      @define-color black    #191724;
-      @define-color red      #eb6f92;
-      @define-color green    #31748f;
-      @define-color yellow   #f6c177;
-      @define-color blue     #9ccfd8;
-      @define-color purple   #c4a7e7;
-      @define-color aqua     #9ccfd8;
-      @define-color gray     #908caa;
-      @define-color brgray   #6e6a86;
+      @define-color black    ${t.base};
+      @define-color red      ${t.love};
+      @define-color green    ${t.pine};
+      @define-color yellow   ${t.gold};
+      @define-color blue     ${t.foam};
+      @define-color purple   ${t.iris};
+      @define-color aqua     ${t.foam};
+      @define-color gray     ${t.subtle};
+      @define-color brgray   ${t.muted};
       @define-color brred    #f29ca6;
       @define-color brgreen  #3f8cad;
       @define-color bryellow #f9d297;
       @define-color brblue   #b8daf0;
       @define-color brpurple #d4b4f0;
       @define-color braqua   #b2e2ef;
-      @define-color white    #e0def4;
-      @define-color bg2      #26233a;
+      @define-color white    ${t.text};
+      @define-color bg2      ${t.overlay};
 
       @define-color warning   @bryellow;
       @define-color critical  @red;
