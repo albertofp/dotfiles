@@ -21,32 +21,30 @@ in
   ];
 
   xdg.configFile."wlogout/layout".text = ''
-    [
-      {
-        "label": "lock",
-        "action": "hyprlock",
-        "text": "Lock",
-        "keybind": "l"
-      },
-      {
-        "label": "suspend",
-        "action": "hyprlock & sleep 0.5 && systemctl suspend -i",
-        "text": "Sleep",
-        "keybind": "s"
-      },
-      {
-        "label": "reboot",
-        "action": "systemctl reboot",
-        "text": "Restart",
-        "keybind": "r"
-      },
-      {
-        "label": "shutdown",
-        "action": "systemctl poweroff",
-        "text": "Shutdown",
-        "keybind": "p"
-      }
-    ]
+    {
+      "label": "lock",
+      "action": "hyprlock",
+      "text": "Lock",
+      "keybind": "l"
+    }
+    {
+      "label": "suspend",
+      "action": "hyprlock & sleep 0.5 && systemctl suspend -i",
+      "text": "Sleep",
+      "keybind": "s"
+    }
+    {
+      "label": "reboot",
+      "action": "systemctl reboot",
+      "text": "Restart",
+      "keybind": "r"
+    }
+    {
+      "label": "shutdown",
+      "action": "systemctl poweroff",
+      "text": "Shutdown",
+      "keybind": "p"
+    }
   '';
 
   xdg.configFile."wlogout/style.css".text = ''
