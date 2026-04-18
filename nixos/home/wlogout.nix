@@ -7,10 +7,9 @@ let
       --layout "$HOME/.config/wlogout/layout" \
       --css "$HOME/.config/wlogout/style.css" \
       -b 4 \
-      -T 40 \
-      -B 960 \
-      -c 0 \
-      -r 0
+      -c 20 \
+      -r 20 \
+      -m 20
   '';
 in
 {
@@ -48,7 +47,6 @@ in
   '';
 
   xdg.configFile."wlogout/style.css".text = ''
-    /* Rose Pine Moon */
     * {
       background-image: none;
       box-shadow: none;
@@ -57,65 +55,67 @@ in
     }
 
     window {
-      background-color: rgba(35, 33, 54, 0.92);
+      background-color: rgba(25, 23, 36, 0.85);
+      font-family: JetBrains Mono Nerd Font, monospace;
     }
 
     button {
-      background-color: transparent;
-      color: #908caa;
-      font-family: JetBrains Mono Nerd Font, monospace;
-      font-size: 13pt;
-      border-radius: 0;
-      margin: 0;
-      padding: 0;
-      border-right: 1px solid rgba(86, 82, 110, 0.4);
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    button:last-child {
-      border-right: none;
+      color: #e0def4;
+      background-color: rgba(31, 29, 46, 0.9);
+      border-radius: 12px;
+      margin: 10px;
+      font-size: 16pt;
+      background-repeat: no-repeat;
+      background-position: center 30%;
+      background-size: 25%;
+      padding-top: 140px;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+      border: 2px solid rgba(86, 82, 110, 0.4);
     }
 
     button:hover,
     button:focus {
-      background-color: rgba(86, 82, 110, 0.35);
-      color: #e0def4;
+      border-color: rgba(144, 140, 170, 0.8);
     }
 
-    button#lock {
+    #lock {
+      background-image: url("${pkgs.wlogout}/share/wlogout/icons/lock.png");
       color: #9ccfd8;
     }
-    button#lock:hover,
-    button#lock:focus {
+    #lock:hover,
+    #lock:focus {
       background-color: rgba(156, 207, 216, 0.15);
-      color: #9ccfd8;
+      border-color: #9ccfd8;
     }
 
-    button#suspend {
+    #suspend {
+      background-image: url("${pkgs.wlogout}/share/wlogout/icons/suspend.png");
       color: #c4a7e7;
     }
-    button#suspend:hover,
-    button#suspend:focus {
+    #suspend:hover,
+    #suspend:focus {
       background-color: rgba(196, 167, 231, 0.15);
-      color: #c4a7e7;
+      border-color: #c4a7e7;
     }
 
-    button#reboot {
+    #reboot {
+      background-image: url("${pkgs.wlogout}/share/wlogout/icons/reboot.png");
       color: #f6c177;
     }
-    button#reboot:hover,
-    button#reboot:focus {
+    #reboot:hover,
+    #reboot:focus {
       background-color: rgba(246, 193, 119, 0.15);
-      color: #f6c177;
+      border-color: #f6c177;
     }
 
-    button#shutdown {
+    #shutdown {
+      background-image: url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png");
       color: #eb6f92;
     }
-    button#shutdown:hover,
-    button#shutdown:focus {
+    #shutdown:hover,
+    #shutdown:focus {
       background-color: rgba(235, 111, 146, 0.15);
-      color: #eb6f92;
+      border-color: #eb6f92;
     }
   '';
 }
