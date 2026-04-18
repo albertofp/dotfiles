@@ -4,6 +4,39 @@
   ...
 }:
 
+let
+  power-menu = pkgs.writeShellScriptBin "power-menu" ''
+    LOCK="  Lock"
+    SLEEP="  Sleep"
+    REBOOT="  Restart"
+    SHUTDOWN="  Shutdown"
+
+    CHOICE=$(printf '%s\n' "$LOCK" "$SLEEP" "$REBOOT" "$SHUTDOWN" \
+      | ${pkgs.wofi}/bin/wofi --dmenu \
+             --prompt "Power" \
+             --width 200 \
+             --height 174 \
+             --lines 4 \
+             --hide-scroll \
+             --no-actions \
+             --insensitive)
+
+    case "$CHOICE" in
+      "$LOCK")
+        ${pkgs.hyprlock}/bin/hyprlock
+        ;;
+      "$SLEEP")
+        ${pkgs.hyprlock}/bin/hyprlock & sleep 0.5 && systemctl suspend -i
+        ;;
+      "$REBOOT")
+        systemctl reboot
+        ;;
+      "$SHUTDOWN")
+        systemctl poweroff
+        ;;
+    esac
+  '';
+in
 {
   home.packages =
     with pkgs;
@@ -60,8 +93,9 @@
       wlsunset
 
       # Hyprland user-space tools (compositor itself enabled in system.nix)
-      waybar
       wofi
+      hyprlock
+      power-menu
       networkmanagerapplet # nm-applet
       brightnessctl
       playerctl

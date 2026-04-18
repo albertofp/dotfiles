@@ -14,6 +14,5 @@
       ".config/nvim".source = link ".config/nvim";
       ".config/ghostty".source = link ".config/ghostty";
       ".config/hypr".source = link ".config/hypr";
-      ".config/waybar".source = link ".config/waybar";
     };
 }

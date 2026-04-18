@@ -8,6 +8,7 @@ _:
     ./home/tmux.nix
     ./home/starship.nix
     ./home/desktop.nix
+    ./home/waybar.nix
   ];
 
   home = {
