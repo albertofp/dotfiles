@@ -40,9 +40,8 @@
       deadnix
       nixfmt
 
-      # Rust toolchain (provides cargo, rustc)
-      rustup
-      gcc # C linker required for cargo build steps (e.g. blink.cmp)
+      # Rust toolchain — pinned stable via rust-overlay
+      rust-bin.stable.latest.default
 
       # Apps / GUI
       runelite

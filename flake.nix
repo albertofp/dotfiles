@@ -19,6 +19,10 @@
       url = "github:hyprwm/hyprpaper";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -28,6 +32,7 @@
       agenix,
       zen-browser,
       hyprpaper,
+      rust-overlay,
       ...
     }:
     let
@@ -41,6 +46,7 @@
         inherit system;
         modules = [
           ./nixos/system.nix
+          { nixpkgs.overlays = [ rust-overlay.overlays.default ]; }
           home-manager.nixosModules.home-manager
           agenix.nixosModules.default
           {
