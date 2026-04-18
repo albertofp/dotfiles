@@ -38,7 +38,11 @@ rebuild
 
 ### macOS
 
-Managed by an Ansible playbook (`ansible/`) bootstrapped via Homebrew. The `bin/dotfiles` script handles the full setup from a fresh machine.
+Managed by an Ansible playbook (`mac/ansible/`) bootstrapped via Homebrew. The `bin/dotfiles` script handles the full setup from a fresh machine. All macOS-specific configs live under `mac/`:
+
+- `mac/.zshrc` / `mac/.tmux.conf` — shell and tmux (TPM-based)
+- `mac/.config/starship.toml` — prompt config
+- `mac/.config/aerospace/` — AeroSpace tiling WM
 
 ### Bootstrap
 

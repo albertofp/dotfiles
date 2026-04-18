@@ -5,7 +5,6 @@ download_packages_base:
   - neovim
   - eza
   - glow
-  - htop
   - jq
   - yq
   - nodejs
@@ -23,17 +22,14 @@ download_packages_base:
   - gum
   - starship
   - lazygit
-  - presenterm
   - btop
 
 download_packages_homebrew_cask:
-  # - docker
   - silicon
   - spotify
   - font-jetbrains-mono-nerd-font
   # - ghostty
   - zen-browser
-  # - localsend
 
 download_packages_mac:
   # - raycast
