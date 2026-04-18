@@ -43,7 +43,6 @@ Managed by an Ansible playbook (`mac/ansible/`) bootstrapped via Homebrew. The `
 - `mac/.zshrc` / `mac/.tmux.conf` — shell and tmux (TPM-based)
 - `mac/.config/starship.toml` — prompt config
 - `mac/.config/aerospace/` — AeroSpace tiling WM
-- `mac/.config/karabiner/` — Karabiner-Elements key remapping
 
 ### Bootstrap
 

@@ -54,7 +54,6 @@ mac/                             # macOS-only configs and tooling (NOT used on N
   .config/
     starship.toml                # NixOS uses starship.nix
     aerospace/                   # AeroSpace tiling WM
-    karabiner/                   # Karabiner-Elements key remapping
 .github/workflows/build.yml      # CI: fmt → lint → nix build
 bin/                             # Bootstrap + utility scripts
 ```
@@ -159,7 +158,6 @@ All macOS-specific files live under `mac/`. On NixOS, none of these are used or 
 - `mac/.config/starship.toml` — NixOS uses `nixos/home/starship.nix`
 - `mac/ansible/` — macOS bootstrap only; the `sync` alias in `mac/.zshrc` and `bin/dotfiles` both point here
 - `mac/.config/aerospace/` — AeroSpace tiling WM (macOS only)
-- `mac/.config/karabiner/` — Karabiner-Elements key remapping (macOS only)
 
 Changes to shell behaviour on NixOS go in `nixos/home/zsh.nix`, not in `mac/.zshrc`.
 
