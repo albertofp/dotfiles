@@ -4,10 +4,13 @@ let
   power-menu = pkgs.writeShellScriptBin "power-menu" ''
     ${pkgs.wlogout}/bin/wlogout \
       --protocol layer-shell \
-      --anchor top \
-      --margin-top 40 \
-      --columns 4 \
-      --height 120
+      --layout "$HOME/.config/wlogout/layout" \
+      --css "$HOME/.config/wlogout/style.css" \
+      -b 4 \
+      -T 40 \
+      -B 960 \
+      -c 0 \
+      -r 0
   '';
 in
 {

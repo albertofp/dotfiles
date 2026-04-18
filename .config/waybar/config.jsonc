@@ -7,6 +7,7 @@
     "hyprland/window"
   ],
   "modules-right": [
+    "custom/arrow-power",
     "custom/power",
     "custom/arrow9",
     "pulseaudio",
@@ -86,9 +87,9 @@
   "custom/arrow6": { "format": "", "tooltip": false },
   "custom/arrow7": { "format": "", "tooltip": false },
   "custom/arrow8": { "format": "", "tooltip": false },
-  "custom/arrow9": { "format": "", "tooltip": false },
-  "custom/arrow10": { "format": "", "tooltip": false }
-,
+  "custom/arrow9":       { "format": "", "tooltip": false },
+  "custom/arrow10":      { "format": "", "tooltip": false },
+  "custom/arrow-power":  { "format": "", "tooltip": false },
   "custom/power": {
     "format": "",
     "tooltip": false,
