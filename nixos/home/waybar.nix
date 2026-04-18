@@ -129,24 +129,12 @@ in
       #clock.time  { background: @time; color: @black; }
 
       #custom-power {
-        padding-left: 8pt;
+        padding-left: 4pt;
         padding-right: 8pt;
         color: @red;
         background: @date;
       }
       #custom-power:hover { color: @white; background: @red; }
-
-      #custom-arrow1      { font-size: 11pt; color: @time;      background: @date;       }
-      #custom-arrow2      { font-size: 11pt; color: @date;      background: @layout;     }
-      #custom-arrow3      { font-size: 11pt; color: @layout;    background: @battery;    }
-      #custom-arrow4      { font-size: 11pt; color: @battery;   background: @temp;       }
-      #custom-arrow5      { font-size: 11pt; color: @temp;      background: @cpu;        }
-      #custom-arrow6      { font-size: 11pt; color: @cpu;       background: @memory;     }
-      #custom-arrow7      { font-size: 11pt; color: @memory;    background: @network;    }
-      #custom-arrow8      { font-size: 11pt; color: @network;   background: @sound;      }
-      #custom-arrow9      { font-size: 11pt; color: @sound;     background: @date;       }
-      #custom-arrow10     { font-size: 11pt; color: @unfocused; background: transparent; }
-      #custom-arrow-power { font-size: 11pt; color: @date;      background: transparent; }
     '';
   };
 
