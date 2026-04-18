@@ -14,7 +14,7 @@ usage() {
 Usage: dotfiles [OPTIONS] [THUMB_DIR]
 
 Bootstrap a new machine from encrypted secrets on a thumb drive.
-Works on NixOS (home-manager + nixos-rebuild) and macOS (Homebrew + Ansible).
+Works on NixOS (nixos-rebuild) and macOS (Determinate Nix + nix-darwin).
 
 ARGUMENTS:
   THUMB_DIR             Path to the thumb drive directory containing .gpg files.
@@ -98,11 +98,12 @@ ensure_gpg() {
   fi
   if [[ "$OSTYPE" == darwin* ]]; then
     info "Installing gpg via Homebrew..."
-    if command -v brew &>/dev/null; then
-      brew install gnupg
-    else
-      die "gpg not found. Install Homebrew first or install gpg manually, then retry."
+    if ! command -v brew &>/dev/null; then
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      # Add Homebrew to PATH for Apple Silicon
+      eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
     fi
+    brew install gnupg
   else
     die "gpg not found. On NixOS it should be pre-installed on the live ISO."
   fi
@@ -347,12 +348,12 @@ case "$OSTYPE" in
     cp "$SSH_DIR/$SSH_KEY_NAME.pub" "$DOTFILES_DIR/ssh/$SSH_KEY_NAME.pub"
 
     info "Applying NixOS configuration (system + home-manager)..."
-    if [[ ! -f "$DOTFILES_DIR/nix/hardware.nix" ]]; then
+    if [[ ! -f "$DOTFILES_DIR/nixos/hardware.nix" ]]; then
       info "Generating hardware configuration..."
-      sudo nixos-generate-config --show-hardware-config > "$DOTFILES_DIR/nix/hardware.nix"
+      sudo nixos-generate-config --show-hardware-config > "$DOTFILES_DIR/nixos/hardware.nix"
     fi
 
-    sudo nixos-rebuild switch --flake "$DOTFILES_DIR/nix#alberto"
+    sudo nixos-rebuild switch --flake "$DOTFILES_DIR#alberto"
 
     info "Setting passwords (you will be prompted)..."
     echo "Set your user password:"; passwd
@@ -361,20 +362,27 @@ case "$OSTYPE" in
 
   # ── macOS ───────────────────────────────────────────────────────────────
   darwin*)
+    # Homebrew is needed for casks not available in nixpkgs
     if ! command -v brew &>/dev/null; then
       info "Installing Homebrew..."
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
     fi
 
-    if ! command -v ansible &>/dev/null; then
-      brew install ansible
+    # Install Nix via Determinate Systems installer
+    if ! command -v nix &>/dev/null; then
+      info "Installing Nix (Determinate Systems)..."
+      curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+      # shellcheck disable=SC1091
+      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
     fi
 
     clone_dotfiles
 
-    ansible-playbook \
-      -i 'localhost,' \
-      -c local "$DOTFILES_DIR/mac/ansible/playbooks/bootstrap.yaml"
+    info "Bootstrapping nix-darwin..."
+    nix run nix-darwin -- switch \
+      --flake "path:$DOTFILES_DIR#alberto-mac" \
+      --impure
     ;;
 
   *)

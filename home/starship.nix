@@ -1,7 +1,7 @@
 _:
 
 let
-  t = import ../lib/theme.nix;
+  t = import ../nixos/lib/theme.nix;
 in
 {
   programs.starship = {

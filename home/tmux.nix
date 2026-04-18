@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-  m = (import ../lib/theme.nix).moon;
+  m = (import ../nixos/lib/theme.nix).moon;
 in
 {
   programs.tmux = {
