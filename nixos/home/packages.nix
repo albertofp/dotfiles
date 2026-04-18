@@ -8,9 +8,6 @@
   home.packages =
     with pkgs;
     [
-      # Shell / terminal
-      tmux
-
       # Editors / viewers
       neovim
       glow
