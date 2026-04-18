@@ -163,4 +163,5 @@ vim.lsp.enable {
   'postgres_lsp',
   'yamlls',
   'lua_ls',
+  'nil_ls',
 }
