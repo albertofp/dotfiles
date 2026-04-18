@@ -11,6 +11,7 @@ _:
     ./home/hyprland.nix
     ./home/waybar.nix
     ./home/wlogout.nix
+    ./home/wallpaper.nix
   ];
 
   home = {
