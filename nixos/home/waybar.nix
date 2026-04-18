@@ -1,182 +1,12 @@
-_:
+{ config, ... }:
 
+let
+  dotfiles = "/home/alberto/dotfiles";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
+in
 {
   programs.waybar = {
     enable = true;
-
-    settings = [
-      {
-        position = "top";
-
-        modules-left = [
-          "hyprland/submap"
-          "hyprland/workspaces"
-          "custom/arrow10"
-          "hyprland/window"
-        ];
-
-        modules-right = [
-          "custom/power"
-          "custom/arrow9"
-          "pulseaudio"
-          "custom/arrow8"
-          "network"
-          "custom/arrow7"
-          "memory"
-          "custom/arrow6"
-          "cpu"
-          "custom/arrow5"
-          "temperature"
-          "custom/arrow4"
-          "custom/arrow3"
-          "custom/arrow2"
-          "tray"
-          "clock#date"
-          "custom/arrow1"
-          "clock#time"
-        ];
-
-        "clock#time" = {
-          interval = 10;
-          format = "{:%H:%M}";
-          tooltip = false;
-        };
-
-        "clock#date" = {
-          interval = 20;
-          format = "{:%e %b %Y}";
-          tooltip = false;
-        };
-
-        cpu = {
-          interval = 5;
-          tooltip = false;
-          format = " {usage}%";
-          format-alt = " {load}";
-          states = {
-            warning = 70;
-            critical = 90;
-          };
-        };
-
-        memory = {
-          interval = 5;
-          format = "󰍛 {used:0.1f}G/{total:0.1f}G";
-          states = {
-            warning = 70;
-            critical = 90;
-          };
-          tooltip = false;
-        };
-
-        network = {
-          interval = 5;
-          format-wifi = " {essid} ({signalStrength}%)";
-          format-ethernet = " {ifname}";
-          format-disconnected = "No connection";
-          format-alt = " {ipaddr}/{cidr}";
-          tooltip = false;
-        };
-
-        "hyprland/submap" = {
-          format = "{}";
-          tooltip = false;
-        };
-
-        "hyprland/window" = {
-          format = "{}";
-          max-length = 30;
-          tooltip = false;
-        };
-
-        "hyprland/workspaces" = {
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
-          format = "{name}";
-        };
-
-        pulseaudio = {
-          format = "{icon} {volume}%";
-          format-muted = "";
-          format-icons = {
-            headphone = "";
-            default = [
-              ""
-              ""
-            ];
-          };
-          scroll-step = 1;
-          on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-          tooltip = false;
-        };
-
-        temperature = {
-          critical-threshold = 90;
-          interval = 5;
-          format = "{icon} {temperatureC}°";
-          format-icons = [
-            ""
-            ""
-            ""
-            ""
-            ""
-          ];
-          tooltip = false;
-        };
-
-        tray = {
-          icon-size = 18;
-        };
-
-        "custom/power" = {
-          format = "";
-          tooltip = false;
-          on-click = "power-menu";
-        };
-
-        "custom/arrow1" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow2" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow3" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow4" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow5" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow6" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow7" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow8" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow9" = {
-          format = "";
-          tooltip = false;
-        };
-        "custom/arrow10" = {
-          format = "";
-          tooltip = false;
-        };
-      }
-    ];
-
     style = ''
       @keyframes blink-critical {
         to { background-color: @critical; }
@@ -225,7 +55,7 @@ _:
         padding: 0;
         box-shadow: none;
         text-shadow: none;
-        icon-shadow: none;
+        -gtk-icon-shadow: none;
       }
 
       #waybar {
@@ -273,10 +103,7 @@ _:
         color: @warning;
       }
 
-      #mode {
-        color: @white;
-        background: @mode;
-      }
+      #mode { color: @white; background: @mode; }
 
       #workspaces button {
         padding-left: 2pt;
@@ -284,80 +111,22 @@ _:
         color: @white;
         background: @unfocused;
       }
+      #workspaces button.visible { color: @white; background: @inactive; }
+      #workspaces button.active  { color: @black; background: @focused;  }
+      #workspaces button.urgent  { color: @black; background: @warning;  }
+      #workspaces button:hover   { background: @black; color: @white;    }
 
-      #workspaces button.visible {
-        color: @white;
-        background: @inactive;
-      }
-
-      #workspaces button.active {
-        color: @black;
-        background: @focused;
-      }
-
-      #workspaces button.urgent {
-        color: @black;
-        background: @warning;
-      }
-
-      #workspaces button:hover {
-        background: @black;
-        color: @white;
-      }
-
-      #window {
-        margin-right: 35pt;
-        margin-left: 35pt;
-      }
-
-      #pulseaudio {
-        background: @sound;
-        color: @black;
-      }
-
-      #network {
-        background: @network;
-        color: @white;
-      }
-
-      #memory {
-        background: @memory;
-        color: @black;
-      }
-
-      #cpu {
-        background: @cpu;
-        color: @white;
-      }
-
-      #temperature {
-        background: @temp;
-        color: @black;
-      }
-
-      #language {
-        background: @layout;
-        color: @black;
-      }
-
-      #battery {
-        background: @battery;
-        color: @white;
-      }
-
-      #tray {
-        background: @date;
-      }
-
-      #clock.date {
-        background: @date;
-        color: @white;
-      }
-
-      #clock.time {
-        background: @time;
-        color: @black;
-      }
+      #window      { margin-right: 35pt; margin-left: 35pt; }
+      #pulseaudio  { background: @sound;   color: @black; }
+      #network     { background: @network; color: @white; }
+      #memory      { background: @memory;  color: @black; }
+      #cpu         { background: @cpu;     color: @white; }
+      #temperature { background: @temp;    color: @black; }
+      #language    { background: @layout;  color: @black; }
+      #battery     { background: @battery; color: @white; }
+      #tray        { background: @date; }
+      #clock.date  { background: @date; color: @white; }
+      #clock.time  { background: @time; color: @black; }
 
       #custom-power {
         padding-left: 8pt;
@@ -365,22 +134,23 @@ _:
         color: @red;
         background: transparent;
       }
+      #custom-power:hover { color: @white; background: @red; }
 
-      #custom-power:hover {
-        color: @white;
-        background: @red;
-      }
-
-      #custom-arrow1 { font-size: 11pt; color: @time;      background: @date;        }
-      #custom-arrow2 { font-size: 11pt; color: @date;      background: @layout;      }
-      #custom-arrow3 { font-size: 11pt; color: @layout;    background: @battery;     }
-      #custom-arrow4 { font-size: 11pt; color: @battery;   background: @temp;        }
-      #custom-arrow5 { font-size: 11pt; color: @temp;      background: @cpu;         }
-      #custom-arrow6 { font-size: 11pt; color: @cpu;       background: @memory;      }
-      #custom-arrow7 { font-size: 11pt; color: @memory;    background: @network;     }
-      #custom-arrow8 { font-size: 11pt; color: @network;   background: @sound;       }
-      #custom-arrow9 { font-size: 11pt; color: @sound;     background: transparent;  }
+      #custom-arrow1  { font-size: 11pt; color: @time;      background: @date;       }
+      #custom-arrow2  { font-size: 11pt; color: @date;      background: @layout;     }
+      #custom-arrow3  { font-size: 11pt; color: @layout;    background: @battery;    }
+      #custom-arrow4  { font-size: 11pt; color: @battery;   background: @temp;       }
+      #custom-arrow5  { font-size: 11pt; color: @temp;      background: @cpu;        }
+      #custom-arrow6  { font-size: 11pt; color: @cpu;       background: @memory;     }
+      #custom-arrow7  { font-size: 11pt; color: @memory;    background: @network;    }
+      #custom-arrow8  { font-size: 11pt; color: @network;   background: @sound;      }
+      #custom-arrow9  { font-size: 11pt; color: @sound;     background: transparent; }
       #custom-arrow10 { font-size: 11pt; color: @unfocused; background: transparent; }
     '';
   };
+
+  # Config is a JSONC file kept in the dotfiles repo and symlinked so it can
+  # be edited live without a rebuild (icons are unicode bytes — easier in JSONC
+  # than embedded in Nix strings).
+  xdg.configFile."waybar/config.jsonc".source = link ".config/waybar/config.jsonc";
 }
