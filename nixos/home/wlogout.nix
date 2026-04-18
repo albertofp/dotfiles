@@ -73,8 +73,7 @@ in
       border: 2px solid rgba(86, 82, 110, 0.4);
     }
 
-    button:hover,
-    button:focus {
+    button:hover {
       border-color: rgba(144, 140, 170, 0.8);
     }
 
@@ -82,8 +81,7 @@ in
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/lock.png");
       color: #9ccfd8;
     }
-    #lock:hover,
-    #lock:focus {
+    #lock:hover {
       background-color: rgba(156, 207, 216, 0.15);
       border-color: #9ccfd8;
     }
@@ -92,8 +90,7 @@ in
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/suspend.png");
       color: #c4a7e7;
     }
-    #suspend:hover,
-    #suspend:focus {
+    #suspend:hover {
       background-color: rgba(196, 167, 231, 0.15);
       border-color: #c4a7e7;
     }
@@ -102,8 +99,7 @@ in
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/reboot.png");
       color: #f6c177;
     }
-    #reboot:hover,
-    #reboot:focus {
+    #reboot:hover {
       background-color: rgba(246, 193, 119, 0.15);
       border-color: #f6c177;
     }
@@ -112,8 +108,7 @@ in
       background-image: url("${pkgs.wlogout}/share/wlogout/icons/shutdown.png");
       color: #eb6f92;
     }
-    #shutdown:hover,
-    #shutdown:focus {
+    #shutdown:hover {
       background-color: rgba(235, 111, 146, 0.15);
       border-color: #eb6f92;
     }
