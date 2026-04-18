@@ -26,7 +26,6 @@ _:
       GOCACHE = "$HOME/.cache/go-build";
       DOTFILES_DIR = "$HOME/dotfiles";
       OPENSSL_CONF = "/dev/null";
-      KIND_EXPERIMENTAL_PROVIDER = "podman";
       PERSONAL_EMAIL = "albertopluecker@gmail.com";
       PERSONAL_SSH_KEY = "$HOME/.ssh/id_home_github";
       WORK_EMAIL = "alberto.pluecker@justeattakeaway.com";
