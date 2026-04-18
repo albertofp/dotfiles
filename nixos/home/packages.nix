@@ -14,7 +14,7 @@
       # Editors / viewers
       neovim
       glow
-      presenterm
+      fastfetch
       lazygit
 
       # File utils
