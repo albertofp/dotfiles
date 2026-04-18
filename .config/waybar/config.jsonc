@@ -6,15 +6,16 @@
     "hyprland/window"
   ],
   "modules-right": [
-    "custom/power",
     "pulseaudio",
     "network",
     "memory",
     "cpu",
     "temperature",
     "tray",
+    "hyprland/language",
     "clock#date",
-    "clock#time"
+    "clock#time",
+    "custom/power"
   ],
   "clock#time": { "interval": 10, "format": "{:%H:%M}", "tooltip": false },
   "clock#date": { "interval": 20, "format": "{:%e %b %Y}", "tooltip": false },
@@ -25,10 +26,10 @@
     "format-alt": " {load}",
     "states": { "warning": 70, "critical": 90 }
   },
-  "sway/language": {
-    "format": " {}",
+  "hyprland/language": {
+    "format": " {}",
     "min-length": 5,
-    "on-click": "swaymsg 'input * xkb_switch_layout next'",
+    "on-click": "hyprctl switchxkblayout all next",
     "tooltip": false
   },
   "memory": {
@@ -50,7 +51,7 @@
   "hyprland/workspaces": {
      "on-scroll-up": "hyprctl dispatch workspace e+1",
      "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "format": "{name}",
+    "format": "{name}"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",

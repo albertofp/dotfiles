@@ -133,7 +133,7 @@ _:
       #############
 
       input {
-          kb_layout = de
+          kb_layout = de,us
           kb_options = caps:escape_shifted_capslock
           follow_mouse = 1
           sensitivity = 0
