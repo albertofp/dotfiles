@@ -1,11 +1,11 @@
-{ config, ... }:
+{ config, darwinHome, ... }:
 
 {
   # Using mkOutOfStoreSymlink so edits to files in the dotfiles repo are
   # reflected immediately — no rebuild needed.
   home.file =
     let
-      dotfiles = "${config.home.homeDirectory}/dotfiles";
+      dotfiles = "${darwinHome}/dotfiles";
       link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
     in
     {
