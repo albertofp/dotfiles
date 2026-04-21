@@ -62,6 +62,7 @@
       "ghostty" # linux-only in nixpkgs
       "google-chrome" # browser — not well supported in nixpkgs on darwin
       "okta-verify" # Okta device trust — proprietary
+      "jellyfin" # jellyfin desktop client — nix build has SSL issues on macOS
       "qobuz" # music streaming — not packaged
       "raycast" # launcher — proprietary, not in nixpkgs
       "runelite" # not in nixpkgs for aarch64-darwin

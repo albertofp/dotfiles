@@ -23,7 +23,6 @@
       jq
       yq
       btop
-      htop
       cloc
 
       # Dev
@@ -64,7 +63,6 @@
 
       # AWS / cloud
       awscli2
-      tailscale
 
       # GitHub CLI
       gh
@@ -80,10 +78,6 @@
 
       # Apps
       anki
-      jellyfin-media-player
-      localsend
-      signal-desktop
-      telegram-desktop
 
       # Fonts
       nerd-fonts.jetbrains-mono
@@ -98,8 +92,7 @@
         vlc
         wl-clipboard
         wlsunset
-        cmatrix
-        presenterm
+        jellyfin
 
         # Hyprland user-space tools
         wofi
@@ -115,24 +108,7 @@
         colima
         docker
         podman
-
-        # Presentations
-        presenterm
-        cmatrix
       ]
       ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else [ ])
-      # ── Not available in nixpkgs — install manually ──────────────────────
-      # aerospace    (tiling WM — macOS-only, not packaged)
-      # raycast      (launcher — proprietary, not packaged)
-      # terramate    (Terraform orchestration — not in nixpkgs)
-      # okta-verify  (Okta device trust — proprietary)
-      # ausweisapp   (German eID — check nixpkgs.ausweisapp2 for Linux only)
-      # foobar2000   (audio player — macOS build not packaged)
-      # qobuz        (music streaming — not packaged)
-      # soulseek     (file sharing — not packaged for macOS)
-      # tailscale-app (macOS system extension GUI — use tailscale CLI above)
-      # whatsapp     (not packaged for macOS)
-      # claude-code  (install via: npm install -g @anthropic-ai/claude-code)
-      # google-chrome (install manually or via: nix run nixpkgs#google-chrome)
     );
 }
