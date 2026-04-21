@@ -1,4 +1,10 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  darwinUser,
+  darwinHome,
+  ...
+}:
 {
   imports = [
     # ── Shared (Linux + macOS) ─────────────────────────────────────────────────
@@ -13,8 +19,8 @@
   ];
 
   home = {
-    username = "alberto.pluecker";
-    homeDirectory = "/Users/alberto.pluecker";
+    username = darwinUser;
+    homeDirectory = darwinHome;
     stateVersion = "24.11";
     sessionVariables = {
       GOCACHE = "$HOME/Library/Caches/go-build";

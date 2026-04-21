@@ -49,6 +49,21 @@
       rustOverlay = {
         nixpkgs.overlays = [ rust-overlay.overlays.default ];
       };
+      # Infer the macOS username from the environment at eval time.
+      # Prefer SUDO_USER (set when invoked via sudo) so we get the real user
+      # even when darwin-rebuild is run as root. Falls back to USER, then "admin".
+      darwinUser =
+        let
+          sudoUser = builtins.getEnv "SUDO_USER";
+          user = builtins.getEnv "USER";
+        in
+        if sudoUser != "" then
+          sudoUser
+        else if user != "" && user != "root" then
+          user
+        else
+          "admin";
+      darwinHome = "/Users/${darwinUser}";
     in
     {
       # ── NixOS ────────────────────────────────────────────────────────────────
@@ -87,6 +102,9 @@
       #   darwin-rebuild switch --flake .#alberto-mac
       darwinConfigurations.alberto-mac = nix-darwin.lib.darwinSystem {
         system = darwinSystem;
+        specialArgs = {
+          inherit darwinUser darwinHome;
+        };
         modules = [
           ./darwin/system.nix
           rustOverlay
@@ -96,8 +114,9 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "hm-backup";
-              users."alberto.pluecker" = import ./darwin/home.nix;
+              users.${darwinUser} = import ./darwin/home.nix;
               extraSpecialArgs = {
+                inherit darwinUser darwinHome;
                 zen-browser-pkg = zen-browser.packages.${darwinSystem}.default;
               };
             };

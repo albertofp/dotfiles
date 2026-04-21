@@ -1,15 +1,20 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  darwinUser,
+  darwinHome,
+  ...
+}:
 
 {
   # ── User ────────────────────────────────────────────────────────────────────
   # Required for home-manager to resolve the home directory correctly.
   # primaryUser is required by nix-darwin for user-scoped options (homebrew,
   # system.defaults, etc.) now that all system activation runs as root.
-  system.primaryUser = "alberto.pluecker";
+  system.primaryUser = darwinUser;
 
-  users.users."alberto.pluecker" = {
-    name = "alberto.pluecker";
-    home = "/Users/alberto.pluecker";
+  users.users.${darwinUser} = {
+    name = darwinUser;
+    home = darwinHome;
   };
 
   # ── macOS system defaults ────────────────────────────────────────────────────

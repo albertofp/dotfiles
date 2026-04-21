@@ -5,7 +5,7 @@
   # reflected immediately — no rebuild needed.
   home.file =
     let
-      dotfiles = "/Users/alberto.pluecker/dotfiles";
+      dotfiles = "${config.home.homeDirectory}/dotfiles";
       link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
     in
     {
