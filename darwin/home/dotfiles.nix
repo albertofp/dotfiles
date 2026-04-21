@@ -5,7 +5,7 @@
   # reflected immediately — no rebuild needed.
   home.file =
     let
-      dotfiles = "/Users/albertopluecker/dotfiles";
+      dotfiles = "/Users/alberto.pluecker/dotfiles";
       link = path: config.lib.file.mkOutOfStoreSymlink "${dotfiles}/${path}";
     in
     {
@@ -13,5 +13,6 @@
       ".gitconfig-jet".source = link ".gitconfig-jet";
       ".config/nvim".source = link ".config/nvim";
       ".config/ghostty".source = link ".config/ghostty";
+      ".config/aerospace".source = link ".config/aerospace";
     };
 }

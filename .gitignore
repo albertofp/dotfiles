@@ -12,3 +12,4 @@ scripts/
 .config/tfenv/versions/
 .config/btop
 .config/github-copilot/
+.envrc

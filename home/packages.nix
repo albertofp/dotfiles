@@ -53,6 +53,9 @@
       deadnix
       nixfmt
 
+      # Secrets
+      age
+
       # CI / workflow linting
       actionlint
 
@@ -65,6 +68,12 @@
 
       # GitHub CLI
       gh
+
+      # Secrets
+      age
+
+      # direnv — per-directory environment variables
+      direnv
 
       # OpenCode AI coding agent
       opencode
@@ -105,6 +114,7 @@
         # Container runtime (colima = VM daemon, docker = CLI client)
         colima
         docker
+        podman
 
         # Presentations
         presenterm
