@@ -5,11 +5,11 @@
   # Required for home-manager to resolve the home directory correctly.
   # primaryUser is required by nix-darwin for user-scoped options (homebrew,
   # system.defaults, etc.) now that all system activation runs as root.
-  system.primaryUser = "albertopluecker";
+  system.primaryUser = "alberto.pluecker";
 
-  users.users.albertopluecker = {
-    name = "albertopluecker";
-    home = "/Users/albertopluecker";
+  users.users."alberto.pluecker" = {
+    name = "alberto.pluecker";
+    home = "/Users/alberto.pluecker";
   };
 
   # ── macOS system defaults ────────────────────────────────────────────────────
@@ -31,15 +31,17 @@
       };
     };
 
-    # Caps Lock → Escape (via hidutil, applied on activation)
-    activationScripts.capsLockToEscape.text = ''
-      hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}' > /dev/null
-    '';
+    activationScripts = {
+      # Caps Lock → Escape (via hidutil, applied on activation)
+      capsLockToEscape.text = ''
+        hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x700000029}]}' > /dev/null
+      '';
 
-    # Default browser — zen browser (idempotent; macOS may still prompt once)
-    activationScripts.defaultBrowser.text = ''
-      ${pkgs.defaultbrowser}/bin/defaultbrowser zen 2>/dev/null || true
-    '';
+      # Default browser — zen browser (idempotent; macOS may still prompt once)
+      defaultBrowser.text = ''
+        ${pkgs.defaultbrowser}/bin/defaultbrowser zen 2>/dev/null || true
+      '';
+    };
   };
 
   # ── Homebrew — only for packages unavailable in nixpkgs ────────────────────

@@ -69,7 +69,7 @@
       nixedit = "nvim ~/dotfiles/nixos/";
     }
     // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-      rebuild = "sudo darwin-rebuild switch --flake path:/Users/albertopluecker/dotfiles#alberto-mac --impure";
+      rebuild = "sudo darwin-rebuild switch --flake path:/Users/alberto.pluecker/dotfiles#alberto-mac --impure";
       nixedit = "nvim ~/dotfiles/";
       reload = "source ~/.zshrc";
       # Copy last git commit hash to clipboard
@@ -83,8 +83,13 @@
         tmux attach || tmux new
       fi
 
-      # Secrets (API keys, tokens — decrypted by agenix at boot)
+      # direnv — load per-directory .envrc files
+      command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
+      # Secrets (API keys, tokens)
+      # Linux: decrypted by agenix at boot
       [[ -f /run/agenix/shell-secrets ]] && source /run/agenix/shell-secrets
+      # macOS: decrypted manually to ~/.local/secrets/shell-secrets (never committed)
+      [[ -f "$HOME/.local/secrets/shell-secrets" ]] && source "$HOME/.local/secrets/shell-secrets"
 
       # kubectl completion
       [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
@@ -124,6 +129,9 @@
       }
     ''
     + pkgs.lib.optionalString pkgs.stdenv.isDarwin ''
+      # Homebrew (Apple Silicon)
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+
       # macOS: copy file to clipboard
       function copy_file_to_clipboard() {
         [[ -n "$1" ]] && cat "$1" | pbcopy

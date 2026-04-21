@@ -96,7 +96,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "hm-backup";
-              users.albertopluecker = import ./darwin/home.nix;
+              users."alberto.pluecker" = import ./darwin/home.nix;
               extraSpecialArgs = {
                 zen-browser-pkg = zen-browser.packages.${darwinSystem}.default;
               };
