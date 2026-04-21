@@ -76,9 +76,6 @@
       # OpenCode AI coding agent
       opencode
 
-      # Apps
-      anki
-
       # Fonts
       nerd-fonts.jetbrains-mono
     ]
