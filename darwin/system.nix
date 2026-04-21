@@ -63,7 +63,7 @@
       "google-chrome" # browser — not well supported in nixpkgs on darwin
       "okta-verify" # Okta device trust — proprietary
       "anki" # not available for aarch64-darwin in nixpkgs
-      "jellyfin" # jellyfin desktop client — nix build has SSL issues on macOS
+      "jellyfin-media-player" # desktop client — nix build has SSL issues on macOS
       "qobuz" # music streaming — not packaged
       "raycast" # launcher — proprietary, not in nixpkgs
       "runelite" # not in nixpkgs for aarch64-darwin
