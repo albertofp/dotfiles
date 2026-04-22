@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   darwinUser,
   darwinHome,
   ...
@@ -56,7 +57,7 @@
       autoUpdate = false;
       cleanup = "zap"; # remove casks no longer listed here
     };
-    taps = [ "nikitabobko/tap" ]; # required for aerospace
+    taps = builtins.attrNames config.nix-homebrew.taps;
     casks = [
       "nikitabobko/tap/aerospace" # tiling WM — not in nixpkgs, custom tap
       "ghostty" # linux-only in nixpkgs
