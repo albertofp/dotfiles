@@ -21,6 +21,10 @@ Key flake inputs beyond nixpkgs + home-manager:
 |---|---|
 | `agenix` | Age-encrypted secrets decrypted at boot to `/run/agenix/` |
 | `nix-darwin` | macOS system configuration (system defaults, Homebrew, launchd) |
+| `nix-homebrew` | Declarative Homebrew installation manager for nix-darwin |
+| `homebrew-core` | Pinned Homebrew core tap (managed by nix-homebrew) |
+| `homebrew-cask` | Pinned Homebrew cask tap (managed by nix-homebrew) |
+| `homebrew-aerospace` | Pinned AeroSpace tap (managed by nix-homebrew) |
 | `zen-browser` | Zen browser (not yet in nixpkgs) |
 | `hyprpaper` | Wallpaper daemon (tracks upstream closely) |
 | `rust-overlay` | Stable Rust toolchain without rustup |
@@ -75,8 +79,7 @@ bash dotfiles [OPTIONS] [THUMB_DIR]
 What it does:
 1. Decrypts GPG-encrypted secrets from the thumb drive and installs them (`~/.ssh/`, `~/.aws/`)
 2. Connects to wifi if needed
-3. Installs Homebrew (macOS only — needed for non-nix casks)
-4. Installs Nix via Determinate Systems (macOS) or assumes pre-installed (NixOS live ISO)
-5. Clones this repo
-6. **NixOS**: generates hardware config, runs `nixos-rebuild switch --flake`
-7. **macOS**: runs `nix run nix-darwin -- switch --flake ...#alberto-mac`
+3. Installs Nix via Determinate Systems (macOS) or assumes pre-installed (NixOS live ISO)
+4. Clones this repo
+5. **NixOS**: generates hardware config, runs `nixos-rebuild switch --flake`
+6. **macOS**: runs `nix run nix-darwin -- switch --flake ...#alberto-mac`, which triggers nix-homebrew to install and configure Homebrew declaratively

@@ -362,13 +362,6 @@ case "$OSTYPE" in
 
   # ── macOS ───────────────────────────────────────────────────────────────
   darwin*)
-    # Homebrew is needed for casks not available in nixpkgs
-    if ! command -v brew &>/dev/null; then
-      info "Installing Homebrew..."
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
-    fi
-
     # Install Nix via Determinate Systems installer
     if ! command -v nix &>/dev/null; then
       info "Installing Nix (Determinate Systems)..."
