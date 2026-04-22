@@ -155,7 +155,7 @@ require('fzf-lua').setup {
     cmd = 'rg --files --hidden -g "!.git" -g "!**/vendor/**"',
   },
   grep = {
-    rg_opts = '--hidden --glob "!.git" --column --line-number --no-heading --color=always',
+    rg_opts = '--hidden --ignore-case --glob "!.git" --column --line-number --no-heading --color=always',
   },
   file_ignore_patterns = { 'node_modules', '^.git/', 'vendor/', 'appdev/' },
 }
