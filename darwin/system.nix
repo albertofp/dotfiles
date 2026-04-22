@@ -30,6 +30,9 @@
         "com.apple.keyboard.fnState" = true;
         "com.apple.mouse.tapBehavior" = 1; # tap to click
         AppleTemperatureUnit = "Celsius";
+        AppleInterfaceStyle = "Dark";
+        AppleICUForce24HourTime = true;
+        KeyRepeat = 2;
       };
 
       trackpad = {
