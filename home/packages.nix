@@ -105,6 +105,9 @@
         colima
         docker
         podman
+
+        # Atlassian CLI
+        acli
       ]
       ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else [ ])
     );
