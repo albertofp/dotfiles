@@ -30,6 +30,19 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    homebrew-aerospace = {
+      url = "github:nikitabobko/homebrew-aerospace";
+      flake = false;
+    };
   };
 
   outputs =
@@ -41,6 +54,10 @@
       zen-browser,
       hyprpaper,
       rust-overlay,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
+      homebrew-aerospace,
       ...
     }:
     let
@@ -109,6 +126,21 @@
           ./darwin/system.nix
           rustOverlay
           home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              user = darwinUser;
+              autoMigrate = true;
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "nikitabobko/homebrew-aerospace" = homebrew-aerospace;
+              };
+              mutableTaps = true;
+            };
+          }
           {
             home-manager = {
               useGlobalPkgs = true;

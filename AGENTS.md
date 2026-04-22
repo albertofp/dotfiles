@@ -17,7 +17,7 @@ are isolated under `nixos/home/` (Linux) and `darwin/home/` (macOS).
 ## Repository layout
 
 ```
-flake.nix                        # Entry point — NixOS + nix-darwin + home-manager + agenix + zen-browser + hyprpaper + rust-overlay
+flake.nix                        # Entry point — NixOS + nix-darwin + home-manager + agenix + zen-browser + hyprpaper + rust-overlay + nix-homebrew
 home/                            # Shared HM modules (Linux + macOS)
   packages.nix                   # home.packages with platform guards (isLinux/isDarwin)
   zsh.nix                        # programs.zsh — shared aliases/functions + isDarwin extras
@@ -172,7 +172,8 @@ reference only — it is superseded by nix-darwin and should not be edited.
 - `darwin/system.nix` — nix-darwin system config (macOS defaults, Homebrew casks for non-nix apps)
   - `nix.enable = false` — required because Determinate Nix manages its own daemon
   - `system.primaryUser` — required by nix-darwin for user-scoped options (homebrew, defaults)
-  - `homebrew` block — only for apps unavailable in nixpkgs (aerospace, raycast, etc.)
+  - `homebrew` block — only for apps unavailable in nixpkgs (aerospace, raycast, etc.); taps are derived from `config.nix-homebrew.taps` (single source of truth)
+  - Homebrew itself is installed and managed by `nix-homebrew` (declared in `flake.nix`)
 - `darwin/home.nix` — HM entry point for macOS user
 - `darwin/home/dotfiles.nix` — live symlinks with macOS paths (`/Users/albertopluecker/...`)
 - `darwin/home/desktop.nix` — fzf, SSH config
@@ -190,8 +191,9 @@ Or from the thumb drive:
 ```sh
 bash dotfiles
 ```
-The script installs Homebrew (needed for non-nix casks), then Nix (Determinate Systems),
-clones the repo, and runs `nix run nix-darwin -- switch --flake ...#alberto-mac`.
+The script installs Nix (Determinate Systems), clones the repo, and runs
+`nix run nix-darwin -- switch --flake ...#alberto-mac`. nix-homebrew then installs and
+manages Homebrew declaratively as part of the first activation
 
 ---
 
