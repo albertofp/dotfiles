@@ -65,11 +65,11 @@
       dockerkill = "docker stop $(docker ps -a -q)";
     }
     // pkgs.lib.optionalAttrs pkgs.stdenv.isLinux {
-      rebuild = "sudo nixos-rebuild switch --flake path:/home/alberto/dotfiles#alberto --impure";
+      rebuild = "sudo nixos-rebuild switch --flake path:$HOME/dotfiles#alberto --impure";
       nixedit = "nvim ~/dotfiles/nixos/";
     }
     // pkgs.lib.optionalAttrs pkgs.stdenv.isDarwin {
-      rebuild = "sudo darwin-rebuild switch --flake path:/Users/alberto.pluecker/dotfiles#alberto-mac --impure";
+      rebuild = "sudo darwin-rebuild switch --flake path:$HOME/dotfiles#alberto-mac --impure";
       nixedit = "nvim ~/dotfiles/";
       reload = "source ~/.zshrc";
       # Copy last git commit hash to clipboard
