@@ -81,7 +81,7 @@
     };
     taps = builtins.attrNames config.nix-homebrew.taps;
     casks = [
-      "aerospace" # tiling WM — not in nixpkgs, custom tap
+      "nikitabobko/tap/aerospace" # tiling WM — not in nixpkgs, custom tap
       "ghostty" # linux-only in nixpkgs
       "google-chrome" # browser — not well supported in nixpkgs on darwin
       "okta-verify" # Okta device trust — proprietary
