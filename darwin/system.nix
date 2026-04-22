@@ -72,7 +72,8 @@
   homebrew = {
     enable = true;
     onActivation = {
-      autoUpdate = false;
+      autoUpdate = true;
+      upgrade = true;
       cleanup = "zap"; # remove casks no longer listed here
     };
     taps = builtins.attrNames config.nix-homebrew.taps;
