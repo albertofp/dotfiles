@@ -138,7 +138,7 @@
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "nikitabobko/homebrew-aerospace" = homebrew-aerospace;
               };
-              mutableTaps = false;
+              mutableTaps = true;
             };
           }
           {
