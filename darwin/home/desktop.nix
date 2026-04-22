@@ -10,6 +10,20 @@ _:
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
+    matchBlocks."home-server" = {
+      hostname = "192.168.2.59";
+      user = "alberto";
+      identityFile = "~/.ssh/id_ed25519";
+      addKeysToAgent = "yes";
+      extraOptions.UseKeychain = "yes";
+    };
+    matchBlocks."seedbox" = {
+      hostname = "216.163.184.165";
+      user = "albertopluecker";
+      identityFile = "~/.ssh/seedbox";
+      addKeysToAgent = "yes";
+      extraOptions.UseKeychain = "yes";
+    };
     matchBlocks."github.je-labs.com" = {
       hostname = "github.je-labs.com";
       identityFile = "~/.ssh/work_github";
