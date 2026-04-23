@@ -113,7 +113,7 @@ on-mode-changed = []
     alt-h = 'focus left'
     alt-j = 'focus down'
     alt-k = 'focus up'
-    alt-l = 'focus right'
+    alt-shift-l = 'focus right'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     cmd-shift-h = 'move left'
