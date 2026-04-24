@@ -87,12 +87,12 @@
       "okta-verify" # Okta device trust — proprietary
       "anki" # not available for aarch64-darwin in nixpkgs
       "jellyfin-media-player" # desktop client — nix build has SSL issues on macOS
-      "qobuz" # music streaming — not packaged
       "raycast" # launcher — proprietary, not in nixpkgs
       "runelite" # not in nixpkgs for aarch64-darwin
       "soulseek" # file sharing — not packaged for macOS
       "vlc" # linux-only in nixpkgs
       "whatsapp" # not packaged for macOS
+      "wizcli"
     ];
   };
 
