@@ -108,6 +108,9 @@
 
         # Atlassian CLI
         acli
+
+        # Encryption
+        sops
       ]
       ++ (if zen-browser-pkg != null then [ zen-browser-pkg ] else [ ])
     );
