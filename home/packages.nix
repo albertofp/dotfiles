@@ -75,6 +75,7 @@
 
       # OpenCode AI coding agent
       opencode
+      claude-code
 
       # Fonts
       nerd-fonts.jetbrains-mono
