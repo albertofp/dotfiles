@@ -34,6 +34,7 @@
       golangci-lint
       kubectl
       kubectx
+      k9s
       gum
       hyperfine
       pyenv
@@ -42,7 +43,6 @@
       ffmpeg
       mpv
       silicon
-      yt-dlp
 
       # Network
       nmap
@@ -67,15 +67,11 @@
       # GitHub CLI
       gh
 
-      # Secrets
-      age
-
       # direnv — per-directory environment variables
       direnv
 
       # OpenCode AI coding agent
       opencode
-      claude-code
 
       # Fonts
       nerd-fonts.jetbrains-mono
@@ -103,12 +99,14 @@
     ++ pkgs.lib.optionals pkgs.stdenv.isDarwin (
       [
         # Container runtime (colima = VM daemon, docker = CLI client)
-        colima
         docker
         podman
 
         # Atlassian CLI
         acli
+
+        # Dev
+        claude-code
 
         # Encryption
         sops
