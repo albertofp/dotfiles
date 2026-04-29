@@ -107,6 +107,8 @@
 
         # Dev
         claude-code
+        kubernetes-helm
+        helmfile
 
         # Encryption
         sops
