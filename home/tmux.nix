@@ -29,6 +29,7 @@ in
       setw -g pane-base-index 1
       set -g detach-on-destroy off
       set -g renumber-windows on
+      set -g focus-events on
 
       # Rose Pine Moon theme
       set -g display-panes-active-colour "${m.text}"
