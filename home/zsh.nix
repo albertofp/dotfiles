@@ -141,8 +141,8 @@
       function aws-login() {
         local profile="''${1}"
         if [[ -z "$profile" ]]; then
-          echo "Usage: aws-login <profile-name>"
-          return 1
+          profile="$(aws configure list-profiles | fzf --prompt='AWS profile: ')"
+          [[ -z "$profile" ]] && return 1
         fi
         aws sso login --profile "''${profile}" && \
         aws eks update-kubeconfig --profile "''${profile}" --name "''${profile}" --alias "''${profile}"
