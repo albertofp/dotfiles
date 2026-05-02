@@ -86,7 +86,7 @@
         vlc
         wl-clipboard
         wlsunset
-        jellyfin
+        jellyfin-desktop
 
         # Hyprland user-space tools
         wofi
