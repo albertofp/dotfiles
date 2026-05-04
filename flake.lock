@@ -205,6 +205,22 @@
         "type": "github"
       }
     },
+    "homebrew-pack": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777390995,
+        "narHash": "sha256-uIVE7NE5fiXqvMRK3f6fidjkj4m6rWNvRv+3sm6rUTI=",
+        "owner": "datadog-labs",
+        "repo": "homebrew-pack",
+        "rev": "2140e0dfaf74fcf6ade019cfce6d91ec9d9c1633",
+        "type": "github"
+      },
+      "original": {
+        "owner": "datadog-labs",
+        "repo": "homebrew-pack",
+        "type": "github"
+      }
+    },
     "hyprgraphics": {
       "inputs": {
         "hyprutils": [
@@ -476,6 +492,7 @@
         "homebrew-aerospace": "homebrew-aerospace",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-pack": "homebrew-pack",
         "hyprpaper": "hyprpaper",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",

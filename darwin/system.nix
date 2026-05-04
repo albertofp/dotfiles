@@ -80,6 +80,9 @@
       cleanup = "zap"; # remove casks no longer listed here
     };
     taps = builtins.attrNames config.nix-homebrew.taps;
+    brews = [
+      "datadog-labs/pack/pup"
+    ];
     casks = [
       "nikitabobko/tap/aerospace" # tiling WM — not in nixpkgs, custom tap
       "ghostty" # linux-only in nixpkgs

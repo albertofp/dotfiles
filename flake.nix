@@ -43,6 +43,10 @@
       url = "github:nikitabobko/homebrew-aerospace";
       flake = false;
     };
+    homebrew-pack = {
+      url = "github:datadog-labs/homebrew-pack";
+      flake = false;
+    };
   };
 
   outputs =
@@ -58,6 +62,7 @@
       homebrew-core,
       homebrew-cask,
       homebrew-aerospace,
+      homebrew-pack,
       ...
     }:
     let
@@ -137,6 +142,7 @@
                 "homebrew/homebrew-core" = homebrew-core;
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "nikitabobko/homebrew-aerospace" = homebrew-aerospace;
+                "datadog-labs/pack" = homebrew-pack;
               };
               mutableTaps = true;
             };
