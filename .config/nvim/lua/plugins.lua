@@ -81,7 +81,6 @@ vim.pack.add {
   'https://github.com/kevinhwang91/promise-async',
 
   -- Markdown / docs
-  'https://github.com/OXY2DEV/markview.nvim',
   'https://github.com/brianhuster/live-preview.nvim',
 
   -- Misc
@@ -342,14 +341,6 @@ vim.keymap.set('n', 'zK', function()
   local winid = ufo.peekFoldedLinesUnderCursor()
   if not winid then vim.lsp.buf.hover() end
 end, { silent = true, desc = 'Peek fold' })
-
--- Markdown
----@diagnostic disable-next-line: missing-fields
-require('markview').setup {
-  ---@diagnostic disable-next-line: missing-fields
-  experimental = { check_rtp_message = false },
-  preview = { enable = true, icon_provider = 'devicons', map_gx = false },
-}
 
 -- Silicon (code screenshots)
 require('nvim-silicon').setup {
