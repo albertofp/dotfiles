@@ -46,6 +46,17 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B",
                          "C", "D", "E", "F", "G", "I", "M", "N", "O", "P", "Q",
                          "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
+[workspace-to-monitor-force-assignment]
+1 = ['Built-in Retina Display', 'main']
+2 = ['Built-in Retina Display', 'main']
+3 = ['Built-in Retina Display', 'main']
+4 = ['DELL U2422H', 'main']
+5 = ['DELL U2422H', 'main']
+6 = ['DELL U2422H', 'main']
+7 = ['DELL U2422HE', 'main']
+8 = ['DELL U2422HE', 'main']
+9 = ['DELL U2422HE', 'main']
+
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
