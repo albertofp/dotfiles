@@ -86,6 +86,36 @@ vim.keymap.set('n', '<leader>gt', fzf.git_status, { desc = 'Git status' })
 vim.keymap.set('n', '<leader>gc', fzf.git_commits, { desc = 'Git commits' })
 vim.keymap.set('n', '<leader>gb', fzf.git_branches, { desc = 'Git branches' })
 
+local function blame_commit_browse(copy)
+  local line = vim.fn.line('.')
+  local file = vim.fn.expand('%:p')
+  local blame_out = vim.fn.system(string.format('git blame -L %d,%d --porcelain -- %s', line, line, vim.fn.shellescape(file)))
+  local sha = blame_out:match('^(%x+)')
+  if not sha or #sha < 40 then
+    vim.notify('Could not resolve blame for this line', vim.log.levels.WARN)
+    return
+  end
+  local remote = vim.fn.system('git remote get-url origin'):gsub('%s+$', '')
+  local host, path = remote:match('git@([^:]+):(.+)$')
+  if not host then
+    host, path = remote:match('https?://([^/]+)/(.+)$')
+  end
+  if not host then
+    vim.notify('Could not parse remote URL: ' .. remote, vim.log.levels.WARN)
+    return
+  end
+  local url = string.format('https://%s/%s/commit/%s', host, path:gsub('%.git$', ''), sha)
+  if copy then
+    vim.fn.setreg('+', url)
+    vim.notify('Copied: ' .. url)
+  else
+    vim.ui.open(url)
+  end
+end
+
+vim.keymap.set('n', '<leader>go', function() blame_commit_browse(false) end, { desc = 'Git open blame commit in browser' })
+vim.keymap.set('n', '<leader>gy', function() blame_commit_browse(true) end, { desc = 'Git yank blame commit URL' })
+
 -- Fuzzy find
 vim.keymap.set('n', '<leader>/', fzf.lgrep_curbuf, { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>th', fzf.colorschemes, { desc = '[th]emes' })

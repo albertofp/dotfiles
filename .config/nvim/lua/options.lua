@@ -1,5 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
+vim.g.fugitive_github_domains = { 'github.je-labs.com' }
 
 -- Disable netrw (replaced by nvim-tree / oil)
 vim.g.loaded_netrw = 1
