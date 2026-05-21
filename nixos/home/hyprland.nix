@@ -2,10 +2,13 @@ let
   # Strip leading '#' — hyprlock uses rgb(rrggbb) format
   hex = c: builtins.substring 1 6 c;
   m = (import ../lib/theme.nix).moon;
+  wallpaperDir = "/home/alberto/wallpapers";
   wallpaper =
-    let files = builtins.readDir /home/alberto/wallpapers;
-        list = builtins.attrNames files;
-    in "/home/alberto/wallpapers/${builtins.elemAt list 0}";
+    let
+      files = builtins.readDir wallpaperDir;
+      list = builtins.attrNames files;
+    in
+    "${wallpaperDir}${builtins.elemAt list 0}";
   overlayAlpha = "55"; # hex alpha (00–FF)
 in
 _: {
