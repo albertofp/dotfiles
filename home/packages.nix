@@ -90,6 +90,7 @@
 
         # Hyprland user-space tools
         wofi
+        sddm-astronaut
         networkmanagerapplet
         brightnessctl
         playerctl

@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 
 {
   programs.hyprland = {
@@ -13,6 +13,8 @@ _:
     sddm = {
       enable = true;
       wayland.enable = false; # Wayland SDDM broken with NVIDIA
+      theme = "sddm-astronaut-theme";
+      extraPackages = [ pkgs.sddm-astronaut ];
     };
     defaultSession = "hyprland-uwsm";
   };

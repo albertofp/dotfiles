@@ -25,7 +25,7 @@ in
       }
       {
         label = "suspend";
-        action = "hyprlock & sleep 0.5 && systemctl suspend -i";
+        action = "hyprlock & sleep 0.5 && systemctl suspend";
         text = "Sleep";
         keybind = "s";
       }

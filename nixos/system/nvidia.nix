@@ -16,6 +16,8 @@
   boot.kernelParams = [
     "nvidia-drm.modeset=1"
     "nvidia-drm.fbdev=1"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "mem_sleep_default=s2idle"
   ];
 
   # Load nvidia modules early so KMS is available before display manager starts.

@@ -2,6 +2,11 @@ let
   # Strip leading '#' — hyprlock uses rgb(rrggbb) format
   hex = c: builtins.substring 1 6 c;
   m = (import ../lib/theme.nix).moon;
+  wallpaper =
+    let files = builtins.readDir /home/alberto/wallpapers;
+        list = builtins.attrNames files;
+    in "/home/alberto/wallpapers/${builtins.elemAt list 0}";
+  overlayAlpha = "55"; # hex alpha (00–FF)
 in
 _: {
   wayland.windowManager.hyprland = {
@@ -157,7 +162,7 @@ _: {
       bind = $mainMod, R, exec, $menu
       bind = $mainMod, P, pseudo,
       bind = $mainMod, J, togglesplit,
-      bind = $mainMod SHIFT, S, exec, hyprlock & sleep 0.5 && systemctl suspend -i
+      bind = $mainMod SHIFT, S, exec, hyprlock & sleep 0.5 && systemctl suspend
 
       # Focus
       bind = $mainMod, left,  movefocus, l
@@ -242,7 +247,9 @@ _: {
 
       background {
         monitor =
-        color = rgb(${hex m.base})
+        path = ${wallpaper}
+        blur_passes = 2
+        blur_size = 6
       }
 
       input-field {
