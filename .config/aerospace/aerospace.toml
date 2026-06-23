@@ -47,15 +47,17 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B",
                          "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 [workspace-to-monitor-force-assignment]
-1 = ['Built-in Retina Display', 'main']
-2 = ['Built-in Retina Display', 'main']
-3 = ['Built-in Retina Display', 'main']
-4 = ['DELL U2422H', 'main']
-5 = ['DELL U2422H', 'main']
-6 = ['DELL U2422H', 'main']
-7 = ['DELL U2422HE', 'main']
-8 = ['DELL U2422HE', 'main']
-9 = ['DELL U2422HE', 'main']
+# Built-in stays primary when present. External workspaces fall back to the
+# home ultrawide, then to the built-in display when no external monitor exists.
+1 = ['^Built-in Retina Display$', 'main']
+2 = ['^Built-in Retina Display$', 'main']
+3 = ['^Built-in Retina Display$', 'main']
+4 = ['^DELL U2422H$', '^DELL U3419W$', 'secondary', 'main']
+5 = ['^DELL U2422H$', '^DELL U3419W$', 'secondary', 'main']
+6 = ['^DELL U2422H$', '^DELL U3419W$', 'secondary', 'main']
+7 = ['^DELL U2422HE$', '^DELL U3419W$', 'secondary', 'main']
+8 = ['^DELL U2422HE$', '^DELL U3419W$', 'secondary', 'main']
+9 = ['^DELL U2422HE$', '^DELL U3419W$', 'secondary', 'main']
 
 # A callback that runs every time binding mode changes
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
