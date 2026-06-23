@@ -173,6 +173,22 @@
         "type": "github"
       }
     },
+    "homebrew-argoproj": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1756414928,
+        "narHash": "sha256-TzQt2B1RkVjDWf8lv+DYeigK5bIDC+Xz3kqVUQ5pNrc=",
+        "owner": "argoproj",
+        "repo": "homebrew-tap",
+        "rev": "fdc7edd03bb7d2719369be916f2682898b33ef83",
+        "type": "github"
+      },
+      "original": {
+        "owner": "argoproj",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "homebrew-cask": {
       "flake": false,
       "locked": {
@@ -202,6 +218,22 @@
       "original": {
         "owner": "homebrew",
         "repo": "homebrew-core",
+        "type": "github"
+      }
+    },
+    "homebrew-hashicorp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777936412,
+        "narHash": "sha256-EhuSigcKLcIbwSMVqqwsJcJJHHJUr2Ald6GqUkM8XE8=",
+        "owner": "hashicorp",
+        "repo": "homebrew-tap",
+        "rev": "85a48ea68dca2bbdcb55ff841d60837d13a864f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hashicorp",
+        "repo": "homebrew-tap",
         "type": "github"
       }
     },
@@ -490,8 +522,10 @@
         "agenix": "agenix",
         "home-manager": "home-manager_2",
         "homebrew-aerospace": "homebrew-aerospace",
+        "homebrew-argoproj": "homebrew-argoproj",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-hashicorp": "homebrew-hashicorp",
         "homebrew-pack": "homebrew-pack",
         "hyprpaper": "hyprpaper",
         "nix-darwin": "nix-darwin",

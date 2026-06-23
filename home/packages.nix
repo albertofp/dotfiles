@@ -4,6 +4,13 @@
   ...
 }:
 
+let
+  # helmfile pinned to 0.165.0 — helm-core requires this version
+  pinnedPkgs = import (builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/05bbf675397d5366259409139039af8077d695ce.tar.gz";
+    sha256 = "1r26vjqmzgphfnby5lkfihz6i3y70hq84bpkwd43qjjvgxkcyki0";
+  }) { inherit (pkgs) system; };
+in
 {
   home.packages =
     with pkgs;
@@ -35,6 +42,7 @@
       kubectl
       kubectx
       k9s
+      kustomize
       gum
       hyperfine
       pyenv
@@ -109,7 +117,8 @@
         # Dev
         claude-code
         kubernetes-helm
-        helmfile
+        pinnedPkgs.helmfile
+        confluent-cli
 
         # Encryption
         sops

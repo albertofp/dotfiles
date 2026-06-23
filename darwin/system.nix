@@ -82,6 +82,11 @@
     taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       "datadog-labs/pack/pup"
+      "hashicorp/tap/vault"
+      "tgenv"
+      "tfenv"
+      "uv"
+      "kubectl-argo-rollouts"
     ];
     casks = [
       "nikitabobko/tap/aerospace" # tiling WM — not in nixpkgs, custom tap
@@ -96,6 +101,8 @@
       "vlc" # linux-only in nixpkgs
       "whatsapp" # not packaged for macOS
       "wizcli"
+      "ausweisapp"
+      "gcloud-cli"
     ];
   };
 

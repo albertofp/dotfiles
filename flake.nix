@@ -47,6 +47,14 @@
       url = "github:datadog-labs/homebrew-pack";
       flake = false;
     };
+    homebrew-hashicorp = {
+      url = "github:hashicorp/homebrew-tap";
+      flake = false;
+    };
+    homebrew-argoproj = {
+      url = "github:argoproj/homebrew-tap";
+      flake = false;
+    };
   };
 
   outputs =
@@ -63,6 +71,8 @@
       homebrew-cask,
       homebrew-aerospace,
       homebrew-pack,
+      homebrew-hashicorp,
+      homebrew-argoproj,
       ...
     }:
     let
@@ -143,6 +153,8 @@
                 "homebrew/homebrew-cask" = homebrew-cask;
                 "nikitabobko/homebrew-aerospace" = homebrew-aerospace;
                 "datadog-labs/pack" = homebrew-pack;
+                "hashicorp/tap" = homebrew-hashicorp;
+                "argoproj/tap" = homebrew-argoproj;
               };
               mutableTaps = true;
             };

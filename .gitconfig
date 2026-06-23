@@ -35,3 +35,5 @@
 ; 	insteadOf = git@jus.tw.cx:
 [branch]
 	sort = -committerdate
+[url "git@github.je-labs.com:"]
+	insteadOf = https://github.je-labs.com/
